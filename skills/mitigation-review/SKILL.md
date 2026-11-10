@@ -10,6 +10,16 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Mitigation Review
 
+## Codex invocation defaults
+
+`$mitigation-review M-1` is sufficient when the finding and engagement are identifiable from the
+chat or audit research. Set up this chat's run automatically. Read its context, root Claude
+context, relevant tomes, report and issue thread as read-only inputs; resolve scope, findings repo,
+audited commit and fix commits from their evidence and verify the refs. Ask only for unresolved
+or conflicting inputs. Create missing private context yourself. Fresh-pull this run's own mirror,
+review and test the fix, retain pre/post/residual evidence, and save the verdict and Cyfrin write-up
+in this run's owned directories. Temporary patches stay in owned copies; publication needs approval.
+
 Judge whether each client fix closes its finding, prove it with PoCs, and produce a short write-up
 for the report's `**Cyfrin:**` field.
 
@@ -31,14 +41,16 @@ for the report's `**Cyfrin:**` field.
 
 | Input | Example | Where it's stored |
 |---|---|---|
-| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, inside this workspace (copy it in if it lives in another checkout; the scripts refuse paths outside) | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
+| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, an audit-local read-only input (make a private checkout-local copy if a helper requires it) | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
 | Findings repo | `Cyfrin/audit-2026-09-<client>` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
 | Baseline (audited) commit | `37f06bb` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
 | Mitigation commit | `be70792` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
 | In-scope paths | `src/vault-v2 src/risk-engines` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope |
 | Client name + git remote of the client's own external repo (not the Cyfrin audit repo) | `Acme`, remote `client` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |
 
-If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If any input is missing from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, ask
+If this run's context is absent, bootstrap it automatically from the request, checkout and shared
+read-only research; do not require the operator to invoke summon separately. Inspect those sources
+before asking for any input still missing from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Ask
 once, then record it there.
 
 Scripts live in this skill's `scripts/` directory (`$S` below) and in the peer-review skill's
@@ -59,9 +71,11 @@ paths inside the reviewed repo; run every script from the repo root.
 
 Run the review from the checkout that has the fix commits (often a separate checkout used only for
 fixes). The scripts are confined to the workspace they start in: its HEAD, its files, and this
-session's `.isolated-codex/<session-id>/` copies. Every other checkout of the repo, including the one used for the audit itself, is
-off limits. So the report and grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md must be in this checkout too. Copy them in, or run
-`/summon` here.
+session's `.isolated-codex/<session-id>/` copies. Never execute tests or write in another checkout.
+Shared Claude context/research inside the original audit launch folder remains available read-only.
+If an indexing helper needs a checkout-local report, create an attributed private copy under this
+run's report tree through the guarded writer, preserving its source. Build the run's own context
+automatically; do not require a separate operator summon invocation.
 
 Check `git log -1 <mitigation-commit>` and `git log -1 <baseline>` resolve, `gh auth status` works,
 and the report file exists. Note fork-test env vars the repo uses (`grep -r "vm.envString\|rpc_endpoints" test foundry.toml`).

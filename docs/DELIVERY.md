@@ -31,9 +31,9 @@ README.md, SYNC.md, BENCHMARKING.md, CONTRIBUTING.md
 
 | Check | Result |
 |---|---|
-| Downstream structural/ownership/reference/reproducibility validator | PASS: 40 skills, 30 Bash syntax checks, 13 Python syntax checks |
+| Downstream structural/ownership/reference/reproducibility validator | PASS: 40 skills, 30 Bash syntax checks, 14 Python syntax checks |
 | Bundled skill-creator `quick_validate.py` | PASS: all 40 entrypoints |
-| Python unittest suite | PASS: 68 tests |
+| Python unittest suite | PASS: 79 tests |
 | Read-only network retrieval via `sync.py --check` | PASS: pinned upstream, zero changed/deleted files |
 | Repeated synchronization from separate local source | PASS: idempotent, no managed file changes |
 | Local Git PR-publication integration | PASS: temporary bare remote, bot branch/commit, create/update requests via stubbed GitHub API; human commits preserved; default branch unchanged |
@@ -41,6 +41,8 @@ README.md, SYNC.md, BENCHMARKING.md, CONTRIBUTING.md
 | Findings/check validators on upstream examples | PASS: two finding examples and all five check examples |
 | Isolated-copy helper | PASS: byte verification, drift detection and session separation on synthetic repository |
 | Per-run reports/PoCs and guarded execution | PASS: 15 dedicated tests for collisions, output ownership, private discovery, raw evidence, mirrors and Claude preservation |
+| Automatic session setup | PASS: seven tests for checkout detection, dirty-work preservation, simultaneous starts, owned read-only resume and boundary/refusal checks |
+| Shared Claude research inputs | PASS: four tests for automatic discovery, exact read-only content/hash retrieval, parent-audit references, symlink/escape refusal and exclusion of other Codex runs |
 | Actual Foundry/Solidity execution | PASS: one synthetic private PoC, Forge 1.5.1 and local solc 0.8.25; invalid shared Claude draft excluded; shared configuration/files unchanged |
 | Status helper | PASS: concurrent updates, malformed/missing IDs refused, held lock not stolen |
 | Bootstrap/installation | PASS: idempotent, registry preserved, collision and Claude-toolkit destination refused |
@@ -103,14 +105,48 @@ was excluded. Shared context, Claude draft and `foundry.toml` hashes stayed unch
 root `out/` or `cache/` appeared. The fixture and compiler copy were cleaned. This demonstrates
 private test routing and compilation, not a model-driven audit or a security finding's validity.
 
+## Automatic session setup follow-up — 2026-11-10
+
+The first audit skill now instructs Codex to run `scripts/session.py start` itself using the
+original runtime launch directory. The helper inspects Git root, HEAD and uncommitted changes
+read-only, creates a fresh UUID, initializes private artifacts and writes that run's `session.json`.
+Its JSON result supplies the environment for later helper calls. The operator starts normal
+`codex` in the audit checkout; no repeated path variables, exports, Git checks or copied IDs are
+required. The current HEAD remains checkout evidence, not an assumption about the audited commit.
+
+New starts ignore inherited run/root variables; simultaneous starts receive independent outputs
+and working copies. A resumed chat must identify its own recorded run explicitly. Resume validates
+ownership and saved paths, rereads current Git evidence, and leaves the original run record intact.
+No shared environment file or latest-run pointer is created. Seven synthetic integration tests
+exercise these behaviors and refusal paths. The full suite passes 75 tests. This validates the
+helper and generated instructions; it is not a model-driven CLI startup or resume test.
+
+## Short invocations and shared research follow-up — 2026-11-10
+
+The four core entrypoints now embed their invocation defaults: `$summon`, `$peer-review #12`,
+`$mitigation-review M-1` and `$finding-draft` handle setup and output paths without a pasted prompt.
+Reviews bootstrap missing private context from the request, checkout and available research instead
+of requiring a separate operator summon step. Summon accepts the current target checkout or a
+scoped checkout inside the launch folder; it never suggests moving above the audit boundary.
+Missing/ambiguous findings-repository identity, scope or commit evidence still requires a question.
+Reproduction, Familiar triage, finding-content checkpoints and publication gates are preserved.
+
+Session setup discovers existing root GRIMOIRE.md and grimoire/ research at the launch and target
+roots. All skills may consult relevant Claude tomes and indexes automatically as read-only inputs.
+The reference reader returns contained Markdown and its SHA-256 without changing any source file,
+and refuses symlinks, outside paths and other Codex runs. New conclusions and corrections stay
+private to Codex, with source pointers; shared research is never adopted as independently verified
+evidence. Four additional synthetic integration tests cover these behaviors. The full suite now
+passes 79 tests; no model-driven security review or automatic input-inference result is claimed.
+
 ## Behavioral differences and manual attention
 
 - Codex uses optional pre-audit personal-store setup, reads its own GRIMOIRE at skill entry and dispatches
   Familiar after Sigil. These are instructions, not Claude lifecycle-hook guarantees.
 - Six role skills expose full procedures; independent execution requires a real Codex subagent or
   fresh session. When unavailable, mandatory independent review pauses with a saved handoff.
-- `GRIMOIRE_AUDIT_ROOT` fixes the session launch boundary and is explicitly supplied with
-  `GRIMOIRE_SESSION_ID`. Codex working copies use `.isolated-codex/`, separately from Claude’s
+- Automatic skill-entry setup captures `GRIMOIRE_AUDIT_ROOT` and generates `GRIMOIRE_SESSION_ID`;
+  Codex supplies both to helpers. Working copies use `.isolated-codex/`, separately from Claude’s
   `.isolated/`; runtime/run/Git-root/launch-root ownership and exclusions protect reuse and cleanup. Operator run IDs are distinguished from verified
   resumable chat IDs. Copy ownership and containment checks remain enforced.
 - Context7/claudit setup is optional and manual; actual tool namespaces are discovered dynamically.
@@ -133,19 +169,15 @@ explicitly authorized target.
 From this downstream checkout, with a pre-existing target Git checkout for the review:
 
 ```sh
-export GRIMOIRE_CODEX_ROOT="$(pwd -P)"
 python3 scripts/validate.py
 python3 scripts/install.py --project "$HOME"
 cd /path/to/audit/target-checkout
-export GRIMOIRE_AUDIT_ROOT="$(pwd -P)"
-export GRIMOIRE_SESSION_ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-python3 "$GRIMOIRE_CODEX_ROOT/scripts/review_artifacts.py" init
-codex --sandbox workspace-write --ask-for-approval on-request
+codex
 ```
 
-Invoke `$summon` on the local target, then the desired workflow. For session-aware helpers, use a
-verified thread ID or an explicitly labeled generated run UUID as `GRIMOIRE_SESSION_ID` in every
-shell call. [README](../README.md) covers paths, dependencies and available skills.
+Invoke `$summon` on the local target, then the desired workflow. Codex initializes the session and
+supplies helper variables itself; independent chats get distinct runs automatically.
+[README](../README.md) covers paths, dependencies and available skills.
 
 ## First comparison
 

@@ -43,8 +43,8 @@ The collector checks a clean target and records its actual HEAD, task/scope hash
 skill/model/runtime provenance. Skill/model/runtime versions are operator-supplied: verify them
 against the actual checkout and runtime. It does not attest that a model used those settings.
 
-For each Codex execution, set `GRIMOIRE_AUDIT_ROOT` to its launch directory and generate a distinct
-`GRIMOIRE_SESSION_ID` as in [HOW-TO-USE.md](HOW-TO-USE.md). Capture its reports and PoCs from
+For each Codex execution, automatic skill-entry setup records its launch directory and generates
+a distinct run ID, as in [HOW-TO-USE.md](HOW-TO-USE.md). Capture its reports and PoCs from
 `<target-git-root>/grimoire-codex/<run-id>/`, including raw evidence under `runs/`; working copies
 remain in `.isolated-codex/<run-id>/`. Keep run collection, scratch and cache paths inside that
 execution's audit folder. Supply existing Claude artifacts only to the evaluator after both runs.

@@ -10,6 +10,16 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Peer Review
 
+## Codex invocation defaults
+
+`$peer-review #12` is sufficient when the findings repository is clear from this chat or existing
+audit context. Set up this chat's run automatically, load its context and relevant shared Claude
+tomes read-only, and resolve repository, scope and audited refs from those sources. An issue URL
+also supplies repository identity. If identity or scope remains ambiguous, ask one focused
+question; do not assume the code repository's origin is the findings repo. Build missing private
+context yourself, then execute every reproduction, scope, severity, duplicate and fix-verification
+stage below. Use owned PoCs/copies and present the verdict before any publication action.
+
 Validate a finding someone else wrote (a peer auditor or an AI agent) the way a careful second auditor
 would: reproduce it, measure it, place it in scope, compare it with the other findings, test the fix,
 and give a verdict the user can act on.
@@ -54,8 +64,11 @@ and give a verdict the user can act on.
 | PoC directory | This run's `pocs/peer-review/` directory returned by `review_artifacts.py init`; leave shared test folders untouched |
 | Work folder | `isolated-workspace.sh work i<N>` → `<workspace>/.isolated-codex/<session-id>/work/i<N>/` for patched copies and backups |
 
-If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in
-grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.
+If this run's context is absent, bootstrap its minimal private context from the request,
+checkout and shared read-only research as CODEX.md directs. Do not require a separate operator
+summon invocation. Read available sources before asking once for an unresolved input, and record
+its answer in this run's context. Scripts live in this skill's `scripts/` directory; run them from
+the selected target repo root.
 
 ---
 

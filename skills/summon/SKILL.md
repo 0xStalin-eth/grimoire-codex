@@ -10,6 +10,17 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Summon
 
+## Codex invocation defaults
+
+`$summon` alone initializes the local audit workspace. Apply CODEX.md session setup automatically,
+read existing audit-local Claude context and relevant tomes read-only, and build this run's own
+context with source pointers. Reuse clear scope, commit and findings-repository facts after
+verification; ask only for missing or conflicting inputs. No setup prompt, path variable or run ID
+is required from the operator. Keep every output and copy inside the original launch boundary.
+Use the current checkout when it is the target, or a scoped repository contained by the launch
+folder. Skip bounty acquisition unless a program URL/slug was supplied. Preserve the workflow's
+independent context review and explicit approval gate before a Sigil swarm.
+
 Initialize Grimoire on a new codebase. Build context, create the audit workspace, and produce
 `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` — the living contextual map for this security engagement.
 
@@ -103,24 +114,25 @@ project/          <-- cwd
     in_scope_repo/
 ```
 
-The project directory should contain the repository (or repositories) that are in scope. Grimoire
-creates its own files and directories alongside (not inside) the scoped code.
+The launch directory is the immutable audit boundary. A target Git checkout at the current
+level is valid for Codex review; keep artifacts in its private grimoire-codex/<run-id>/ tree.
+If the launch folder contains scoped repositories, use the request and shared audit context to
+identify the target checkout inside it before automatic session setup. Never move above the
+launch directory or ask the operator to broaden it. Do not change tracked files or Git history.
 
 **Verify:**
-- Are we in a directory that contains one or more code repositories?
-- Are we accidentally inside the repo itself? (If so, warn the user and suggest moving up)
-- Is there a git repo at the current level that would conflict? (Grimoire artifacts should not
-  pollute the scoped repo's git history)
+- Which target checkout is identified by the request and available scope evidence?
+- Does its Git root stay inside the original launch boundary?
+- Are any repository/scope ambiguities unresolved after reading the shared context? Ask only those.
 
 If multiple repositories are in scope, identify each one. grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md should cover all in-scope
 repos in a single document, with architecture and flows sections clearly delineating per-repo
 structure where they differ.
 
-If the layout looks wrong, explain the expected structure to the user and ask them to confirm or
-adjust before proceeding. Do not silently continue with a bad layout.
-
-If the user has additional context available (meeting notes, scope documents, prior audit reports),
-ask whether they'd like to point Grimoire at those directories.
+If no valid contained target can be identified, explain the missing information and ask a focused
+question. Discover existing audit-local GRIMOIRE.md and grimoire/ research automatically as
+read-only inputs, including relevant tomes. Ask for additional context only when the available
+sources do not resolve a required input.
 
 ### 2. Create Audit Directory Structure
 
@@ -181,9 +193,9 @@ rows yet. Rows are added as soon as a topic is written into a second tome.
 
 **Session logs.** `findings/`, `hypotheses/`, `peer-review/`, `mitigation-review/`, `tomes/` and
 `client-communication/` each get a `SESSIONS.md` at their root, so any file in them can be traced
-back to the responsible Codex run. Resume only when its verified thread ID is known
-(`codex resume <verified-thread-id>`); an operator run ID alone is not resumable.
-The session ID is always read from `$GRIMOIRE_SESSION_ID`, never guessed. There are two kinds:
+back to the responsible Codex run. Resume the conversation through the runtime picker or a
+verified thread ID; its operator run UUID alone cannot resume a chat. Codex reloads this chat’s
+saved session record to restore `$GRIMOIRE_SESSION_ID` and supplies it to the status helper. There are two kinds:
 
 - **Status snapshots** — `hypotheses/`, `peer-review/` and `mitigation-review/`. One row per file,
   holding only its current state: the folder it is in now, the last session that worked on it, when,

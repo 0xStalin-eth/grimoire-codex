@@ -21,17 +21,13 @@ Smart-contract proofs need the target's compiler, dependencies and test runner (
 From a checkout of this downstream repository:
 
 ```sh
-export GRIMOIRE_CODEX_ROOT="$(pwd -P)"
 python3 scripts/validate.py
 python3 scripts/install.py --project "$HOME"
 cd /path/to/audit/target-checkout
-export GRIMOIRE_AUDIT_ROOT="$(pwd -P)"
-export GRIMOIRE_SESSION_ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-python3 "$GRIMOIRE_CODEX_ROOT/scripts/review_artifacts.py" init
-codex --sandbox workspace-write --ask-for-approval on-request
+codex
 ```
 
-The target checkout must already exist and have its Git root at the launch directory. This review
+The target checkout must already exist at or inside the audit launch directory. This review
 setup links all 40 skill folders into `~/.agents/skills/`, so they are available when Codex starts
 in an audit checkout. Existing unrelated skills are never overwritten. Project-level registration
 is also available via `--project /path/to/engagement`; see the walkthrough's note about external
@@ -39,16 +35,27 @@ skill symlinks in source snapshots. Keep this toolkit checkout at a stable path.
 container/hosted sessions, copy the complete downstream checkout into the environment and install
 there; links to your laptop cannot work remotely. Restart Codex if the skills do not appear.
 
-In Codex, use `$summon`, `$cartography`, `$write-poc`, `$peer-review` or another skill below.
-For example: **`Use $summon on the local in_scope_repo. Skip bounty acquisition.`**
+In Codex, invoke **`$summon`**, **`$peer-review #12`**, **`$mitigation-review M-1`** or
+**`$finding-draft`**. Session setup, research discovery, private output paths and the workflow's
+review stages are embedded in the skills; no repeated setup prompt is needed. Only missing or
+conflicting inputs require questions. A direct review can bootstrap its own private context.
 Natural-language discovery remains enabled. Claude slash-command spellings in shared prose map to
 `$skill-name`; they are not shell commands. Each skill first loads its Codex adapter and this
 run's `grimoire-codex/<run-id>/GRIMOIRE.md`. Helpers use their installed absolute paths while retaining the
 engagement/target working directory, as directed in `CODEX.md`.
 
-For review work, pass `GRIMOIRE_AUDIT_ROOT` (the absolute Codex launch directory) and a stable
-`GRIMOIRE_SESSION_ID` to helpers in each shell invocation. The audit root must never be broadened
-after changing directories. Peer/mitigation copies and scratch files live in
+On the first audit skill in a new chat, Codex runs `scripts/session.py start` itself. This detects
+the Git root, HEAD and uncommitted changes, captures the original launch boundary, creates a fresh
+UUID, and saves this run's `session.json`. No per-session variables, Git checks or copied IDs are
+required from the operator. Parallel chats get independent runs, ignoring stale terminal variables;
+resumed chats reload only their own saved record. This is skill-entry setup, not a startup hook.
+Codex explicitly passes the returned `GRIMOIRE_AUDIT_ROOT` and `GRIMOIRE_SESSION_ID` to its helpers.
+Existing audit-local Claude `GRIMOIRE.md`, `grimoire/` research and relevant tomes are discovered
+automatically as read-only references. Codex cites reusable facts, verifies them against the target,
+and writes new notes/corrections only into its own run. Shared context, indexes and session logs
+are never updated. `session.py read-reference` returns contained Markdown with a source hash and
+refuses symlinks, outside paths and other Codex runs.
+The audit root must never be broadened after changing directories. Peer/mitigation copies and scratch files live in
 `<target-git-root>/.isolated-codex/<run-id>/`, inside that launch directory. Claude keeps its separate
 `.isolated/` tree; Codex excludes both trees from snapshots and requires matching runtime/run/root
 ownership before reuse or cleanup. Global-store writes are unavailable during a confined audit.
@@ -58,9 +65,9 @@ Claude's paths, other runs, symlinks and accidental file replacement. Private Fo
 uses owned copies, local build/cache/persistence paths, no automatic compiler installation and no
 shared RPC cache. Raw evidence stays under the run's `runs/` directory. Existing Claude
 `GRIMOIRE.md`, `grimoire/`, test files and working copies are left untouched.
-Use a verified Codex thread ID when exposed, or generate a UUID once (`python3 -c 'import uuid; print(uuid.uuid4())'`)
-and label it **run ID, not resumable chat ID**. Preserve it only for that logical session. Missing or
-malformed IDs are refused by isolated-copy/status helpers. Do not fabricate a Codex chat ID.
+The generated UUID is a **run ID, not a resumable chat ID**. Codex manages it for the logical chat;
+use the runtime's resume picker or a verified chat ID to restore the conversation. Missing or
+malformed helper variables remain refused; Codex repairs its invocation using the saved record.
 
 Peer/mitigation review does not require personal-store bootstrap. Optional library/detector setup
 with `scripts/bootstrap.py` belongs before an audit session; the default `~/.grimoire/` store may

@@ -481,6 +481,26 @@
         "old": "- Don't edit the report file unless the user asks.",
         "new": "- Keep the supplied report read-only. If the user asks for report edits, create or update a derivative under this run's mitigation-review/reports/ through the guarded writer; never replace the input report.",
         "count": 1
+      },
+      {
+        "old": "# Mitigation Review\n",
+        "new": "# Mitigation Review\n\n## Codex invocation defaults\n\n`$mitigation-review M-1` is sufficient when the finding and engagement are identifiable from the\nchat or audit research. Set up this chat's run automatically. Read its context, root Claude\ncontext, relevant tomes, report and issue thread as read-only inputs; resolve scope, findings repo,\naudited commit and fix commits from their evidence and verify the refs. Ask only for unresolved\nor conflicting inputs. Create missing private context yourself. Fresh-pull this run's own mirror,\nreview and test the fix, retain pre/post/residual evidence, and save the verdict and Cyfrin write-up\nin this run's owned directories. Temporary patches stay in owned copies; publication needs approval.\n",
+        "count": 1
+      },
+      {
+        "old": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If any input is missing from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, ask",
+        "new": "If this run's context is absent, bootstrap it automatically from the request, checkout and shared\nread-only research; do not require the operator to invoke summon separately. Inspect those sources\nbefore asking for any input still missing from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Ask",
+        "count": 1
+      },
+      {
+        "old": "session's `.isolated-codex/<session-id>/` copies. Every other checkout of the repo, including the one used for the audit itself, is\noff limits. So the report and grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md must be in this checkout too. Copy them in, or run\n`/summon` here.",
+        "new": "session's `.isolated-codex/<session-id>/` copies. Never execute tests or write in another checkout.\nShared Claude context/research inside the original audit launch folder remains available read-only.\nIf an indexing helper needs a checkout-local report, create an attributed private copy under this\nrun's report tree through the guarded writer, preserving its source. Build the run's own context\nautomatically; do not require a separate operator summon invocation.",
+        "count": 1
+      },
+      {
+        "old": "| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, inside this workspace (copy it in if it lives in another checkout; the scripts refuse paths outside) |",
+        "new": "| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, an audit-local read-only input (make a private checkout-local copy if a helper requires it) |",
+        "count": 1
       }
     ]
   },
@@ -556,6 +576,16 @@
         "old": "  Ask before creating a new folder; a mistyped path usually means the existing one.",
         "new": "  Use the initialized run-owned PoC directory; ask before choosing a different execution layout.",
         "count": 1
+      },
+      {
+        "old": "# Peer Review\n",
+        "new": "# Peer Review\n\n## Codex invocation defaults\n\n`$peer-review #12` is sufficient when the findings repository is clear from this chat or existing\naudit context. Set up this chat's run automatically, load its context and relevant shared Claude\ntomes read-only, and resolve repository, scope and audited refs from those sources. An issue URL\nalso supplies repository identity. If identity or scope remains ambiguous, ask one focused\nquestion; do not assume the code repository's origin is the findings repo. Build missing private\ncontext yourself, then execute every reproduction, scope, severity, duplicate and fix-verification\nstage below. Use owned PoCs/copies and present the verdict before any publication action.\n",
+        "count": 1
+      },
+      {
+        "old": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in\ngrimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.",
+        "new": "If this run's context is absent, bootstrap its minimal private context from the request,\ncheckout and shared read-only research as CODEX.md directs. Do not require a separate operator\nsummon invocation. Read available sources before asking once for an unresolved input, and record\nits answer in this run's context. Scripts live in this skill's `scripts/` directory; run them from\nthe selected target repo root.",
+        "count": 1
       }
     ]
   },
@@ -586,6 +616,11 @@
         "old": ".isolated/",
         "new": ".isolated-codex/",
         "count": 7
+      },
+      {
+        "old": "the operator explicitly reuses the same run ID\n   on a verified resumption, so the session finds its copies; a new independent Codex run gets a new ID and an empty",
+        "new": "Codex reloads its own recorded run ID\n   when resuming the same chat, so it finds its copies; automatic setup gives each new independent chat a new ID and an empty",
+        "count": 1
       }
     ]
   },
@@ -985,6 +1020,26 @@
       {
         "old": "  of too brief. Detailed notes go in `grimoire/tomes/`.\n",
         "new": "  of too brief. Detailed notes go in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      },
+      {
+        "old": "back to the responsible Codex run. Resume only when its verified thread ID is known\n(`codex resume <verified-thread-id>`); an operator run ID alone is not resumable.\nThe session ID is always read from `$GRIMOIRE_SESSION_ID`, never guessed.",
+        "new": "back to the responsible Codex run. Resume the conversation through the runtime picker or a\nverified thread ID; its operator run UUID alone cannot resume a chat. Codex reloads this chat\u2019s\nsaved session record to restore `$GRIMOIRE_SESSION_ID` and supplies it to the status helper.",
+        "count": 1
+      },
+      {
+        "old": "# Summon\n",
+        "new": "# Summon\n\n## Codex invocation defaults\n\n`$summon` alone initializes the local audit workspace. Apply CODEX.md session setup automatically,\nread existing audit-local Claude context and relevant tomes read-only, and build this run's own\ncontext with source pointers. Reuse clear scope, commit and findings-repository facts after\nverification; ask only for missing or conflicting inputs. No setup prompt, path variable or run ID\nis required from the operator. Keep every output and copy inside the original launch boundary.\nUse the current checkout when it is the target, or a scoped repository contained by the launch\nfolder. Skip bounty acquisition unless a program URL/slug was supplied. Preserve the workflow's\nindependent context review and explicit approval gate before a Sigil swarm.\n",
+        "count": 1
+      },
+      {
+        "old": "The project directory should contain the repository (or repositories) that are in scope. Grimoire\ncreates its own files and directories alongside (not inside) the scoped code.\n\n**Verify:**\n- Are we in a directory that contains one or more code repositories?\n- Are we accidentally inside the repo itself? (If so, warn the user and suggest moving up)\n- Is there a git repo at the current level that would conflict? (Grimoire artifacts should not\n  pollute the scoped repo's git history)",
+        "new": "The launch directory is the immutable audit boundary. A target Git checkout at the current\nlevel is valid for Codex review; keep artifacts in its private grimoire-codex/<run-id>/ tree.\nIf the launch folder contains scoped repositories, use the request and shared audit context to\nidentify the target checkout inside it before automatic session setup. Never move above the\nlaunch directory or ask the operator to broaden it. Do not change tracked files or Git history.\n\n**Verify:**\n- Which target checkout is identified by the request and available scope evidence?\n- Does its Git root stay inside the original launch boundary?\n- Are any repository/scope ambiguities unresolved after reading the shared context? Ask only those.",
+        "count": 1
+      },
+      {
+        "old": "If the layout looks wrong, explain the expected structure to the user and ask them to confirm or\nadjust before proceeding. Do not silently continue with a bad layout.\n\nIf the user has additional context available (meeting notes, scope documents, prior audit reports),\nask whether they'd like to point Grimoire at those directories.",
+        "new": "If no valid contained target can be identified, explain the missing information and ask a focused\nquestion. Discover existing audit-local GRIMOIRE.md and grimoire/ research automatically as\nread-only inputs, including relevant tomes. Ask for additional context only when the available\nsources do not resolve a required input.",
         "count": 1
       }
     ]
@@ -2060,6 +2115,21 @@
       {
         "old": "- `grimoire/sigil-findings/` for automated tooling or sigil agents\n",
         "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for automated tooling or sigil agents\n",
+        "count": 1
+      },
+      {
+        "old": "# Finding Draft\n",
+        "new": "# Finding Draft\n\n## Codex invocation defaults\n\n`$finding-draft` uses the vulnerability and evidence already discussed in this chat; the user may\nalso name an observation or source artifact. Handle session setup and context discovery yourself.\nRead relevant Claude tomes and prior research read-only, and keep the draft and any new PoCs in\nthis run's owned directories. Reuse the user's existing framing and verified evidence; ask only\nfor missing details or actual ambiguity. Preserve Familiar triage, title/severity/content review\ncheckpoints and finding validation below. Never present inherited claims or unexecuted PoCs as\nindependently verified, and never publish the finding without authorization.\n",
+        "count": 1
+      },
+      {
+        "old": "- Check for `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.",
+        "new": "- Load this run's context; if absent, bootstrap minimal private context from the chat, checkout and shared read-only research automatically.",
+        "count": 1
+      },
+      {
+        "old": "- Ask the user to describe: **what component** is affected, **what goes wrong**, and\n  **what the impact is** \u2014 even with familiar context, the user's framing is the source\n  of truth for the finding's voice.",
+        "new": "- Use the user's description already present in the request or conversation for **what component**\n  is affected, **what goes wrong**, and **what the impact is**. Ask only for missing or ambiguous\n  details; the user's framing remains the source of truth for the finding's voice.",
         "count": 1
       }
     ]

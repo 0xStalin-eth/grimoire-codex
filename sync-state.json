@@ -162,31 +162,31 @@
     },
     "agents/familiar.md": {
       "mode": 420,
-      "sha256": "ec66ddfd00b9266cd2f22ce636c6d88d3974bf8a6814d5b82cd75597fc36bfe5"
+      "sha256": "af44ee09021a96f40a87d38d911ef73aede8c3c6167dd2e8664e74c3fb457bd3"
     },
     "agents/gnome.md": {
       "mode": 420,
-      "sha256": "b3f6e717dc3eb21fe0cf210050619fd0210899442db4eb5eb2ef22578c1c4b4b"
+      "sha256": "0b8a211618e3b77e75fc0e438898dcad9c1cbbd6a87ec109ff358e976ffb5ced"
     },
     "agents/hag.md": {
       "mode": 420,
-      "sha256": "e958d9ae44144719832dfa175b876edffd314e8086e37091053554c364a9f498"
+      "sha256": "e88fd0420ca8c59abdffe12cae1369d7c2fbe77ae8e10c8d9f85db89b68e057d"
     },
     "agents/librarian.md": {
       "mode": 420,
-      "sha256": "4b144e7dbad5680d5e9e644f7376fffc86a9ea940719abaf980cc397d4849dc6"
+      "sha256": "80695949c342f289634a33e729f271fe85b9b7e87bb6a0536b919569bdcce6a0"
     },
     "agents/scribe.md": {
       "mode": 420,
-      "sha256": "10c10b74be30c0505a9b98ba399333bb782d25a8c43e9b7ab907614fa2252b54"
+      "sha256": "a271db0e435f2d3bf80a4d36a0e248f7906227de72264f952c79535ae49369da"
     },
     "agents/sigil.md": {
       "mode": 420,
-      "sha256": "2130a64bfa0e4fe874481d2790110edb6dcc5b6ad58c55e68779711d712b1b7c"
+      "sha256": "d71c0d5b898740ff3c4eac672f6ab3321d64732239d688d926957344d74f4f17"
     },
     "skills/annotation/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/annotation/SKILL.md": {
       "mode": 420,
@@ -218,7 +218,7 @@
     },
     "skills/cartography/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/cartography/SKILL.md": {
       "mode": 420,
@@ -242,7 +242,7 @@
     },
     "skills/checks/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/checks/SKILL.md": {
       "mode": 420,
@@ -286,7 +286,7 @@
     },
     "skills/delve/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/delve/SKILL.md": {
       "mode": 420,
@@ -294,7 +294,7 @@
     },
     "skills/dig-mode/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/dig-mode/SKILL.md": {
       "mode": 420,
@@ -302,7 +302,7 @@
     },
     "skills/divine/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/divine/SKILL.md": {
       "mode": 420,
@@ -310,7 +310,7 @@
     },
     "skills/finding-dedup/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/finding-dedup/SKILL.md": {
       "mode": 420,
@@ -318,15 +318,15 @@
     },
     "skills/finding-draft/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/finding-draft/SKILL.md": {
       "mode": 420,
-      "sha256": "7849d90d0b972e76fe4adc7c1e0c93949971af0e198929cb8890289ddc0d95e5"
+      "sha256": "4c8d842d2fa316da05530fd03a35b2ca32a7ae6fb3211cd2a314eed5e149d6f8"
     },
     "skills/finding-review/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/finding-review/SKILL.md": {
       "mode": 420,
@@ -334,7 +334,7 @@
     },
     "skills/finding/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/finding/SKILL.md": {
       "mode": 420,
@@ -374,7 +374,7 @@
     },
     "skills/findings-sync/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/findings-sync/SKILL.md": {
       "mode": 420,
@@ -390,7 +390,7 @@
     },
     "skills/gc-cartography/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/gc-cartography/SKILL.md": {
       "mode": 420,
@@ -426,7 +426,7 @@
     },
     "skills/grimoire-assess-process-improvements/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-assess-process-improvements/SKILL.md": {
       "mode": 420,
@@ -434,7 +434,7 @@
     },
     "skills/grimoire-commit/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-commit/SKILL.md": {
       "mode": 420,
@@ -442,7 +442,7 @@
     },
     "skills/grimoire-execute-plan/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-execute-plan/SKILL.md": {
       "mode": 420,
@@ -450,7 +450,7 @@
     },
     "skills/grimoire-familiar/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-familiar/SKILL.md": {
       "mode": 420,
@@ -458,7 +458,7 @@
     },
     "skills/grimoire-gap-analysis/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-gap-analysis/SKILL.md": {
       "mode": 420,
@@ -466,7 +466,7 @@
     },
     "skills/grimoire-gnome/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-gnome/SKILL.md": {
       "mode": 420,
@@ -474,7 +474,7 @@
     },
     "skills/grimoire-hag/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-hag/SKILL.md": {
       "mode": 420,
@@ -482,7 +482,7 @@
     },
     "skills/grimoire-librarian/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-librarian/SKILL.md": {
       "mode": 420,
@@ -490,7 +490,7 @@
     },
     "skills/grimoire-mode/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-mode/SKILL.md": {
       "mode": 420,
@@ -498,7 +498,7 @@
     },
     "skills/grimoire-scribe/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-scribe/SKILL.md": {
       "mode": 420,
@@ -506,7 +506,7 @@
     },
     "skills/grimoire-sigil/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/grimoire-sigil/SKILL.md": {
       "mode": 420,
@@ -514,7 +514,7 @@
     },
     "skills/hunt-summary/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/hunt-summary/SKILL.md": {
       "mode": 420,
@@ -522,7 +522,7 @@
     },
     "skills/librarian-clean-cache/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/librarian-clean-cache/SKILL.md": {
       "mode": 420,
@@ -530,7 +530,7 @@
     },
     "skills/librarian-index/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/librarian-index/SKILL.md": {
       "mode": 420,
@@ -542,7 +542,7 @@
     },
     "skills/librarian-library-search/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/librarian-library-search/SKILL.md": {
       "mode": 420,
@@ -554,11 +554,11 @@
     },
     "skills/mitigation-review/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/mitigation-review/SKILL.md": {
       "mode": 420,
-      "sha256": "312657bec10a37c380e6d2227d4ab3e49b883cdfb718597f84ed322652286f10"
+      "sha256": "7b29fae25afb234c327ddca62259cb68f39bc320e827ee504a92576f14dc09eb"
     },
     "skills/mitigation-review/examples/MitigationReview.t.sol.template": {
       "mode": 420,
@@ -622,7 +622,7 @@
     },
     "skills/modify-library/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/modify-library/SKILL.md": {
       "mode": 420,
@@ -638,11 +638,11 @@
     },
     "skills/peer-review/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/peer-review/SKILL.md": {
       "mode": 420,
-      "sha256": "446263b5d21110468088e611266301e220a8e15e48a0b4579889511563db6fb0"
+      "sha256": "91d47fcf90df90f5f5958bf64df06d7e3604d3b8e7576f207d648e381ba647ba"
     },
     "skills/peer-review/examples/pending-tome-template.md": {
       "mode": 420,
@@ -670,7 +670,7 @@
     },
     "skills/peer-review/references/parallel-sessions.md": {
       "mode": 420,
-      "sha256": "06484e1f39aca626f9aa4ae99b71040533546fcd18722bb88f8b52018d0fdae9"
+      "sha256": "c2be323a24194fc269df3aff900ca7e14daaad2b48727503b21d040d69798c53"
     },
     "skills/peer-review/references/severity-calibration.md": {
       "mode": 420,
@@ -702,7 +702,7 @@
     },
     "skills/review-cartography/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/review-cartography/SKILL.md": {
       "mode": 420,
@@ -730,7 +730,7 @@
     },
     "skills/scribe-distill/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/scribe-distill/SKILL.md": {
       "mode": 420,
@@ -746,7 +746,7 @@
     },
     "skills/scribe-gc/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/scribe-gc/SKILL.md": {
       "mode": 420,
@@ -754,7 +754,7 @@
     },
     "skills/scribe-utilities/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/scribe-utilities/SKILL.md": {
       "mode": 420,
@@ -762,11 +762,11 @@
     },
     "skills/summon/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/summon/SKILL.md": {
       "mode": 420,
-      "sha256": "ba4c095cc8e5be4f7cf7a531a88c1c8a888264f810c9fcc8d9f59f2eb0517004"
+      "sha256": "59b91164b921f9e5b0b3abb872e7e13987aaba6e00ccf8a0564a1efa45c9087d"
     },
     "skills/summon/examples/grimoire-md-example.md": {
       "mode": 420,
@@ -798,7 +798,7 @@
     },
     "skills/tome-sync/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/tome-sync/SKILL.md": {
       "mode": 420,
@@ -806,7 +806,7 @@
     },
     "skills/tome/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/tome/SKILL.md": {
       "mode": 420,
@@ -838,7 +838,7 @@
     },
     "skills/validate-hypothesis/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/validate-hypothesis/SKILL.md": {
       "mode": 420,
@@ -846,7 +846,7 @@
     },
     "skills/write-hypothesis/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/write-hypothesis/SKILL.md": {
       "mode": 420,
@@ -854,7 +854,7 @@
     },
     "skills/write-poc/CODEX.md": {
       "mode": 420,
-      "sha256": "f6dfcc3aa7482528172526e16160f62ce9c10317395ba8e8d4e039878ef9d42a"
+      "sha256": "481f1a443f32ca2dfaf168d2e97077bc3b92870ae244392260c6ed7d7f53324c"
     },
     "skills/write-poc/SKILL.md": {
       "mode": 420,

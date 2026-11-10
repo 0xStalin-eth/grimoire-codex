@@ -104,11 +104,13 @@ Keep these two locations separate:
 | Location | Purpose |
 |---|---|
 | Grimoire-Codex folder | Stores the skills and helper scripts. |
-| Dedicated target checkout | Stores the code you are reviewing and Codex's private `grimoire-codex/<run-id>/` outputs. Start Codex here. |
+| Audit folder | Contains the target checkout (or is the checkout itself), existing Claude research and Codex's private output. Start Codex here. |
 
-For peer review and mitigation review, use a dedicated checkout of the **target codebase**, with
-its own `.git` directory. These helpers run from that checkout's Git root and keep their working
-copies inside it. Use an existing suitable checkout or clone a new one, for example:
+Use your existing audit folder, either the target Git checkout itself or a folder containing the
+scoped checkout and Claude's research. Codex identifies the target from your request and existing
+scope; it asks only if several repositories remain ambiguous. Review helpers run from the selected
+target's Git root, which must remain inside the original launch folder. Use an existing suitable
+checkout or clone a new one, for example:
 
 ```sh
 mkdir -p "$HOME/audits"
@@ -118,39 +120,44 @@ git clone "REPLACE_WITH_TARGET_REPOSITORY_URL" "$HOME/audits/example-review"
 Replace the URL before running that example. It is the repository being audited, not either
 Grimoire toolkit repository. If you already have a dedicated review checkout, skip the clone.
 
-Set a convenient variable to its absolute path, then check its root and current commit:
+Codex handles the checkout inspection: it detects the Git root, current commit and uncommitted
+changes, and preserves existing work. You do not need a `GRIMOIRE_REVIEW_DIR` variable or manual
+Git checks. Tell it which finding or fix you want reviewed; it can read commit references from
+the supplied scope and finding, asking only when the intended audited/fix commit is unclear.
+The current HEAD is detected automatically; it is not assumed to be the audited commit.
+
+Keep input reports and findings inside the audit folder. Claude's root context and `grimoire/`
+research are discovered automatically as read-only references. If a helper needs a checkout-local
+input, Codex makes its own attributed copy under its private run, preserving the source.
+
+## 5. Launch Codex normally
+
+Open a terminal in the audit checkout and start Codex:
 
 ```sh
-export GRIMOIRE_REVIEW_DIR="$HOME/audits/example-review"
-git -C "$GRIMOIRE_REVIEW_DIR" rev-parse --show-toplevel
-git -C "$GRIMOIRE_REVIEW_DIR" rev-parse HEAD
-git -C "$GRIMOIRE_REVIEW_DIR" status --short
+cd "/path/to/your/audit-checkout"
+codex
 ```
 
-Confirm the checkout contains the commit you intend to review. Tell Codex about any existing
-uncommitted work; it must preserve that work. Keep input reports and findings inside this checkout,
-too. The review helpers refuse input paths that resolve outside it.
+For an explicit workspace sandbox, you can use
+`codex --sandbox workspace-write --ask-for-approval on-request` instead.
 
-## 5. Give this session a run ID and launch Codex
+When you request the first Grimoire skill, Codex automatically:
 
-Some helpers need an ID to keep one session's temporary copies separate from another's. Before
-starting a **new logical session**, generate an ID:
+1. Records the original launch directory as the fixed audit boundary.
+2. Inspects the checkout, HEAD and uncommitted work without changing them.
+3. Discovers Claude's existing context and research as read-only inputs.
+4. Creates a fresh UUID and private report/PoC directories for this chat.
+5. Saves `grimoire-codex/<run-id>/session.json` and passes the required environment to its helpers.
 
-```sh
-cd "$GRIMOIRE_REVIEW_DIR"
-export GRIMOIRE_AUDIT_ROOT="$(pwd -P)"
-export GRIMOIRE_SESSION_ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-printf 'Audit root: %s\nRun ID: %s\n' "$GRIMOIRE_AUDIT_ROOT" "$GRIMOIRE_SESSION_ID"
-python3 "$GRIMOIRE_CODEX_ROOT/scripts/review_artifacts.py" init
-codex --sandbox workspace-write --ask-for-approval on-request
-```
+There are **no per-session exports, path variables or IDs for you to generate or paste**. Each
+parallel Codex chat gets its own run, even when both start in the same audit checkout or inherit
+old terminal variables. The session record stays inside that run; there is no shared `.env` or
+"latest session" file. Skill entry performs setup; simply opening an idle Codex chat creates no
+Grimoire artifacts.
 
-The initializer prints the private report, context and PoC paths for this run; it leaves Claude's
-existing files untouched. All are inside your audit directory.
-
-Keep both printed values in your private session notes. The root is the immutable directory where
-you launch Codex: all audit work, copies and scratch files must remain inside it. The UUID is an
-**operator run ID**, not a Codex chat ID. It cannot identify a chat for `codex resume`.
+All audit work, copies and scratch files remain inside the original launch directory. The UUID is
+an **operator run ID**, not a Codex chat ID. Codex records and manages it for you.
 
 The terminal now contains an interactive Codex session. You can converse with it as you do with
 Claude. If asked to trust a folder, check that it is the intended review checkout.
@@ -172,39 +179,23 @@ in one conversation, retaining the context you have already discussed.
 
 ## 7. Initialize the review workspace with summon
 
-If you are resuming the same run, ask Codex to read its own
-`grimoire-codex/<run-id>/GRIMOIRE.md` and confirm the scope and commits. A new run gets its own
-context, notes and PoCs. A root `GRIMOIRE.md` or `grimoire/` directory may belong to Claude; Codex
-must not update those files. You may explicitly supply them as read-only inputs when appropriate.
-
-Otherwise, paste this into Codex. Replace `PASTE_RUN_ID_HERE` and
-`PASTE_AUDIT_ROOT_HERE` with the values printed in step 5:
+Inside Codex, invoke:
 
 ```text
-Use $summon to initialize this dedicated review checkout.
-
-Use the run-owned paths returned by review_artifacts.py init:
-context and reports under grimoire-codex/<my-run-id>/, and PoCs under
-its pocs/ directory. Keep Claude’s GRIMOIRE.md, grimoire/, and test
-folders untouched. Use the guarded writer and private PoC runner.
-Ask me for the audited commit, in-scope paths and findings repository.
-Use the local code; skip bug-bounty acquisition.
-
-My audit root is PASTE_AUDIT_ROOT_HERE. All work, including isolated
-copies, scratch files and caches, must stay inside that directory.
-Never broaden that root after changing directories.
-My operator run ID is PASTE_RUN_ID_HERE. Explicitly pass
-GRIMOIRE_AUDIT_ROOT and GRIMOIRE_SESSION_ID to helpers that need them,
-even if the shell environment does not inherit them. Record that the
-run ID is not a chat ID. Give independent subagents their own run IDs
-while retaining the same audit root.
-
-Preserve tracked source files. Ask before running a Sigil swarm.
+$summon
 ```
 
-The review layout keeps all Codex output in the audit checkout, under this run’s own directory.
-If a client report is elsewhere, provide a local copy as a read-only input; ask Codex to save any
-proposed edits as its own derivative report rather than replacing that input.
+The skill handles session setup, checkout inspection, private paths and context building. It uses
+the local code by default, reads existing Claude `GRIMOIRE.md` and relevant `grimoire/tomes/`
+research, and writes its own context, notes and PoCs. You do not need to paste setup instructions
+or grant read access to those audit-local references each time. Bounty acquisition runs only when
+you supply a program URL/slug; a Sigil swarm still needs explicit approval.
+
+On resume, Codex automatically reloads its own session/context. On a new run, it creates its own
+context and cites useful shared research instead of adopting another run. Existing Claude context,
+tomes, indexes, links and logs remain unchanged. Corrections and new conclusions go into Codex's
+private run. Scope, repository and commit questions appear only when available sources leave an
+input missing, conflicting or ambiguous.
 
 Codex should ask for missing context and prepare the workspace, including:
 
@@ -218,6 +209,7 @@ example-review/
 └── grimoire-codex/
     └── <run-id>/
         ├── .owner             # Codex/run/workspace/launch-root ownership
+        ├── session.json       # automatic run setup and original checkout evidence
         ├── GRIMOIRE.md         # this Codex run's context
         ├── findings/
         ├── peer-review/
@@ -236,23 +228,22 @@ authorization to publish them.
 
 ## 8. Use your usual workflows
 
-The examples below are **Codex messages**. Replace the example issue, paths and commit references
-with your real inputs. Codex will ask for missing information and pause at workflow confirmation
-points.
+The examples below are **Codex messages**. Replace the example target with yours. Setup, read-only
+research discovery, private output paths and review stages are already embedded in the skills.
+You can invoke a review directly without first invoking summon; Codex creates missing private
+context itself. Existing evidence and publication confirmation points remain in place.
 
 ### Review a finding from a peer or another agent
 
 ```text
-Use $peer-review on issue #12 in OWNER/FINDINGS-REPOSITORY.
-Read this run’s grimoire-codex/<my-run-id>/GRIMOIRE.md for scope and the audited commit.
-Reproduce the claim, assess severity and duplicates, and verify the proposed fix.
-Keep temporary patches in this session's isolated copy.
-Present the verdict before taking any follow-up publishing action.
+$peer-review #12
 ```
 
-You can point it at a local finding file instead of an issue URL. Supply the relevant scope, issue
-context and duplicate information, too. For GitHub-backed workflows, check `gh auth status` in a
-terminal; use `gh auth login` if access still needs setup.
+Codex resolves the findings repository and scope from this chat or the existing audit context.
+If repository identity is missing or ambiguous, it asks once; a full issue URL also provides it.
+You can supply a local finding file instead. The skill reproduces the claim, checks severity,
+scope and duplicates, verifies the proposed fix, and presents its verdict before publication.
+GitHub-backed workflows require authenticated `gh`; Codex checks access and reports missing login.
 
 Expect test/proof output and a review verdict. Session copies go under
 `.isolated-codex/<run-id>/` in the checkout. Keep them until you close the lead; follow-up questions may
@@ -260,33 +251,27 @@ reuse them. A missing test environment is a verification gap, not proof that the
 
 ### Review the client's mitigation
 
-Use a separate review checkout containing the fix commits. Launch Codex there using step 5 with
-a **new** run ID. Skill registration is already done. Keep its own context, derivative reports and findings mirror under
-`grimoire-codex/<new-run-id>/`. Let it fetch its own mirror rather than copying another review’s
-mirror. Existing client reports are read-only inputs; Codex writes proposed report edits to its
-own run directory.
+Use a checkout containing the fix commits, then invoke:
 
 ```text
-Use $mitigation-review for finding M-1.
-The report is scope/audit-report.md inside this checkout.
-The findings repository is OWNER/FINDINGS-REPOSITORY.
-The audited commit is AUDITED_COMMIT and the fix commit is FIX_COMMIT.
-Confirm the in-scope paths with me, then verify the fix with pre-fix and post-fix PoCs.
+$mitigation-review M-1
 ```
 
-Provide the new session's run ID as in step 7. Expect a per-finding verdict, evidence and a report
-write-up. The workflow records whether a review is still in progress, waiting on the client or
-closed. Reading a diff alone does not establish that the mitigation works.
+Codex finds the report, repository, audited/fix commits and relevant research from available
+context, asking only for unresolved inputs. It fetches its own findings mirror, verifies the fix
+with pre/post/residual evidence, and saves a verdict and report write-up privately. Client reports
+remain read-only inputs. The workflow tracks whether the review is in progress, waiting on the
+client or closed. Reading a diff alone does not establish that the mitigation works.
 
 ### Draft a finding from your evidence
 
 ```text
-Use $finding-draft to document the issue we just reproduced.
-Use the source locations and PoC output from this conversation.
-Save the draft under this run’s grimoire-codex/<my-run-id>/findings/WIP/.
-Do not write to Claude’s grimoire/ or shared test folders.
-Ask me for any missing information before making a claim.
+$finding-draft
 ```
+
+The skill uses the bug and evidence already discussed; you can also name an observation or file.
+It consults relevant shared research read-only, handles private output paths, and asks for missing
+details. Familiar triage and the title, severity and draft-content review stages still apply.
 
 Then, in the same conversation:
 
@@ -349,22 +334,8 @@ extraction/snapshot helpers and status/mirror helpers reject Claude’s paths, o
 redirects. Updates to an existing file in your own run require an intentional `--replace` when using
 the writer; filing moves refuse an existing destination.
 
-For example, a Codex agent resolves the installed toolkit root and uses these helpers (replace
-`/path/to/Grimoire-Codex` with that path; run from the audit Git root with the two launch variables):
-
-```sh
-python3 "/path/to/Grimoire-Codex/scripts/review_artifacts.py" init
-python3 "/path/to/Grimoire-Codex/scripts/review_artifacts.py" path reports
-python3 "/path/to/Grimoire-Codex/scripts/review_artifacts.py" path poc-relative
-```
-
-Let Codex use those returned paths. Its messages can say:
-
-```text
-Write the review and PoC through review_artifacts.py into this run’s directories.
-Keep the source report read-only. Execute the PoC with the private runner,
-and include the saved raw test evidence in the review.
-```
+Each skill resolves the installed toolkit, runs setup, supplies the returned environment to its
+helpers, and uses the guarded writer and private PoC runner. These are built-in workflow defaults.
 
 The runner uses `test --name <copy-name> --suite <poc-relative>/<pattern>` and optional
 `--ref <commit>` for pre-fix tests. It explicitly sets Foundry’s test directory to your run’s PoCs
@@ -388,29 +359,29 @@ Before ending a session, you can ask:
 
 ```text
 Use $hunt-summary to record the evidence, decisions, open questions and next steps.
-Include this session's operator run ID so I can restore it later.
+Include this session's record path so this chat can reload its own run later.
 ```
 
-To continue the same logical session later, restore its **old** run ID in your terminal and use
-Codex's resume picker:
+To continue the same logical session later, open the same audit checkout and use Codex's resume
+picker:
 
 ```sh
 cd "/path/to/the/same/review-checkout"
-export GRIMOIRE_AUDIT_ROOT="$(pwd -P)"
-export GRIMOIRE_SESSION_ID="PASTE_THE_PREVIOUS_RUN_ID_HERE"
-codex resume --sandbox workspace-write --ask-for-approval on-request
+codex resume
 ```
 
-Choose the actual previous Codex chat. Remind it of the run ID if needed. A new independent review
-gets a new run ID and separate working copies. Do not use another session's ID to access its copies.
+Choose the actual previous Codex chat. It reloads its own recorded run with `session.py resume`
+and checks the current checkout; you do not need to restore exports. If its run cannot be safely
+identified from that chat's context, it creates a fresh one and leaves earlier output alone.
+A new independent review always gets a fresh ID and separate working copies. Codex never picks
+the newest folder or another session's ID to decide which run to resume.
 
 The everyday pattern, after registration, is:
 
-1. Choose the correct review checkout and confirm its commit.
-2. Set the audit root to your launch directory; export a new run ID, or restore the old one when resuming.
-3. Start `codex --cd ...`, or resume the existing chat.
-4. Request the workflow, supply its inputs and answer confirmation prompts.
-5. Inspect the evidence and saved artifacts before accepting its conclusions.
+1. Open a terminal in the audit checkout.
+2. Start `codex`, or use `codex resume` for an existing chat.
+3. Ask for peer review or mitigation review and supply the finding/scope information.
+4. Inspect the evidence and saved artifacts before accepting its conclusions.
 
 ## 10. Common first-time questions
 
@@ -420,11 +391,15 @@ The everyday pattern, after registration, is:
 | Do I install the skills again for each target? | User-level registration is reusable. Each target still needs its own engagement context and review inputs. |
 | The skills do not appear in `/skills`. | Restart Codex and check `ls -l "$HOME/.agents/skills/peer-review/SKILL.md"` in your terminal. A moved toolkit folder breaks the links. |
 | A skill appears twice. | You may have both user-level and project-level registration. Choose one installation scope; Codex can discover both. |
-| A helper says the audit root is missing. | Pass the original absolute launch directory as `GRIMOIRE_AUDIT_ROOT`. Never substitute a broader Git root. |
+| Do parallel sessions need different exports? | No. Each chat's first Grimoire skill creates its own run and manages helper variables. |
+| Do I paste the setup/safety prompt every time? | No. Invoke the skill and name its target; session setup, write boundaries, private paths and read-only research are embedded. |
+| Do I need to run summon before peer/mitigation review? | No. The review skill bootstraps missing private context from available sources and asks only for unresolved inputs. |
+| Can Codex read Claude's tomes without asking every time? | Yes. Audit-local Claude context and relevant `grimoire/tomes/` files are automatically available read-only. |
+| A helper says the audit root is missing. | Ask Codex to load its own session record and pass the returned environment to the helper. A new chat runs automatic setup. |
 | The Git root is above/outside my launch directory. | The helper refuses before creating copies. Keep the boundary; use a suitable checkout inside it, or explicitly start a new session at the intended repository root. |
 | A helper refuses a report or PoC destination. | Use paths returned by `review_artifacts.py init`. Claude’s directories, other run IDs, unmarked folders and symlinks are not writable destinations. |
-| A helper says the run ID is missing or malformed. | Give Codex the UUID from step 5 and ask it to pass `GRIMOIRE_SESSION_ID` explicitly to that command. |
-| A helper refuses an outside-workspace path. | Place the required report/input in the dedicated review checkout. Preserve the containment check. Skill definitions remain in the installed toolkit. |
+| A helper says the run ID is missing or malformed. | Ask Codex to reload its own session record or initialize a new run; it should pass the returned ID itself. |
+| A helper refuses an outside-workspace path. | Codex should preserve the guard and make an attributed private copy of an audit-local input when needed. Inputs outside the audit folder must be supplied inside it. |
 | An isolated copy rejects a skill symlink. | Check for project-local `.agents/skills/` links in the target. This walkthrough uses user-level links outside it; discuss removal or local exclusion of existing links before changing them. |
 | It asks for an independent Familiar or Hag review. | Let it use a separate Codex subagent context. If delegation is unavailable, it should save a handoff for a fresh session and report the pending review. |
 | Do I need Solodit or Context7 keys to start? | Those integrations are optional. Available tools and supplied evidence determine coverage; see [the MCP example](codex/mcp.example.toml) when you need them. |

@@ -10,6 +10,16 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Finding Draft
 
+## Codex invocation defaults
+
+`$finding-draft` uses the vulnerability and evidence already discussed in this chat; the user may
+also name an observation or source artifact. Handle session setup and context discovery yourself.
+Read relevant Claude tomes and prior research read-only, and keep the draft and any new PoCs in
+this run's owned directories. Reuse the user's existing framing and verified evidence; ask only
+for missing details or actual ambiguity. Preserve Familiar triage, title/severity/content review
+checkpoints and finding validation below. Never present inherited claims or unexecuted PoCs as
+independently verified, and never publish the finding without authorization.
+
 Draft structured security findings from vulnerability observations.
 
 ## Prerequisites
@@ -44,7 +54,7 @@ will produce.
 ### 1. Gather Context
 
 Verify the workspace:
-- Check for `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.
+- Load this run's context; if absent, bootstrap minimal private context from the chat, checkout and shared read-only research automatically.
 - Check whether `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` exists. Create it if not.
 
 Gather vulnerability context:
@@ -58,9 +68,9 @@ Gather vulnerability context:
     is a finding to draft at all),
   - a **Scope Cross-Reference** (if a capability clause forecloses the attack path,
     reconsider whether to proceed; if it downgrades severity, carry that through).
-- Ask the user to describe: **what component** is affected, **what goes wrong**, and
-  **what the impact is** — even with familiar context, the user's framing is the source
-  of truth for the finding's voice.
+- Use the user's description already present in the request or conversation for **what component**
+  is affected, **what goes wrong**, and **what the impact is**. Ask only for missing or ambiguous
+  details; the user's framing remains the source of truth for the finding's voice.
 - Search for existing PoC artifacts that relate to this vulnerability. If found, note the
   path for later `@reference`.
 

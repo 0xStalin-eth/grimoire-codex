@@ -64,8 +64,8 @@ patch, not the original code, and a restore can wipe out their patch or put back
 8. **Never use `git stash` in a shared repo.** The stash stack is shared across checkouts. To set work
    aside, copy the files into your work folder.
 9. **One session, one folder; never touch another session's.** Copies and work folders live under
-   `.isolated-codex/$GRIMOIRE_SESSION_ID/`, and the scripts refuse to run without that id. the operator explicitly reuses the same run ID
-   on a verified resumption, so the session finds its copies; a new independent Codex run gets a new ID and an empty
+   `.isolated-codex/$GRIMOIRE_SESSION_ID/`, and the scripts refuse to run without that id. Codex reloads its own recorded run ID
+   when resuming the same chat, so it finds its copies; automatic setup gives each new independent chat a new ID and an empty
    folder. Never read results from, run in, or remove another session's folder, even one that looks
    abandoned: list them with `isolated-workspace.sh list` and leave the clean-up to the user.
    Keep your own copies until the user explicitly closes the lead they serve (accepted or discarded); only
