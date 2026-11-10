@@ -2,12 +2,12 @@
 
 ## Result
 
-Complete local downstream contents are prepared for `0xStalin-eth/grimoire-codex`, based on
+The downstream is published at [0xStalin-eth/grimoire-codex](https://github.com/0xStalin-eth/grimoire-codex), based on
 canonical upstream commit `4cfded991acfe02375335e5bc8f9bd3a52c5df38` on `master`.
-The owner supplied the public downstream repository on 2026-11-10. Read-only GitHub checks confirm
-it is empty, its default branch is `main`, and the authenticated account has admin access.
-No code, live synchronization PR, hosted CI run, secret or remote setting has been published by this
-project. Publication awaits the owner's explicit approval, as required by the request.
+The owner supplied the public repository and explicitly approved commit/push on 2026-11-10.
+The complete local history was pushed to `main`; Actions is enabled. No repository settings,
+secrets, GitHub Apps or upstream content were changed. Live synchronization PR creation still
+requires the downstream Actions PR toggle described below.
 
 All **30 upstream skills** have been inventoried and adapted. Six agent procedures and four
 maintenance commands add ten native Codex skill entrypoints (**40 total**). None is intentionally
@@ -33,7 +33,9 @@ README.md, SYNC.md, BENCHMARKING.md, CONTRIBUTING.md
 |---|---|
 | Downstream structural/ownership/reference/reproducibility validator | PASS: 40 skills, 30 Bash syntax checks, 14 Python syntax checks |
 | Bundled skill-creator `quick_validate.py` | PASS: all 40 entrypoints |
-| Python unittest suite | PASS: 79 tests |
+| Python unittest suite | PASS: 80 tests |
+| Clean-clone packaging | PASS: tracked upstream bytecode is preserved in the archive, omitted from executable skills and retained through Git clone |
+| GitHub-hosted validation | Runs on main pushes; [current workflow status](https://github.com/0xStalin-eth/grimoire-codex/actions/workflows/ci.yml) |
 | Read-only network retrieval via `sync.py --check` | PASS: pinned upstream, zero changed/deleted files |
 | Repeated synchronization from separate local source | PASS: idempotent, no managed file changes |
 | Local Git PR-publication integration | PASS: temporary bare remote, bot branch/commit, create/update requests via stubbed GitHub API; human commits preserved; default branch unchanged |
@@ -156,7 +158,7 @@ passes 79 tests; no model-driven security review or automatic input-inference re
 - No real target, complete multi-agent audit, live bounty acquisition, issue synchronization or
   client-fix review was executed. The synthetic Foundry/Solidity smoke verifies private execution;
   it does not establish audit equivalence or real vulnerability correctness.
-- Hosted plugin installation and GitHub PR API publication remain untested. Local publication tests
+- Hosted plugin installation and live synchronization PR creation remain untested. Local PR tests
   used real temporary Git remotes and stubbed only GitHub interactions.
 
 No skill currently has an unresolved structural compatibility error. Adapted-source changes,
@@ -193,20 +195,18 @@ execute the workflows in separate environments, capture raw outputs with `comple
 adjudicate root causes and validity, then `compare` the two finished directories. Preserve tool,
 adapter and runtime differences as confounds. No agent should see the other's findings.
 
-## Remaining GitHub setup
+## Publication and remaining GitHub setup
 
-The owner has created [0xStalin-eth/grimoire-codex](https://github.com/0xStalin-eth/grimoire-codex)
-as a public repository. After explicit authorization, publish **only this downstream** checkout
-from its root (no local remote is configured yet):
+The public downstream is published and this local checkout's `origin` points to it. Future
+authorized updates are pushed from the downstream root; workflows can also be triggered manually:
 
 ```sh
-git remote add origin https://github.com/0xStalin-eth/grimoire-codex.git
-git push -u origin main
+git push origin main
 gh workflow run ci.yml --repo 0xStalin-eth/grimoire-codex
 gh workflow run sync.yml --repo 0xStalin-eth/grimoire-codex
 ```
 
-Push/settings changes have not been executed. Read-only checks show Actions has read-only default
+Push was executed with explicit owner approval; repository settings were not changed. Read-only checks show Actions has read-only default
 workflow permissions and its create/approve-PR toggle is disabled. Enabling that downstream-only
 toggle also requires explicit approval; keep the default token permissions read-only. The sync
 job requests its own narrow write permissions. The default token needs no secret and

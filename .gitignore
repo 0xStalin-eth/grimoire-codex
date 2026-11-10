@@ -8,3 +8,5 @@ benchmark-runs/
 .env.*
 !.env.example
 .DS_Store
+# Preserve every tracked upstream blob in the exact, inert archive.
+!vendor/upstream/**

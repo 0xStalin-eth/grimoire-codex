@@ -9,7 +9,7 @@ secret, App, token, configuration or knowledge of this downstream repository.
 | Paths | Owner | Sync behavior |
 |---|---|---|
 | `vendor/upstream/**` | upstream snapshot | Exact tracked Git blobs, modes and safe internal resource links |
-| `skills/**`, `agents/**`, `.agents/skills/*` | generated | Derived from snapshot + explicit downstream adapters |
+| `skills/**`, `agents/**`, `.agents/skills/*` | generated | Derived from snapshot + explicit downstream adapters; Python bytecode caches excluded |
 | `codex/**` | downstream | Preserved; runtime instructions, maintenance boundary, reviewed inventory and exact patches |
 | scripts, tests, workflows, docs, benchmark | downstream | Preserved |
 | `sync-state.json` | generated | Upstream SHA and complete hash/mode manifest |
@@ -17,6 +17,9 @@ secret, App, token, configuration or knowledge of this downstream repository.
 The reader uses `git ls-tree` and `git cat-file` against the committed revision, never an upstream
 working tree or Git attributes export filters. It never runs upstream hooks, installers or workflows.
 A fresh temporary clone is used for network synchronization. All generation occurs downstream.
+Tracked upstream cache blobs remain byte-exact in the inert archive and are included in downstream
+Git despite general cache ignores. They are never emitted into executable skill/agent directories;
+those use the reviewed source scripts. A clean-clone regression verifies manifest reproducibility.
 New/removed/renamed skill or command entrypoints require explicit inventory review. Ordinary asset
 additions, deletions and renames propagate, including removing obsolete generated copies.
 
@@ -136,8 +139,10 @@ No secret is sent to it. The upstream fetch uses no write credential.
 - **No scheduled runs:** workflow must be on the default branch and enabled; check inactivity,
   account limits and GitHub scheduling delays.
 
-Publication and GitHub-hosted execution are pending until the owner approves publishing and configures
-the downstream. No live PR or hosted CI result is claimed by the local tests.
+The owner authorized publication and `main` is published in the downstream repository. Hosted
+validation runs on pushes; see [the CI workflow](https://github.com/0xStalin-eth/grimoire-codex/actions/workflows/ci.yml).
+Live synchronization PR creation still needs the repository PR toggle described above. Repository
+settings and secrets remain unchanged. Local publication tests do not establish a live PR result.
 
 Official behavior: [GitHub token authentication](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token),
 [triggering workflows](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow),

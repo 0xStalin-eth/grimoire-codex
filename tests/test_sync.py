@@ -59,6 +59,24 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(before, tree(self.source))
         self.assertEqual((self.root / '.agents/skills/alpha').resolve(), self.root / 'skills/alpha')
 
+    def test_tracked_upstream_bytecode_is_archived_and_survives_a_clean_clone(self):
+        name = 'skills/alpha/__pycache__/module.cpython-311.pyc'
+        bytecode = self.source/name
+        bytecode.parent.mkdir();bytecode.write_bytes(b'\x80\x81tracked upstream cache fixture')
+        git(self.source, 'add', '-f', name);commit(self.source)
+        self.run_sync()
+        self.assertEqual(bytecode.read_bytes(), (self.root/'vendor/upstream'/name).read_bytes())
+        self.assertFalse((self.root/name).exists())
+        # Match real packaging: global cache ignores must not drop exact archive blobs.
+        (self.root/'.gitignore').write_bytes((sync.ROOT/'.gitignore').read_bytes())
+        git(self.root, 'init', '-q');commit(self.root)
+        clone = self.root.parent/'clean-clone'
+        git(self.root, 'clone', '-q', str(self.root), str(clone))
+        self.assertEqual(bytecode.read_bytes(), (clone/'vendor/upstream'/name).read_bytes())
+        self.assertFalse((clone/name).exists())
+        sync.check_ownership(clone)
+        self.assertEqual([], sync.synchronize(clone, self.source, check=True)['changed_files'])
+
     def test_shared_updates_deletions_and_rename_preserve_overlay(self):
         self.run_sync()
         overlay = self.root / 'codex/custom.txt'

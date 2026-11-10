@@ -186,7 +186,10 @@ def build(root, upstream):
     review = json.loads((root / 'codex/reviewed.json').read_text())
     edits = json.loads((root / 'codex/patches.json').read_text())
     result = {'vendor/upstream/' + name: value for name, value in upstream.items()}
-    inputs = {name: value for name, value in upstream.items() if name.startswith(('skills/', 'agents/'))}
+    inputs = {name: value for name, value in upstream.items()
+              if name.startswith(('skills/', 'agents/'))
+              and '__pycache__' not in PurePosixPath(name).parts
+              and PurePosixPath(name).suffix not in {'.pyc', '.pyo'}}
     entrypoints = sorted(name for name in inputs if name.endswith('/SKILL.md') or (name.startswith('agents/') and name.count('/') == 1))
     if entrypoints != review['entrypoints']:
         raise ValueError('entrypoint addition/removal/rename requires review: ' + ', '.join(sorted(set(entrypoints) ^ set(review['entrypoints']))))

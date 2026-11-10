@@ -380,10 +380,6 @@
       "mode": 420,
       "sha256": "5e4809610549a5c37ff4e92b82cc98e17ea9e2063b6efbb61d322ba135ad6417"
     },
-    "skills/findings-sync/scripts/__pycache__/findings_sync.cpython-311.pyc": {
-      "mode": 420,
-      "sha256": "f7dac62df92781d7fe735e8f567117a5061ebff75c984b871618f64bd99add53"
-    },
     "skills/findings-sync/scripts/findings_sync.py": {
       "mode": 493,
       "sha256": "dcefe7511277245da8438cbc157ea59dd60307060faab376b1dbd1b3b92fcec0"

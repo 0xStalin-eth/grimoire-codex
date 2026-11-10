@@ -3,6 +3,9 @@
 `patches.json` is executable configuration: each key identifies an exact upstream file, its
 SHA-256 and counted literal edits. Every adaptation is explicit and inspectable. The generator adds
 shared adapters and normalizes metadata separately; it does not run a free-form conversion model.
+The generator also excludes Python bytecode caches from executable skill/agent trees while
+preserving every tracked blob in the inert archive. Archive files override generic Git cache
+ignores so a clean checkout matches the manifest.
 
 | Files | Compatibility reason |
 |---|---|
