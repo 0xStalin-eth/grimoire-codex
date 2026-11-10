@@ -1,0 +1,578 @@
+[
+  {
+    "name": "annotation",
+    "source": "skills/annotation/SKILL.md",
+    "lines": 58,
+    "stages": [],
+    "resources": [
+      "skills/annotation/references/annotation-format.md",
+      "skills/annotation/examples/solidity-audit-annotations.md",
+      "skills/annotation/scripts/requirements.txt",
+      "skills/annotation/scripts/pyproject.toml",
+      "skills/annotation/scripts/find-annotations.py",
+      "skills/annotation/scripts/main.py"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "cartography",
+    "source": "skills/cartography/SKILL.md",
+    "lines": 216,
+    "stages": [
+      "1. Verify Infrastructure",
+      "2. Check Index for Existing Flows",
+      "3. Explore the Flow",
+      "4. Document the Flow",
+      "5. Update Index",
+      "6. Present to User"
+    ],
+    "resources": [
+      "skills/cartography/references/cartography-format.md",
+      "skills/cartography/examples/cartography-example.md",
+      "skills/cartography/examples/cross-service-auth-example.md",
+      "skills/cartography/scripts/index-cartography.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "checks",
+    "source": "skills/checks/SKILL.md",
+    "lines": 201,
+    "stages": [
+      "1. Determine Intent",
+      "2. Identify the Vulnerability Pattern",
+      "3. Write the Check File",
+      "4. Validate the Check",
+      "5. Select Applicable Checks",
+      "6. Run Checks Against the Codebase",
+      "7. Collect and Present Results",
+      "8. Suggest Follow-ups"
+    ],
+    "resources": [
+      "skills/checks/references/design-principles.md",
+      "skills/checks/references/check-format.md",
+      "skills/checks/examples/erc4626-vault.md",
+      "skills/checks/examples/unchecked-return-values.md",
+      "skills/checks/examples/debug-assertions.md",
+      "skills/checks/examples/rounding-inflation-attack.md",
+      "skills/checks/examples/rounding-direction.md",
+      "skills/checks/scripts/validate-check.sh",
+      "skills/checks/scripts/index-checks.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "delve",
+    "source": "skills/delve/SKILL.md",
+    "lines": 254,
+    "stages": [
+      "1. Gather Research Artifacts",
+      "2. Extract Interesting Behaviors",
+      "3. Separate Findings, Leads, Dead Ends, And Notes",
+      "4. Rank Leads By Security Promise",
+      "5. Save The Delve",
+      "6. Present The Delve Board"
+    ],
+    "resources": [],
+    "session_adapter": true,
+    "agent_workflow": false
+  },
+  {
+    "name": "dig-mode",
+    "source": "skills/dig-mode/SKILL.md",
+    "lines": 120,
+    "stages": [],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "divine",
+    "source": "skills/divine/SKILL.md",
+    "lines": 327,
+    "stages": [
+      "1. Understand The Target And Question",
+      "2. Establish The Code Or Artifact Anchor",
+      "3. Build An Evidence Coverage Map",
+      "4. Investigate Available Evidence Sources",
+      "5. Synthesize Rationale And Competing Hypotheses",
+      "6. Translate Security Implications",
+      "7. Record Durable Conclusions",
+      "8. Present Confidence-Calibrated Answer"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "finding",
+    "source": "skills/finding/SKILL.md",
+    "lines": 127,
+    "stages": [
+      "Sections"
+    ],
+    "resources": [
+      "skills/finding/references/finding-structure.md",
+      "skills/finding/references/finding-format.md",
+      "skills/finding/references/finding-best-practices.md",
+      "skills/finding/examples/access-control-finding.md",
+      "skills/finding/examples/reentrancy-finding.md",
+      "skills/finding/examples/dedup-scenario.md",
+      "skills/finding/scripts/validate-finding.sh",
+      "skills/finding/scripts/index-findings.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "finding-dedup",
+    "source": "skills/finding-dedup/SKILL.md",
+    "lines": 92,
+    "stages": [
+      "0. Load Finding Knowledge",
+      "1. Index and Compare Findings",
+      "2. Present Duplicates and Confirm Actions",
+      "3. Execute and Report"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "finding-draft",
+    "source": "skills/finding-draft/SKILL.md",
+    "lines": 172,
+    "stages": [
+      "0. Load Finding Knowledge",
+      "1. Gather Context",
+      "2. Construct Title",
+      "3. Estimate Severity and Classify Type",
+      "4. Draft Sections",
+      "5. Write Finding File",
+      "6. Suggest Follow-ups"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "finding-review",
+    "source": "skills/finding-review/SKILL.md",
+    "lines": 139,
+    "stages": [
+      "0. Load Finding Knowledge",
+      "1. Load and Validate Finding",
+      "2. Analyze Content",
+      "3. Present Review and Offer Updates"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "findings-sync",
+    "source": "skills/findings-sync/SKILL.md",
+    "lines": 152,
+    "stages": [
+      "1. Check access and inputs",
+      "2. Show what is new and what changed",
+      "3. Confirm **[confirm]**",
+      "4. Pull and/or update",
+      "5. Report and suggest follow-ups"
+    ],
+    "resources": [
+      "skills/findings-sync/scripts/findings_sync.py",
+      "skills/findings-sync/scripts/__pycache__/findings_sync.cpython-311.pyc"
+    ],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "gc-cartography",
+    "source": "skills/gc-cartography/SKILL.md",
+    "lines": 159,
+    "stages": [
+      "1. Inventory All Flows",
+      "2. Detect Overlap",
+      "3. Propose Merge Plan",
+      "4. Execute Merges",
+      "5. Clean Up Cross-References",
+      "6. Update Index"
+    ],
+    "resources": [
+      "skills/gc-cartography/references/merge-decisions.md",
+      "skills/gc-cartography/references/overlap-metrics.md",
+      "skills/gc-cartography/examples/gc-before-after.md",
+      "skills/gc-cartography/scripts/merge-flows.sh",
+      "skills/gc-cartography/scripts/detect-overlaps.sh",
+      "skills/gc-cartography/scripts/validate-gc.sh",
+      "skills/gc-cartography/scripts/update-references.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "grimoire-mode",
+    "source": "skills/grimoire-mode/SKILL.md",
+    "lines": 42,
+    "stages": [],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "hunt-summary",
+    "source": "skills/hunt-summary/SKILL.md",
+    "lines": 203,
+    "stages": [
+      "1. Locate the Audit Workspace and Resolve the Output Path",
+      "2. Mine the Transcript",
+      "3. Reconcile Against On-Disk Artifacts",
+      "4. Draft the Hunt Summary",
+      "5. Write the File",
+      "6. Present and Offer to Update GRIMOIRE.md"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "librarian-clean-cache",
+    "source": "skills/librarian-clean-cache/SKILL.md",
+    "lines": 104,
+    "stages": [
+      "1. Inspect the cache",
+      "2. Confirm with the user",
+      "3. Remove the cache",
+      "4. Report freed space"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "librarian-index",
+    "source": "skills/librarian-index/SKILL.md",
+    "lines": 105,
+    "stages": [
+      "1. Run the indexer",
+      "2. Report"
+    ],
+    "resources": [
+      "skills/librarian-index/scripts/index.py"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "librarian-library-search",
+    "source": "skills/librarian-library-search/SKILL.md",
+    "lines": 97,
+    "stages": [
+      "Flags",
+      "Examples"
+    ],
+    "resources": [
+      "skills/librarian-library-search/scripts/search.py"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "mitigation-review",
+    "source": "skills/mitigation-review/SKILL.md",
+    "lines": 308,
+    "stages": [
+      "A1. Confirm inputs",
+      "A2. Build the index",
+      "A3. Status table",
+      "B0. Refresh",
+      "B1. Load",
+      "B2. Review",
+      "B3. Verify with PoCs",
+      "B4. Verdict",
+      "B5. Record",
+      "B6. Present",
+      "B7. Close"
+    ],
+    "resources": [
+      "skills/mitigation-review/references/review-checklist.md",
+      "skills/mitigation-review/references/verdict-taxonomy.md",
+      "skills/mitigation-review/references/poc-patterns.md",
+      "skills/mitigation-review/references/writeup-format.md",
+      "skills/mitigation-review/examples/mitigation-review-template.md",
+      "skills/mitigation-review/examples/MitigationReview.t.sol.template",
+      "skills/mitigation-review/scripts/fix-diff.sh",
+      "skills/mitigation-review/scripts/map-fixes.sh",
+      "skills/mitigation-review/scripts/index-report.sh",
+      "skills/mitigation-review/scripts/prefix-snapshot.sh",
+      "skills/mitigation-review/scripts/load-issue.sh",
+      "skills/mitigation-review/scripts/_workspace-guard.sh",
+      "skills/mitigation-review/scripts/extract-finding.sh",
+      "skills/mitigation-review/scripts/link-issues.sh",
+      "skills/mitigation-review/scripts/commit-links.sh"
+    ],
+    "session_adapter": true,
+    "agent_workflow": true
+  },
+  {
+    "name": "modify-library",
+    "source": "skills/modify-library/SKILL.md",
+    "lines": 311,
+    "stages": [
+      "1. Parse intent",
+      "2. Validate",
+      "3. Apply",
+      "4. Report"
+    ],
+    "resources": [
+      "skills/modify-library/examples/add-symlink-library.md",
+      "skills/modify-library/examples/add-git-library.md"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "peer-review",
+    "source": "skills/peer-review/SKILL.md",
+    "lines": 274,
+    "stages": [
+      "1. Load the finding and its context",
+      "2. Reproduce",
+      "3. Verify the mechanism in code, across every variant",
+      "4. Place it in scope",
+      "5. Calibrate severity",
+      "6. Duplicates and root cause",
+      "7. Verify the mitigation",
+      "8. Present the verdict **[confirm]**",
+      "9. Produce requested deliverables **[confirm each]**"
+    ],
+    "resources": [
+      "skills/peer-review/references/parallel-sessions.md",
+      "skills/peer-review/references/severity-calibration.md",
+      "skills/peer-review/references/duplicate-analysis.md",
+      "skills/peer-review/references/deliverables.md",
+      "skills/peer-review/references/fix-verification.md",
+      "skills/peer-review/examples/pending-tome-template.md",
+      "skills/peer-review/examples/session-marker-template.md",
+      "skills/peer-review/examples/verdict-template.md",
+      "skills/peer-review/scripts/verify-fix.sh",
+      "skills/peer-review/scripts/extract-poc.sh",
+      "skills/peer-review/scripts/_workspace-guard.sh",
+      "skills/peer-review/scripts/delta-check.sh",
+      "skills/peer-review/scripts/isolated-workspace.sh",
+      "skills/peer-review/scripts/load-finding.sh"
+    ],
+    "session_adapter": true,
+    "agent_workflow": true
+  },
+  {
+    "name": "review-cartography",
+    "source": "skills/review-cartography/SKILL.md",
+    "lines": 169,
+    "stages": [
+      "1. Select Flow",
+      "2. Verify Against Codebase",
+      "3. Extend Missing Pieces",
+      "4. Cross-Reference Related Flows",
+      "5. Add Conditional Sections",
+      "6. Update File and Index"
+    ],
+    "resources": [
+      "skills/review-cartography/references/overlap-detection.md",
+      "skills/review-cartography/references/cartography-format.md",
+      "skills/review-cartography/examples/cartography-review-example.md",
+      "skills/review-cartography/scripts/validate-cartography.sh",
+      "skills/review-cartography/scripts/find-overlaps.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "scribe-distill",
+    "source": "skills/scribe-distill/SKILL.md",
+    "lines": 181,
+    "stages": [
+      "1. Load Finding and Context",
+      "2. Check for Existing Coverage",
+      "3. Extract Generalizable Pattern",
+      "4. Assess Automation Feasibility",
+      "5. Determine Sigil Type",
+      "6. Create Detection Module",
+      "7. Validate Detection Module",
+      "8. Assess Variant Analysis Potential",
+      "9. Present Results and Suggest Follow-ups"
+    ],
+    "resources": [
+      "skills/scribe-distill/references/sigil-types.md",
+      "skills/scribe-distill/references/feasibility-criteria.md"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "scribe-gc",
+    "source": "skills/scribe-gc/SKILL.md",
+    "lines": 96,
+    "stages": [
+      "1. Determine Scope",
+      "2. Inventory Sigils",
+      "3. Detect Overlaps",
+      "4. Propose Resolutions",
+      "5. Execute Approved Changes"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "scribe-utilities",
+    "source": "skills/scribe-utilities/SKILL.md",
+    "lines": 85,
+    "stages": [
+      "1. Determine Operation",
+      "2. Determine Scope",
+      "3. Execute Query",
+      "4. Present Results"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "summon",
+    "source": "skills/summon/SKILL.md",
+    "lines": 712,
+    "stages": [
+      "0. Acquire Target from a Bug Bounty Program",
+      "1. Verify Workspace Layout",
+      "2. Create Audit Directory Structure",
+      "3. Build Initial Context",
+      "4. Map Architecture and Flows",
+      "5. Identify Crown Jewels",
+      "5b. Capture Scope Constraints",
+      "6. Write GRIMOIRE.md",
+      "Capability assumptions (foreclose within granted capability)",
+      "Trust assumptions (context only; do not foreclose findings)",
+      "Protocol invariants (claimed to hold)",
+      "6b. Write Kickoff Questions",
+      "K1 \u2014 <short title>",
+      "7. Review GRIMOIRE.md",
+      "8. Surface Automation Opportunities",
+      "9. Spawn Sigil Swarm"
+    ],
+    "resources": [
+      "skills/summon/references/domain-crown-jewels.md",
+      "skills/summon/references/sigil-spawning.md",
+      "skills/summon/references/bounty-platforms.md",
+      "skills/summon/examples/grimoire-md-example.md",
+      "skills/summon/scripts/clone-assets.sh",
+      "skills/summon/scripts/select-checks.sh",
+      "skills/summon/scripts/session-status.sh"
+    ],
+    "session_adapter": true,
+    "agent_workflow": true
+  },
+  {
+    "name": "tome",
+    "source": "skills/tome/SKILL.md",
+    "lines": 142,
+    "stages": [
+      "Base",
+      "Research"
+    ],
+    "resources": [
+      "skills/tome/references/workflow.md",
+      "skills/tome/references/health-check.md",
+      "skills/tome/references/evidence-model.md",
+      "skills/tome/references/tome-format.md",
+      "skills/tome/references/links.md",
+      "skills/tome/references/page-templates.md"
+    ],
+    "session_adapter": false,
+    "agent_workflow": false
+  },
+  {
+    "name": "tome-sync",
+    "source": "skills/tome-sync/SKILL.md",
+    "lines": 159,
+    "stages": [
+      "1. Load The Map",
+      "2. Check Mapped Topics",
+      "3. Find Unmapped Shared Topics",
+      "4. Check IDs And Pointers",
+      "5. Report",
+      "6. Fix Approved Drift",
+      "7. Update LINKS.md And Logs"
+    ],
+    "resources": [],
+    "session_adapter": true,
+    "agent_workflow": false
+  },
+  {
+    "name": "validate-hypothesis",
+    "source": "skills/validate-hypothesis/SKILL.md",
+    "lines": 181,
+    "stages": [
+      "1. Load",
+      "2. Explore",
+      "3. Check intent",
+      "4. Prove it",
+      "5. Independent triage",
+      "6. Present the verdict [confirm]",
+      "7. File the outcome [confirm]"
+    ],
+    "resources": [],
+    "session_adapter": false,
+    "agent_workflow": true
+  },
+  {
+    "name": "write-hypothesis",
+    "source": "skills/write-hypothesis/SKILL.md",
+    "lines": 167,
+    "stages": [
+      "1. Gather",
+      "2. Check it isn't already recorded",
+      "3. Build the outcome tree",
+      "4. Write the file",
+      "5. Log it and report"
+    ],
+    "resources": [],
+    "session_adapter": true,
+    "agent_workflow": false
+  },
+  {
+    "name": "write-poc",
+    "source": "skills/write-poc/SKILL.md",
+    "lines": 280,
+    "stages": [
+      "1. Gather Vulnerability Details",
+      "2. Exploit Flow, Kill Chain and Scope",
+      "3. Determine PoC Approach",
+      "4. Write the PoC",
+      "5. Review Before Delivery"
+    ],
+    "resources": [
+      "skills/write-poc/references/forge-poc-templates.md",
+      "skills/write-poc/references/config-issues.md",
+      "skills/write-poc/references/race-conditions.md",
+      "skills/write-poc/references/smart-contracts.md",
+      "skills/write-poc/references/logic-flaws.md",
+      "skills/write-poc/references/web-application-vulns.md",
+      "skills/write-poc/references/general-principles.md",
+      "skills/write-poc/references/crypto-vulns.md",
+      "skills/write-poc/references/memory-corruption.md",
+      "skills/write-poc/references/poc-formats.md",
+      "skills/write-poc/examples/reentrancy-foundry-poc.md",
+      "skills/write-poc/examples/ssrf-curl-poc.md",
+      "skills/write-poc/examples/price-oracle-fork-test.md",
+      "skills/write-poc/examples/sqli-python-poc.md",
+      "skills/write-poc/scripts/validate-poc.sh"
+    ],
+    "session_adapter": false,
+    "agent_workflow": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "left_run_id": "replace-with-left-run-id",
+  "right_run_id": "replace-with-right-run-id",
+  "reviewer": "replace-with-reviewer",
+  "review_notes": "Record scope, adjudication procedure, and evidence inspected.",
+  "matching_complete": false,
+  "adjudications": {
+    "left": {"F-1": {"verdict": "uncertain", "evidence": "Describe the independent evidence for this verdict.", "ground_truth_ids": [], "quality": {"reasoning": null, "evidence": null, "reproducibility": null}}},
+    "right": {"F-1": {"verdict": "uncertain", "evidence": "Describe the independent evidence for this verdict.", "ground_truth_ids": [], "quality": {"reasoning": null, "evidence": null, "reproducibility": null}}}
+  },
+  "matches": [],
+  "ground_truth": null
+}

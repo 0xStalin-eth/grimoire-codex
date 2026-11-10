@@ -1,0 +1,6 @@
+{
+  "project": "grimoire-codex",
+  "upstream": "https://github.com/0xStalin-eth/grimoire.git",
+  "downstream": "0xStalin-eth/grimoire-codex",
+  "schema_version": 1
+}

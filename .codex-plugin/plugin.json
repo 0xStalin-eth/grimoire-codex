@@ -1,0 +1,9 @@
+{
+  "name": "grimoire-codex",
+  "version": "0.1.0",
+  "description": "Grimoire security research workflows adapted for independent Codex execution.",
+  "author": {"name": "0xStalin-eth"},
+  "repository": "https://github.com/0xStalin-eth/grimoire-codex",
+  "license": "MIT",
+  "skills": "./skills/"
+}

@@ -1,0 +1,16 @@
+# Optional, inert example. Merge into an authorized Codex config; enable deliberately.
+# These match the upstream plugin's package choices. Record resolved package versions
+# (or replace @latest with reviewed exact versions) for a reproducible comparison.
+# Supply keys through the runtime environment; never paste them into this file.
+
+[mcp_servers.claudit]
+command = "npx"
+args = ["-y", "@marchev/claudit@latest"]
+env_vars = ["SOLODIT_API_KEY"]
+enabled = false
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+env_vars = ["CONTEXT7_API_KEY"]
+enabled = false

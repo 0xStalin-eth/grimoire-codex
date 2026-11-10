@@ -1,0 +1,432 @@
+{
+  ".claude/commands/assess-process-improvements.md": {
+    "source_sha256": "00363d12a8d2e57ea7f9041e0176809aa2313ad5572d3171c18155b390425514",
+    "edits": [
+      {
+        "old": "Claude's",
+        "new": "Codex's",
+        "count": 2
+      },
+      {
+        "old": "Claude",
+        "new": "Codex",
+        "count": 9
+      },
+      {
+        "old": "CLAUDE.md",
+        "new": "AGENTS.md",
+        "count": 4
+      },
+      {
+        "old": "grimoire/grimoire/",
+        "new": "vendor/upstream/grimoire/",
+        "count": 1
+      },
+      {
+        "old": "Opus",
+        "new": "Codex",
+        "count": 4
+      },
+      {
+        "old": ".claude/commands/gap-analysis.md",
+        "new": "codex/patches.json",
+        "count": 1
+      }
+    ]
+  },
+  ".claude/commands/commit.md": {
+    "source_sha256": "45e1c6ce4ed22749fe517269b46dceb543e623be3f84700aedc86425ad71235a",
+    "edits": [
+      {
+        "old": "Claude Command",
+        "new": "Codex Workflow",
+        "count": 1
+      }
+    ]
+  },
+  ".claude/commands/execute-plan.md": {
+    "source_sha256": "e7b8c157aaa7498457200a700fe7402c6458fc0c53a9c7092abed51f97c0d18a",
+    "edits": [
+      {
+        "old": ".claude-plugin/plugin.json",
+        "new": "codex/project.json",
+        "count": 1
+      },
+      {
+        "old": ".claude-plugin/",
+        "new": "codex/",
+        "count": 2
+      },
+      {
+        "old": "grimoire/grimoire/",
+        "new": "vendor/upstream/grimoire/",
+        "count": 5
+      },
+      {
+        "old": "grimoire/skills/",
+        "new": "skills/",
+        "count": 3
+      },
+      {
+        "old": "Opus",
+        "new": "Codex",
+        "count": 5
+      },
+      {
+        "old": "Sonnet",
+        "new": "Codex",
+        "count": 4
+      },
+      {
+        "old": "`skill-reviewer` subagent type",
+        "new": "a separate Codex reviewer context",
+        "count": 1
+      }
+    ]
+  },
+  ".claude/commands/gap-analysis.md": {
+    "source_sha256": "3b1d01574acd856c7531903f4061269d36512e0d355888461affbef6c8f3df65",
+    "edits": [
+      {
+        "old": ".claude-plugin/plugin.json",
+        "new": "codex/project.json",
+        "count": 2
+      },
+      {
+        "old": ".claude-plugin/",
+        "new": "codex/",
+        "count": 1
+      },
+      {
+        "old": "grimoire/grimoire/",
+        "new": "vendor/upstream/grimoire/",
+        "count": 10
+      },
+      {
+        "old": "grimoire/skills/",
+        "new": "skills/",
+        "count": 6
+      },
+      {
+        "old": "250 parallel subagents",
+        "new": "bounded batches of parallel subagents",
+        "count": 1
+      }
+    ]
+  },
+  "agents/librarian.md": {
+    "source_sha256": "899fd2260e0973e80fbb19f4e5c033da56ff0030c7b8a9b86188b4d1570bfc9e",
+    "edits": [
+      {
+        "old": "mcp__plugin_grimoire_context7__resolve-library-id",
+        "new": "configured Context7 resolve-library-id operation",
+        "count": 2
+      },
+      {
+        "old": "mcp__plugin_grimoire_context7__query-docs",
+        "new": "configured Context7 query-docs operation",
+        "count": 2
+      },
+      {
+        "old": "mcp__plugin_grimoire_claudit__search_findings",
+        "new": "configured claudit search_findings operation",
+        "count": 3
+      },
+      {
+        "old": "mcp__plugin_grimoire_claudit__get_finding",
+        "new": "configured claudit get_finding operation",
+        "count": 2
+      },
+      {
+        "old": "mcp__plugin_grimoire_claudit__get_filter_options",
+        "new": "configured claudit get_filter_options operation",
+        "count": 2
+      },
+      {
+        "old": "WebSearch",
+        "new": "web search",
+        "count": 4
+      },
+      {
+        "old": "WebFetch",
+        "new": "web page retrieval",
+        "count": 4
+      }
+    ]
+  },
+  "skills/delve/SKILL.md": {
+    "source_sha256": "648ed6a46c7f11cffe9cc3ebac535ae9608da8850f8c7399bdbc27574094c9ee",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "codex resume <session-id>",
+        "new": "codex resume <verified-thread-id>",
+        "count": 1
+      }
+    ]
+  },
+  "skills/librarian-index/SKILL.md": {
+    "source_sha256": "80a1613c2ed9f1a0a130083adc927609d15f47c3b6e6e14e8a7a45dda6c907dc",
+    "edits": [
+      {
+        "old": "Since the plugin already requires `uvx` (for MCP servers), `uv` is\nguaranteed to be available.",
+        "new": "Check that `uv` is installed; it is an explicit optional dependency of this workflow.",
+        "count": 1
+      },
+      {
+        "old": "no API key, no network",
+        "new": "no API key; network needed for the initial model download",
+        "count": 1
+      }
+    ]
+  },
+  "skills/librarian-library-search/SKILL.md": {
+    "source_sha256": "7dd39be2a41cbac5280d43e46eab1a39805efd3322e3049295ecc33fc2971ac6",
+    "edits": [
+      {
+        "old": "Not user-invocable \u2014 called by the librarian\n  agent as part of its research workflow.",
+        "new": "Usually called by the librarian agent as part of its research workflow; also available explicitly in Codex.",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/SKILL.md": {
+    "source_sha256": "4114291ce86ce8431d9b1cf8c98cae30c6bbe9734776b973b43439e1f7d40128",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "grimoire:sigil",
+        "new": "grimoire-sigil",
+        "count": 1
+      },
+      {
+        "old": "grimoire:familiar",
+        "new": "grimoire-familiar",
+        "count": 1
+      },
+      {
+        "old": "`references/parallel-sessions.md`",
+        "new": "`../peer-review/references/parallel-sessions.md`",
+        "count": 2
+      },
+      {
+        "old": "codex resume\n<session-id>",
+        "new": "codex resume\n<verified-thread-id>",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/SKILL.md": {
+    "source_sha256": "386629649dd56dc420ec05e93fd474d88d55cc5773d907defee10f9407670d1b",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/references/parallel-sessions.md": {
+    "source_sha256": "d264845f3fb9bb4f53ffdd8dacdc925f8f7cf0c11856da92a562f8fe0ea479a6",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "`--fork-session` starts a new id",
+        "new": "a new independent Codex run gets a new ID",
+        "count": 1
+      },
+      {
+        "old": "`codex resume`\n   keeps the id, so a resumed session finds its copies;",
+        "new": "the operator explicitly reuses the same run ID\n   on a verified resumption, so the session finds its copies;",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/scripts/isolated-workspace.sh": {
+    "source_sha256": "33fb3ee253139c1e5c6b46a8dc21588e4b814c1dc0cfd9abea87467367d6a406",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 3
+      },
+      {
+        "old": "Claude Code",
+        "new": "Codex",
+        "count": 1
+      },
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "`--fork-session` starts a new id",
+        "new": "a new independent Codex run gets a new ID",
+        "count": 1
+      },
+      {
+        "old": "kept by `codex resume`",
+        "new": "explicitly reused by the operator on resume",
+        "count": 1
+      }
+    ]
+  },
+  "skills/summon/SKILL.md": {
+    "source_sha256": "cee6a2364804b5bfbc380aa319537e9fb207eaf486978d45805a72c8bf7557c5",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": "Claude Code",
+        "new": "Codex",
+        "count": 1
+      },
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "WebFetch",
+        "new": "web page retrieval",
+        "count": 1
+      },
+      {
+        "old": "tome skill's `references/links.md`",
+        "new": "tome skill's `../tome/references/links.md`",
+        "count": 1
+      },
+      {
+        "old": "codex resume <session-id>",
+        "new": "codex resume <verified-thread-id>",
+        "count": 1
+      },
+      {
+        "old": "back to the Codex session that worked on it and resumed there (`codex resume <verified-thread-id>`).",
+        "new": "back to the responsible Codex run. Resume only when its verified thread ID is known\n(`codex resume <verified-thread-id>`); an operator run ID alone is not resumable.",
+        "count": 1
+      }
+    ]
+  },
+  "skills/summon/references/bounty-platforms.md": {
+    "source_sha256": "c1a2986d5d5ab3ddd37d0bfc75a88b246381214a0754c6b5740f54f07878cfc4",
+    "edits": [
+      {
+        "old": "WebFetch",
+        "new": "web page retrieval",
+        "count": 3
+      },
+      {
+        "old": "(load it via ToolSearch if not already available)",
+        "new": "(discover the available Codex web tool first)",
+        "count": 1
+      }
+    ]
+  },
+  "skills/summon/scripts/session-status.sh": {
+    "source_sha256": "c9be8d2fb56a161be8f544034e24a1b4ce6977579baf875448dad4d874860c8f",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 3
+      },
+      {
+        "old": "for _ in $(seq 1 100); do\n  mkdir \"$lock\" 2>/dev/null && break\n  sleep 0.1\ndone\n[ -d \"$lock\" ] ||",
+        "new": "acquired=0\nfor _ in $(seq 1 100); do\n  if mkdir \"$lock\" 2>/dev/null; then acquired=1; break; fi\n  sleep 0.1\ndone\n[ \"$acquired\" -eq 1 ] ||",
+        "count": 1
+      },
+      {
+        "old": "[ -n \"$sid\" ] || { echo \"REFUSED: \\$GRIMOIRE_SESSION_ID is unset; never guess a session ID\" >&2; exit 1; }",
+        "new": "[[ \"$sid\" =~ ^[A-Za-z0-9][A-Za-z0-9-]{7,63}$ ]] || { echo \"REFUSED: GRIMOIRE_SESSION_ID is unset or malformed; never guess a session ID\" >&2; exit 1; }",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome-sync/SKILL.md": {
+    "source_sha256": "5a06f3eb5a3d52dbd84982dde11558539793a25684c703154ee94c420da6f681",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      }
+    ]
+  },
+  "skills/validate-hypothesis/SKILL.md": {
+    "source_sha256": "5f9a2f56d72a7dadabfa5fe5e3fb071a34c3fd6361cad3e346877678cb8481dc",
+    "edits": [
+      {
+        "old": "claude --resume",
+        "new": "codex resume",
+        "count": 1
+      },
+      {
+        "old": "`references/parallel-sessions.md`",
+        "new": "`../peer-review/references/parallel-sessions.md`",
+        "count": 1
+      },
+      {
+        "old": "`references/severity-calibration.md`",
+        "new": "`../peer-review/references/severity-calibration.md`",
+        "count": 2
+      },
+      {
+        "old": "codex resume\n<session-id>",
+        "new": "codex resume\n<verified-thread-id>",
+        "count": 1
+      }
+    ]
+  },
+  "skills/write-hypothesis/SKILL.md": {
+    "source_sha256": "dc888e4bc2f10e32a4a6d8cc3e016aaf24f21d7d397b9e9191000a3abed03113",
+    "edits": [
+      {
+        "old": "CLAUDE_CODE_SESSION_ID",
+        "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      }
+    ]
+  },
+  "skills/annotation/scripts/find-annotations.py": {
+    "source_sha256": "e0338ab9a929f93f6c1b6625f178e8ffb8c191d07573afa5dc4a207d1fff144f",
+    "edits": [
+      {
+        "old": "#!/usr/bin/env python3\n",
+        "new": "#!/usr/bin/env python3\n# /// script\n# requires-python = \">=3.10\"\n# dependencies = [\"fire>=0.5,<1\"]\n# ///\n",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,1711 @@
+{
+  "managed": {
+    ".agents/skills/annotation": {
+      "mode": 40960,
+      "sha256": "fdc9ace2dea89868f28106465d957ff55ff4240eaf4dd640af9e1266589e7dc3"
+    },
+    ".agents/skills/cartography": {
+      "mode": 40960,
+      "sha256": "4db23486c5fceee8794378eff547177e9410e3a38685c1d05c64ccc76cf29644"
+    },
+    ".agents/skills/checks": {
+      "mode": 40960,
+      "sha256": "dbb087a31de88c73b34f553981290fd611d2126d6abd4681087f5f6e2f9c30e4"
+    },
+    ".agents/skills/delve": {
+      "mode": 40960,
+      "sha256": "d7108f6fd53f6692aed1d2f596d7ec5e175f234ca02d9ecf8372d1d45b8048d5"
+    },
+    ".agents/skills/dig-mode": {
+      "mode": 40960,
+      "sha256": "7249f8d6cebafb401770692e177ec13d154671e67669d71c86da260d98112156"
+    },
+    ".agents/skills/divine": {
+      "mode": 40960,
+      "sha256": "05529a1ef77b4e5df5fedc839c9fbdd75503615e5e6099b0541678026af7619c"
+    },
+    ".agents/skills/finding": {
+      "mode": 40960,
+      "sha256": "608c715f6f383eb93f41e94170d9741a0fdc8fab767b61c8d4047beb51c675c8"
+    },
+    ".agents/skills/finding-dedup": {
+      "mode": 40960,
+      "sha256": "8f82b34c2058838b8ef001a2ccae4b8ee3bdbd6a1585c0c696d9d8518a71c5a4"
+    },
+    ".agents/skills/finding-draft": {
+      "mode": 40960,
+      "sha256": "5a35547472816df48d598a77b9b7da6a856b3be6e55b1067d2aacca3b883305d"
+    },
+    ".agents/skills/finding-review": {
+      "mode": 40960,
+      "sha256": "850cdbbbfb88d0fd0382920855a3f13d34bdda8bb88cf6461d1bdd4a40e751c9"
+    },
+    ".agents/skills/findings-sync": {
+      "mode": 40960,
+      "sha256": "4a5f6b1da4e3ebee677c3dacd0ed7461793c2a2d9a05464045fa738ac83f126d"
+    },
+    ".agents/skills/gc-cartography": {
+      "mode": 40960,
+      "sha256": "25e869f33007e7190427c0f00eefcaaccebb2522d49f80efa44bebb0a55d358e"
+    },
+    ".agents/skills/grimoire-assess-process-improvements": {
+      "mode": 40960,
+      "sha256": "873f1a5e6dbd3a19e98fdb768af3b76b620459d5b61ebdc71b57232e727173fb"
+    },
+    ".agents/skills/grimoire-commit": {
+      "mode": 40960,
+      "sha256": "5bf3b5cff12b0ff16ca9e1c603c5de5f0d7125fffba3784b26bf639ad58a586f"
+    },
+    ".agents/skills/grimoire-execute-plan": {
+      "mode": 40960,
+      "sha256": "abcb3b3e2031a154596c63271433c855ef7dc942e664efce4e76a70596d5571d"
+    },
+    ".agents/skills/grimoire-familiar": {
+      "mode": 40960,
+      "sha256": "8f9d22782559ad0c25fc6360a0aa5b2c4aad2e6c3c5275426982c9e47cafbfb8"
+    },
+    ".agents/skills/grimoire-gap-analysis": {
+      "mode": 40960,
+      "sha256": "de7eee80826f5b95dfcbb433830cd1bec5d62cace354b6e3b351864d19f44bb2"
+    },
+    ".agents/skills/grimoire-gnome": {
+      "mode": 40960,
+      "sha256": "d9b69a9640d8b0d15047b833c955b25acf8e8f48ce04e9fdaf8d7dc8c9449774"
+    },
+    ".agents/skills/grimoire-hag": {
+      "mode": 40960,
+      "sha256": "5f0f81cb52c4c669fdc664b63305665f941538976a99bd076e5718ebbda5326d"
+    },
+    ".agents/skills/grimoire-librarian": {
+      "mode": 40960,
+      "sha256": "1daf696aa9646937f53f91dab93abd8c9fd21d8559b012381814a61ad9c94f7d"
+    },
+    ".agents/skills/grimoire-mode": {
+      "mode": 40960,
+      "sha256": "e9216ff85daf2a6ba44b685e6d7e8623c8027977bf6058b2911cfe5880df3c4b"
+    },
+    ".agents/skills/grimoire-scribe": {
+      "mode": 40960,
+      "sha256": "0a226e2f6006aca89c134cca9b62f4ca1a3c27a5b8fc0a073a497e347c58488e"
+    },
+    ".agents/skills/grimoire-sigil": {
+      "mode": 40960,
+      "sha256": "6a7c8e7db6388e4834f9042ad4f31b1a7baf10f0fd7131b9d300747e928f3c79"
+    },
+    ".agents/skills/hunt-summary": {
+      "mode": 40960,
+      "sha256": "8cb621de9fa9dbac7a57422a5ea6c1ffb856205e9ab723abd939f90c43b83d0f"
+    },
+    ".agents/skills/librarian-clean-cache": {
+      "mode": 40960,
+      "sha256": "2dfe89981ae0c403e7fea3f9e0ad3d3dd25718dee9f6c37c86ef686978e63152"
+    },
+    ".agents/skills/librarian-index": {
+      "mode": 40960,
+      "sha256": "6e29b5b52d4ec0d258e56e20e8d4aea73856a2bed2d42835137a7bed920de7c9"
+    },
+    ".agents/skills/librarian-library-search": {
+      "mode": 40960,
+      "sha256": "ae4b5b2c01644fcb509e6567b7b880804dd620e1866cbf0b9f960e676e2a151b"
+    },
+    ".agents/skills/mitigation-review": {
+      "mode": 40960,
+      "sha256": "82958361a5b59b596a12dad5888086bcf3e40c78f69884ad84d8393f4dbe02dd"
+    },
+    ".agents/skills/modify-library": {
+      "mode": 40960,
+      "sha256": "167157170d184a0b260958720ba8a12cc5cc2b8f8d3bfeb0d197a6a582da8ef0"
+    },
+    ".agents/skills/peer-review": {
+      "mode": 40960,
+      "sha256": "771fbf4f7de68e3c3421135fd98a75a079f908522afe794dfc40ef1b1fd164a0"
+    },
+    ".agents/skills/review-cartography": {
+      "mode": 40960,
+      "sha256": "d30026e924be3c7cda53e818c9da2f6b6ccaca696415db497cac2014a65ed55b"
+    },
+    ".agents/skills/scribe-distill": {
+      "mode": 40960,
+      "sha256": "a872fdb87a27523be88c3224310d247b0cbd1f18aa2549a9497a9ec2077a657e"
+    },
+    ".agents/skills/scribe-gc": {
+      "mode": 40960,
+      "sha256": "37959144d89461424dcbe21b3f02eca5023b4d55d17fdd1953c64a61361539b3"
+    },
+    ".agents/skills/scribe-utilities": {
+      "mode": 40960,
+      "sha256": "46571f6dc3678522c807ea589ddc299a20a75c14906ee752c4112a0f4fcdb024"
+    },
+    ".agents/skills/summon": {
+      "mode": 40960,
+      "sha256": "faeee61205fda704ac785ffe51720a146bffb8fdb52f41a950c65c0ee63875a2"
+    },
+    ".agents/skills/tome": {
+      "mode": 40960,
+      "sha256": "38b3e987561d4d0f07832f0af148e36feb0f916a957e110d5dfd8d794c2d68a9"
+    },
+    ".agents/skills/tome-sync": {
+      "mode": 40960,
+      "sha256": "946b923446b60e3386b20eb413f3f676aafd16b7aae7a212f94cea4f3224133a"
+    },
+    ".agents/skills/validate-hypothesis": {
+      "mode": 40960,
+      "sha256": "6be26d236dc2653d93507e45343c721a337d12fed6d60e22746cc01366c4da3a"
+    },
+    ".agents/skills/write-hypothesis": {
+      "mode": 40960,
+      "sha256": "fad69ce59f5bf145ed4f3411d864742e429d14bfbcde1d6658c9708408ee9ea7"
+    },
+    ".agents/skills/write-poc": {
+      "mode": 40960,
+      "sha256": "30f9c100a68cee5d2574f26b876f9e5e0fb11b383538069ce02ef3395c0d5236"
+    },
+    "agents/familiar.md": {
+      "mode": 420,
+      "sha256": "886ee559296d2920ef27a66b1bdbbae013c5280843fcaf75773e998e95bcb523"
+    },
+    "agents/gnome.md": {
+      "mode": 420,
+      "sha256": "a59ef3df2de1a063990a50e33633782834b0305fcea4d412d047415dead54f67"
+    },
+    "agents/hag.md": {
+      "mode": 420,
+      "sha256": "0b42d23f9b737a8966d6f4db8e6c9a3307a63fba1fdc1f77d71526bd42fb8c84"
+    },
+    "agents/librarian.md": {
+      "mode": 420,
+      "sha256": "ba2c7e6626c324918b41ca8b1849d6d6342af368b5008f91f26a6ed1a8ad247d"
+    },
+    "agents/scribe.md": {
+      "mode": 420,
+      "sha256": "4f60ce2b4353c706dc203f386c57433b8cd1657deafd1d3dfb3fddf1322e8d6e"
+    },
+    "agents/sigil.md": {
+      "mode": 420,
+      "sha256": "322c76f9d0f68404f4a2848f82d20441d6d9a3d7ae97e9593a2b0b7b3e589da2"
+    },
+    "skills/annotation/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/annotation/SKILL.md": {
+      "mode": 420,
+      "sha256": "f57c7e7c34185547ee3d9c72e98832491d937913279065bccd3a2d82a0537c4c"
+    },
+    "skills/annotation/examples/solidity-audit-annotations.md": {
+      "mode": 420,
+      "sha256": "4b47a832c6f4b779848d8f70564376fae617bf8794b99fa257058fb33890951c"
+    },
+    "skills/annotation/references/annotation-format.md": {
+      "mode": 420,
+      "sha256": "a2803bdc2cf6f37386c29341703cdcaf335390481c7bd002fc544fd93a5bb8e5"
+    },
+    "skills/annotation/scripts/find-annotations.py": {
+      "mode": 420,
+      "sha256": "06c036f82bc636d9a6debd607f96165258fb32bf8f061f984a9eaf73c799db87"
+    },
+    "skills/annotation/scripts/main.py": {
+      "mode": 420,
+      "sha256": "951d4ed23c4cd8d58f5791b46750e39926ef495bdd35bcd484e50b8954c36d6b"
+    },
+    "skills/annotation/scripts/pyproject.toml": {
+      "mode": 420,
+      "sha256": "62bfa44b1217aeeb8634494c1a4485e2d24c8e2dc3f256adda81d6b1cb64e215"
+    },
+    "skills/annotation/scripts/requirements.txt": {
+      "mode": 420,
+      "sha256": "f52326b62c94b15353f8e50c0e40572187eba971df15977467f49abb4f54e402"
+    },
+    "skills/cartography/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "538a03c8caa9214bd4e7451c685f76552f04ddeaa516c0f4ab5936cbe958a7da"
+    },
+    "skills/cartography/examples/cartography-example.md": {
+      "mode": 420,
+      "sha256": "93f2db0ad0b0902d6563ed807a23b0ededcf51462e69a51ec672e0591a20ef61"
+    },
+    "skills/cartography/examples/cross-service-auth-example.md": {
+      "mode": 420,
+      "sha256": "19017de7434a48ef7a14d87a38e3bfe6521e1ed2a9f12826879ab2921228cf8f"
+    },
+    "skills/cartography/references/cartography-format.md": {
+      "mode": 420,
+      "sha256": "0a79902fcbc41dba9e54dd2d5308913ef35d8e5685915b4904e3a659363165ea"
+    },
+    "skills/cartography/scripts/index-cartography.sh": {
+      "mode": 493,
+      "sha256": "b9156fda445457085bb791605e68f05040f602d95dfa0871668ec9cc038e1be6"
+    },
+    "skills/checks/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/checks/SKILL.md": {
+      "mode": 420,
+      "sha256": "37a0696866bcb7b2414acb1ce94262de3caaff8e9db3e61674fb8b0dbffb6153"
+    },
+    "skills/checks/examples/debug-assertions.md": {
+      "mode": 420,
+      "sha256": "101ede025b6e2ba6246415384f68dae7aed35898a31249810b58b83551e08ca3"
+    },
+    "skills/checks/examples/erc4626-vault.md": {
+      "mode": 420,
+      "sha256": "4d42ac52ab2a2242d47d578ac7af52dc3ee34c8e5aa56483d4daf1e981f6d2d1"
+    },
+    "skills/checks/examples/rounding-direction.md": {
+      "mode": 420,
+      "sha256": "867b830862170c3657561f5d96af27a1fe29c3104738da05996b56dd641b0baa"
+    },
+    "skills/checks/examples/rounding-inflation-attack.md": {
+      "mode": 420,
+      "sha256": "1a8241df8b5e60f65be456913d02c5009d84df2e19f5a1491ac680e288c2c636"
+    },
+    "skills/checks/examples/unchecked-return-values.md": {
+      "mode": 420,
+      "sha256": "cd1782dd62e8f171281315b9adcf5b1b68c7fb1a56f321c6732891d5ec484e36"
+    },
+    "skills/checks/references/check-format.md": {
+      "mode": 420,
+      "sha256": "c42b20c1bede60777561f555c4a6ae3cc2ee2f553da954ca41dbb68d65a511e2"
+    },
+    "skills/checks/references/design-principles.md": {
+      "mode": 420,
+      "sha256": "53a34abc1383ad7af94ac27d50dd8339fb508b85e763287e73868a86b9fc4a0f"
+    },
+    "skills/checks/scripts/index-checks.sh": {
+      "mode": 493,
+      "sha256": "aa86cfc6fcbc2f6429bbfa77a2d312a42c3d505583afa468129a54626270881f"
+    },
+    "skills/checks/scripts/validate-check.sh": {
+      "mode": 493,
+      "sha256": "4aca34887f807decab07562d23f75e4aa57e7f710871550a7f8e136fb53443e4"
+    },
+    "skills/delve/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/delve/SKILL.md": {
+      "mode": 420,
+      "sha256": "a1077ab4fb4a427da55b5f7af83b43bdb5c6c0f466bfd001bb5451313f1e4052"
+    },
+    "skills/dig-mode/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/dig-mode/SKILL.md": {
+      "mode": 420,
+      "sha256": "60a8b3608956014cea995b4bc5a8a92df26ee7f67018b5aa4b2c88fdf5ae8554"
+    },
+    "skills/divine/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/divine/SKILL.md": {
+      "mode": 420,
+      "sha256": "ca8de18e601eb7e31137062b9ae413702074d2c048df872ea3cfa978f1eedbe5"
+    },
+    "skills/finding-dedup/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/finding-dedup/SKILL.md": {
+      "mode": 420,
+      "sha256": "72c2589d465a26b458f5f5f4d7a1de4ddc3a054949077b749e564c42460d9178"
+    },
+    "skills/finding-draft/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/finding-draft/SKILL.md": {
+      "mode": 420,
+      "sha256": "ff76b175923afb83b2a703227fea330f1c8b2bb1800f8b0a5e0f2f1c05427450"
+    },
+    "skills/finding-review/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/finding-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "56ef0f685a656041a1640f48234a43d2fb1f26cae432fa6e2f4ec1e81e237fa8"
+    },
+    "skills/finding/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/finding/SKILL.md": {
+      "mode": 420,
+      "sha256": "d1bb440c55fa73f2d71b34c201148dd1f549a8edc608582bfe46fb39d5bf9f94"
+    },
+    "skills/finding/examples/access-control-finding.md": {
+      "mode": 420,
+      "sha256": "017b235f9a839bd4f484cd5d5a0ef5b7ae9dc85984470127bf46592190488209"
+    },
+    "skills/finding/examples/dedup-scenario.md": {
+      "mode": 420,
+      "sha256": "a8f7c919fa9ce2303b51ad54bc904f28987356faf7776fb5b50374c9006033ec"
+    },
+    "skills/finding/examples/reentrancy-finding.md": {
+      "mode": 420,
+      "sha256": "29ac95dea860f98efffc43b105dbbc0479ffe5282040e07fbf9010187624b06c"
+    },
+    "skills/finding/references/finding-best-practices.md": {
+      "mode": 420,
+      "sha256": "efd1cb733eea565200a9f1ff3c7baccb2949a26ff3187d098abae33df2bda42e"
+    },
+    "skills/finding/references/finding-format.md": {
+      "mode": 420,
+      "sha256": "131ef5984dc39a4b697c7faafbc6319d31802b9db35a37c4255bf65b3e7631cf"
+    },
+    "skills/finding/references/finding-structure.md": {
+      "mode": 420,
+      "sha256": "22310641b8ca328f6e8a8ca10bdd15e1140011acf8d1a550b44ba0d6d0ace03f"
+    },
+    "skills/finding/scripts/index-findings.sh": {
+      "mode": 493,
+      "sha256": "5878368cf30eeff3155f9f33b56bcd0712c06bed393457115149ea22cec50b4a"
+    },
+    "skills/finding/scripts/validate-finding.sh": {
+      "mode": 493,
+      "sha256": "b97f4ee41936941070c01704e02089c67262ccd7ac3cb49c1fd826fa53dac10e"
+    },
+    "skills/findings-sync/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/findings-sync/SKILL.md": {
+      "mode": 420,
+      "sha256": "1b0b9b674624675c16a5fbb26c560b8892b373801035451bd71babaaefef2111"
+    },
+    "skills/findings-sync/scripts/__pycache__/findings_sync.cpython-311.pyc": {
+      "mode": 420,
+      "sha256": "f7dac62df92781d7fe735e8f567117a5061ebff75c984b871618f64bd99add53"
+    },
+    "skills/findings-sync/scripts/findings_sync.py": {
+      "mode": 493,
+      "sha256": "a6fa6f2ae4c3d7e802152fcadcce4bacc59fbbb00deedd776f5cc15994422679"
+    },
+    "skills/gc-cartography/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/gc-cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "f3422edec753e3cd96c231834143b4c107c371e33d694ddc23dd6e35e7b02baa"
+    },
+    "skills/gc-cartography/examples/gc-before-after.md": {
+      "mode": 420,
+      "sha256": "21f45c0d112a98ee216db70ec4e34680738986f804aad0ad24079303858ad1ab"
+    },
+    "skills/gc-cartography/references/merge-decisions.md": {
+      "mode": 420,
+      "sha256": "31cb9a5259bbd8dfa452329fa2f70e3cbe525c51a32d4b713e5aba365992c33f"
+    },
+    "skills/gc-cartography/references/overlap-metrics.md": {
+      "mode": 420,
+      "sha256": "83d89915a02d9a4b7a5ea85ef37041a4b55de4f9b743bfece0a86979d2c150eb"
+    },
+    "skills/gc-cartography/scripts/detect-overlaps.sh": {
+      "mode": 493,
+      "sha256": "8001a1fa4899da38f11e8f1dbb74b825a1282486a97b6988d589552900fc189e"
+    },
+    "skills/gc-cartography/scripts/merge-flows.sh": {
+      "mode": 493,
+      "sha256": "80e77ac1c19f1b62004353b053d5bcd82409258eb7ddfd70b93d09e443999c99"
+    },
+    "skills/gc-cartography/scripts/update-references.sh": {
+      "mode": 493,
+      "sha256": "97087119ffe1b8b351cea097a9e312854119d33656abc79bcc1214b0b9e92e1f"
+    },
+    "skills/gc-cartography/scripts/validate-gc.sh": {
+      "mode": 493,
+      "sha256": "cb424556755d08ee202492c596c4c7715d7460fb14a383e1bd194ae18039ccdc"
+    },
+    "skills/grimoire-assess-process-improvements/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-assess-process-improvements/SKILL.md": {
+      "mode": 420,
+      "sha256": "59dff74af7e77cf1aac5d21968063277cd11bf354e917f0e25e164e1edf7b50f"
+    },
+    "skills/grimoire-commit/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-commit/SKILL.md": {
+      "mode": 420,
+      "sha256": "5606c2b28725a404cacd4f46cac7e79cb902802bf03270d3ea2768c8a1258960"
+    },
+    "skills/grimoire-execute-plan/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-execute-plan/SKILL.md": {
+      "mode": 420,
+      "sha256": "722d2be60bd2bb52f18c87b7f372556f1851dd76af1db8a64eab4b72bf195ce6"
+    },
+    "skills/grimoire-familiar/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-familiar/SKILL.md": {
+      "mode": 420,
+      "sha256": "05739957e720cd3c0de71e71126e7996aa4bb3e81c38abfa3bea81d6106b4cfa"
+    },
+    "skills/grimoire-gap-analysis/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-gap-analysis/SKILL.md": {
+      "mode": 420,
+      "sha256": "fb9d0cfb6093c13767b04f338ffa179f3f2b376314d7314bd1a5eb102c68a7c0"
+    },
+    "skills/grimoire-gnome/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-gnome/SKILL.md": {
+      "mode": 420,
+      "sha256": "57df9f25b1673ccd585442bfff3187263af000a7d49b0a55d2237373485e60ca"
+    },
+    "skills/grimoire-hag/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-hag/SKILL.md": {
+      "mode": 420,
+      "sha256": "98fe6c9f80156b5633b50f32ae50f9490fae59355071424d5939d48f36b412f0"
+    },
+    "skills/grimoire-librarian/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-librarian/SKILL.md": {
+      "mode": 420,
+      "sha256": "d35267eb467da3dbe068f7a24046697c1aa95319c723c0ab955d4e0a879c0016"
+    },
+    "skills/grimoire-mode/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-mode/SKILL.md": {
+      "mode": 420,
+      "sha256": "71afa7b7441f4a6413eb89aec6f21631914b3fe77c2e4641cfc4ba3dce73e529"
+    },
+    "skills/grimoire-scribe/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-scribe/SKILL.md": {
+      "mode": 420,
+      "sha256": "d82bace03a3e1bb906bf0a2e0844572a6fadc5d559de64476bbb69e6474cfe72"
+    },
+    "skills/grimoire-sigil/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/grimoire-sigil/SKILL.md": {
+      "mode": 420,
+      "sha256": "70a90e61c2dc07018220013225333c5a0c93de5a06f772103bec6bfbdd576ac2"
+    },
+    "skills/hunt-summary/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/hunt-summary/SKILL.md": {
+      "mode": 420,
+      "sha256": "b4f44e7f481ebe935d998d990949247505e2b2a4ef0a17984da2ca2720ad4cf5"
+    },
+    "skills/librarian-clean-cache/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/librarian-clean-cache/SKILL.md": {
+      "mode": 420,
+      "sha256": "141f8af7baf2fd0fca2deb414d7d9266b153aab6fa6c68573ff9d45b814012bd"
+    },
+    "skills/librarian-index/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/librarian-index/SKILL.md": {
+      "mode": 420,
+      "sha256": "54e79c9067d315f433eb0a1d6d3557c7ed5ebe89d8897fb47430520bed63576c"
+    },
+    "skills/librarian-index/scripts/index.py": {
+      "mode": 493,
+      "sha256": "8cc9b3ac0c9a25a78d603b1986f60a937cd33c142dbdef8dc25f4e4bc957095d"
+    },
+    "skills/librarian-library-search/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/librarian-library-search/SKILL.md": {
+      "mode": 420,
+      "sha256": "af2f8d12a1235174b0d96d93a58edb34c4765d0febd5ad61987e196a5cb5eb61"
+    },
+    "skills/librarian-library-search/scripts/search.py": {
+      "mode": 493,
+      "sha256": "98eceaa2d91f4e81914986fa0925ca6a8cae51ca9642fa327705fc075a589e08"
+    },
+    "skills/mitigation-review/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/mitigation-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "4ab6da052fc4cf67627e401f54bd3b4ec436c0970a8b33df28663d1315cb31dd"
+    },
+    "skills/mitigation-review/examples/MitigationReview.t.sol.template": {
+      "mode": 420,
+      "sha256": "1a47626d59cb200e0860f587f898e92be84685718eb409914f7f3a5b69a00469"
+    },
+    "skills/mitigation-review/examples/mitigation-review-template.md": {
+      "mode": 420,
+      "sha256": "27cdab09aaa7b1da3d0964927b5f220414bcecfc4690274c159eaf8ed051a4a4"
+    },
+    "skills/mitigation-review/references/poc-patterns.md": {
+      "mode": 420,
+      "sha256": "2f97461b95e11301e7b7581cd9cab8a20997f86adbb3c163a2767223dd0b482d"
+    },
+    "skills/mitigation-review/references/review-checklist.md": {
+      "mode": 420,
+      "sha256": "7d5de6a633841cc038a948c33e99a433cf5ced33cb7796895587c4ea45a624d4"
+    },
+    "skills/mitigation-review/references/verdict-taxonomy.md": {
+      "mode": 420,
+      "sha256": "c409275b40decd6a447e28189ef2b39c697f0f8d9d254043027ad2f917f19b0d"
+    },
+    "skills/mitigation-review/references/writeup-format.md": {
+      "mode": 420,
+      "sha256": "36afe6ac7cb9cb81753e83daa94c36892edd0d6521a992f4a2d532b513e823b6"
+    },
+    "skills/mitigation-review/scripts/_workspace-guard.sh": {
+      "mode": 420,
+      "sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c"
+    },
+    "skills/mitigation-review/scripts/commit-links.sh": {
+      "mode": 493,
+      "sha256": "3eb54b8291658a5381004e0701f93c234d8b44b3874844e2fdc2c8910c26239f"
+    },
+    "skills/mitigation-review/scripts/extract-finding.sh": {
+      "mode": 493,
+      "sha256": "62432cb644fdf20b959cfb053282cef02cae9d3bfe43de56ff4d669e41348def"
+    },
+    "skills/mitigation-review/scripts/fix-diff.sh": {
+      "mode": 493,
+      "sha256": "99263258dacbf7ac7064248a89701b1e781a2ba7c602ca307b479cd7c37c3a9e"
+    },
+    "skills/mitigation-review/scripts/index-report.sh": {
+      "mode": 493,
+      "sha256": "dcbeb4a8c5327fb675539a0725aa92dc07f22f21d4156eeb06ee10cdec0343a5"
+    },
+    "skills/mitigation-review/scripts/link-issues.sh": {
+      "mode": 493,
+      "sha256": "af21e3cdcfa5b6b14cf171ddd31a156019353e32cea21011755c1c62568f9d99"
+    },
+    "skills/mitigation-review/scripts/load-issue.sh": {
+      "mode": 493,
+      "sha256": "71cb0eb3adccd553637153ff7353e7f815a440c4ae92ccf5defe7ee1c86e2840"
+    },
+    "skills/mitigation-review/scripts/map-fixes.sh": {
+      "mode": 493,
+      "sha256": "764230c177b72cdfd474418204f87eb2beed01baea255f389fdfb4e002578d0f"
+    },
+    "skills/mitigation-review/scripts/prefix-snapshot.sh": {
+      "mode": 493,
+      "sha256": "d80e3eb1711cbae502ac883992e2ae20eb48628186c61672f86e0344b226984f"
+    },
+    "skills/modify-library/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/modify-library/SKILL.md": {
+      "mode": 420,
+      "sha256": "4ff2e1aade88e05cf3bb0da2d1282104bc6defeede0b81589854a5d74a025fef"
+    },
+    "skills/modify-library/examples/add-git-library.md": {
+      "mode": 420,
+      "sha256": "376719473a7537c901cd42b18604a6a327c3c94db47fef2c4202f8d8bfab7e9c"
+    },
+    "skills/modify-library/examples/add-symlink-library.md": {
+      "mode": 420,
+      "sha256": "ef154198d864b81178ec4e3277c0ac9f1bd41e0a2f33e096587855b0fb0e4a58"
+    },
+    "skills/peer-review/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/peer-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "f803312cf0072799f8e8f25f2b920ee8b40955f308f6cfccd56e2f7f08379a33"
+    },
+    "skills/peer-review/examples/pending-tome-template.md": {
+      "mode": 420,
+      "sha256": "83241898fcb3f29851b8ddd64dd8adcd57c3dad1423fefca48896047db0df47d"
+    },
+    "skills/peer-review/examples/session-marker-template.md": {
+      "mode": 420,
+      "sha256": "ec7a16464be5d3770b66862efea2c0bef747195fc660204d6d41ded807c65258"
+    },
+    "skills/peer-review/examples/verdict-template.md": {
+      "mode": 420,
+      "sha256": "e1545b4368a88b0f766bde5dc7d1d2f718e8c6f52a45c006bc1eb369bf2010a9"
+    },
+    "skills/peer-review/references/deliverables.md": {
+      "mode": 420,
+      "sha256": "bdaa479104c89429095d83cc1ef37c2e4a5c66c4b15ae3a992d4be442eb52e3a"
+    },
+    "skills/peer-review/references/duplicate-analysis.md": {
+      "mode": 420,
+      "sha256": "a2326fe05ecb9655c89ce698107bab6a2a8c5f772d58b46374519139cb402d12"
+    },
+    "skills/peer-review/references/fix-verification.md": {
+      "mode": 420,
+      "sha256": "66a5cdc68619049804d0b3ba4d9915c3b36bf55c5bb079c90cffa8d9466d98a0"
+    },
+    "skills/peer-review/references/parallel-sessions.md": {
+      "mode": 420,
+      "sha256": "93a83a638a14acea99e84a665b78fe59315b224910dce3a2ab3ea0bcf0e0bb47"
+    },
+    "skills/peer-review/references/severity-calibration.md": {
+      "mode": 420,
+      "sha256": "caa3bcf8f562043ec548e635ef2aa915f9529db066bcbba5714a085381570a80"
+    },
+    "skills/peer-review/scripts/_workspace-guard.sh": {
+      "mode": 420,
+      "sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c"
+    },
+    "skills/peer-review/scripts/delta-check.sh": {
+      "mode": 493,
+      "sha256": "3dd369ba2fbc6b16c2faf3cd01f5bc854bbf7000e0edaacdd746af36dd71ae34"
+    },
+    "skills/peer-review/scripts/extract-poc.sh": {
+      "mode": 493,
+      "sha256": "395f6176aea1a11228a77a28c737c7c9288296cf8b5212f4e3d3d0a03075660e"
+    },
+    "skills/peer-review/scripts/isolated-workspace.sh": {
+      "mode": 493,
+      "sha256": "c97d3c4742d36773c31448ed0492c1f62778761c63fe697e76f48b46e6e9bead"
+    },
+    "skills/peer-review/scripts/load-finding.sh": {
+      "mode": 493,
+      "sha256": "165c046716784a3a22e2c0216f9db6a0d75a148d686d75e2043fd882f9005e70"
+    },
+    "skills/peer-review/scripts/verify-fix.sh": {
+      "mode": 493,
+      "sha256": "a18e048feca95e88a697d1857cda173dafe26567a2bc2c4033b27733a25b0fc3"
+    },
+    "skills/review-cartography/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/review-cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "fcc2641927a09ec09c44afc343129d4f9be9810f520f026d301eff57ef6e2270"
+    },
+    "skills/review-cartography/examples/cartography-review-example.md": {
+      "mode": 420,
+      "sha256": "ab374d2077466b0abeab899714458c9ef8378d073af8574eaae2764c0735290c"
+    },
+    "skills/review-cartography/references/cartography-format.md": {
+      "mode": 40960,
+      "sha256": "19de53b872e53bb39a5c679fe9aa1e2e7eeb6261dbd407088cbe4f01d7c13c0c"
+    },
+    "skills/review-cartography/references/overlap-detection.md": {
+      "mode": 420,
+      "sha256": "f4be8701e9df189381f228c1099128d326da16ef0aca2951d635cfcf1dbcb1d3"
+    },
+    "skills/review-cartography/scripts/find-overlaps.sh": {
+      "mode": 493,
+      "sha256": "d27b62c06a2dbfa04fb0c756147a699a0fca98135bb052c4b8f74ef6cf545c01"
+    },
+    "skills/review-cartography/scripts/validate-cartography.sh": {
+      "mode": 493,
+      "sha256": "f147fb111c873f7d8903a309716de8cf003bf162e90f4fcd6168fb045dd898de"
+    },
+    "skills/scribe-distill/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/scribe-distill/SKILL.md": {
+      "mode": 420,
+      "sha256": "44d0f6397ee13b01d7a2dd810ee15e6b415ffcf61b6e7078828fa0157aab9381"
+    },
+    "skills/scribe-distill/references/feasibility-criteria.md": {
+      "mode": 420,
+      "sha256": "98d507f3b97c9c582f62c4e7970909b7e2effd5b14cadacd46bda9e9fc21a6a1"
+    },
+    "skills/scribe-distill/references/sigil-types.md": {
+      "mode": 420,
+      "sha256": "d705dc18b175a2556d8fce697ec1dd5ad656ad0ff54114b779b0e41e88bebbcf"
+    },
+    "skills/scribe-gc/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/scribe-gc/SKILL.md": {
+      "mode": 420,
+      "sha256": "bcbf56d86d0ec4c3ba4f731d99e9847d9fd269020bc1613e1cbacaaee659e78a"
+    },
+    "skills/scribe-utilities/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/scribe-utilities/SKILL.md": {
+      "mode": 420,
+      "sha256": "61220f21f230510d5be2e602ea6486f2ca85e3eac8d5f071bfe73ccbfec3c447"
+    },
+    "skills/summon/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/summon/SKILL.md": {
+      "mode": 420,
+      "sha256": "4209f174ab53fb4c80780fff665ead3ecf5ed6a106879f940b757c821bbfd877"
+    },
+    "skills/summon/examples/grimoire-md-example.md": {
+      "mode": 420,
+      "sha256": "83d461089968b3a047d005d81bbcc35032c5f95f9689ab1a8af6927fabff4108"
+    },
+    "skills/summon/references/bounty-platforms.md": {
+      "mode": 420,
+      "sha256": "66da2cb19f91e8845a4366089f6b2a7881ac0ccb696f13978c88e2dbd9a79cfd"
+    },
+    "skills/summon/references/domain-crown-jewels.md": {
+      "mode": 420,
+      "sha256": "24293cc2bfec88e08bfa0f014fcc3795cadfd3a10ff87a95f02bd1406465e635"
+    },
+    "skills/summon/references/sigil-spawning.md": {
+      "mode": 420,
+      "sha256": "56defce52abf44143e035ee14be16a58285aa780e28410e38dd678d3aaa30283"
+    },
+    "skills/summon/scripts/clone-assets.sh": {
+      "mode": 493,
+      "sha256": "b9654c60748db63ed31e71a4b7bd8c37d66c3c3d4148ba2ef82a02f37d256221"
+    },
+    "skills/summon/scripts/select-checks.sh": {
+      "mode": 493,
+      "sha256": "746a460965b301578ca6f729cf2caadbef98852d507a22fd84a385d8aaa165db"
+    },
+    "skills/summon/scripts/session-status.sh": {
+      "mode": 493,
+      "sha256": "dd1672965648e562276b12bcf0a078455ab8453db0ba48812357627d6912eafd"
+    },
+    "skills/tome-sync/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/tome-sync/SKILL.md": {
+      "mode": 420,
+      "sha256": "254c5ec45cbb954ac91ad725d001558a010a99f2733d2c1c653d6d82e0e1c6d7"
+    },
+    "skills/tome/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/tome/SKILL.md": {
+      "mode": 420,
+      "sha256": "6a48bd983ff2e191277f01ec768f880a91ed2e49d8fef6f0d6209569ce82e903"
+    },
+    "skills/tome/references/evidence-model.md": {
+      "mode": 420,
+      "sha256": "b3e61be554a053e402b6ff5bccfdcbe9994c11a62d6a99b80767239804c7767c"
+    },
+    "skills/tome/references/health-check.md": {
+      "mode": 420,
+      "sha256": "6c804db08a6d337ca2233ff2d7a335fe55da8f2bd8bc3dd5c2037792115d0afa"
+    },
+    "skills/tome/references/links.md": {
+      "mode": 420,
+      "sha256": "9c18e1d5480cd5e7da02192fafa866bf6d580aa6ef9b6e4c1b11f2cd9dee1a1d"
+    },
+    "skills/tome/references/page-templates.md": {
+      "mode": 420,
+      "sha256": "e5f3485730750d0329291af8a2e6a594eefd2833283f10439729057a80a06a67"
+    },
+    "skills/tome/references/tome-format.md": {
+      "mode": 420,
+      "sha256": "03fa093400652dc52a946699e9584c5ba66056c1447ae2467c6f8215d3505a0a"
+    },
+    "skills/tome/references/workflow.md": {
+      "mode": 420,
+      "sha256": "d1246c358b1ddded3748216ed2f1e1d14a75c47ac7c855fed10b505e2bcd4c4e"
+    },
+    "skills/validate-hypothesis/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/validate-hypothesis/SKILL.md": {
+      "mode": 420,
+      "sha256": "a4bfc921eb2eb7ea32a472a3d4227ad6db3d05873fa964da065544dd47e9caa9"
+    },
+    "skills/write-hypothesis/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/write-hypothesis/SKILL.md": {
+      "mode": 420,
+      "sha256": "eff17f45430d22e0260c59c130f81808b3134d0e399c96282e3873bdbb01b004"
+    },
+    "skills/write-poc/CODEX.md": {
+      "mode": 420,
+      "sha256": "a0d66e01bb40769079e65b132caaa20abd7f7fa75e85f426b31f94d4dbb2279d"
+    },
+    "skills/write-poc/SKILL.md": {
+      "mode": 420,
+      "sha256": "4b78f17519e874c674f90529af513aa12907119ea8736beb68ea3a5ce39ecb38"
+    },
+    "skills/write-poc/examples/price-oracle-fork-test.md": {
+      "mode": 420,
+      "sha256": "6f01d233fa45e27a5bb8ac3730e1cd62a4e88b6ba669ee420f1cb9c3d7a94c98"
+    },
+    "skills/write-poc/examples/reentrancy-foundry-poc.md": {
+      "mode": 420,
+      "sha256": "ec92fbc6cf8cab86710d948de541c55b79210e6197ba28af1fe8c95d5b48014b"
+    },
+    "skills/write-poc/examples/sqli-python-poc.md": {
+      "mode": 420,
+      "sha256": "a981210938f6875d23e4c193b96b077e4beaa0e3e13457c7f6fa40ef78c9b373"
+    },
+    "skills/write-poc/examples/ssrf-curl-poc.md": {
+      "mode": 420,
+      "sha256": "9507a61e6aee8793be29b8557e0fb99ec3db074d91663e3dd22885eddff0baa7"
+    },
+    "skills/write-poc/references/config-issues.md": {
+      "mode": 420,
+      "sha256": "f9c88ba30cef252e3d306620312e6f7351bf014360bcae7f6e53bbf605c47eaf"
+    },
+    "skills/write-poc/references/crypto-vulns.md": {
+      "mode": 420,
+      "sha256": "81b6eee36d677951ebf37a9268a1eb7732d489ab2a8a2f5441cc78034b9a81b1"
+    },
+    "skills/write-poc/references/forge-poc-templates.md": {
+      "mode": 420,
+      "sha256": "f87f6ab1294591be23600bba5cd4c973b3303005be582988758dd6d979c387ae"
+    },
+    "skills/write-poc/references/general-principles.md": {
+      "mode": 420,
+      "sha256": "5df917177b74389884f7ba817c1e356585c9e32dda289cf87f1a8d740626d772"
+    },
+    "skills/write-poc/references/logic-flaws.md": {
+      "mode": 420,
+      "sha256": "a3917555db0113917b01777b550d5d1cb52d91d2f067d03637ad9e1c51bf89d0"
+    },
+    "skills/write-poc/references/memory-corruption.md": {
+      "mode": 420,
+      "sha256": "ee1a2b05f0527c10e9ad4f4a8ac19629c72dc065d717bd9376cc462254249361"
+    },
+    "skills/write-poc/references/poc-formats.md": {
+      "mode": 420,
+      "sha256": "cecefbfcadc4a2cf1796d568869a44bff22f1e0a46596e9e4d869018962861d5"
+    },
+    "skills/write-poc/references/race-conditions.md": {
+      "mode": 420,
+      "sha256": "30affcd0df308a0ee3ffe1826ed1f02150efc8c9181f90b86b4288e4a67bd6bb"
+    },
+    "skills/write-poc/references/smart-contracts.md": {
+      "mode": 420,
+      "sha256": "3252c4d2b989e28167a56369bd811ac2d47b313e8730862479f97a876079d0e3"
+    },
+    "skills/write-poc/references/web-application-vulns.md": {
+      "mode": 420,
+      "sha256": "8ea61bc4adc9ecdf9533d4e2332e4aa0185233f18fd8ce40b96dd7621eb60696"
+    },
+    "skills/write-poc/scripts/validate-poc.sh": {
+      "mode": 493,
+      "sha256": "1939b9c8e726a843ba025a16aa68755037f08b92e0685b25c81d90c68d068638"
+    },
+    "vendor/upstream/.claude-plugin/plugin.json": {
+      "mode": 420,
+      "sha256": "7c1b8465697b62936392ffa58a2fe177e543315b4c594b8547efc7c1c876bf15"
+    },
+    "vendor/upstream/.claude/commands/assess-process-improvements.md": {
+      "mode": 420,
+      "sha256": "00363d12a8d2e57ea7f9041e0176809aa2313ad5572d3171c18155b390425514"
+    },
+    "vendor/upstream/.claude/commands/commit.md": {
+      "mode": 420,
+      "sha256": "45e1c6ce4ed22749fe517269b46dceb543e623be3f84700aedc86425ad71235a"
+    },
+    "vendor/upstream/.claude/commands/execute-plan.md": {
+      "mode": 420,
+      "sha256": "e7b8c157aaa7498457200a700fe7402c6458fc0c53a9c7092abed51f97c0d18a"
+    },
+    "vendor/upstream/.claude/commands/gap-analysis.md": {
+      "mode": 420,
+      "sha256": "3b1d01574acd856c7531903f4061269d36512e0d355888461affbef6c8f3df65"
+    },
+    "vendor/upstream/.gitignore": {
+      "mode": 420,
+      "sha256": "ab813f359d21437c68e385abce34d9f5200b245c1982bccb7d86615a6bcf5106"
+    },
+    "vendor/upstream/CLAUDE.md": {
+      "mode": 420,
+      "sha256": "1fde75a0002110a05feeefb14b38f05fbaa3c799db4dd458b9e988d39a6dbb42"
+    },
+    "vendor/upstream/FEEDING_FINDINGS.md": {
+      "mode": 420,
+      "sha256": "bdbddbd1dac8fedc2d5745efd00ee8f9ee8b1d89c731fff78181706ab8007e01"
+    },
+    "vendor/upstream/HOW_TO_USE.md": {
+      "mode": 420,
+      "sha256": "4a10d723ec04683ac08c0ed693d835e772434cafa30d469093fccfd08496d919"
+    },
+    "vendor/upstream/IMPLEMENTATION_PLAN.md": {
+      "mode": 420,
+      "sha256": "9e701071c7e07b872228b1a26dbb385bd8a1e6b79b80a7f7e4adf8546083ad3d"
+    },
+    "vendor/upstream/LICENSE.md": {
+      "mode": 420,
+      "sha256": "a1d7c7d746230135f3de7131fbbfee35382d0766fe71003d230e087e7c5fb444"
+    },
+    "vendor/upstream/README.md": {
+      "mode": 420,
+      "sha256": "86709db94fd07f01b347eaf5d13c96cfb1532ef6dc81893ed87ac954ef724201"
+    },
+    "vendor/upstream/agents/familiar.md": {
+      "mode": 420,
+      "sha256": "d2a947d17c30c07b12e7ac34ac25cf80853d9445e82ed09c17010066a9159524"
+    },
+    "vendor/upstream/agents/gnome.md": {
+      "mode": 420,
+      "sha256": "21968b04d66d0c8d5e49e620db32b21909d8320ab540a15ce0621535657dd812"
+    },
+    "vendor/upstream/agents/hag.md": {
+      "mode": 420,
+      "sha256": "4b0cd4674a476ac158236a3c0a3643674ba327d9e6297b0582d79524d3ca04b7"
+    },
+    "vendor/upstream/agents/librarian.md": {
+      "mode": 420,
+      "sha256": "899fd2260e0973e80fbb19f4e5c033da56ff0030c7b8a9b86188b4d1570bfc9e"
+    },
+    "vendor/upstream/agents/scribe.md": {
+      "mode": 420,
+      "sha256": "c139e4274755274c3417ae26c19b9cc9f9cef1f8388f5f1b57e1d4abb958e2ed"
+    },
+    "vendor/upstream/agents/sigil.md": {
+      "mode": 420,
+      "sha256": "67e8fa8a26fbcbcbbac7116e895ceabc3ed477b0a1b09f7d3e85bce7a3999def"
+    },
+    "vendor/upstream/grimoire/README.md": {
+      "mode": 420,
+      "sha256": "4aefe34e71b9a773c107180b96f90c14c366cc1c5860f1f5c2494cd7eb544c35"
+    },
+    "vendor/upstream/grimoire/agents/familiar.md": {
+      "mode": 420,
+      "sha256": "7f31ae4a4f4cecebbfbba541cc573420858e689fa8ab34c8d4b665260aeef7a8"
+    },
+    "vendor/upstream/grimoire/agents/gnome.md": {
+      "mode": 420,
+      "sha256": "8ca691998b76c776702614af13f7ce306eb8b158144edb87c4fed70f879800f8"
+    },
+    "vendor/upstream/grimoire/agents/librarian.md": {
+      "mode": 420,
+      "sha256": "4edce30035e1e8995474690327e2feac21a16123202a7b54426fcb78ae1b82e3"
+    },
+    "vendor/upstream/grimoire/agents/scribe.md": {
+      "mode": 420,
+      "sha256": "97a4d0d40f6e0f3b70d607eab0e195b11881ebdc4375405d5420ac2b22f19dd8"
+    },
+    "vendor/upstream/grimoire/agents/sigil.md": {
+      "mode": 420,
+      "sha256": "427fcb4b13a736fa631140f109d2e017cbb478a1aa0c203efc4e75c3c891140e"
+    },
+    "vendor/upstream/grimoire/concepts/(trivial) verifiability.md": {
+      "mode": 420,
+      "sha256": "483c63dcdabf66a3607cb547d616ec990e6e7647e04233535d00274160edd4c2"
+    },
+    "vendor/upstream/grimoire/concepts/agent context.md": {
+      "mode": 420,
+      "sha256": "13a15aa14105e6a1de6bd67ea40a07257af8dd2734066bdcaaf35848329d17cc"
+    },
+    "vendor/upstream/grimoire/concepts/backpressure.md": {
+      "mode": 420,
+      "sha256": "9f9ee2da6d5e1665e7c0650835fdda9d530fbf2bad3be4599afe0cf03ec18062"
+    },
+    "vendor/upstream/grimoire/concepts/context building.md": {
+      "mode": 420,
+      "sha256": "828b6152f50b436e1b6fc23d9748e8fdbcb66be832c4866d4d035e84733d819d"
+    },
+    "vendor/upstream/grimoire/concepts/don't get in the way.md": {
+      "mode": 420,
+      "sha256": "e52db1ec8023edaa6afb0c0811d3abb1a559e3d245dc3cb17058745a735c7d83"
+    },
+    "vendor/upstream/grimoire/concepts/hypothesis generation.md": {
+      "mode": 420,
+      "sha256": "b28294285392ed5709b53ec4a7ed9928829901d9c5f7c3ee02d0fbbcfc85985e"
+    },
+    "vendor/upstream/grimoire/concepts/personal grimoire.md": {
+      "mode": 420,
+      "sha256": "47d30a055750c6bbdf1029488aeb80b74cc0c6ea63d4b9641a42e55cc7fe4a13"
+    },
+    "vendor/upstream/grimoire/concepts/the original sin.md": {
+      "mode": 420,
+      "sha256": "f81004854c24fee933d3d6d84e7df1c203801eedc945c0749ff676322ecf08fe"
+    },
+    "vendor/upstream/grimoire/concepts/what is grimoire.md": {
+      "mode": 420,
+      "sha256": "4cb691e7e8ddd36d780d49b73c606eccaf8ef16a702ccef4d8736caf18be09b9"
+    },
+    "vendor/upstream/grimoire/flows/autonomous discovery.md": {
+      "mode": 420,
+      "sha256": "0fd4686fabed2eb2d9cc12d1c0fb8907edea98b00e9793ec6c227f6540f4393d"
+    },
+    "vendor/upstream/grimoire/flows/finding discovery.md": {
+      "mode": 420,
+      "sha256": "5a01e889dcf7ac0c752297a125867a331199a03d2524dac67c65c0561e66e0b0"
+    },
+    "vendor/upstream/grimoire/ideas/notes.md": {
+      "mode": 420,
+      "sha256": "e13207b9b9f2308726ecdd6245697a3db580e5cc93faac15883130eff9ae553f"
+    },
+    "vendor/upstream/grimoire/ideas/related work.md": {
+      "mode": 420,
+      "sha256": "c2a083cfd5c202be6e71cd2d236a255095951460a7127450bcd5c241730c4f62"
+    },
+    "vendor/upstream/grimoire/ideas/todo.md": {
+      "mode": 420,
+      "sha256": "af586f2b354b02fbf05e872a4438100122776a07cb4dad8fda328929ca590b7d"
+    },
+    "vendor/upstream/grimoire/skills/annotation.md": {
+      "mode": 420,
+      "sha256": "1ba42d8ee64be6ae87cf78742a7a676db77b4364f3b58962b5dc8f0553e5ef4a"
+    },
+    "vendor/upstream/grimoire/skills/cartography.md": {
+      "mode": 420,
+      "sha256": "019a279bd81085a7a57fb1aab221607b17cfae64d46ffd4074d9f57348b7651e"
+    },
+    "vendor/upstream/grimoire/skills/finding.md": {
+      "mode": 420,
+      "sha256": "d97a9f6cc506980a1e61633f39fe320aa81944ad4d4a4b0be88bf5c0a39918da"
+    },
+    "vendor/upstream/grimoire/skills/proof of concept.md": {
+      "mode": 420,
+      "sha256": "fe55dd32e4c696727d21380ea37fae5f241d831e60e85123bcf875b974791962"
+    },
+    "vendor/upstream/grimoire/skills/scribe.md": {
+      "mode": 420,
+      "sha256": "8ee30672400dd92c18ae503edec5a4a1a26fa2f9cb359af576dca87e7a1d3e92"
+    },
+    "vendor/upstream/grimoire/skills/sigils/checks.md": {
+      "mode": 420,
+      "sha256": "2c1d26a720c1c92d49a56b1efa215a24f10e593309d66b5e1f5890791eedeb07"
+    },
+    "vendor/upstream/grimoire/skills/sigils/semgrep.md": {
+      "mode": 420,
+      "sha256": "7b4e36cb4a6ebd34554441964ce42ddf9e407ebe52fbff74b5d35f7b92d1d9a8"
+    },
+    "vendor/upstream/grimoire/skills/sigils/slither.md": {
+      "mode": 420,
+      "sha256": "f51f5122921b30ae3213da5f468e2e2be298505563c3c0bc5857be9b771843d1"
+    },
+    "vendor/upstream/grimoire/skills/summon.md": {
+      "mode": 420,
+      "sha256": "8dbbdd74f8d184ee0d51d21276fe1994974abbed9dac3813edbec9a4c86366de"
+    },
+    "vendor/upstream/grimoire_logo.png": {
+      "mode": 420,
+      "sha256": "78c6dc7a3626b34cb713e173400ebd2fbdfc62746c5adb65760f95f5adf9f12d"
+    },
+    "vendor/upstream/hooks/hooks.json": {
+      "mode": 420,
+      "sha256": "07f392bcb80364aa9de0714097d809c667217db6d9237236374618538b3e0af1"
+    },
+    "vendor/upstream/hooks/init/init-grimoire.sh": {
+      "mode": 493,
+      "sha256": "c732cf42acc24606efccca643cbf45ff0e7425064c46317b6d156be2c7aa209b"
+    },
+    "vendor/upstream/hooks/init/read-grimoire-md.sh": {
+      "mode": 493,
+      "sha256": "b30166a07a21d3f947641d96265cd06d8df8050f10c84aa9be69a51ba146a21f"
+    },
+    "vendor/upstream/hooks/init/test-init-grimoire.sh": {
+      "mode": 493,
+      "sha256": "e6f30010ebdc0d3730973b7a29ecc065455c51e4847daf71859d3fe369d2df5c"
+    },
+    "vendor/upstream/hooks/sigil-return/triage-sigil.sh": {
+      "mode": 493,
+      "sha256": "e97cd9f7af75eb7bfb832c7df35d8927dc5e7590cb74a346fca207707d7365ae"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/README.md": {
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/package.json": {
+      "mode": 420,
+      "sha256": "e4aedd47a86f35f98ed84a8f88da6229425ad1e8cdeb46b9a16e813c072b5eff"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/colors.ts": {
+      "mode": 420,
+      "sha256": "807083e1061854d62f8df2e721035f9456815ebd1a4a91b04f30aebf5705aaaa"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/git-status.ts": {
+      "mode": 420,
+      "sha256": "cef4ddf14bd65be87cb70e8561a1147232e94ad7c7130c45ecd3d71e2116c290"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/icons.ts": {
+      "mode": 420,
+      "sha256": "ca72f5b3f9c3f068dc23d1b2d7d39ed84a57e459fc7da4bfae9fdc7892bd00b6"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/index.ts": {
+      "mode": 420,
+      "sha256": "b8355eeb6836cbb42b3b9d4719ec89dff32b2f36b7c3b3989e8f34dee7481764"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/messages.ts": {
+      "mode": 420,
+      "sha256": "42e9df0ca5324a05a0aec0d632fef48c433f04d6b21315c81c24f6bb03e2e099"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/segments.ts": {
+      "mode": 420,
+      "sha256": "6368668d16155c0303667340de0e1b64d2ed0c4801dea84ed8fedba4efd71332"
+    },
+    "vendor/upstream/pi-plugins/pi-grimoire-footer/src/types.ts": {
+      "mode": 420,
+      "sha256": "8d0b4b2dd8ede54871045f623d7bb488119b4d2ed27e5e4811f745027ec9d522"
+    },
+    "vendor/upstream/skills/annotation/SKILL.md": {
+      "mode": 420,
+      "sha256": "6318ae564ba997cc1624932eb23a3dfff849f0f39fe798a92d949488d771321f"
+    },
+    "vendor/upstream/skills/annotation/examples/solidity-audit-annotations.md": {
+      "mode": 420,
+      "sha256": "4b47a832c6f4b779848d8f70564376fae617bf8794b99fa257058fb33890951c"
+    },
+    "vendor/upstream/skills/annotation/references/annotation-format.md": {
+      "mode": 420,
+      "sha256": "a2803bdc2cf6f37386c29341703cdcaf335390481c7bd002fc544fd93a5bb8e5"
+    },
+    "vendor/upstream/skills/annotation/scripts/find-annotations.py": {
+      "mode": 420,
+      "sha256": "e0338ab9a929f93f6c1b6625f178e8ffb8c191d07573afa5dc4a207d1fff144f"
+    },
+    "vendor/upstream/skills/annotation/scripts/main.py": {
+      "mode": 420,
+      "sha256": "951d4ed23c4cd8d58f5791b46750e39926ef495bdd35bcd484e50b8954c36d6b"
+    },
+    "vendor/upstream/skills/annotation/scripts/pyproject.toml": {
+      "mode": 420,
+      "sha256": "62bfa44b1217aeeb8634494c1a4485e2d24c8e2dc3f256adda81d6b1cb64e215"
+    },
+    "vendor/upstream/skills/annotation/scripts/requirements.txt": {
+      "mode": 420,
+      "sha256": "f52326b62c94b15353f8e50c0e40572187eba971df15977467f49abb4f54e402"
+    },
+    "vendor/upstream/skills/cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "acec4a725da352ee3ea2869b66618a978d600c95a306fa28c0332449a6ddbb49"
+    },
+    "vendor/upstream/skills/cartography/examples/cartography-example.md": {
+      "mode": 420,
+      "sha256": "93f2db0ad0b0902d6563ed807a23b0ededcf51462e69a51ec672e0591a20ef61"
+    },
+    "vendor/upstream/skills/cartography/examples/cross-service-auth-example.md": {
+      "mode": 420,
+      "sha256": "19017de7434a48ef7a14d87a38e3bfe6521e1ed2a9f12826879ab2921228cf8f"
+    },
+    "vendor/upstream/skills/cartography/references/cartography-format.md": {
+      "mode": 420,
+      "sha256": "0a79902fcbc41dba9e54dd2d5308913ef35d8e5685915b4904e3a659363165ea"
+    },
+    "vendor/upstream/skills/cartography/scripts/index-cartography.sh": {
+      "mode": 493,
+      "sha256": "b9156fda445457085bb791605e68f05040f602d95dfa0871668ec9cc038e1be6"
+    },
+    "vendor/upstream/skills/checks/SKILL.md": {
+      "mode": 420,
+      "sha256": "f25a9de3a717729b9ac8196624550ffdccc36e05319efc3369db652f562ea6ed"
+    },
+    "vendor/upstream/skills/checks/examples/debug-assertions.md": {
+      "mode": 420,
+      "sha256": "101ede025b6e2ba6246415384f68dae7aed35898a31249810b58b83551e08ca3"
+    },
+    "vendor/upstream/skills/checks/examples/erc4626-vault.md": {
+      "mode": 420,
+      "sha256": "4d42ac52ab2a2242d47d578ac7af52dc3ee34c8e5aa56483d4daf1e981f6d2d1"
+    },
+    "vendor/upstream/skills/checks/examples/rounding-direction.md": {
+      "mode": 420,
+      "sha256": "867b830862170c3657561f5d96af27a1fe29c3104738da05996b56dd641b0baa"
+    },
+    "vendor/upstream/skills/checks/examples/rounding-inflation-attack.md": {
+      "mode": 420,
+      "sha256": "1a8241df8b5e60f65be456913d02c5009d84df2e19f5a1491ac680e288c2c636"
+    },
+    "vendor/upstream/skills/checks/examples/unchecked-return-values.md": {
+      "mode": 420,
+      "sha256": "cd1782dd62e8f171281315b9adcf5b1b68c7fb1a56f321c6732891d5ec484e36"
+    },
+    "vendor/upstream/skills/checks/references/check-format.md": {
+      "mode": 420,
+      "sha256": "c42b20c1bede60777561f555c4a6ae3cc2ee2f553da954ca41dbb68d65a511e2"
+    },
+    "vendor/upstream/skills/checks/references/design-principles.md": {
+      "mode": 420,
+      "sha256": "53a34abc1383ad7af94ac27d50dd8339fb508b85e763287e73868a86b9fc4a0f"
+    },
+    "vendor/upstream/skills/checks/scripts/index-checks.sh": {
+      "mode": 493,
+      "sha256": "aa86cfc6fcbc2f6429bbfa77a2d312a42c3d505583afa468129a54626270881f"
+    },
+    "vendor/upstream/skills/checks/scripts/validate-check.sh": {
+      "mode": 493,
+      "sha256": "4aca34887f807decab07562d23f75e4aa57e7f710871550a7f8e136fb53443e4"
+    },
+    "vendor/upstream/skills/delve/SKILL.md": {
+      "mode": 420,
+      "sha256": "648ed6a46c7f11cffe9cc3ebac535ae9608da8850f8c7399bdbc27574094c9ee"
+    },
+    "vendor/upstream/skills/dig-mode/SKILL.md": {
+      "mode": 420,
+      "sha256": "7aa4ec480ec02a8b77c71eb5e095e03f25a6dfbb786a3b55cc7c93edd6c6a44e"
+    },
+    "vendor/upstream/skills/divine/SKILL.md": {
+      "mode": 420,
+      "sha256": "05332537ebbc84cde1452f73c32c046270dc846bbbf80221a3f11959541eeafd"
+    },
+    "vendor/upstream/skills/finding-dedup/SKILL.md": {
+      "mode": 420,
+      "sha256": "4da81ffe47929a813b426f0e8e1d2d460537d2737009752e84d7c4937fce4d66"
+    },
+    "vendor/upstream/skills/finding-draft/SKILL.md": {
+      "mode": 420,
+      "sha256": "36630d41ac3f0ddc39c699214b19f5e2436d07a6e65f50155fc208c7ad5418c4"
+    },
+    "vendor/upstream/skills/finding-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "43c21cd211a6346470defa16836b41925060af69b5de5c8381adcb42fe6cc6ec"
+    },
+    "vendor/upstream/skills/finding/SKILL.md": {
+      "mode": 420,
+      "sha256": "11656e2568961863d83076647d01f8c16527a8a585015abc88e558fab03f68cf"
+    },
+    "vendor/upstream/skills/finding/examples/access-control-finding.md": {
+      "mode": 420,
+      "sha256": "017b235f9a839bd4f484cd5d5a0ef5b7ae9dc85984470127bf46592190488209"
+    },
+    "vendor/upstream/skills/finding/examples/dedup-scenario.md": {
+      "mode": 420,
+      "sha256": "a8f7c919fa9ce2303b51ad54bc904f28987356faf7776fb5b50374c9006033ec"
+    },
+    "vendor/upstream/skills/finding/examples/reentrancy-finding.md": {
+      "mode": 420,
+      "sha256": "29ac95dea860f98efffc43b105dbbc0479ffe5282040e07fbf9010187624b06c"
+    },
+    "vendor/upstream/skills/finding/references/finding-best-practices.md": {
+      "mode": 420,
+      "sha256": "efd1cb733eea565200a9f1ff3c7baccb2949a26ff3187d098abae33df2bda42e"
+    },
+    "vendor/upstream/skills/finding/references/finding-format.md": {
+      "mode": 420,
+      "sha256": "131ef5984dc39a4b697c7faafbc6319d31802b9db35a37c4255bf65b3e7631cf"
+    },
+    "vendor/upstream/skills/finding/references/finding-structure.md": {
+      "mode": 420,
+      "sha256": "22310641b8ca328f6e8a8ca10bdd15e1140011acf8d1a550b44ba0d6d0ace03f"
+    },
+    "vendor/upstream/skills/finding/scripts/index-findings.sh": {
+      "mode": 493,
+      "sha256": "5878368cf30eeff3155f9f33b56bcd0712c06bed393457115149ea22cec50b4a"
+    },
+    "vendor/upstream/skills/finding/scripts/validate-finding.sh": {
+      "mode": 493,
+      "sha256": "b97f4ee41936941070c01704e02089c67262ccd7ac3cb49c1fd826fa53dac10e"
+    },
+    "vendor/upstream/skills/findings-sync/SKILL.md": {
+      "mode": 420,
+      "sha256": "c1a504a0c22737b79a1da97b22486679d13fa0de0bdba50253fb7f91a1f5d082"
+    },
+    "vendor/upstream/skills/findings-sync/scripts/__pycache__/findings_sync.cpython-311.pyc": {
+      "mode": 420,
+      "sha256": "f7dac62df92781d7fe735e8f567117a5061ebff75c984b871618f64bd99add53"
+    },
+    "vendor/upstream/skills/findings-sync/scripts/findings_sync.py": {
+      "mode": 493,
+      "sha256": "a6fa6f2ae4c3d7e802152fcadcce4bacc59fbbb00deedd776f5cc15994422679"
+    },
+    "vendor/upstream/skills/gc-cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "d5d86b8acc4bc694f885596c27bdb4983e16190b3e5c8f2e22601e4b2fc35ff9"
+    },
+    "vendor/upstream/skills/gc-cartography/examples/gc-before-after.md": {
+      "mode": 420,
+      "sha256": "21f45c0d112a98ee216db70ec4e34680738986f804aad0ad24079303858ad1ab"
+    },
+    "vendor/upstream/skills/gc-cartography/references/merge-decisions.md": {
+      "mode": 420,
+      "sha256": "31cb9a5259bbd8dfa452329fa2f70e3cbe525c51a32d4b713e5aba365992c33f"
+    },
+    "vendor/upstream/skills/gc-cartography/references/overlap-metrics.md": {
+      "mode": 420,
+      "sha256": "83d89915a02d9a4b7a5ea85ef37041a4b55de4f9b743bfece0a86979d2c150eb"
+    },
+    "vendor/upstream/skills/gc-cartography/scripts/detect-overlaps.sh": {
+      "mode": 493,
+      "sha256": "8001a1fa4899da38f11e8f1dbb74b825a1282486a97b6988d589552900fc189e"
+    },
+    "vendor/upstream/skills/gc-cartography/scripts/merge-flows.sh": {
+      "mode": 493,
+      "sha256": "80e77ac1c19f1b62004353b053d5bcd82409258eb7ddfd70b93d09e443999c99"
+    },
+    "vendor/upstream/skills/gc-cartography/scripts/update-references.sh": {
+      "mode": 493,
+      "sha256": "97087119ffe1b8b351cea097a9e312854119d33656abc79bcc1214b0b9e92e1f"
+    },
+    "vendor/upstream/skills/gc-cartography/scripts/validate-gc.sh": {
+      "mode": 493,
+      "sha256": "cb424556755d08ee202492c596c4c7715d7460fb14a383e1bd194ae18039ccdc"
+    },
+    "vendor/upstream/skills/grimoire-mode/SKILL.md": {
+      "mode": 420,
+      "sha256": "237f1b13cd00763dbd26f0eb35dbd8f5e0645eda0f0f2c8254f533307a7c41f4"
+    },
+    "vendor/upstream/skills/hunt-summary/SKILL.md": {
+      "mode": 420,
+      "sha256": "18f7dcfa62adc5269728ab47c5089713495dd938e48270dba623b53acee3f3f9"
+    },
+    "vendor/upstream/skills/librarian-clean-cache/SKILL.md": {
+      "mode": 420,
+      "sha256": "7886d1475d8f552fa10896489c4d82484b93ce6617438e32a9b1d42c11648701"
+    },
+    "vendor/upstream/skills/librarian-index/SKILL.md": {
+      "mode": 420,
+      "sha256": "80a1613c2ed9f1a0a130083adc927609d15f47c3b6e6e14e8a7a45dda6c907dc"
+    },
+    "vendor/upstream/skills/librarian-index/scripts/index.py": {
+      "mode": 493,
+      "sha256": "8cc9b3ac0c9a25a78d603b1986f60a937cd33c142dbdef8dc25f4e4bc957095d"
+    },
+    "vendor/upstream/skills/librarian-library-search/SKILL.md": {
+      "mode": 420,
+      "sha256": "7dd39be2a41cbac5280d43e46eab1a39805efd3322e3049295ecc33fc2971ac6"
+    },
+    "vendor/upstream/skills/librarian-library-search/scripts/search.py": {
+      "mode": 493,
+      "sha256": "98eceaa2d91f4e81914986fa0925ca6a8cae51ca9642fa327705fc075a589e08"
+    },
+    "vendor/upstream/skills/mitigation-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "4114291ce86ce8431d9b1cf8c98cae30c6bbe9734776b973b43439e1f7d40128"
+    },
+    "vendor/upstream/skills/mitigation-review/examples/MitigationReview.t.sol.template": {
+      "mode": 420,
+      "sha256": "1a47626d59cb200e0860f587f898e92be84685718eb409914f7f3a5b69a00469"
+    },
+    "vendor/upstream/skills/mitigation-review/examples/mitigation-review-template.md": {
+      "mode": 420,
+      "sha256": "27cdab09aaa7b1da3d0964927b5f220414bcecfc4690274c159eaf8ed051a4a4"
+    },
+    "vendor/upstream/skills/mitigation-review/references/poc-patterns.md": {
+      "mode": 420,
+      "sha256": "2f97461b95e11301e7b7581cd9cab8a20997f86adbb3c163a2767223dd0b482d"
+    },
+    "vendor/upstream/skills/mitigation-review/references/review-checklist.md": {
+      "mode": 420,
+      "sha256": "7d5de6a633841cc038a948c33e99a433cf5ced33cb7796895587c4ea45a624d4"
+    },
+    "vendor/upstream/skills/mitigation-review/references/verdict-taxonomy.md": {
+      "mode": 420,
+      "sha256": "c409275b40decd6a447e28189ef2b39c697f0f8d9d254043027ad2f917f19b0d"
+    },
+    "vendor/upstream/skills/mitigation-review/references/writeup-format.md": {
+      "mode": 420,
+      "sha256": "36afe6ac7cb9cb81753e83daa94c36892edd0d6521a992f4a2d532b513e823b6"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/_workspace-guard.sh": {
+      "mode": 420,
+      "sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/commit-links.sh": {
+      "mode": 493,
+      "sha256": "3eb54b8291658a5381004e0701f93c234d8b44b3874844e2fdc2c8910c26239f"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/extract-finding.sh": {
+      "mode": 493,
+      "sha256": "62432cb644fdf20b959cfb053282cef02cae9d3bfe43de56ff4d669e41348def"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/fix-diff.sh": {
+      "mode": 493,
+      "sha256": "99263258dacbf7ac7064248a89701b1e781a2ba7c602ca307b479cd7c37c3a9e"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/index-report.sh": {
+      "mode": 493,
+      "sha256": "dcbeb4a8c5327fb675539a0725aa92dc07f22f21d4156eeb06ee10cdec0343a5"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/link-issues.sh": {
+      "mode": 493,
+      "sha256": "af21e3cdcfa5b6b14cf171ddd31a156019353e32cea21011755c1c62568f9d99"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/load-issue.sh": {
+      "mode": 493,
+      "sha256": "71cb0eb3adccd553637153ff7353e7f815a440c4ae92ccf5defe7ee1c86e2840"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/map-fixes.sh": {
+      "mode": 493,
+      "sha256": "764230c177b72cdfd474418204f87eb2beed01baea255f389fdfb4e002578d0f"
+    },
+    "vendor/upstream/skills/mitigation-review/scripts/prefix-snapshot.sh": {
+      "mode": 493,
+      "sha256": "d80e3eb1711cbae502ac883992e2ae20eb48628186c61672f86e0344b226984f"
+    },
+    "vendor/upstream/skills/modify-library/SKILL.md": {
+      "mode": 420,
+      "sha256": "9f94d30a7f807a045676fd0693698f00aa3f605c73b71ff046014d3ad9d45ec6"
+    },
+    "vendor/upstream/skills/modify-library/examples/add-git-library.md": {
+      "mode": 420,
+      "sha256": "376719473a7537c901cd42b18604a6a327c3c94db47fef2c4202f8d8bfab7e9c"
+    },
+    "vendor/upstream/skills/modify-library/examples/add-symlink-library.md": {
+      "mode": 420,
+      "sha256": "ef154198d864b81178ec4e3277c0ac9f1bd41e0a2f33e096587855b0fb0e4a58"
+    },
+    "vendor/upstream/skills/peer-review/SKILL.md": {
+      "mode": 420,
+      "sha256": "386629649dd56dc420ec05e93fd474d88d55cc5773d907defee10f9407670d1b"
+    },
+    "vendor/upstream/skills/peer-review/examples/pending-tome-template.md": {
+      "mode": 420,
+      "sha256": "83241898fcb3f29851b8ddd64dd8adcd57c3dad1423fefca48896047db0df47d"
+    },
+    "vendor/upstream/skills/peer-review/examples/session-marker-template.md": {
+      "mode": 420,
+      "sha256": "ec7a16464be5d3770b66862efea2c0bef747195fc660204d6d41ded807c65258"
+    },
+    "vendor/upstream/skills/peer-review/examples/verdict-template.md": {
+      "mode": 420,
+      "sha256": "e1545b4368a88b0f766bde5dc7d1d2f718e8c6f52a45c006bc1eb369bf2010a9"
+    },
+    "vendor/upstream/skills/peer-review/references/deliverables.md": {
+      "mode": 420,
+      "sha256": "bdaa479104c89429095d83cc1ef37c2e4a5c66c4b15ae3a992d4be442eb52e3a"
+    },
+    "vendor/upstream/skills/peer-review/references/duplicate-analysis.md": {
+      "mode": 420,
+      "sha256": "a2326fe05ecb9655c89ce698107bab6a2a8c5f772d58b46374519139cb402d12"
+    },
+    "vendor/upstream/skills/peer-review/references/fix-verification.md": {
+      "mode": 420,
+      "sha256": "66a5cdc68619049804d0b3ba4d9915c3b36bf55c5bb079c90cffa8d9466d98a0"
+    },
+    "vendor/upstream/skills/peer-review/references/parallel-sessions.md": {
+      "mode": 420,
+      "sha256": "d264845f3fb9bb4f53ffdd8dacdc925f8f7cf0c11856da92a562f8fe0ea479a6"
+    },
+    "vendor/upstream/skills/peer-review/references/severity-calibration.md": {
+      "mode": 420,
+      "sha256": "caa3bcf8f562043ec548e635ef2aa915f9529db066bcbba5714a085381570a80"
+    },
+    "vendor/upstream/skills/peer-review/scripts/_workspace-guard.sh": {
+      "mode": 420,
+      "sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c"
+    },
+    "vendor/upstream/skills/peer-review/scripts/delta-check.sh": {
+      "mode": 493,
+      "sha256": "3dd369ba2fbc6b16c2faf3cd01f5bc854bbf7000e0edaacdd746af36dd71ae34"
+    },
+    "vendor/upstream/skills/peer-review/scripts/extract-poc.sh": {
+      "mode": 493,
+      "sha256": "395f6176aea1a11228a77a28c737c7c9288296cf8b5212f4e3d3d0a03075660e"
+    },
+    "vendor/upstream/skills/peer-review/scripts/isolated-workspace.sh": {
+      "mode": 493,
+      "sha256": "33fb3ee253139c1e5c6b46a8dc21588e4b814c1dc0cfd9abea87467367d6a406"
+    },
+    "vendor/upstream/skills/peer-review/scripts/load-finding.sh": {
+      "mode": 493,
+      "sha256": "165c046716784a3a22e2c0216f9db6a0d75a148d686d75e2043fd882f9005e70"
+    },
+    "vendor/upstream/skills/peer-review/scripts/verify-fix.sh": {
+      "mode": 493,
+      "sha256": "a18e048feca95e88a697d1857cda173dafe26567a2bc2c4033b27733a25b0fc3"
+    },
+    "vendor/upstream/skills/review-cartography/SKILL.md": {
+      "mode": 420,
+      "sha256": "6ea5b09b0b2f3727ab1654cf5bf484f93c1efbb37faf8a4b6b32d4d057662e4f"
+    },
+    "vendor/upstream/skills/review-cartography/examples/cartography-review-example.md": {
+      "mode": 420,
+      "sha256": "ab374d2077466b0abeab899714458c9ef8378d073af8574eaae2764c0735290c"
+    },
+    "vendor/upstream/skills/review-cartography/references/cartography-format.md": {
+      "mode": 40960,
+      "sha256": "19de53b872e53bb39a5c679fe9aa1e2e7eeb6261dbd407088cbe4f01d7c13c0c"
+    },
+    "vendor/upstream/skills/review-cartography/references/overlap-detection.md": {
+      "mode": 420,
+      "sha256": "f4be8701e9df189381f228c1099128d326da16ef0aca2951d635cfcf1dbcb1d3"
+    },
+    "vendor/upstream/skills/review-cartography/scripts/find-overlaps.sh": {
+      "mode": 493,
+      "sha256": "d27b62c06a2dbfa04fb0c756147a699a0fca98135bb052c4b8f74ef6cf545c01"
+    },
+    "vendor/upstream/skills/review-cartography/scripts/validate-cartography.sh": {
+      "mode": 493,
+      "sha256": "f147fb111c873f7d8903a309716de8cf003bf162e90f4fcd6168fb045dd898de"
+    },
+    "vendor/upstream/skills/scribe-distill/SKILL.md": {
+      "mode": 420,
+      "sha256": "5a483198b6418680a2000db529313ffd6d5062786330e428b55167d42d770676"
+    },
+    "vendor/upstream/skills/scribe-distill/references/feasibility-criteria.md": {
+      "mode": 420,
+      "sha256": "98d507f3b97c9c582f62c4e7970909b7e2effd5b14cadacd46bda9e9fc21a6a1"
+    },
+    "vendor/upstream/skills/scribe-distill/references/sigil-types.md": {
+      "mode": 420,
+      "sha256": "d705dc18b175a2556d8fce697ec1dd5ad656ad0ff54114b779b0e41e88bebbcf"
+    },
+    "vendor/upstream/skills/scribe-gc/SKILL.md": {
+      "mode": 420,
+      "sha256": "e21a2fbad904c407a82b87130583b9a50ad7ac56fc35f12effe6d954f2d904df"
+    },
+    "vendor/upstream/skills/scribe-utilities/SKILL.md": {
+      "mode": 420,
+      "sha256": "f07da9893f8b387dffa462ffd9e88864ac6779994a2f70275ab802474b4a6262"
+    },
+    "vendor/upstream/skills/summon/SKILL.md": {
+      "mode": 420,
+      "sha256": "cee6a2364804b5bfbc380aa319537e9fb207eaf486978d45805a72c8bf7557c5"
+    },
+    "vendor/upstream/skills/summon/examples/grimoire-md-example.md": {
+      "mode": 420,
+      "sha256": "83d461089968b3a047d005d81bbcc35032c5f95f9689ab1a8af6927fabff4108"
+    },
+    "vendor/upstream/skills/summon/references/bounty-platforms.md": {
+      "mode": 420,
+      "sha256": "c1a2986d5d5ab3ddd37d0bfc75a88b246381214a0754c6b5740f54f07878cfc4"
+    },
+    "vendor/upstream/skills/summon/references/domain-crown-jewels.md": {
+      "mode": 420,
+      "sha256": "24293cc2bfec88e08bfa0f014fcc3795cadfd3a10ff87a95f02bd1406465e635"
+    },
+    "vendor/upstream/skills/summon/references/sigil-spawning.md": {
+      "mode": 420,
+      "sha256": "56defce52abf44143e035ee14be16a58285aa780e28410e38dd678d3aaa30283"
+    },
+    "vendor/upstream/skills/summon/scripts/clone-assets.sh": {
+      "mode": 493,
+      "sha256": "b9654c60748db63ed31e71a4b7bd8c37d66c3c3d4148ba2ef82a02f37d256221"
+    },
+    "vendor/upstream/skills/summon/scripts/select-checks.sh": {
+      "mode": 493,
+      "sha256": "746a460965b301578ca6f729cf2caadbef98852d507a22fd84a385d8aaa165db"
+    },
+    "vendor/upstream/skills/summon/scripts/session-status.sh": {
+      "mode": 493,
+      "sha256": "c9be8d2fb56a161be8f544034e24a1b4ce6977579baf875448dad4d874860c8f"
+    },
+    "vendor/upstream/skills/tome-sync/SKILL.md": {
+      "mode": 420,
+      "sha256": "5a06f3eb5a3d52dbd84982dde11558539793a25684c703154ee94c420da6f681"
+    },
+    "vendor/upstream/skills/tome/SKILL.md": {
+      "mode": 420,
+      "sha256": "0345d04fd8e3c542402aea46e1c585b6ddc0aeca1ff2c63788d2545e486c08fd"
+    },
+    "vendor/upstream/skills/tome/references/evidence-model.md": {
+      "mode": 420,
+      "sha256": "b3e61be554a053e402b6ff5bccfdcbe9994c11a62d6a99b80767239804c7767c"
+    },
+    "vendor/upstream/skills/tome/references/health-check.md": {
+      "mode": 420,
+      "sha256": "6c804db08a6d337ca2233ff2d7a335fe55da8f2bd8bc3dd5c2037792115d0afa"
+    },
+    "vendor/upstream/skills/tome/references/links.md": {
+      "mode": 420,
+      "sha256": "9c18e1d5480cd5e7da02192fafa866bf6d580aa6ef9b6e4c1b11f2cd9dee1a1d"
+    },
+    "vendor/upstream/skills/tome/references/page-templates.md": {
+      "mode": 420,
+      "sha256": "e5f3485730750d0329291af8a2e6a594eefd2833283f10439729057a80a06a67"
+    },
+    "vendor/upstream/skills/tome/references/tome-format.md": {
+      "mode": 420,
+      "sha256": "03fa093400652dc52a946699e9584c5ba66056c1447ae2467c6f8215d3505a0a"
+    },
+    "vendor/upstream/skills/tome/references/workflow.md": {
+      "mode": 420,
+      "sha256": "d1246c358b1ddded3748216ed2f1e1d14a75c47ac7c855fed10b505e2bcd4c4e"
+    },
+    "vendor/upstream/skills/validate-hypothesis/SKILL.md": {
+      "mode": 420,
+      "sha256": "5f9a2f56d72a7dadabfa5fe5e3fb071a34c3fd6361cad3e346877678cb8481dc"
+    },
+    "vendor/upstream/skills/write-hypothesis/SKILL.md": {
+      "mode": 420,
+      "sha256": "dc888e4bc2f10e32a4a6d8cc3e016aaf24f21d7d397b9e9191000a3abed03113"
+    },
+    "vendor/upstream/skills/write-poc/SKILL.md": {
+      "mode": 420,
+      "sha256": "6ea6709d91b9af42a092298ca3b799efa1617430ecdec7007a37e277d4f82bb2"
+    },
+    "vendor/upstream/skills/write-poc/examples/price-oracle-fork-test.md": {
+      "mode": 420,
+      "sha256": "6f01d233fa45e27a5bb8ac3730e1cd62a4e88b6ba669ee420f1cb9c3d7a94c98"
+    },
+    "vendor/upstream/skills/write-poc/examples/reentrancy-foundry-poc.md": {
+      "mode": 420,
+      "sha256": "ec92fbc6cf8cab86710d948de541c55b79210e6197ba28af1fe8c95d5b48014b"
+    },
+    "vendor/upstream/skills/write-poc/examples/sqli-python-poc.md": {
+      "mode": 420,
+      "sha256": "a981210938f6875d23e4c193b96b077e4beaa0e3e13457c7f6fa40ef78c9b373"
+    },
+    "vendor/upstream/skills/write-poc/examples/ssrf-curl-poc.md": {
+      "mode": 420,
+      "sha256": "9507a61e6aee8793be29b8557e0fb99ec3db074d91663e3dd22885eddff0baa7"
+    },
+    "vendor/upstream/skills/write-poc/references/config-issues.md": {
+      "mode": 420,
+      "sha256": "f9c88ba30cef252e3d306620312e6f7351bf014360bcae7f6e53bbf605c47eaf"
+    },
+    "vendor/upstream/skills/write-poc/references/crypto-vulns.md": {
+      "mode": 420,
+      "sha256": "81b6eee36d677951ebf37a9268a1eb7732d489ab2a8a2f5441cc78034b9a81b1"
+    },
+    "vendor/upstream/skills/write-poc/references/forge-poc-templates.md": {
+      "mode": 420,
+      "sha256": "f87f6ab1294591be23600bba5cd4c973b3303005be582988758dd6d979c387ae"
+    },
+    "vendor/upstream/skills/write-poc/references/general-principles.md": {
+      "mode": 420,
+      "sha256": "5df917177b74389884f7ba817c1e356585c9e32dda289cf87f1a8d740626d772"
+    },
+    "vendor/upstream/skills/write-poc/references/logic-flaws.md": {
+      "mode": 420,
+      "sha256": "a3917555db0113917b01777b550d5d1cb52d91d2f067d03637ad9e1c51bf89d0"
+    },
+    "vendor/upstream/skills/write-poc/references/memory-corruption.md": {
+      "mode": 420,
+      "sha256": "ee1a2b05f0527c10e9ad4f4a8ac19629c72dc065d717bd9376cc462254249361"
+    },
+    "vendor/upstream/skills/write-poc/references/poc-formats.md": {
+      "mode": 420,
+      "sha256": "cecefbfcadc4a2cf1796d568869a44bff22f1e0a46596e9e4d869018962861d5"
+    },
+    "vendor/upstream/skills/write-poc/references/race-conditions.md": {
+      "mode": 420,
+      "sha256": "30affcd0df308a0ee3ffe1826ed1f02150efc8c9181f90b86b4288e4a67bd6bb"
+    },
+    "vendor/upstream/skills/write-poc/references/smart-contracts.md": {
+      "mode": 420,
+      "sha256": "3252c4d2b989e28167a56369bd811ac2d47b313e8730862479f97a876079d0e3"
+    },
+    "vendor/upstream/skills/write-poc/references/web-application-vulns.md": {
+      "mode": 420,
+      "sha256": "8ea61bc4adc9ecdf9533d4e2332e4aa0185233f18fd8ce40b96dd7621eb60696"
+    },
+    "vendor/upstream/skills/write-poc/scripts/validate-poc.sh": {
+      "mode": 493,
+      "sha256": "1939b9c8e726a843ba025a16aa68755037f08b92e0685b25c81d90c68d068638"
+    }
+  },
+  "schema_version": 1,
+  "upstream_sha": "4cfded991acfe02375335e5bc8f9bd3a52c5df38",
+  "upstream_url": "https://github.com/0xStalin-eth/grimoire.git"
+}

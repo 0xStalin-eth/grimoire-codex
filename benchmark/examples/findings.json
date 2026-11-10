@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "findings": [
+    {
+      "id": "F-1",
+      "title": "Synthetic example: callback permits repeated withdrawal",
+      "severity": "high",
+      "root_cause": "Balance is decremented after an untrusted external callback.",
+      "impact": "The local synthetic fixture permits a second withdrawal against the same balance.",
+      "locations": [{"path": "src/Fixture.sol", "line": 12}],
+      "evidence": ["raw/report.txt: callback trace and measured balances"],
+      "reproduction": {"status": "reproduced", "command": "fixture-test", "result": "Synthetic example only; replace with actual test output."}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "os": "record actual OS or container image digest",
+  "tools": {"git": "record version", "forge": "record version or unavailable"},
+  "runtime_configuration": {
+    "sandbox": "record actual sandbox",
+    "network": "record access policy",
+    "reasoning_effort": "record setting or unavailable",
+    "context_and_token_budget": "record setting or unavailable",
+    "agent_concurrency": "record actual limit",
+    "mcp_services": [],
+    "personal_knowledge_snapshot": "record frozen snapshot identifier or empty"
+  },
+  "dependencies_and_test_inputs": "record lockfiles, compiler, RPC/fork block and fixture seed; never secrets"
+}

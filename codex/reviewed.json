@@ -1,0 +1,52 @@
+{
+  "entrypoints": [
+    "agents/familiar.md",
+    "agents/gnome.md",
+    "agents/hag.md",
+    "agents/librarian.md",
+    "agents/scribe.md",
+    "agents/sigil.md",
+    "skills/annotation/SKILL.md",
+    "skills/cartography/SKILL.md",
+    "skills/checks/SKILL.md",
+    "skills/delve/SKILL.md",
+    "skills/dig-mode/SKILL.md",
+    "skills/divine/SKILL.md",
+    "skills/finding-dedup/SKILL.md",
+    "skills/finding-draft/SKILL.md",
+    "skills/finding-review/SKILL.md",
+    "skills/finding/SKILL.md",
+    "skills/findings-sync/SKILL.md",
+    "skills/gc-cartography/SKILL.md",
+    "skills/grimoire-mode/SKILL.md",
+    "skills/hunt-summary/SKILL.md",
+    "skills/librarian-clean-cache/SKILL.md",
+    "skills/librarian-index/SKILL.md",
+    "skills/librarian-library-search/SKILL.md",
+    "skills/mitigation-review/SKILL.md",
+    "skills/modify-library/SKILL.md",
+    "skills/peer-review/SKILL.md",
+    "skills/review-cartography/SKILL.md",
+    "skills/scribe-distill/SKILL.md",
+    "skills/scribe-gc/SKILL.md",
+    "skills/scribe-utilities/SKILL.md",
+    "skills/summon/SKILL.md",
+    "skills/tome-sync/SKILL.md",
+    "skills/tome/SKILL.md",
+    "skills/validate-hypothesis/SKILL.md",
+    "skills/write-hypothesis/SKILL.md",
+    "skills/write-poc/SKILL.md"
+  ],
+  "commands": [
+    ".claude/commands/assess-process-improvements.md",
+    ".claude/commands/commit.md",
+    ".claude/commands/execute-plan.md",
+    ".claude/commands/gap-analysis.md"
+  ],
+  "command_descriptions": {
+    "commit": "Create a reviewed conventional commit in Grimoire-Codex after running its validation checks; never push.",
+    "gap-analysis": "Compare the archived canonical specifications with the downstream implementation and update its prioritized plan.",
+    "execute-plan": "Implement the highest-priority downstream plan item with spec study, independent review and validation.",
+    "assess-process-improvements": "Assess operator feedback on the current maintenance session and propose confirmed downstream process improvements."
+  }
+}
