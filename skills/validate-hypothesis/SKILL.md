@@ -1,6 +1,6 @@
 ---
 name: validate-hypothesis
-description: "This skill should be used when the user says \"validate hypothesis\", \"validate this hypothesis\", \"/validate-hypothesis\", \"is this lead real\", \"explore this lead\", \"prove or disprove this\", \"check this hypothesis\", \"work on hypothesis name\", \"promote this hypothesis\", or points at a file in grimoire/hypotheses/WIP/ (created by hand or by /delve) and wants it explored and settled. Traces the mechanism in code, checks whether the behavior is intended, proves it with a PoC, gets an independent triage, and records the outcome: promoted to a finding draft in findings/WIP/, or closed in hypotheses/invalid/ as invalid or expected behavior. Not for only writing a hypothesis down (use /write-hypothesis), surfacing leads (use /delve), building context through questions (use /dig-mode), reviewing someone else's finding (use /peer-review), or writing up an already-proven bug (use /finding-draft)."
+description: "This skill should be used when the user says \"validate hypothesis\", \"validate this hypothesis\", \"/validate-hypothesis\", \"is this lead real\", \"explore this lead\", \"prove or disprove this\", \"check this hypothesis\", \"work on hypothesis name\", \"promote this hypothesis\", or points at a file in grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/ (created by hand or by /delve) and wants it explored and settled. Traces the mechanism in code, checks whether the behavior is intended, proves it with a PoC, gets an independent triage, and records the outcome: promoted to a finding draft in findings/WIP/, or closed in hypotheses/invalid/ as invalid or expected behavior. Not for only writing a hypothesis down (use /write-hypothesis), surfacing leads (use /delve), building context through questions (use /dig-mode), reviewing someone else's finding (use /peer-review), or writing up an already-proven bug (use /finding-draft)."
 ---
 
 ## Codex adapter (read first)
@@ -10,7 +10,7 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Validate Hypothesis
 
-Take one hypothesis from `grimoire/hypotheses/WIP/` and settle it: explore it, prove or disprove it,
+Take one hypothesis from `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/` and settle it: explore it, prove or disprove it,
 and file the result where the rest of Grimoire can see it. A hypothesis comes from the user's own
 reading or from `/delve`; both use the hypothesis format from `/summon` Step 2.
 
@@ -31,12 +31,12 @@ reading or from `/delve`; both use the hypothesis format from `/summon` Step 2.
 
 | Input | Where it comes from |
 |---|---|
-| Hypothesis | A file in `grimoire/hypotheses/WIP/`, or an idea the user states (step 1 records it) |
-| Source leads | The file's `source:` lines (`grimoire/delves/<session-id>/leads/<lead>.md`) |
-| Context | `GRIMOIRE.md` (scope, trust assumptions, crown jewels), `grimoire/tomes/active/` (never `tomes/archived/`) |
+| Hypothesis | A file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/`, or an idea the user states (step 1 records it) |
+| Source leads | The file's `source:` lines (`grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/leads/<lead>.md`) |
+| Context | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` (scope, trust assumptions, crown jewels), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` (never `tomes/archived/`) |
 | PoC directory | The project's existing PoC folder; never create a new one silently |
 
-If GRIMOIRE.md doesn't exist, run `/summon` first. The peer-review skill's `scripts/` directory is `$P`
+If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. The peer-review skill's `scripts/` directory is `$P`
 below (`isolated-workspace.sh`, `verify-fix.sh`); its `../peer-review/references/severity-calibration.md` and
 `../peer-review/references/parallel-sessions.md` apply here too.
 
@@ -71,12 +71,12 @@ Create a todo list from these steps. Steps marked **[confirm]** pause for the us
 ### 1. Load
 
 Read the hypothesis file and every lead in its `source:`. If the user gave an idea instead of a file,
-create `grimoire/hypotheses/WIP/<name>.md` in the `/summon` format (`source: manual`) and append a
-row for it to `grimoire/hypotheses/SESSIONS.md` 
+create `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<name>.md` in the `/summon` format (`source: manual`) and append a
+row for it to `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` 
 (`session-status.sh … <name>.md WIP "created, manual"`).
 
 **Claim it.** If `claimed-by:` is empty, set it to this session's ID and update its row in
-`grimoire/hypotheses/SESSIONS.md` (`session-status.sh … <name>.md WIP "claimed, validating"`). Re-read the file right after: if another ID won, back off. If it
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` (`session-status.sh … <name>.md WIP "claimed, validating"`). Re-read the file right after: if another ID won, back off. If it
 already names another session, stop: tell the user which session holds it (`codex resume
 <verified-thread-id>`), and continue only if they explicitly take it over (note `taken over from <id>`
 in its row).
@@ -84,8 +84,8 @@ A resumed session keeps its ID, so it finds its own claim.
 
 Restate the hypothesis as one testable sentence: who does what, through which path, and what breaks.
 
-Then check whether it is already settled. Search `grimoire/findings/` (all folders, and the
-`original-findings/` mirror) and `grimoire/hypotheses/valid/` and `invalid/` for the same mechanism at
+Then check whether it is already settled. Search `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (all folders, and the
+`original-findings/` mirror) and `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/valid/` and `invalid/` for the same mechanism at
 the same `path:line`. If a match exists, stop and tell the user: it is a duplicate of a finding, or a
 known dead end with its recorded reason.
 
@@ -104,7 +104,7 @@ Append each check to `## Notes` as you go.
 ### 3. Check intent
 
 Look for evidence that the behavior is by design: the spec and docs, a docstring describing this exact
-behavior, an intent-named test, the client's answers in `grimoire/client-communication/`. When the
+behavior, an intent-named test, the client's answers in `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/`. When the
 reason for the code is unclear, run `/divine` on it. Land on *not by design*, *by design*, or *needs the
 client* (then draft the question for `client-communication/`; don't send it).
 
@@ -154,14 +154,14 @@ it only if this session will resume it), then:
 
 | Verdict | Hypothesis file | Also |
 |---|---|---|
-| **Valid** | Move to `hypotheses/valid/`, `outcome: promoted: findings/WIP/<name>.md` | Run `/finding-draft` and save the draft as `grimoire/findings/WIP/<name>.md` (not the skill's default folder), with a `hypothesis: hypotheses/valid/<name>.md` line in its front matter and the PoC in its proof section |
+| **Valid** | Move to `hypotheses/valid/`, `outcome: promoted: findings/WIP/<name>.md` | Run `/finding-draft` and save the draft as `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/<name>.md` (not the skill's default folder), with a `hypothesis: hypotheses/valid/<name>.md` line in its front matter and the PoC in its proof section |
 | **Invalid** | Move to `hypotheses/invalid/`, `outcome: invalid: <why>` | |
 | **Expected behavior** | Move to `hypotheses/invalid/`, `outcome: expected behavior: <why>` | |
-| **Inconclusive** | Stays in `WIP/` | Notes say what is missing; if it waits on the client, add the question to `grimoire/client-communication/<name>.md` |
+| **Inconclusive** | Stays in `WIP/` | Notes say what is missing; if it waits on the client, add the question to `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/<name>.md` |
 
-Update the hypothesis's row in `grimoire/hypotheses/SESSIONS.md` to its new folder, with the verdict
+Update the hypothesis's row in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` to its new folder, with the verdict
 as the note (`session-status.sh … <name>.md valid "Valid; promoted to findings/WIP/<name>.md"`), and
-append a `created in WIP` row to `grimoire/findings/SESSIONS.md` for a new draft.
+append a `created in WIP` row to `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/SESSIONS.md` for a new draft.
 
 From here on, the finding and the hypothesis move together: if the finding is later rejected, its
 hypothesis goes back to `invalid/` (rule in `/summon` Step 2, "Findings and hypotheses stay in sync").

@@ -15,7 +15,7 @@ They share 5 of 8 components (62.5% overlap) and describe the same logical opera
 
 ## Before: Two Overlapping Flows
 
-### Flow A: `grimoire/cartography/secret-retrieval.md`
+### Flow A: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`
 
 ```markdown
 ---
@@ -69,7 +69,7 @@ it is the primary path to exfiltrating stored credentials.
 - Audit log (step 9) happens after decryption — if step 8 fails, is access still logged?
 ```
 
-### Flow B: `grimoire/cartography/vault-read-path.md`
+### Flow B: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/vault-read-path.md`
 
 ```markdown
 ---
@@ -145,7 +145,7 @@ detail becomes a conditional section.
 
 ## After: Merged Flow
 
-### `grimoire/cartography/secret-retrieval.md`
+### `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`
 
 ```markdown
 ---
@@ -250,7 +250,7 @@ Cached flow sequence:
 
 After the merge, `vault-read-path.md` was deleted. Any file referencing it needs updating:
 
-- `grimoire/cartography/vault-write-path.md`: `related: [vault-read-path]` updated to
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/vault-write-path.md`: `related: [vault-read-path]` updated to
   `related: [secret-retrieval]`
-- `GRIMOIRE.md`: `[[cartography/vault-read-path]]` link updated to
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`: `[[cartography/vault-read-path]]` link updated to
   `[[cartography/secret-retrieval]]`

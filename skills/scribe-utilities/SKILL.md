@@ -41,7 +41,7 @@ Identify what the user wants to know. Four operations are available:
 Ask or infer which collections to query:
 
 - **Personal grimoire** (`~/.grimoire/sigils/` and `~/.grimoire/knowledge/`)
-- **Project-local** (`grimoire/spells/checks/` and `grimoire/spells/knowledge/`)
+- **Project-local** (`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/`)
 - **Both** (default)
 
 If `~/.grimoire/sigils/` is empty, note that the personal grimoire has no sigils yet and

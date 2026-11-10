@@ -11,14 +11,54 @@ maintenance commands use `$grimoire-<command>`. These are workflow references, n
   Resolve them to absolute paths before invoking scripts. `references/`, `scripts/`, `examples/`
   and `../other-skill/` refer to the current skill's directory. Keep each script's documented
   working directory (usually the engagement or target repo root), so output stays with the audit.
-- At entry, read the engagement's `GRIMOIRE.md` if it exists. For workspace initialization run
-  `python3 <installed-root>/scripts/bootstrap.py` explicitly; Codex does not execute the archived
-  Claude lifecycle hooks. Bootstrap is idempotent and only initializes the personal store.
+- Audit work has one immutable boundary:
+  `GRIMOIRE_AUDIT_ROOT`, the absolute directory where this Codex session started. Explicitly pass it
+  to review/status helpers even if shell environment inheritance is unavailable. Never replace it
+  with a broader Git root after changing directories. All audit-created files, isolated copies,
+  scratch scripts and tool caches must stay below that launch directory. Keep tool temporary/cache
+  directories local using the installed tool's documented options; if that is unavailable, report
+  the blocked step instead of requesting broader write access. A Git root above/outside the launch
+  directory is refused by the review helpers.
+- From the scoped target's Git root, initialize this run's outputs with
+  `python3 <installed-root>/scripts/review_artifacts.py init`. For initial scope acquisition,
+  obtain the target checkout inside the launch directory before initializing research artifacts.
+  Use the returned `context` file instead of the shared root `GRIMOIRE.md`, `reports` for all
+  research notes/reviews/drafts/mirrors/logs, and `pocs` for PoCs and pre-fix snapshots. These live
+  in `<target-git-root>/grimoire-codex/<run-id>/`, inside the launch boundary, with an ownership
+  marker. Store the returned `poc-relative` as `GRIMOIRE_CODEX_POC_REL` when a workflow command
+  uses that placeholder. Resolve all placeholders to this run's concrete paths.
+- Write/update files through `review_artifacts.py write <path>` (stdin or `--source <input>`);
+  `--replace` is only for an intentional update to your own run's file. Use its guarded `move`
+  command for filing a review. Both commands refuse Claude's folders, other run IDs and symlinks.
+  Never update shared root `GRIMOIRE.md`, `grimoire/`, client input reports or shared `test/` files.
+  Explicitly supplied existing Claude reports/PoCs can be read as inputs; never overwrite/move
+  their originals. No migration or adoption of legacy output directories is automatic.
+- Keep PoCs outside the project's shared test-discovery directories, under this run's `pocs/`.
+  For Foundry, use `review_artifacts.py test --name <copy> --suite <poc-relative>/<glob>` (and
+  `--ref <commit>` for pre-fix testing). It copies your PoCs into your owned isolated checkout,
+  selects that private test directory with `FOUNDRY_TEST`, and keeps compiler output/cache/tmp
+  inside your run's work folder. `verify-fix.sh` selects the private PoC directory for PoC suites
+  and retains the project's normal test directory for regression suites. Run no generated PoCs
+  from the shared checkout. Other test runners need equivalent isolated test discovery; stop and
+  report a gap if unavailable. Passing syntax/structural checks is not successful reproduction.
+  The guarded Foundry runners disable automatic compiler installation and shared RPC caching;
+  build info, snapshots and fuzz/invariant persistence are run-local too. Supply an available
+  compiler (or prepare one inside the audit root); never install it into a global store mid-audit.
+- Personal-store bootstrap is a separate, explicit one-time setup before the audit session.
+  Do not run bootstrap or write `~/.grimoire/` during an audit. Optional library/cache/promotion
+  workflows that require global writes are unavailable under this rule until adapted to local
+  storage. Codex does not execute the archived Claude lifecycle hooks.
 - Before session-aware work, set `GRIMOIRE_SESSION_ID` in every shell invocation. Use a verified
   Codex thread ID when available; otherwise create a UUID once and keep it as an explicit run ID.
   Record the distinction in the engagement log. A run ID is not a resumable chat ID. Reuse it only
   for the same logical session; a new independent agent needs a new ID. Resume a chat only with a
   verified runtime chat ID. Never infer a chat ID from an isolated-copy folder or guess an ID.
+- Peer/mitigation working copies and scratch folders use
+  `<target-git-root>/.isolated-codex/<run-id>/`, inside `GRIMOIRE_AUDIT_ROOT`. The helper validates
+  the owner runtime, run ID, Git workspace and launch directory before reuse or cleanup. Never
+  migrate, copy, sync, clean or adopt Claude's `.isolated/` tree or legacy unmarked copies. Both
+  isolation trees are excluded from Codex source snapshots. Different Codex sessions/subagents
+  need different run IDs; reuse one only when resuming the same logical run.
 - For a named role, load `<installed-root>/agents/<role>.md`, or use `$grimoire-<role>`.
   When the workflow delegates, spawn a Codex subagent with that procedure, scope, evidence inputs,
   output path and permissions. Use bounded batches within the runtime's available concurrency.
@@ -107,7 +147,7 @@ combination ("search the libraries and solodit for …"). When a constraint is p
 | "look at the repo", "check the source code" | Canonical repositories only |
 | "search the web", "google for …" | Web sources only (web search / web page retrieval) |
 | "check context7 docs for …" | Context7 MCP tools only |
-| "search the local grimoire" | Local grimoire (`GRIMOIRE.md`, `tomes/`, `findings/`) only |
+| "search the local grimoire" | Local grimoire (`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, `tomes/`, `findings/`) only |
 
 When no constraint is present, fall through to the full priority list below.
 
@@ -143,7 +183,7 @@ access.
 4. **Audit reports and prior findings** — search for prior audit reports of the target protocol
    or similar protocols. Start with `configured claudit search_findings operation` filtered
    by protocol name or vulnerability class.
-5. **The local grimoire** — check if `GRIMOIRE.md`, `grimoire/tomes/`, or `grimoire/findings/`
+5. **The local grimoire** — check if `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`, or `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`
    in the current project contain relevant prior research. Read with Read/Grep/Glob.
 6. **Local knowledge bases** — semantic search and grep over
    `~/.grimoire/librarian/library/` (see Local Knowledge Bases section below).

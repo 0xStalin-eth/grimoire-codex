@@ -4,8 +4,10 @@
 
 Complete local downstream contents are prepared for `0xStalin-eth/grimoire-codex`, based on
 canonical upstream commit `4cfded991acfe02375335e5bc8f9bd3a52c5df38` on `master`.
-No GitHub repository, live synchronization PR, hosted CI run, secret or remote setting was created.
-Publication awaits the owner's explicit approval, as required by the request.
+The owner supplied the public downstream repository on 2026-11-10. Read-only GitHub checks confirm
+it is empty, its default branch is `main`, and the authenticated account has admin access.
+No code, live synchronization PR, hosted CI run, secret or remote setting has been published by this
+project. Publication awaits the owner's explicit approval, as required by the request.
 
 All **30 upstream skills** have been inventoried and adapted. Six agent procedures and four
 maintenance commands add ten native Codex skill entrypoints (**40 total**). None is intentionally
@@ -29,15 +31,17 @@ README.md, SYNC.md, BENCHMARKING.md, CONTRIBUTING.md
 
 | Check | Result |
 |---|---|
-| Downstream structural/ownership/reference/reproducibility validator | PASS: 40 skills, 30 Bash syntax checks, 12 Python syntax checks |
+| Downstream structural/ownership/reference/reproducibility validator | PASS: 40 skills, 30 Bash syntax checks, 13 Python syntax checks |
 | Bundled skill-creator `quick_validate.py` | PASS: all 40 entrypoints |
-| Python unittest suite | PASS: 41 tests |
+| Python unittest suite | PASS: 68 tests |
 | Read-only network retrieval via `sync.py --check` | PASS: pinned upstream, zero changed/deleted files |
 | Repeated synchronization from separate local source | PASS: idempotent, no managed file changes |
 | Local Git PR-publication integration | PASS: temporary bare remote, bot branch/commit, create/update requests via stubbed GitHub API; human commits preserved; default branch unchanged |
 | Installed annotation CLI on synthetic Solidity fixture | PASS: JSON discovery, tag filtering; installed symlink entrypoint; grep fallback reports context `unknown` |
 | Findings/check validators on upstream examples | PASS: two finding examples and all five check examples |
 | Isolated-copy helper | PASS: byte verification, drift detection and session separation on synthetic repository |
+| Per-run reports/PoCs and guarded execution | PASS: 15 dedicated tests for collisions, output ownership, private discovery, raw evidence, mirrors and Claude preservation |
+| Actual Foundry/Solidity execution | PASS: one synthetic private PoC, Forge 1.5.1 and local solc 0.8.25; invalid shared Claude draft excluded; shared configuration/files unchanged |
 | Status helper | PASS: concurrent updates, malformed/missing IDs refused, held lock not stolen |
 | Bootstrap/installation | PASS: idempotent, registry preserved, collision and Claude-toolkit destination refused |
 | Benchmark init → capture → compare CLI demo | PASS with synthetic reports only; raw reports preserved |
@@ -51,25 +55,71 @@ escaping links, overlay preservation, review conflicts, unknown metadata, new/re
 platform instruction rejection, broken references and script syntax failures.
 
 The annotation test installed only Fire and its dependency in a temporary `uv` cache. It did not
-install anything in the original repository or global Python environment. All test repositories,
-synthetic targets, run artifacts and temporary service dependencies were outside the toolkit and
-original checkout. No model-driven security outcome or performance score was produced.
+install anything in the original repository or global Python environment. Initial-delivery test repositories and synthetic run artifacts used temporary directories.
+For the follow-up review-isolation verification, `TMPDIR` kept all fixtures and scratch outputs
+under the ignored `.review-test-tmp/` directory inside this downstream checkout. No test writes to the original
+Claude checkout. No model-driven security outcome or performance score was produced.
+
+## Review isolation follow-up — 2026-11-10
+
+Codex review copies now use `.isolated-codex/<run-id>/`, separately from Claude's `.isolated/`.
+Runtime/run/Git-root/launch-root ownership checks prevent adopting foreign or unmarked copies;
+legacy copies are not migrated. Both trees are excluded from Codex snapshots. Review/status helpers
+require `GRIMOIRE_AUDIT_ROOT`, reject a broader Git root and block escaping output paths. Optional
+Git metadata refreshes are disabled to avoid writes to shared metadata of linked checkouts.
+
+Twelve dedicated regression tests cover identical Claude/Codex IDs and names using the actual
+archived Claude helper, simultaneous Codex runs, cleanup preservation, foreign markers, symlinks,
+pinned-commit snapshots, missing/relative launch roots, nested launch boundaries, external status
+logs, linked-checkout metadata and fix-verification scratch paths. Fix orchestration uses a fake
+Forge process; it does not establish Solidity or vulnerability correctness. These 12 tests remain
+part of the expanded suite. The original-Claude checkout remains unchanged.
+
+## Reports and PoCs follow-up — 2026-11-10
+
+All Codex context, reports, findings mirrors, session logs and PoCs now use an owned
+`grimoire-codex/<run-id>/` tree inside the audit launch boundary. PoCs use its `pocs/` directory,
+outside shared test discovery. The writer, mover and adapted helpers refuse Claude's output paths,
+other runs, unmarked roots, ownership-marker changes and symlink redirects. Existing report files
+are created exclusively unless an intentional own-run update is requested. Client reports and
+explicitly supplied Claude artifacts remain read-only inputs; legacy output is not migrated.
+
+The private runner explicitly includes only this run's PoCs in owned source copies, even when
+Git-ignored, and retains raw stdout/stderr under the run's `runs/`. Fix verification retains its
+before/after evidence and uses normal project discovery for regression suites. Build/cache/tmp,
+build information, snapshots and fuzz/invariant persistence stay run-local. Foundry compiler
+auto-installation and shared RPC caching are disabled. The guide documents the layout and launch
+sequence; personal-store setup is optional and unnecessary for peer/mitigation review.
+
+Fifteen dedicated artifact tests cover simultaneous same-name outputs, exclusive writes, guarded
+moves, Claude/other-run/symlink refusals, canonical-source protection, private mirror history,
+extraction/import paths, ignored PoCs, stale-PoC pruning, empty/failing evidence, private snapshot
+compilation and PoC/regression discovery. The full suite passes 68 tests.
+
+A real Foundry smoke used a synthetic contract and private PoC with relative imports. An existing
+solc 0.8.25 binary was copied into the fixture's owned work directory; no compiler was downloaded.
+Forge 1.5.1 executed one passing test while an intentionally invalid Claude-owned shared draft
+was excluded. Shared context, Claude draft and `foundry.toml` hashes stayed unchanged; no shared
+root `out/` or `cache/` appeared. The fixture and compiler copy were cleaned. This demonstrates
+private test routing and compilation, not a model-driven audit or a security finding's validity.
 
 ## Behavioral differences and manual attention
 
-- Codex explicitly bootstraps the personal store, reads GRIMOIRE at skill entry and dispatches
+- Codex uses optional pre-audit personal-store setup, reads its own GRIMOIRE at skill entry and dispatches
   Familiar after Sigil. These are instructions, not Claude lifecycle-hook guarantees.
 - Six role skills expose full procedures; independent execution requires a real Codex subagent or
   fresh session. When unavailable, mandatory independent review pauses with a saved handoff.
-- `GRIMOIRE_SESSION_ID` is explicitly supplied. Operator run IDs are distinguished from verified
+- `GRIMOIRE_AUDIT_ROOT` fixes the session launch boundary and is explicitly supplied with
+  `GRIMOIRE_SESSION_ID`. Codex working copies use `.isolated-codex/`, separately from Claude’s
+  `.isolated/`; runtime/run/Git-root/launch-root ownership and exclusions protect reuse and cleanup. Operator run IDs are distinguished from verified
   resumable chat IDs. Copy ownership and containment checks remain enforced.
 - Context7/claudit setup is optional and manual; actual tool namespaces are discovered dynamically.
   Live MCP access, vector indexing/search and embedding-model downloads were not tested.
 - The Pi footer is archived only. Super Sigil and full static-analyzer integrations were already
   unfinished upstream. The downstream does not claim to implement those missing upstream features.
 - No real target, complete multi-agent audit, live bounty acquisition, issue synchronization or
-  client-fix review was executed. Foundry was detected, but no Solidity compiler or target test
-  environment was provisioned for this delivery. Structural passing results are not runtime proof.
+  client-fix review was executed. The synthetic Foundry/Solidity smoke verifies private execution;
+  it does not establish audit equivalence or real vulnerability correctness.
 - Hosted plugin installation and GitHub PR API publication remain untested. Local publication tests
   used real temporary Git remotes and stubbed only GitHub interactions.
 
@@ -80,13 +130,17 @@ explicitly authorized target.
 
 ## Start using Codex
 
-From this downstream checkout, with a pre-existing engagement folder containing the target clone:
+From this downstream checkout, with a pre-existing target Git checkout for the review:
 
 ```sh
+export GRIMOIRE_CODEX_ROOT="$(pwd -P)"
 python3 scripts/validate.py
-python3 scripts/install.py --project /path/to/engagement
-python3 scripts/bootstrap.py
-codex --cd /path/to/engagement
+python3 scripts/install.py --project "$HOME"
+cd /path/to/audit/target-checkout
+export GRIMOIRE_AUDIT_ROOT="$(pwd -P)"
+export GRIMOIRE_SESSION_ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
+python3 "$GRIMOIRE_CODEX_ROOT/scripts/review_artifacts.py" init
+codex --sandbox workspace-write --ask-for-approval on-request
 ```
 
 Invoke `$summon` on the local target, then the desired workflow. For session-aware helpers, use a
@@ -109,17 +163,21 @@ adapter and runtime differences as confounds. No agent should see the other's fi
 
 ## Remaining GitHub setup
 
-After explicit authorization, publish **only this downstream** repository. For a public repository,
-the prepared local commit can be published from its root with:
+The owner has created [0xStalin-eth/grimoire-codex](https://github.com/0xStalin-eth/grimoire-codex)
+as a public repository. After explicit authorization, publish **only this downstream** checkout
+from its root (no local remote is configured yet):
 
 ```sh
-gh repo create 0xStalin-eth/grimoire-codex --public --source . --remote origin --push
+git remote add origin https://github.com/0xStalin-eth/grimoire-codex.git
+git push -u origin main
 gh workflow run ci.yml --repo 0xStalin-eth/grimoire-codex
 gh workflow run sync.yml --repo 0xStalin-eth/grimoire-codex
 ```
 
-Choose `--private` instead if that is the owner's preference. Creation/push/settings changes have
-not been executed. Allow downstream Actions to create PRs. The default token needs no secret and
+Push/settings changes have not been executed. Read-only checks show Actions has read-only default
+workflow permissions and its create/approve-PR toggle is disabled. Enabling that downstream-only
+toggle also requires explicit approval; keep the default token permissions read-only. The sync
+job requests its own narrow write permissions. The default token needs no secret and
 requests Contents/Pull requests write only in the sync job. Approve bot-created PR workflow runs
 when GitHub requires it, or configure the optional downstream-only `SYNC_PR_TOKEN` for automatic
 PR checks. Branch protection/review rules are optional owner settings. See [SYNC.md](../SYNC.md)

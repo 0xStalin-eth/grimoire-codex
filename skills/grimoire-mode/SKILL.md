@@ -14,7 +14,7 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 * Never run anything against a production environment unless explicitly asked to do so! 
 * Be consise and always use simple technical english.
-* Always make sure you have read GRIMOIRE.md 
+* Always make sure you have read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md 
 * Never produce a claim that relies on unverified assumptions. 
 * Don't force findings where there are none.
 

@@ -3,7 +3,7 @@
 # re-pointed, so a PoC can swap it in with `deployCodeTo` and reproduce the original bug.
 #
 # Usage: prefix-snapshot.sh <src-file> <fix-commit> <out-dir> <ID> [--no-check]
-#   e.g. prefix-snapshot.sh src/Router.sol a1b2c3d test/mitigation H-1
+#   e.g. prefix-snapshot.sh src/Router.sol a1b2c3d "$GRIMOIRE_CODEX_POC_REL/mitigation-review" H-1
 #
 # Produces <out-dir>/<Name>PreFix<Id>.sol where contract <Name> is renamed <Name>PreFix<Id> (<Id> is the
 # finding ID with non-alphanumerics dropped, e.g. H-1 -> H1) and every relative import is rewritten
@@ -29,7 +29,8 @@ check=1
 [[ -n "$id" ]] || { echo "the finding ID must contain letters or digits" >&2; exit 2; }
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_workspace-guard.sh"
-require_inside "the output folder" "$out"
+codex_artifacts init >/dev/null
+require_codex_output "$out"
 
 name="$(basename "$src" .sol)"
 pre="${name}PreFix${id}"
@@ -38,9 +39,10 @@ if [[ -e "$dest" ]]; then
   echo "$dest already exists; remove it first if it is yours (another session may own it)" >&2
   exit 1
 fi
+require_codex_output "$dest" "$dest.tmp"
 mkdir -p "$out"
-
-git show "$commit^:$src" > "$dest.tmp"
+(set -o noclobber; git show "$commit^:$src" > "$dest.tmp")
+trap 'rm -f -- "$dest.tmp"' EXIT
 
 python3 -I - "$dest.tmp" "$dest" "$src" "$out" "$name" "$pre" <<'PY'
 import os, re, sys
@@ -60,12 +62,13 @@ def fix(m):
 
 code = re.sub(r'(import\s+(?:[^"\']*?\s+from\s+)?)"([^"]+)"', fix, code)
 code = re.sub(rf'\b(contract|abstract contract)\s+{name}\b', rf'\1 {pre}', code, count=1)
-open(dest, "w").write(code)
+with open(dest, "x") as output:
+    output.write(code)
 os.remove(tmp)
 PY
 
 if [[ $check -eq 1 ]] && command -v forge >/dev/null; then
-  if ! forge build "$dest" >/dev/null 2>&1; then
+  if ! codex_artifacts build --name "snapshot-$id" --file "$dest" >/dev/null 2>&1; then
     rm -f "$dest"
     echo "REMOVED $dest: the pre-fix code does not compile against the current tree, and a broken file in" >&2
     echo "the shared test folder breaks every session's build. Reproduce in an isolated copy at <fix-commit>^:" >&2

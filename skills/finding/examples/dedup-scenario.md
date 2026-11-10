@@ -5,7 +5,7 @@ finding pairs and what actions to take for each classification.
 
 ## Scenario: Four Findings in an Audit
 
-The `grimoire/findings/` directory contains four findings:
+The `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` directory contains four findings:
 
 | File | Title | Type | Severity |
 |------|-------|------|----------|

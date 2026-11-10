@@ -8,7 +8,7 @@ tome task is complete.
 Check:
 
 1. Broken wikilinks.
-2. Pages missing from `grimoire/tomes/index.md` when that index exists.
+2. Pages missing from `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md` when that index exists.
 3. Missing or invalid frontmatter fields.
 4. Source references that do not resolve to preserved or inspectable evidence.
 5. Claims without scope or provenance.
@@ -16,12 +16,12 @@ Check:
 7. Pages whose versions do not match the current research target.
 8. Pages marked `contested`, `contradicted`, `stale`, or `confidence: low`.
 9. Unresolved claims and hypotheses that appear as facts elsewhere.
-10. Contradictions missing from `grimoire/tomes/notes/contradictions.md`.
+10. Contradictions missing from `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md`.
 11. Finding candidates without reproduction evidence or clear uncertainty.
 12. Pages over about 200 lines.
 13. Potential secrets in research files. Report file paths and field names, never secret values.
 14. Active-test records without authorization or scope references.
-15. Copies that contradict their owner in `grimoire/tomes/LINKS.md`, topics repeated across tomes
+15. Copies that contradict their owner in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`, topics repeated across tomes
     with no `LINKS.md` row, and stale `Open drift` entries. `/tome-sync` runs this check in full.
 
 Group issues by severity:
@@ -45,7 +45,7 @@ A tome task is complete only when all applicable checks pass:
 - [ ] Contradictions and unknowns remain visible.
 - [ ] Active tests are safe, reproducible, and linked to authorization.
 - [ ] Tome pages use valid types, frontmatter, and links.
-- [ ] New pages are discoverable from `GRIMOIRE.md`, an index, log, or related page.
+- [ ] New pages are discoverable from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, an index, log, or related page.
 - [ ] Every claim changed in an owner section is also changed in its copies (`LINKS.md`), and new
       shared topics have a row.
 - [ ] The final answer separates facts, interpretations, hypotheses, and unknowns.

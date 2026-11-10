@@ -5,7 +5,7 @@ Documents the layout and conventions for security findings within a grimoire wor
 ## Directory Layout
 
 ```
-grimoire/
+grimoire-codex/${GRIMOIRE_SESSION_ID}/
   findings/                  # Manual audit findings
     SESSIONS.md              # history log: created, updated, submitted, moved
     WIP/                     # every new draft lands here
@@ -19,12 +19,12 @@ grimoire/
   pocs/                      # Proof-of-concept artifacts (referenced by findings)
   cartography/               # Code flow documentation (cross-referenced)
   spells/                    # Detection modules (checks, sigils)
-GRIMOIRE.md                  # Project context map
+grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md                  # Project context map
 ```
 
 ## When to Use Which Directory
 
-### `grimoire/findings/`
+### `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`
 
 Findings produced through manual security research:
 - Human-directed hypothesis and investigation
@@ -39,7 +39,7 @@ A finding moves through three folders:
 - **`invalid/`**: a rejected finding moves here, and its hypothesis moves to `hypotheses/invalid/`
   with it (the "Findings and hypotheses stay in sync" rule in `/summon` Step 2).
 
-### `grimoire/sigil-findings/`
+### `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`
 
 Findings produced through automated tooling:
 - Output from sigil agents (static analysis, pattern matching)
@@ -69,8 +69,8 @@ bash skills/finding/scripts/index-findings.sh
 
 Output is tab-separated: `FILE  TITLE  SEVERITY  TYPE`
 
-Findings are sorted by severity (Critical first). The script scans both `grimoire/findings/`
-and `grimoire/sigil-findings/`.
+Findings are sorted by severity (Critical first). The script scans both `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`
+and `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.
 
 ## Relationship to Other Artifacts
 
@@ -93,10 +93,10 @@ detection modules (via [[scribe-distill]]). A finding answers "what went wrong h
 a check answers "where else might this go wrong." The Scribe agent assesses automation
 feasibility and creates the appropriate detection module type.
 
-### GRIMOIRE.md
+### grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 
 The project context map does not list individual findings, but findings should be consistent
-with the architecture, crown jewels, and attack surface documented in GRIMOIRE.md.
+with the architecture, crown jewels, and attack surface documented in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.
 
 ## Lifecycle
 

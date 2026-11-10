@@ -1,6 +1,6 @@
 ---
 name: write-hypothesis
-description: "This skill should be used when the user says \"write a hypothesis\", \"write up a hypothesis\", \"/write-hypothesis\", \"create a hypothesis\", \"turn this into a hypothesis\", \"make a hypothesis out of this\", \"record this as a hypothesis\", \"save this idea as a hypothesis\", \"hypothesis from this conversation\", \"log this lead\", or wants an idea, a suspicion, or a portion of the current conversation written into grimoire/hypotheses/WIP/ for later exploration. Distills what was already discussed into the hypothesis format from /summon Step 2, narrows the possible outcomes into ruled out / open / confirmed using only evidence already gathered, logs it, and stops. Not for exploring or proving a hypothesis (use /validate-hypothesis), surfacing leads from agent research (use /delve), or writing up a proven bug (use /finding-draft)."
+description: "This skill should be used when the user says \"write a hypothesis\", \"write up a hypothesis\", \"/write-hypothesis\", \"create a hypothesis\", \"turn this into a hypothesis\", \"make a hypothesis out of this\", \"record this as a hypothesis\", \"save this idea as a hypothesis\", \"hypothesis from this conversation\", \"log this lead\", or wants an idea, a suspicion, or a portion of the current conversation written into grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/ for later exploration. Distills what was already discussed into the hypothesis format from /summon Step 2, narrows the possible outcomes into ruled out / open / confirmed using only evidence already gathered, logs it, and stops. Not for exploring or proving a hypothesis (use /validate-hypothesis), surfacing leads from agent research (use /delve), or writing up a proven bug (use /finding-draft)."
 ---
 
 ## Codex adapter (read first)
@@ -11,7 +11,7 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 # Write Hypothesis
 
 Turn an idea, or the part of the conversation that explored it, into one hypothesis file in
-`grimoire/hypotheses/WIP/`, ready for `/validate-hypothesis` or a later session to pick up cold.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/`, ready for `/validate-hypothesis` or a later session to pick up cold.
 
 This skill **writes and stops**. It does not trace new code paths, run tests, or decide whether the
 hypothesis is valid. Its value is that the reasoning done in conversation is not lost, and that the
@@ -37,10 +37,10 @@ next session starts from a narrowed set of outcomes instead of from zero.
 | Input | Where it comes from |
 |---|---|
 | The idea | The user's request, plus the part of the conversation it points at ("this", "what we explored", "the last few answers"). If the scope is unclear, take the most recent thread on the topic and say which part you used |
-| Context | `GRIMOIRE.md` (scope, actors, trust assumptions), `grimoire/tomes/active/`, `grimoire/client-communication/` |
-| Existing work | `grimoire/hypotheses/` (all folders), `grimoire/findings/` (all folders, including `original-findings/`), `grimoire/tomes/active/` idea or lead lists |
+| Context | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` (scope, actors, trust assumptions), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/` |
+| Existing work | `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (all folders), `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (all folders, including `original-findings/`), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` idea or lead lists |
 
-If GRIMOIRE.md or `grimoire/hypotheses/` doesn't exist, run `/summon` first.
+If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md or `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` doesn't exist, run `/summon` first.
 
 ---
 
@@ -68,7 +68,7 @@ From the conversation, collect:
 
 ### 2. Check it isn't already recorded
 
-Search `grimoire/hypotheses/` (WIP, valid, invalid) and `grimoire/findings/` for the same mechanism at
+Search `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (WIP, valid, invalid) and `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for the same mechanism at
 the same `path:line`:
 - **Same hypothesis in `WIP/`:** don't create another. Append the new evidence to its `## Notes`
   (dated), widen its outcome tree if needed, and update its row (step 5).
@@ -95,7 +95,7 @@ Then add:
 ### 4. Write the file
 
 Pick a short kebab-case name for the mechanism (`<component>-<behavior>.md`). Check the name is free
-(`[ ! -e grimoire/hypotheses/WIP/<name>.md ]`); on a clash, add a short suffix. Never overwrite.
+(`[ ! -e grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<name>.md ]`); on a clash, add a short suffix. Never overwrite.
 
 Use the hypothesis format from `/summon` Step 2 exactly, with the body laid out like this:
 
@@ -138,17 +138,17 @@ Rules:
 - `source:` is `manual` unless the idea came from a delve lead file; then list that file instead
   (one per line), as `/delve` does.
 - `outcome:` and `claimed-by:` stay empty. Writing a hypothesis does not claim it.
-- If the project has a rule about how terms are explained (for example, in `GRIMOIRE.md` or the user's
+- If the project has a rule about how terms are explained (for example, in `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` or the user's
   memory), follow it in the file.
 
 ### 5. Log it and report
 
-Set the hypothesis's row in `grimoire/hypotheses/SESSIONS.md` with the summon skill's
+Set the hypothesis's row in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` with the summon skill's
 `scripts/session-status.sh` (never edit the table by hand; it reads the session ID from
 `$GRIMOIRE_SESSION_ID` and refuses to guess one):
 
 ```bash
-<summon>/scripts/session-status.sh grimoire/hypotheses/SESSIONS.md <name>.md WIP "manual. <claim in a few words>; open: <open outcome ids>"
+<summon>/scripts/session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md <name>.md WIP "manual. <claim in a few words>; open: <open outcome ids>"
 ```
 
 Notes may not contain `|`.

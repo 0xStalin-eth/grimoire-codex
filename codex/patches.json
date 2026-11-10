@@ -151,6 +151,16 @@
         "old": "WebFetch",
         "new": "web page retrieval",
         "count": 4
+      },
+      {
+        "old": "| \"search the local grimoire\" | Local grimoire (`GRIMOIRE.md`, `tomes/`, `findings/`) only |\n",
+        "new": "| \"search the local grimoire\" | Local grimoire (`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, `tomes/`, `findings/`) only |\n",
+        "count": 1
+      },
+      {
+        "old": "5. **The local grimoire** \u2014 check if `GRIMOIRE.md`, `grimoire/tomes/`, or `grimoire/findings/`\n",
+        "new": "5. **The local grimoire** \u2014 check if `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`, or `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`\n",
+        "count": 1
       }
     ]
   },
@@ -170,6 +180,76 @@
       {
         "old": "codex resume <session-id>",
         "new": "codex resume <verified-thread-id>",
+        "count": 1
+      },
+      {
+        "old": "Delve does record every lead it surfaces as a hypothesis in `grimoire/hypotheses/WIP/` (step 5).\n",
+        "new": "Delve does record every lead it surfaces as a hypothesis in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/` (step 5).\n",
+        "count": 1
+      },
+      {
+        "old": "Read `GRIMOIRE.md` if it exists. Then inspect relevant research output:\n",
+        "new": "Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if it exists. Then inspect relevant research output:\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/tomes/active/` (never `tomes/archived/`: outdated, likely invalid conclusions)\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` (never `tomes/archived/`: outdated, likely invalid conclusions)\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/findings/` \u2014 `WIP/`, `valid/`, and `invalid/` (rejected findings are dead ends)\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` \u2014 `WIP/`, `valid/`, and `invalid/` (rejected findings are dead ends)\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/hypotheses/` \u2014 `WIP/` are open leads, `invalid/` are dead ends, `valid/` were promoted\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` \u2014 `WIP/` are open leads, `invalid/` are dead ends, `valid/` were promoted\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/sigil-findings/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/cartography/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/spells/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/`\n",
+        "count": 1
+      },
+      {
+        "old": "Write the delve to this session's own folder, `grimoire/delves/<session-id>/`, where `<session-id>`\n",
+        "new": "Write the delve to this session's own folder, `grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/`, where `<session-id>`\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/delves/<session-id>/\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/\n",
+        "count": 1
+      },
+      {
+        "old": "- **No hypothesis yet:** create `grimoire/hypotheses/WIP/<lead>.md` in the hypothesis format from\n",
+        "new": "- **No hypothesis yet:** create `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<lead>.md` in the hypothesis format from\n",
+        "count": 1
+      },
+      {
+        "old": "  `grimoire/hypotheses/SESSIONS.md` with the summon skill's script\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` with the summon skill's script\n",
+        "count": 1
+      },
+      {
+        "old": "  (`session-status.sh grimoire/hypotheses/SESSIONS.md <lead>.md WIP \"from delve <session-id>\"`). If the\n",
+        "new": "  (`session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md <lead>.md WIP \"from delve <session-id>\"`). If the\n",
+        "count": 1
+      },
+      {
+        "old": "status is wherever that file is now (`ls grimoire/hypotheses/*/<name>.md`); never copy the status into\n",
+        "new": "status is wherever that file is now (`ls grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/*/<name>.md`); never copy the status into\n",
         "count": 1
       }
     ]
@@ -231,6 +311,176 @@
         "old": "codex resume\n<session-id>",
         "new": "codex resume\n<verified-thread-id>",
         "count": 1
+      },
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 3
+      },
+      {
+        "old": "- **Don't touch `src/`.** PoCs go in `test/mitigation/`. Pre-fix code is swapped in at test time.\n",
+        "new": "- **Don't touch `src/`.** PoCs go in `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/`. Pre-fix code is swapped in at test time.\n",
+        "count": 1
+      },
+      {
+        "old": "| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, inside this workspace (copy it in if it lives in another checkout; the scripts refuse paths outside) | GRIMOIRE.md header |\n",
+        "new": "| Report | `2026-09-17-cyfrin-<client>-v0.0.md`, inside this workspace (copy it in if it lives in another checkout; the scripts refuse paths outside) | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |\n",
+        "count": 1
+      },
+      {
+        "old": "| Findings repo | `Cyfrin/audit-2026-09-<client>` | GRIMOIRE.md header |\n",
+        "new": "| Findings repo | `Cyfrin/audit-2026-09-<client>` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |\n",
+        "count": 1
+      },
+      {
+        "old": "| Baseline (audited) commit | `37f06bb` | GRIMOIRE.md header |\n",
+        "new": "| Baseline (audited) commit | `37f06bb` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |\n",
+        "count": 1
+      },
+      {
+        "old": "| Mitigation commit | `be70792` | GRIMOIRE.md header |\n",
+        "new": "| Mitigation commit | `be70792` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |\n",
+        "count": 1
+      },
+      {
+        "old": "| In-scope paths | `src/vault-v2 src/risk-engines` | GRIMOIRE.md Scope |\n",
+        "new": "| In-scope paths | `src/vault-v2 src/risk-engines` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope |\n",
+        "count": 1
+      },
+      {
+        "old": "| Client name + git remote of the client's own external repo (not the Cyfrin audit repo) | `Acme`, remote `client` | GRIMOIRE.md header |\n",
+        "new": "| Client name + git remote of the client's own external repo (not the Cyfrin audit repo) | `Acme`, remote `client` | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header |\n",
+        "count": 1
+      },
+      {
+        "old": "If GRIMOIRE.md doesn't exist, run `/summon` first. If any input is missing from GRIMOIRE.md, ask\n",
+        "new": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If any input is missing from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, ask\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] A1. Confirm inputs, record them in GRIMOIRE.md, and fresh-pull the findings mirror\n",
+        "new": "- [ ] A1. Confirm inputs, record them in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, and fresh-pull the findings mirror\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] A3. Add the status table to GRIMOIRE.md\n",
+        "new": "- [ ] A3. Add the status table to grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "off limits. So the report and GRIMOIRE.md must be in this checkout too. Copy them in, or run\n",
+        "new": "off limits. So the report and grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md must be in this checkout too. Copy them in, or run\n",
+        "count": 1
+      },
+      {
+        "old": "checkout. If this checkout has no `grimoire/` tree yet, create it first with the layout from\n",
+        "new": "checkout. If this checkout has no `grimoire-codex/${GRIMOIRE_SESSION_ID}/` tree yet, create it first with the layout from\n",
+        "count": 1
+      },
+      {
+        "old": "this checkout's `grimoire/findings/original-findings`\n",
+        "new": "this checkout's `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-findings`\n",
+        "count": 1
+      },
+      {
+        "old": "(`findings_sync.py --repo <owner/repo> --mirror grimoire/findings/original-findings pull --new`). If\n",
+        "new": "(`findings_sync.py --repo <owner/repo> --mirror grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-findings pull --new`). If\n",
+        "count": 1
+      },
+      {
+        "old": "Join the three into `grimoire/tomes/findings-index.md`:\n",
+        "new": "Join the three into `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/findings-index.md`:\n",
+        "count": 1
+      },
+      {
+        "old": "Add a `### Finding \u2192 mitigation status` table to GRIMOIRE.md (`| Finding | PR | Verdict |`, all\n",
+        "new": "Add a `### Finding \u2192 mitigation status` table to grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md (`| Finding | PR | Verdict |`, all\n",
+        "count": 1
+      },
+      {
+        "old": "   `$S/prefix-snapshot.sh <src-file> <fix-commit> test/mitigation <ID>`, then `deployCodeTo` it. The\n",
+        "new": "   `$S/prefix-snapshot.sh <src-file> <fix-commit> ${GRIMOIRE_CODEX_POC_REL}/mitigation-review <ID>`, then `deployCodeTo` it. The\n",
+        "count": 1
+      },
+      {
+        "old": "Put the tests in `test/mitigation/<ID>MitigationReview.t.sol` (template:\n",
+        "new": "Put the tests in `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol` (template:\n",
+        "count": 1
+      },
+      {
+        "old": "  --suite 'test/mitigation/<ID>*' --suite '<regression glob>'\n",
+        "new": "  --suite '${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>*' --suite '<regression glob>'\n",
+        "count": 1
+      },
+      {
+        "old": "- Write `grimoire/mitigation-review/WIP/<ID>-mitigation-review.md` from\n",
+        "new": "- Write `grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/WIP/<ID>-mitigation-review.md` from\n",
+        "count": 1
+      },
+      {
+        "old": "- Update the finding's row in the GRIMOIRE.md status table (format in `verdict-taxonomy.md`).\n",
+        "new": "- Update the finding's row in the grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md status table (format in `verdict-taxonomy.md`).\n",
+        "count": 1
+      },
+      {
+        "old": "Review files live in `grimoire/mitigation-review/` and move between its subfolders (create any that\n",
+        "new": "Review files live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/` and move between its subfolders (create any that\n",
+        "count": 1
+      },
+      {
+        "old": "On every move, update that finding's GRIMOIRE.md status link to\n",
+        "new": "On every move, update that finding's grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md status link to\n",
+        "count": 1
+      },
+      {
+        "old": "\"<ID>-mitigation-review\" grimoire/ GRIMOIRE.md`). Only when the file reaches `done/` or `archived/`,\n",
+        "new": "\"<ID>-mitigation-review\" grimoire-codex/${GRIMOIRE_SESSION_ID}/ grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`). Only when the file reaches `done/` or `archived/`,\n",
+        "count": 1
+      },
+      {
+        "old": "**Session status.** `grimoire/mitigation-review/SESSIONS.md` is a snapshot of where every review\n",
+        "new": "**Session status.** `grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/SESSIONS.md` is a snapshot of where every review\n",
+        "count": 1
+      },
+      {
+        "old": "<summon>/scripts/session-status.sh grimoire/mitigation-review/SESSIONS.md <ID>-mitigation-review.md \\\n",
+        "new": "<summon>/scripts/session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/SESSIONS.md <ID>-mitigation-review.md \\\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/client-communication/<ID>.md` (format in\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/<ID>.md` (format in\n",
+        "count": 1
+      },
+      {
+        "old": "- Before the first finding, read GRIMOIRE.md's Scope and accepted-behaviour notes. Don't report\n",
+        "new": "- Before the first finding, read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md's Scope and accepted-behaviour notes. Don't report\n",
+        "count": 1
+      },
+      {
+        "old": "  `forge test --match-path 'test/mitigation/*'` (fork suites with the RPC set).\n",
+        "new": "  `forge test --match-path '${GRIMOIRE_CODEX_POC_REL}/mitigation-review/*'` (fork suites with the RPC set).\n",
+        "count": 1
+      },
+      {
+        "old": "`forge test --match-path '${GRIMOIRE_CODEX_POC_REL}/mitigation-review/*'`",
+        "new": "`python3 <installed-root>/scripts/review_artifacts.py test --name mitigation-final --suite \"${GRIMOIRE_CODEX_POC_REL}/mitigation-review/*\"`",
+        "count": 1
+      },
+      {
+        "old": "--suite '${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>*'",
+        "new": "--suite \"${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>*\"",
+        "count": 1
+      },
+      {
+        "old": "The new test files stay untracked in the workspace and are copied into the\nisolated copy, so only the source under test changes.",
+        "new": "The new test files stay under this run\u2019s private PoC directory and are copied into its\nowned isolated checkout. The runner sets FOUNDRY_TEST there; the shared test tree is untouched.",
+        "count": 1
+      },
+      {
+        "old": "- Don't edit the report file unless the user asks.",
+        "new": "- Keep the supplied report read-only. If the user asks for report edits, create or update a derivative under this run's mitigation-review/reports/ through the guarded writer; never replace the input report.",
+        "count": 1
       }
     ]
   },
@@ -240,6 +490,71 @@
       {
         "old": "CLAUDE_CODE_SESSION_ID",
         "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 6
+      },
+      {
+        "old": "| Findings repo | GRIMOIRE.md header, or ask once |\n",
+        "new": "| Findings repo | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header, or ask once |\n",
+        "count": 1
+      },
+      {
+        "old": "| Local mirror of findings | e.g. `grimoire/findings/original-repo-findings/` (with its `DUPLICATES.md` if present) |\n",
+        "new": "| Local mirror of findings | e.g. `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-repo-findings/` (with its `DUPLICATES.md` if present) |\n",
+        "count": 1
+      },
+      {
+        "old": "| Baseline and audited commits | GRIMOIRE.md Scope (\"delta\" range), used to decide pre-existing vs new code |\n",
+        "new": "| Baseline and audited commits | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope (\"delta\" range), used to decide pre-existing vs new code |\n",
+        "count": 1
+      },
+      {
+        "old": "| In-scope paths, trust assumptions | GRIMOIRE.md Scope / Trust assumptions |\n",
+        "new": "| In-scope paths, trust assumptions | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope / Trust assumptions |\n",
+        "count": 1
+      },
+      {
+        "old": "If GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in\n",
+        "new": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in\n",
+        "count": 1
+      },
+      {
+        "old": "GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.\n",
+        "count": 1
+      },
+      {
+        "old": "original-repo-findings",
+        "new": "original-findings",
+        "count": 1
+      },
+      {
+        "old": "The project's existing PoC folder (e.g. `test/PoC/<Org>/`); never create a new one silently",
+        "new": "This run's `pocs/peer-review/` directory returned by `review_artifacts.py init`; leave shared test folders untouched",
+        "count": 1
+      },
+      {
+        "old": "forge test --match-path <poc-dir>/Issue<N><ShortName>.t.sol -vv",
+        "new": "python3 <installed-root>/scripts/review_artifacts.py test --name i<N> \\\n  --suite \"${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue<N><ShortName>.t.sol\"",
+        "count": 1
+      },
+      {
+        "old": "--suite '<poc-dir>/Issue<N>*.t.sol'",
+        "new": "--suite \"${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue<N>*.t.sol\"",
+        "count": 1
+      },
+      {
+        "old": "- **PoCs** go in the project's existing PoC folder, standalone (no imports from other PoC files).",
+        "new": "- **PoCs** go in this run's private `pocs/peer-review/` directory, standalone (no imports from other PoC files). Run them only in the owned isolated checkout with the guarded runner; never promote them into shared test folders.",
+        "count": 1
+      },
+      {
+        "old": "  Ask before creating a new folder; a mistyped path usually means the existing one.",
+        "new": "  Use the initialized run-owned PoC directory; ask before choosing a different execution layout.",
         "count": 1
       }
     ]
@@ -266,6 +581,11 @@
         "old": "`codex resume`\n   keeps the id, so a resumed session finds its copies;",
         "new": "the operator explicitly reuses the same run ID\n   on a verified resumption, so the session finds its copies;",
         "count": 1
+      },
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 7
       }
     ]
   },
@@ -295,6 +615,101 @@
       {
         "old": "kept by `codex resume`",
         "new": "explicitly reused by the operator on resume",
+        "count": 1
+      },
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 2
+      },
+      {
+        "old": "base = os.path.join(root, \".isolated\")",
+        "new": "base = os.path.join(root, \".isolated-codex\")",
+        "count": 1
+      },
+      {
+        "old": "[\".isolated\"]",
+        "new": "[\".isolated\", \".isolated-codex\"]",
+        "count": 4
+      },
+      {
+        "old": "is .isolated a symlink?",
+        "new": "is .isolated-codex a symlink?",
+        "count": 1
+      },
+      {
+        "old": "def check_owner(create=False):\n    \"\"\"The session folder must be ours: its .owner names this session id.\"\"\"\n    if os.path.islink(base) or os.path.islink(sbase):\n        sys.exit(f\"REFUSED: {base} or {sbase} is a symlink\")\n    owner_file = os.path.join(sbase, OWNER)\n    if not os.path.exists(owner_file):\n        if not create:\n            sys.exit(f\"REFUSED: {sbase} has no {OWNER} file; nothing here belongs to session {sid}\")\n        os.makedirs(sbase, exist_ok=True)\n        with open(owner_file, \"w\") as f:\n            json.dump({\"session\": sid, \"created\": time.strftime(\"%Y-%m-%dT%H:%M:%S%z\"), \"workspace\": root}, f)\n        return\n    try: o = json.load(open(owner_file))\n    except Exception: sys.exit(f\"REFUSED: {owner_file} is unreadable\")\n    if o.get(\"session\") != sid:\n        sys.exit(f\"REFUSED: {sbase} is owned by session {o.get('session')!r}, not {sid}\")\n\n",
+        "new": "",
+        "count": 1
+      },
+      {
+        "old": "def ensure_base():\n    os.makedirs(base, exist_ok=True)\n    gi = os.path.join(base, \".gitignore\")\n    if not os.path.exists(gi):\n        with open(gi, \"w\") as f:\n            f.write(\"*\\n\")\n    check_owner(create=True)\n\n",
+        "new": "",
+        "count": 1
+      },
+      {
+        "old": "sbase = os.path.join(base, sid)\n",
+        "new": "sbase = os.path.join(base, sid)\n\n# The launch directory is explicit; changing a helper's cwd must never broaden it.\naudit_arg = os.environ.get(\"GRIMOIRE_AUDIT_ROOT\", \"\")\nif not audit_arg or not os.path.isabs(audit_arg) or not os.path.isdir(audit_arg):\n    sys.exit(\"REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute directory where the Codex session started\")\naudit_root = os.path.realpath(audit_arg)\nif root != audit_root and not root.startswith(audit_root + os.sep):\n    sys.exit(f\"REFUSED: git root {root} is above or outside the Codex launch directory {audit_root}\")\n\ndef check_namespace():\n    if os.path.islink(base) or os.path.islink(sbase):\n        sys.exit(\"REFUSED: Codex isolation base or session directory is a symlink\")\n    if not os.path.realpath(sbase).startswith(root + os.sep):\n        sys.exit(\"REFUSED: Codex session directory leaves the audit workspace\")\n\ndef check_owner(create=False):\n    \"\"\"Never adopt another runtime's/session's directory, including moved legacy copies.\"\"\"\n    check_namespace()\n    owner_file = os.path.join(sbase, OWNER)\n    if os.path.islink(owner_file):\n        sys.exit(\"REFUSED: Codex ownership marker is a symlink\")\n    if not os.path.exists(owner_file):\n        if not create:\n            sys.exit(f\"REFUSED: {sbase} has no {OWNER}; no owned Codex session here\")\n        os.makedirs(sbase, exist_ok=True)\n        try:\n            with open(owner_file, \"x\") as f:\n                json.dump({\"runtime\": \"codex\", \"session\": sid, \"workspace\": root,\n                           \"audit_root\": audit_root, \"created\": time.strftime(\"%Y-%m-%dT%H:%M:%S%z\")}, f)\n        except FileExistsError:\n            pass\n    try:\n        with open(owner_file) as f:\n            owner = json.load(f)\n    except Exception:\n        sys.exit(f\"REFUSED: {owner_file} is unreadable\")\n    expected = {\"runtime\": \"codex\", \"session\": sid, \"workspace\": root, \"audit_root\": audit_root}\n    if not isinstance(owner, dict) or any(owner.get(k) != v for k, v in expected.items()):\n        sys.exit(f\"REFUSED: {sbase} is not owned by this Codex run in this launch directory\")\n\ndef ensure_base():\n    check_namespace()\n    if os.path.lexists(sbase):\n        check_owner()  # Do not adopt an existing unmarked/foreign session folder.\n    os.makedirs(base, exist_ok=True)\n    gi = os.path.join(base, \".gitignore\")\n    if os.path.islink(gi):\n        sys.exit(\"REFUSED: Codex isolation .gitignore is a symlink\")\n    try:\n        with open(gi, \"x\") as f:\n            f.write(\"*\\n\")\n    except FileExistsError:\n        pass\n    check_owner(create=True)\n\ndef require_session_path(path):\n    check_owner()\n    if not os.path.realpath(path).startswith(sbase + os.sep):\n        sys.exit(f\"REFUSED: {path} leaves this Codex run's directory\")\n    parent = path\n    while parent != sbase:\n        if os.path.islink(parent):\n            sys.exit(f\"REFUSED: Codex working path is a symlink: {parent}\")\n        parent = os.path.dirname(parent)\n\ncheck_namespace()\n\n",
+        "count": 1
+      },
+      {
+        "old": "if args[0] == \"session\":\n    print(sbase)",
+        "new": "if args[0] == \"session\":\n    ensure_base()  # Validate ownership before verify-fix can create or clean scratch files.\n    print(sbase)",
+        "count": 1
+      },
+      {
+        "old": "if os.path.islink(iso):\n    if cmd == \"remove\":\n        os.remove(iso)                    # drop the link itself, never what it points to\n        print(f\"removed the link {iso} (its target was not touched)\")\n        sys.exit(0)\n    sys.exit(f\"REFUSED: {iso} is a symlink to {os.path.realpath(iso)}; remove it first\")\n",
+        "new": "if os.path.islink(iso):\n    sys.exit(f\"REFUSED: {iso} is a symlink; resolve it manually without touching its target\")\n",
+        "count": 1
+      },
+      {
+        "old": "    w = os.path.join(sbase, \"work\", name)\n    os.makedirs(w, exist_ok=True)",
+        "new": "    w = os.path.join(sbase, \"work\", name)\n    require_session_path(w)\n    os.makedirs(w, exist_ok=True)",
+        "count": 1
+      },
+      {
+        "old": "set -euo pipefail\n",
+        "new": "set -euo pipefail\n# Git inspection must not refresh metadata outside a linked audit checkout.\nexport GIT_OPTIONAL_LOCKS=0\n",
+        "count": 1
+      },
+      {
+        "old": "def workspace_files(links):",
+        "new": "ARTIFACTS = \"grimoire-codex\"\nPOCS = ARTIFACTS + \"/\" + sid + \"/pocs\"\n\ndef poc_files():\n    folder = os.path.join(root, POCS)\n    if not os.path.exists(folder):\n        return []\n    marker = os.path.join(root, ARTIFACTS, sid, OWNER)\n    if os.path.islink(marker) or os.path.islink(folder):\n        sys.exit(\"REFUSED: Codex PoC ownership/path is a symlink\")\n    with open(marker) as f:\n        owner = json.load(f)\n    expected = {\"runtime\": \"codex\", \"session\": sid, \"workspace\": root,\n                \"audit_root\": audit_root, \"kind\": \"reports-and-pocs\"}\n    if not isinstance(owner, dict) or any(owner.get(k) != v for k, v in expected.items()):\n        sys.exit(\"REFUSED: PoCs are not owned by this Codex run\")\n    result = []\n    for directory, dirs, files in os.walk(folder):\n        for entry in dirs + files:\n            path = os.path.join(directory, entry)\n            if os.path.islink(path):\n                sys.exit(\"REFUSED: symlink in Codex PoC tree: \" + path)\n        result += [os.path.relpath(os.path.join(directory, f), root) for f in files]\n    return result\n\ndef untracked_files(links):\n    out = git(\"ls-files\", \"-z\", \"--others\", \"--exclude-standard\")\n    return sorted({p.decode() for p in out.split(b\"\\0\") if p and not under(p.decode(), links +\n                  [\".isolated\", \".isolated-codex\", ARTIFACTS])} | set(poc_files()))\n\ndef workspace_files(links):",
+        "count": 1
+      },
+      {
+        "old": "links + [\".isolated\", \".isolated-codex\"])})",
+        "new": "links + [\".isolated\", \".isolated-codex\", ARTIFACTS])} | set(poc_files()))",
+        "count": 1
+      },
+      {
+        "old": "found = [p for p in found if p != STATE and not under(p, links)]",
+        "new": "found = [p for p in found if p != STATE and not under(p, links) and (not under(p, [ARTIFACTS]) or under(p, [POCS]))]",
+        "count": 1
+      },
+      {
+        "old": "found = [p for p in found if p not in ignored]",
+        "new": "found = [p for p in found if p not in ignored or under(p, [POCS])]",
+        "count": 1
+      },
+      {
+        "old": "        others = git(\"ls-files\", \"-z\", \"--others\", \"--exclude-standard\")\n        copy_files([p.decode() for p in others.split(b\"\\0\") if p and not under(p.decode(), links + [\".isolated\", \".isolated-codex\"])])",
+        "new": "        copy_files(untracked_files(links))",
+        "count": 2
+      },
+      {
+        "old": "if os.path.islink(marker) or os.path.islink(folder):",
+        "new": "if any(os.path.islink(p) for p in (os.path.join(root, ARTIFACTS), os.path.join(root, ARTIFACTS, sid), marker, folder)):",
+        "count": 1
+      },
+      {
+        "old": "if st[\"ref\"] != head:\n        copy_files(untracked_files(links))",
+        "new": "if st[\"ref\"] != head:\n        for stale in iso_files(links, []) - set(poc_files()):\n            if under(stale, [POCS]):\n                os.remove(os.path.join(iso, stale))\n        copy_files(untracked_files(links))",
+        "count": 1
+      },
+      {
+        "old": "def check_namespace():",
+        "new": "remotes = subprocess.run([\"git\", \"-C\", root, \"remote\", \"-v\"], capture_output=True, text=True, check=True).stdout\nif re.search(r\"github\\.com[:/]0xStalin-eth/grimoire(?:\\.git)?(?:\\s|$)\", remotes, re.I):\n    sys.exit(\"REFUSED: canonical Claude Grimoire is strictly read-only\")\n\ndef check_namespace():",
         "count": 1
       }
     ]
@@ -336,6 +751,241 @@
         "old": "back to the Codex session that worked on it and resumed there (`codex resume <verified-thread-id>`).",
         "new": "back to the responsible Codex run. Resume only when its verified thread ID is known\n(`codex resume <verified-thread-id>`); an operator run ID alone is not resumable.",
         "count": 1
+      },
+      {
+        "old": "  workspace structure, and produces GRIMOIRE.md \u2014 the living contextual map that\n",
+        "new": "  workspace structure, and produces grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md \u2014 the living contextual map that\n",
+        "count": 1
+      },
+      {
+        "old": "`GRIMOIRE.md` \u2014 the living contextual map for this security engagement.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` \u2014 the living contextual map for this security engagement.\n",
+        "count": 1
+      },
+      {
+        "old": "needed to do meaningful work. Keep GRIMOIRE.md concise \u2014 it is loaded into every agent context.\n",
+        "new": "needed to do meaningful work. Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise \u2014 it is loaded into every agent context.\n",
+        "count": 1
+      },
+      {
+        "old": "Detailed notes belong in `grimoire/tomes/`.\n",
+        "new": "Detailed notes belong in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 2. Create audit directory structure \u2014 set up grimoire/, findings/, hypotheses/, spells/, tomes/, report-deliverables/\n",
+        "new": "- [ ] 2. Create audit directory structure \u2014 set up grimoire-codex/${GRIMOIRE_SESSION_ID}/, findings/, hypotheses/, spells/, tomes/, report-deliverables/\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 6. Write GRIMOIRE.md \u2014 assemble the contextual map\n",
+        "new": "- [ ] 6. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md \u2014 assemble the contextual map\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 7. Review GRIMOIRE.md \u2014 kick off subagent to verify accuracy and trim bloat\n",
+        "new": "- [ ] 7. Review grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md \u2014 kick off subagent to verify accuracy and trim bloat\n",
+        "count": 1
+      },
+      {
+        "old": "If multiple repositories are in scope, identify each one. GRIMOIRE.md should cover all in-scope\n",
+        "new": "If multiple repositories are in scope, identify each one. grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md should cover all in-scope\n",
+        "count": 1
+      },
+      {
+        "old": "    grimoire/\n",
+        "new": "    grimoire-codex/${GRIMOIRE_SESSION_ID}/\n",
+        "count": 1
+      },
+      {
+        "old": "    GRIMOIRE.md                 # main contextual map (created in step 6)\n",
+        "new": "    grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md                 # main contextual map (created in step 6)\n",
+        "count": 1
+      },
+      {
+        "old": "  <summon>/scripts/session-status.sh grimoire/<folder>/SESSIONS.md <file-name> <status> \"<note>\"\n",
+        "new": "  <summon>/scripts/session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/<folder>/SESSIONS.md <file-name> <status> \"<note>\"\n",
+        "count": 1
+      },
+      {
+        "old": "   `tomes/LINKS.md` row or client question that names it (`grep -rl \"findings/WIP/<name>.md\" grimoire/`).\n",
+        "new": "   `tomes/LINKS.md` row or client question that names it (`grep -rl \"findings/WIP/<name>.md\" grimoire-codex/${GRIMOIRE_SESSION_ID}/`).\n",
+        "count": 1
+      },
+      {
+        "old": "Documents in `grimoire/tomes/` are cross-linked from GRIMOIRE.md using Obsidian-style wiki links:\n",
+        "new": "Documents in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` are cross-linked from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md using Obsidian-style wiki links:\n",
+        "count": 1
+      },
+      {
+        "old": "`[[tomes/auth-flow]]` links to `grimoire/tomes/auth-flow.md`.\n",
+        "new": "`[[tomes/auth-flow]]` links to `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/auth-flow.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "analysis belongs in `grimoire/tomes/` and will happen during the actual research.\n",
+        "new": "analysis belongs in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` and will happen during the actual research.\n",
+        "count": 1
+      },
+      {
+        "old": "GRIMOIRE.md is living memory.\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is living memory.\n",
+        "count": 1
+      },
+      {
+        "old": "### 6. Write GRIMOIRE.md\n",
+        "new": "### 6. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "Assemble findings from steps 3-5 into `GRIMOIRE.md` at the project root. This file serves as:\n",
+        "new": "Assemble findings from steps 3-5 into `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` at the project root. This file serves as:\n",
+        "count": 1
+      },
+      {
+        "old": "the system. More detail belongs in grimoire/tomes/.]\n",
+        "new": "the system. More detail belongs in grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/.]\n",
+        "count": 1
+      },
+      {
+        "old": "- Keep GRIMOIRE.md concise. It will be loaded into every agent context.\n",
+        "new": "- Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise. It will be loaded into every agent context.\n",
+        "count": 1
+      },
+      {
+        "old": "- Use `[[document-name]]` cross-linking to reference detailed notes in `grimoire/tomes/`.\n",
+        "new": "- Use `[[document-name]]` cross-linking to reference detailed notes in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      },
+      {
+        "old": "  GRIMOIRE.md looks like.\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md looks like.\n",
+        "count": 1
+      },
+      {
+        "old": "Write the questions collected in steps 3\u20135b to `grimoire/client-communication/kickoff-questions.md`.\n",
+        "new": "Write the questions collected in steps 3\u20135b to `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/kickoff-questions.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "**After the call:** fill each **Answer**, then fold what changes the map into GRIMOIRE.md (scope\n",
+        "new": "**After the call:** fill each **Answer**, then fold what changes the map into grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md (scope\n",
+        "count": 1
+      },
+      {
+        "old": "### 7. Review GRIMOIRE.md\n",
+        "new": "### 7. Review grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "After writing GRIMOIRE.md, kick off a subagent to review it. The subagent should read both\n",
+        "new": "After writing grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, kick off a subagent to review it. The subagent should read both\n",
+        "count": 1
+      },
+      {
+        "old": "GRIMOIRE.md and the in-scope codebase independently to verify accuracy and flag bloat. Do not\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and the in-scope codebase independently to verify accuracy and flag bloat. Do not\n",
+        "count": 1
+      },
+      {
+        "old": "Give the subagent the following mandate. It should read GRIMOIRE.md and then independently spot-check\n",
+        "new": "Give the subagent the following mandate. It should read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and then independently spot-check\n",
+        "count": 1
+      },
+      {
+        "old": "2. **Bloat check** \u2014 GRIMOIRE.md is loaded into every agent context. Every unnecessary line\n",
+        "new": "2. **Bloat check** \u2014 grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is loaded into every agent context. Every unnecessary line\n",
+        "count": 1
+      },
+      {
+        "old": "   - Overly detailed flow descriptions that belong in `grimoire/tomes/`\n",
+        "new": "   - Overly detailed flow descriptions that belong in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`\n",
+        "count": 1
+      },
+      {
+        "old": "4. **Kickoff questions check** \u2014 Read `grimoire/client-communication/kickoff-questions.md`:\n",
+        "new": "4. **Kickoff questions check** \u2014 Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/kickoff-questions.md`:\n",
+        "count": 1
+      },
+      {
+        "old": "to GRIMOIRE.md and the kickoff questions before presenting the final version to the user. Show the user what the subagent\n",
+        "new": "to grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and the kickoff questions before presenting the final version to the user. Show the user what the subagent\n",
+        "count": 1
+      },
+      {
+        "old": "- Note this in GRIMOIRE.md under Automation\n",
+        "new": "- Note this in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation\n",
+        "count": 1
+      },
+      {
+        "old": "Note in GRIMOIRE.md under Automation that new detection modules can be distilled from findings\n",
+        "new": "Note in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation that new detection modules can be distilled from findings\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/spells/checks/` as the target. If the directory does not exist or contains no\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` as the target. If the directory does not exist or contains no\n",
+        "count": 1
+      },
+      {
+        "old": "checks, note \"No checks available \u2014 sigil swarm skipped\" in GRIMOIRE.md under Automation\n",
+        "new": "checks, note \"No checks available \u2014 sigil swarm skipped\" in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation\n",
+        "count": 1
+      },
+      {
+        "old": "section of GRIMOIRE.md). Only include checks whose language matches the target codebase.\n",
+        "new": "section of grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md). Only include checks whose language matches the target codebase.\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/spells/checks/` and a comma-separated list of target languages from GRIMOIRE.md.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` and a comma-separated list of target languages from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.\n",
+        "count": 1
+      },
+      {
+        "old": "1. Read GRIMOIRE.md for engagement context\n",
+        "new": "1. Read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md for engagement context\n",
+        "count": 1
+      },
+      {
+        "old": "4. Write any findings to `grimoire/sigil-findings/<check-slug>.md` where `<check-slug>` is the\n",
+        "new": "4. Write any findings to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<check-slug>.md` where `<check-slug>` is the\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/sigil-findings/`. The familiar will independently verify each finding, dismiss\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`. The familiar will independently verify each finding, dismiss\n",
+        "count": 1
+      },
+      {
+        "old": "false positives (moving them to `grimoire/sigil-findings/dismissed/`), and adjust severity\n",
+        "new": "false positives (moving them to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/dismissed/`), and adjust severity\n",
+        "count": 1
+      },
+      {
+        "old": "**Update GRIMOIRE.md.**\n",
+        "new": "**Update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.**\n",
+        "count": 1
+      },
+      {
+        "old": "- Link to `grimoire/sigil-findings/` for details\n",
+        "new": "- Link to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for details\n",
+        "count": 1
+      },
+      {
+        "old": "- **Living document.** Remind the user that GRIMOIRE.md should be edited as they learn more.\n",
+        "new": "- **Living document.** Remind the user that grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md should be edited as they learn more.\n",
+        "count": 1
+      },
+      {
+        "old": "- **Conciseness over completeness.** GRIMOIRE.md is a map, not an encyclopedia. Err on the side\n",
+        "new": "- **Conciseness over completeness.** grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is a map, not an encyclopedia. Err on the side\n",
+        "count": 1
+      },
+      {
+        "old": "  of too brief. Detailed notes go in `grimoire/tomes/`.\n",
+        "new": "  of too brief. Detailed notes go in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
       }
     ]
   },
@@ -371,6 +1021,16 @@
         "old": "[ -n \"$sid\" ] || { echo \"REFUSED: \\$GRIMOIRE_SESSION_ID is unset; never guess a session ID\" >&2; exit 1; }",
         "new": "[[ \"$sid\" =~ ^[A-Za-z0-9][A-Za-z0-9-]{7,63}$ ]] || { echo \"REFUSED: GRIMOIRE_SESSION_ID is unset or malformed; never guess a session ID\" >&2; exit 1; }",
         "count": 1
+      },
+      {
+        "old": "lock=\"$log.lock\"",
+        "new": "python3 -I - \"$log\" <<'BOUNDARY_PY'\nimport os, sys\nlaunch = os.environ.get(\"GRIMOIRE_AUDIT_ROOT\", \"\")\nif not launch or not os.path.isabs(launch) or not os.path.isdir(launch):\n    sys.exit(\"REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute Codex launch directory\")\nlaunch = os.path.realpath(launch)\nlog = os.path.realpath(sys.argv[1])\nif not log.startswith(launch + os.sep):\n    sys.exit(\"REFUSED: session log leaves the Codex launch directory\")\nBOUNDARY_PY\n\nlock=\"$log.lock\"",
+        "count": 1
+      },
+      {
+        "old": "python3 -I - \"$log\" <<'BOUNDARY_PY'\nimport os, sys\nlaunch = os.environ.get(\"GRIMOIRE_AUDIT_ROOT\", \"\")\nif not launch or not os.path.isabs(launch) or not os.path.isdir(launch):\n    sys.exit(\"REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute Codex launch directory\")\nlaunch = os.path.realpath(launch)\nlog = os.path.realpath(sys.argv[1])\nif not log.startswith(launch + os.sep):\n    sys.exit(\"REFUSED: session log leaves the Codex launch directory\")\nBOUNDARY_PY\n",
+        "new": "artifact_tool=\"$(cd -P \"$(dirname \"${BASH_SOURCE[0]}\")/../../..\" && pwd)/scripts/review_artifacts.py\"\npython3 \"$artifact_tool\" init >/dev/null\npython3 \"$artifact_tool\" guard-output --reports-only \"$log\"\n",
+        "count": 1
       }
     ]
   },
@@ -380,6 +1040,46 @@
       {
         "old": "CLAUDE_CODE_SESSION_ID",
         "new": "GRIMOIRE_SESSION_ID",
+        "count": 1
+      },
+      {
+        "old": "  their topic. It sweeps grimoire/tomes/active/ against grimoire/tomes/LINKS.md,\n",
+        "new": "  their topic. It sweeps grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/ against grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md,\n",
+        "count": 1
+      },
+      {
+        "old": "stale silently. `grimoire/tomes/LINKS.md` names one **owner** per shared topic and lists its\n",
+        "new": "stale silently. `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` names one **owner** per shared topic and lists its\n",
+        "count": 1
+      },
+      {
+        "old": "- Read `GRIMOIRE.md` for context, then `grimoire/tomes/LINKS.md`.\n",
+        "new": "- Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for context, then `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "- List every file in `grimoire/tomes/active/` with its section headings (`grep -n '^#'`). Never read\n",
+        "new": "- List every file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` with its section headings (`grep -n '^#'`). Never read\n",
+        "count": 1
+      },
+      {
+        "old": "  `grimoire/tomes/archived/`.\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/archived/`.\n",
+        "count": 1
+      },
+      {
+        "old": "  `grimoire/client-communication/`. Report it; filing a client question is the user's decision.\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/`. Report it; filing a client question is the user's decision.\n",
+        "count": 1
+      },
+      {
+        "old": "  engagement-specific style rules in memory or `GRIMOIRE.md`, such as glossing every symbol).\n",
+        "new": "  engagement-specific style rules in memory or `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, such as glossing every symbol).\n",
+        "count": 1
+      },
+      {
+        "old": "- Append one row per changed tome to `grimoire/tomes/SESSIONS.md`, and one for `LINKS.md`, with a shell\n",
+        "new": "- Append one row per changed tome to `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/SESSIONS.md`, and one for `LINKS.md`, with a shell\n",
         "count": 1
       }
     ]
@@ -406,6 +1106,86 @@
         "old": "codex resume\n<session-id>",
         "new": "codex resume\n<verified-thread-id>",
         "count": 1
+      },
+      {
+        "old": "  grimoire/hypotheses/WIP/ (created by hand or by /delve) and wants it explored and settled. Traces the\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/ (created by hand or by /delve) and wants it explored and settled. Traces the\n",
+        "count": 1
+      },
+      {
+        "old": "Take one hypothesis from `grimoire/hypotheses/WIP/` and settle it: explore it, prove or disprove it,\n",
+        "new": "Take one hypothesis from `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/` and settle it: explore it, prove or disprove it,\n",
+        "count": 1
+      },
+      {
+        "old": "| Hypothesis | A file in `grimoire/hypotheses/WIP/`, or an idea the user states (step 1 records it) |\n",
+        "new": "| Hypothesis | A file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/`, or an idea the user states (step 1 records it) |\n",
+        "count": 1
+      },
+      {
+        "old": "| Source leads | The file's `source:` lines (`grimoire/delves/<session-id>/leads/<lead>.md`) |\n",
+        "new": "| Source leads | The file's `source:` lines (`grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/leads/<lead>.md`) |\n",
+        "count": 1
+      },
+      {
+        "old": "| Context | `GRIMOIRE.md` (scope, trust assumptions, crown jewels), `grimoire/tomes/active/` (never `tomes/archived/`) |\n",
+        "new": "| Context | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` (scope, trust assumptions, crown jewels), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` (never `tomes/archived/`) |\n",
+        "count": 1
+      },
+      {
+        "old": "If GRIMOIRE.md doesn't exist, run `/summon` first. The peer-review skill's `scripts/` directory is `$P`\n",
+        "new": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. The peer-review skill's `scripts/` directory is `$P`\n",
+        "count": 1
+      },
+      {
+        "old": "create `grimoire/hypotheses/WIP/<name>.md` in the `/summon` format (`source: manual`) and append a\n",
+        "new": "create `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<name>.md` in the `/summon` format (`source: manual`) and append a\n",
+        "count": 1
+      },
+      {
+        "old": "row for it to `grimoire/hypotheses/SESSIONS.md` \n",
+        "new": "row for it to `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` \n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/hypotheses/SESSIONS.md` (`session-status.sh \u2026 <name>.md WIP \"claimed, validating\"`). Re-read the file right after: if another ID won, back off. If it\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` (`session-status.sh \u2026 <name>.md WIP \"claimed, validating\"`). Re-read the file right after: if another ID won, back off. If it\n",
+        "count": 1
+      },
+      {
+        "old": "Then check whether it is already settled. Search `grimoire/findings/` (all folders, and the\n",
+        "new": "Then check whether it is already settled. Search `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (all folders, and the\n",
+        "count": 1
+      },
+      {
+        "old": "`original-findings/` mirror) and `grimoire/hypotheses/valid/` and `invalid/` for the same mechanism at\n",
+        "new": "`original-findings/` mirror) and `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/valid/` and `invalid/` for the same mechanism at\n",
+        "count": 1
+      },
+      {
+        "old": "behavior, an intent-named test, the client's answers in `grimoire/client-communication/`. When the\n",
+        "new": "behavior, an intent-named test, the client's answers in `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/`. When the\n",
+        "count": 1
+      },
+      {
+        "old": "| **Valid** | Move to `hypotheses/valid/`, `outcome: promoted: findings/WIP/<name>.md` | Run `/finding-draft` and save the draft as `grimoire/findings/WIP/<name>.md` (not the skill's default folder), with a `hypothesis: hypotheses/valid/<name>.md` line in its front matter and the PoC in its proof section |\n",
+        "new": "| **Valid** | Move to `hypotheses/valid/`, `outcome: promoted: findings/WIP/<name>.md` | Run `/finding-draft` and save the draft as `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/<name>.md` (not the skill's default folder), with a `hypothesis: hypotheses/valid/<name>.md` line in its front matter and the PoC in its proof section |\n",
+        "count": 1
+      },
+      {
+        "old": "| **Inconclusive** | Stays in `WIP/` | Notes say what is missing; if it waits on the client, add the question to `grimoire/client-communication/<name>.md` |\n",
+        "new": "| **Inconclusive** | Stays in `WIP/` | Notes say what is missing; if it waits on the client, add the question to `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/<name>.md` |\n",
+        "count": 1
+      },
+      {
+        "old": "Update the hypothesis's row in `grimoire/hypotheses/SESSIONS.md` to its new folder, with the verdict\n",
+        "new": "Update the hypothesis's row in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` to its new folder, with the verdict\n",
+        "count": 1
+      },
+      {
+        "old": "append a `created in WIP` row to `grimoire/findings/SESSIONS.md` for a new draft.\n",
+        "new": "append a `created in WIP` row to `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/SESSIONS.md` for a new draft.\n",
+        "count": 1
       }
     ]
   },
@@ -416,6 +1196,56 @@
         "old": "CLAUDE_CODE_SESSION_ID",
         "new": "GRIMOIRE_SESSION_ID",
         "count": 1
+      },
+      {
+        "old": "  conversation written into grimoire/hypotheses/WIP/ for later exploration. Distills what was already\n",
+        "new": "  conversation written into grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/ for later exploration. Distills what was already\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/hypotheses/WIP/`, ready for `/validate-hypothesis` or a later session to pick up cold.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/`, ready for `/validate-hypothesis` or a later session to pick up cold.\n",
+        "count": 1
+      },
+      {
+        "old": "| Context | `GRIMOIRE.md` (scope, actors, trust assumptions), `grimoire/tomes/active/`, `grimoire/client-communication/` |\n",
+        "new": "| Context | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` (scope, actors, trust assumptions), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| Existing work | `grimoire/hypotheses/` (all folders), `grimoire/findings/` (all folders, including `original-findings/`), `grimoire/tomes/active/` idea or lead lists |\n",
+        "new": "| Existing work | `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (all folders), `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (all folders, including `original-findings/`), `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` idea or lead lists |\n",
+        "count": 1
+      },
+      {
+        "old": "If GRIMOIRE.md or `grimoire/hypotheses/` doesn't exist, run `/summon` first.\n",
+        "new": "If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md or `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` doesn't exist, run `/summon` first.\n",
+        "count": 1
+      },
+      {
+        "old": "Search `grimoire/hypotheses/` (WIP, valid, invalid) and `grimoire/findings/` for the same mechanism at\n",
+        "new": "Search `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (WIP, valid, invalid) and `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for the same mechanism at\n",
+        "count": 1
+      },
+      {
+        "old": "(`[ ! -e grimoire/hypotheses/WIP/<name>.md ]`); on a clash, add a short suffix. Never overwrite.\n",
+        "new": "(`[ ! -e grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<name>.md ]`); on a clash, add a short suffix. Never overwrite.\n",
+        "count": 1
+      },
+      {
+        "old": "- If the project has a rule about how terms are explained (for example, in `GRIMOIRE.md` or the user's\n",
+        "new": "- If the project has a rule about how terms are explained (for example, in `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` or the user's\n",
+        "count": 1
+      },
+      {
+        "old": "Set the hypothesis's row in `grimoire/hypotheses/SESSIONS.md` with the summon skill's\n",
+        "new": "Set the hypothesis's row in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` with the summon skill's\n",
+        "count": 1
+      },
+      {
+        "old": "<summon>/scripts/session-status.sh grimoire/hypotheses/SESSIONS.md <name>.md WIP \"manual. <claim in a few words>; open: <open outcome ids>\"\n",
+        "new": "<summon>/scripts/session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md <name>.md WIP \"manual. <claim in a few words>; open: <open outcome ids>\"\n",
+        "count": 1
       }
     ]
   },
@@ -425,6 +1255,1666 @@
       {
         "old": "#!/usr/bin/env python3\n",
         "new": "#!/usr/bin/env python3\n# /// script\n# requires-python = \">=3.10\"\n# dependencies = [\"fire>=0.5,<1\"]\n# ///\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/scripts/verify-fix.sh": {
+    "source_sha256": "a18e048feca95e88a697d1857cda173dafe26567a2bc2c4033b27733a25b0fc3",
+    "edits": [
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 3
+      },
+      {
+        "old": "session_dir=\"$(bash \"$iso_sh\" session)\" || exit 2",
+        "new": "codex_artifacts init >/dev/null\npoc_relative=\"$(codex_artifacts path poc-relative)\"\nsession_dir=\"$(bash \"$iso_sh\" session)\" || exit 2",
+        "count": 1
+      },
+      {
+        "old": "rm -rf \"$work\"; mkdir -p \"$work\"\nrequire_inside \"the scratch folder\" \"$work\"",
+        "new": "require_codex_output \"$work\"\nrm -rf \"$work\"; mkdir -p \"$work\"\nrequire_inside \"the scratch folder\" \"$work\"\nmkdir -p \"$work/tmp\" \"$work/build/out\" \"$work/build/cache\"",
+        "count": 1
+      },
+      {
+        "old": "(cd \"$run_dir\" && forge test --match-path \"$s\" --json ${FORGE_ARGS:-} 2>/dev/null)",
+        "new": "(cd \"$run_dir\"\n      if [[ \"$s\" == \"$poc_relative/\"* ]]; then\n        export FOUNDRY_TEST=\"$poc_relative\"\n      elif [[ \"$s\" == grimoire-codex/* ]]; then\n        echo \"refusing another Codex run's PoC suite\" >&2; exit 2\n      fi\n      export TMPDIR=\"$work/tmp\"\n      forge test --root \"$run_dir\" --out \"$work/build/out\" --cache-path \"$work/build/cache\" \\\n        --match-path \"$s\" --json ${FORGE_ARGS:-} 2>/dev/null)",
+        "count": 1
+      },
+      {
+        "old": "echo \"refusing another Codex run's PoC suite\" >&2; exit 2\n      fi",
+        "new": "echo \"refusing another Codex run's PoC suite\" >&2; exit 2\n      else\n        unset FOUNDRY_TEST  # Regression suites use the project configuration, not private PoC discovery.\n      fi",
+        "count": 1
+      },
+      {
+        "old": "poc_relative=\"$(codex_artifacts path poc-relative)\"",
+        "new": "poc_relative=\"$(codex_artifacts path poc-relative)\"\nfor suite in \"${suites[@]}\"; do\n  if [[ \"$suite\" == grimoire-codex/* && \"$suite\" != \"$poc_relative/\"* ]]; then\n    echo \"refusing another run's PoC suite\" >&2; exit 2\n  fi\ndone\nevidence_dir=\"$(codex_artifacts path reports)/runs/verify-fix-$name/$(python3 -c 'import uuid; print(uuid.uuid4().hex)')\"",
+        "count": 1
+      },
+      {
+        "old": "cleanup() {\n  restore\n  rm -rf \"$work\"\n}",
+        "new": "cleanup() {\n  restore\n  for evidence in \"$work\"/before* \"$work\"/after*; do\n    [[ -f \"$evidence\" ]] || continue\n    codex_artifacts write \"$evidence_dir/$(basename \"$evidence\")\" --source \"$evidence\" || return 2\n  done\n  rm -rf \"$work\"\n}",
+        "count": 1
+      },
+      {
+        "old": "--match-path \"$s\" --json ${FORGE_ARGS:-} 2>/dev/null)",
+        "new": "--match-path \"$s\" --json ${FORGE_ARGS:-} 2>\"$out.$i.stderr\")",
+        "count": 1
+      },
+      {
+        "old": "PY\n}\n\necho \">>> running suites on the original code",
+        "new": "PY\n  if [[ ! -s \"$out\" ]] || grep -q 'COMPILE-OR-RUN-ERROR' \"$out\"; then\n    echo \"no usable test evidence; fix verification failed\" >&2\n    return 2\n  fi\n}\n\necho \">>> running suites on the original code",
+        "count": 1
+      },
+      {
+        "old": "      export TMPDIR=\"$work/tmp\"",
+        "new": "      export TMPDIR=\"$work/tmp\"\n      for folder in build-info snapshots fuzz invariant fuzz-corpus invariant-corpus; do\n        require_codex_output \"$work/$folder\"\n      done\n      export FOUNDRY_BUILD_INFO_PATH=\"$work/build-info\" FOUNDRY_SNAPSHOTS=\"$work/snapshots\"\n      export FOUNDRY_FUZZ_FAILURE_PERSIST_DIR=\"$work/fuzz\" FOUNDRY_INVARIANT_FAILURE_PERSIST_DIR=\"$work/invariant\"\n      export FOUNDRY_FUZZ_CORPUS_DIR=\"$work/fuzz-corpus\" FOUNDRY_INVARIANT_CORPUS_DIR=\"$work/invariant-corpus\"",
+        "count": 1
+      },
+      {
+        "old": "--match-path \"$s\" --json ${FORGE_ARGS:-}",
+        "new": "--match-path \"$s\" --json ${FORGE_ARGS:-} --offline --no-storage-caching",
+        "count": 1
+      },
+      {
+        "old": "e.g. 'test/pocs/Issue12*.t.sol' 'test/unit/**'",
+        "new": "e.g. \"${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue12*.t.sol\" 'test/unit/**'",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/references/fix-verification.md": {
+    "source_sha256": "66a5cdc68619049804d0b3ba4d9915c3b36bf55c5bb079c90cffa8d9466d98a0",
+    "edits": [
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/references/poc-patterns.md": {
+    "source_sha256": "2f97461b95e11301e7b7581cd9cab8a20997f86adbb3c163a2767223dd0b482d",
+    "edits": [
+      {
+        "old": ".isolated/",
+        "new": ".isolated-codex/",
+        "count": 1
+      },
+      {
+        "old": "Location: `test/mitigation/<ID>MitigationReview.t.sol`. Contract `<ID>MitigationReview` (strip the\n",
+        "new": "Location: `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol`. Contract `<ID>MitigationReview` (strip the\n",
+        "count": 1
+      },
+      {
+        "old": "   prefix-snapshot.sh <src-file> <fix-commit> test/mitigation <ID>\n",
+        "new": "   prefix-snapshot.sh <src-file> <fix-commit> ${GRIMOIRE_CODEX_POC_REL}/mitigation-review <ID>\n",
+        "count": 1
+      },
+      {
+        "old": "- **Slow `via_ir` builds**: don't edit `src/`. Use `--match-path test/mitigation/<file>` to keep runs\n",
+        "new": "- **Slow `via_ir` builds**: don't edit `src/`. Use `--match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<file>` to keep runs\n",
+        "count": 1
+      },
+      {
+        "old": "forge test --match-path test/mitigation/<ID>MitigationReview.t.sol -vv\n",
+        "new": "forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol -vv\n",
+        "count": 1
+      },
+      {
+        "old": "MAINNET_RPC_URL=... forge test --match-path test/mitigation/<ID>MitigationReview.t.sol   # fork\n",
+        "new": "MAINNET_RPC_URL=... forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol   # fork\n",
+        "count": 1
+      },
+      {
+        "old": "forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol -vv",
+        "new": "python3 <installed-root>/scripts/review_artifacts.py test --name mitigation-<ID> --suite \"${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol\"",
+        "count": 1
+      },
+      {
+        "old": "MAINNET_RPC_URL=... forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol   # fork",
+        "new": "MAINNET_RPC_URL=... python3 <installed-root>/scripts/review_artifacts.py test --name fork-<ID> --suite \"${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol\"   # fork",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/scripts/_workspace-guard.sh": {
+    "source_sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c",
+    "edits": [
+      {
+        "old": "ws_root() { git rev-parse --show-toplevel; }",
+        "new": "ws_root() {\n  local repo_root\n  repo_root=\"$(git rev-parse --show-toplevel)\" || return 2\n  python3 -I - \"$repo_root\" <<'ROOT_PY'\nimport os, sys\nroot = os.path.realpath(sys.argv[1])\nlaunch = os.environ.get(\"GRIMOIRE_AUDIT_ROOT\", \"\")\nif not launch or not os.path.isabs(launch) or not os.path.isdir(launch):\n    sys.exit(\"REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute Codex launch directory\")\nlaunch = os.path.realpath(launch)\nif root != launch and not root.startswith(launch + os.sep):\n    sys.exit(f\"REFUSED: git root {root} is above or outside Codex launch directory {launch}\")\nprint(root)\nROOT_PY\n}\n# Refuse a broader root at source time, before the caller creates scratch/output files.\nws_root >/dev/null || return 2",
+        "count": 1
+      },
+      {
+        "old": "ws_root() {\n",
+        "new": "# Git inspection must not refresh metadata outside a linked audit checkout.\nexport GIT_OPTIONAL_LOCKS=0\n\nws_root() {\n",
+        "count": 1
+      },
+      {
+        "old": "# require_inside <what>",
+        "new": "_codex_artifact_tool=\"$(cd -P \"$(dirname \"${BASH_SOURCE[0]}\")/../../..\" && pwd)/scripts/review_artifacts.py\"\ncodex_artifacts() { python3 \"$_codex_artifact_tool\" \"$@\"; }\nrequire_codex_output() { codex_artifacts guard-output \"$@\"; }\n\n# require_inside <what>",
+        "count": 1
+      },
+      {
+        "old": "print(root)\nROOT_PY",
+        "new": "import re, subprocess\nremotes = subprocess.run([\"git\", \"-C\", root, \"remote\", \"-v\"], capture_output=True, text=True, check=True).stdout\nif re.search(r\"github\\.com[:/]0xStalin-eth/grimoire(?:\\.git)?(?:\\s|$)\", remotes, re.I):\n    sys.exit(\"REFUSED: canonical Claude Grimoire is strictly read-only\")\nprint(root)\nROOT_PY",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/scripts/_workspace-guard.sh": {
+    "source_sha256": "a3f2a451045633dae8391cc298eb559f5e56a6ecec37e4206a9999fa16b1712c",
+    "edits": [
+      {
+        "old": "ws_root() { git rev-parse --show-toplevel; }",
+        "new": "ws_root() {\n  local repo_root\n  repo_root=\"$(git rev-parse --show-toplevel)\" || return 2\n  python3 -I - \"$repo_root\" <<'ROOT_PY'\nimport os, sys\nroot = os.path.realpath(sys.argv[1])\nlaunch = os.environ.get(\"GRIMOIRE_AUDIT_ROOT\", \"\")\nif not launch or not os.path.isabs(launch) or not os.path.isdir(launch):\n    sys.exit(\"REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute Codex launch directory\")\nlaunch = os.path.realpath(launch)\nif root != launch and not root.startswith(launch + os.sep):\n    sys.exit(f\"REFUSED: git root {root} is above or outside Codex launch directory {launch}\")\nprint(root)\nROOT_PY\n}\n# Refuse a broader root at source time, before the caller creates scratch/output files.\nws_root >/dev/null || return 2",
+        "count": 1
+      },
+      {
+        "old": "ws_root() {\n",
+        "new": "# Git inspection must not refresh metadata outside a linked audit checkout.\nexport GIT_OPTIONAL_LOCKS=0\n\nws_root() {\n",
+        "count": 1
+      },
+      {
+        "old": "# require_inside <what>",
+        "new": "_codex_artifact_tool=\"$(cd -P \"$(dirname \"${BASH_SOURCE[0]}\")/../../..\" && pwd)/scripts/review_artifacts.py\"\ncodex_artifacts() { python3 \"$_codex_artifact_tool\" \"$@\"; }\nrequire_codex_output() { codex_artifacts guard-output \"$@\"; }\n\n# require_inside <what>",
+        "count": 1
+      },
+      {
+        "old": "print(root)\nROOT_PY",
+        "new": "import re, subprocess\nremotes = subprocess.run([\"git\", \"-C\", root, \"remote\", \"-v\"], capture_output=True, text=True, check=True).stdout\nif re.search(r\"github\\.com[:/]0xStalin-eth/grimoire(?:\\.git)?(?:\\s|$)\", remotes, re.I):\n    sys.exit(\"REFUSED: canonical Claude Grimoire is strictly read-only\")\nprint(root)\nROOT_PY",
+        "count": 1
+      }
+    ]
+  },
+  "agents/familiar.md": {
+    "source_sha256": "d2a947d17c30c07b12e7ac34ac25cf80853d9445e82ed09c17010066a9159524",
+    "edits": [
+      {
+        "old": "You are the researcher's familiar \u2014 a companion that aids their work. If `GRIMOIRE.md`\n",
+        "new": "You are the researcher's familiar \u2014 a companion that aids their work. If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`\n",
+        "count": 1
+      },
+      {
+        "old": "1. **Load context.** Read `GRIMOIRE.md` for engagement context \u2014 target architecture,\n",
+        "new": "1. **Load context.** Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for engagement context \u2014 target architecture,\n",
+        "count": 1
+      },
+      {
+        "old": "   - If `grimoire/sigil-findings/.scope-memo.md` exists, read it (Mode 2 builds this\n",
+        "new": "   - If `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md` exists, read it (Mode 2 builds this\n",
+        "count": 1
+      },
+      {
+        "old": "Accepts a directory of sigil findings (typically `grimoire/sigil-findings/`).\n",
+        "new": "Accepts a directory of sigil findings (typically `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`).\n",
+        "count": 1
+      },
+      {
+        "old": "1. **Load context.** Read `GRIMOIRE.md`.\n",
+        "new": "1. **Load context.** Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "   Write the memo to `grimoire/sigil-findings/.scope-memo.md` and pass it into every\n",
+        "new": "   Write the memo to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md` and pass it into every\n",
+        "count": 1
+      },
+      {
+        "old": "   `grimoire/sigil-findings/dismissed/` (create with `mkdir -p` if needed). This\n",
+        "new": "   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/dismissed/` (create with `mkdir -p` if needed). This\n",
+        "count": 1
+      },
+      {
+        "old": "Scope constraints memo: `grimoire/sigil-findings/.scope-memo.md`\n",
+        "new": "Scope constraints memo: `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md`\n",
+        "count": 1
+      },
+      {
+        "old": "Moved to `grimoire/sigil-findings/dismissed/`:\n",
+        "new": "Moved to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/dismissed/`:\n",
+        "count": 1
+      },
+      {
+        "old": "- **No file modifications outside `grimoire/sigil-findings/`.** The Familiar triages\n",
+        "new": "- **No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.** The Familiar triages\n",
+        "count": 1
+      },
+      {
+        "old": "  Permitted writes inside `grimoire/sigil-findings/`: moving dismissed findings to\n",
+        "new": "  Permitted writes inside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`: moving dismissed findings to\n",
+        "count": 1
+      }
+    ]
+  },
+  "agents/gnome.md": {
+    "source_sha256": "21968b04d66d0c8d5e49e620db32b21909d8320ab540a15ce0621535657dd812",
+    "edits": [
+      {
+        "old": "   `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` (if the directory\n",
+        "new": "   `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` (if the directory\n",
+        "count": 1
+      },
+      {
+        "old": "4. **Build the check file.** Create `grimoire/spells/checks/<slug>.md` following check format.\n",
+        "new": "4. **Build the check file.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md` following check format.\n",
+        "count": 1
+      },
+      {
+        "old": "   Create the directory with `mkdir -p grimoire/spells/checks/` if it does not exist.\n",
+        "new": "   Create the directory with `mkdir -p grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` if it does not exist.\n",
+        "count": 1
+      },
+      {
+        "old": "5. **Validate.** Run `bash skills/checks/scripts/validate-check.sh grimoire/spells/checks/<slug>.md`.\n",
+        "new": "5. **Validate.** Run `bash skills/checks/scripts/validate-check.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "2. **Check for existing rules.** Glob `grimoire/spells/semgrep/` for existing rules targeting\n",
+        "new": "2. **Check for existing rules.** Glob `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/` for existing rules targeting\n",
+        "count": 1
+      },
+      {
+        "old": "3. **Build the rule.** Create `grimoire/spells/semgrep/<slug>.yaml` (create directory with\n",
+        "new": "3. **Build the rule.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/<slug>.yaml` (create directory with\n",
+        "count": 1
+      },
+      {
+        "old": "   `semgrep --config grimoire/spells/semgrep/<slug>.yaml <target-path>`. If semgrep is not\n",
+        "new": "   `semgrep --config grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/<slug>.yaml <target-path>`. If semgrep is not\n",
+        "count": 1
+      },
+      {
+        "old": "2. **Check for existing detectors.** Glob `grimoire/spells/slither/` for overlapping\n",
+        "new": "2. **Check for existing detectors.** Glob `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/` for overlapping\n",
+        "count": 1
+      },
+      {
+        "old": "3. **Build the detector.** Create `grimoire/spells/slither/<slug>.py` (create directory with\n",
+        "new": "3. **Build the detector.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/<slug>.py` (create directory with\n",
+        "count": 1
+      },
+      {
+        "old": "   `python3 -c \"import ast; ast.parse(open('grimoire/spells/slither/<slug>.py').read())\"` to\n",
+        "new": "   `python3 -c \"import ast; ast.parse(open('grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/<slug>.py').read())\"` to\n",
+        "count": 1
+      },
+      {
+        "old": "   `grimoire/pocs/<slug>.<ext>` (create directory with `mkdir -p` if needed). Follow\n",
+        "new": "   `grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/<slug>.<ext>` (create directory with `mkdir -p` if needed). Follow\n",
+        "count": 1
+      },
+      {
+        "old": "to understand the full engagement context or load GRIMOIRE.md unless the directive instructs\n",
+        "new": "to understand the full engagement context or load grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md unless the directive instructs\n",
+        "count": 1
+      },
+      {
+        "old": "- **File creation limited to `grimoire/spells/` and `grimoire/pocs/`** (or parent-specified\n",
+        "new": "- **File creation limited to `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/`** (or parent-specified\n",
+        "count": 1
+      }
+    ]
+  },
+  "agents/hag.md": {
+    "source_sha256": "4b0cd4674a476ac158236a3c0a3643674ba327d9e6297b0582d79524d3ca04b7",
+    "edits": [
+      {
+        "old": "demands her due before granting passage. If `GRIMOIRE.md` contains a `hag` section with\n",
+        "new": "demands her due before granting passage. If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` contains a `hag` section with\n",
+        "count": 1
+      },
+      {
+        "old": "1. **Load context.** Read `GRIMOIRE.md` for engagement context \u2014 target, crown jewels,\n",
+        "new": "1. **Load context.** Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for engagement context \u2014 target, crown jewels,\n",
+        "count": 1
+      },
+      {
+        "old": "   - If `grimoire/sigil-findings/.scope-memo.md` exists, read it.\n",
+        "new": "   - If `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md` exists, read it.\n",
+        "count": 1
+      },
+      {
+        "old": "     `grimoire/**`, code comments near the cited lines, docstrings, README, public\n",
+        "new": "     `grimoire-codex/${GRIMOIRE_SESSION_ID}/**`, code comments near the cited lines, docstrings, README, public\n",
+        "count": 1
+      },
+      {
+        "old": "Accepts a directory of findings (typically `grimoire/sigil-findings/`, often\n",
+        "new": "Accepts a directory of findings (typically `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`, often\n",
+        "count": 1
+      },
+      {
+        "old": "1. **Load context and scope.** Read `GRIMOIRE.md` and the Familiar's scope memo at\n",
+        "new": "1. **Load context and scope.** Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and the Familiar's scope memo at\n",
+        "count": 1
+      },
+      {
+        "old": "   `grimoire/sigil-findings/.scope-memo.md` if it exists. Do **not** overwrite it \u2014\n",
+        "new": "   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md` if it exists. Do **not** overwrite it \u2014\n",
+        "count": 1
+      },
+      {
+        "old": "Scope constraints memo: `grimoire/sigil-findings/.scope-memo.md`\n",
+        "new": "Scope constraints memo: `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/.scope-memo.md`\n",
+        "count": 1
+      },
+      {
+        "old": "- **No file modifications outside `grimoire/sigil-findings/`.** The Hag rules on\n",
+        "new": "- **No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.** The Hag rules on\n",
+        "count": 1
+      },
+      {
+        "old": "  `grimoire/sigil-findings/<slug>.red-team.md`) when explicitly asked to persist\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.red-team.md`) when explicitly asked to persist\n",
+        "count": 1
+      }
+    ]
+  },
+  "agents/scribe.md": {
+    "source_sha256": "c139e4274755274c3417ae26c19b9cc9f9cef1f8388f5f1b57e1d4abb958e2ed",
+    "edits": [
+      {
+        "old": "   code, and root cause. Read `GRIMOIRE.md` for codebase context.\n",
+        "new": "   code, and root cause. Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for codebase context.\n",
+        "count": 1
+      },
+      {
+        "old": "   `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to see if an existing\n",
+        "new": "   `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to see if an existing\n",
+        "count": 1
+      },
+      {
+        "old": "   follow the check format, create the file in `grimoire/spells/checks/`, and validate it.\n",
+        "new": "   follow the check format, create the file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`, and validate it.\n",
+        "count": 1
+      },
+      {
+        "old": "1. **Inventory project sigils.** List all check files in `grimoire/spells/checks/` and\n",
+        "new": "1. **Inventory project sigils.** List all check files in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` and\n",
+        "count": 1
+      },
+      {
+        "old": "   knowledge artifacts in `grimoire/spells/knowledge/` (if it exists).\n",
+        "new": "   knowledge artifacts in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/` (if it exists).\n",
+        "count": 1
+      },
+      {
+        "old": "   (`grimoire/spells/checks/`), or both.\n",
+        "new": "   (`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`), or both.\n",
+        "count": 1
+      },
+      {
+        "old": "**Project-local:** N checks in grimoire/spells/checks/\n",
+        "new": "**Project-local:** N checks in grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/\n",
+        "count": 1
+      },
+      {
+        "old": "- **No file modifications outside `grimoire/spells/` and `~/.grimoire/sigils/`.** The Scribe\n",
+        "new": "- **No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/` and `~/.grimoire/sigils/`.** The Scribe\n",
+        "count": 1
+      }
+    ]
+  },
+  "agents/sigil.md": {
+    "source_sha256": "67e8fa8a26fbcbcbbac7116e895ceabc3ed477b0a1b09f7d3e85bce7a3999def",
+    "edits": [
+      {
+        "old": "1. **Consult GRIMOIRE.md.** If `GRIMOIRE.md` exists in the project root, read it for\n",
+        "new": "1. **Consult grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.** If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` exists in the project root, read it for\n",
+        "count": 1
+      },
+      {
+        "old": "   `grimoire/sigil-findings/` for prior sigil work to avoid duplicating effort.\n",
+        "new": "   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for prior sigil work to avoid duplicating effort.\n",
+        "count": 1
+      },
+      {
+        "old": "   `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to find relevant\n",
+        "new": "   `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to find relevant\n",
+        "count": 1
+      },
+      {
+        "old": "   how to assess matches. If no checks exist or `grimoire/spells/checks/` is absent, formulate\n",
+        "new": "   how to assess matches. If no checks exist or `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` is absent, formulate\n",
+        "count": 1
+      },
+      {
+        "old": "   `grimoire/sigil-findings/`. Create the directory with `mkdir -p` if it does not exist.\n",
+        "new": "   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`. Create the directory with `mkdir -p` if it does not exist.\n",
+        "count": 1
+      },
+      {
+        "old": "6. **Write findings** for confirmed variants to `grimoire/sigil-findings/`, linking back to\n",
+        "new": "6. **Write findings** for confirmed variants to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`, linking back to\n",
+        "count": 1
+      },
+      {
+        "old": "checks from `grimoire/spells/checks/` sequentially.\n",
+        "new": "checks from `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` sequentially.\n",
+        "count": 1
+      },
+      {
+        "old": "- When relevant checks exist in `grimoire/spells/checks/`, use them as the hunting guide.\n",
+        "new": "- When relevant checks exist in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`, use them as the hunting guide.\n",
+        "count": 1
+      },
+      {
+        "old": "**Written to:** grimoire/sigil-findings/<slug>.md\n",
+        "new": "**Written to:** grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md\n",
+        "count": 1
+      },
+      {
+        "old": "- **No file modifications outside `grimoire/sigil-findings/`.** Sigils produce findings;\n",
+        "new": "- **No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.** Sigils produce findings;\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/cartography/SKILL.md": {
+    "source_sha256": "acec4a725da352ee3ea2869b66618a978d600c95a306fa28c0332449a6ddbb49",
+    "edits": [
+      {
+        "old": "  grimoire/cartography/.\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/.\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 1. Verify infrastructure \u2014 confirm grimoire/cartography/ exists\n",
+        "new": "- [ ] 1. Verify infrastructure \u2014 confirm grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/ exists\n",
+        "count": 1
+      },
+      {
+        "old": "Check that the `grimoire/` directory and `grimoire/cartography/` subdirectory exist.\n",
+        "new": "Check that the `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory and `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` subdirectory exist.\n",
+        "count": 1
+      },
+      {
+        "old": "- If `grimoire/cartography/` exists, proceed.\n",
+        "new": "- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` exists, proceed.\n",
+        "count": 1
+      },
+      {
+        "old": "- If `grimoire/` exists but `cartography/` does not, create `grimoire/cartography/`.\n",
+        "new": "- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/` exists but `cartography/` does not, create `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.\n",
+        "count": 1
+      },
+      {
+        "old": "- If `grimoire/` does not exist, warn the user that Grimoire has not been summoned on this\n",
+        "new": "- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/` does not exist, warn the user that Grimoire has not been summoned on this\n",
+        "count": 1
+      },
+      {
+        "old": "  proceed anyway, create both `grimoire/` and `grimoire/cartography/`.\n",
+        "new": "  proceed anyway, create both `grimoire-codex/${GRIMOIRE_SESSION_ID}/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.\n",
+        "count": 1
+      },
+      {
+        "old": "bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/\n",
+        "new": "bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/\n",
+        "count": 2
+      },
+      {
+        "old": "Create a cartography file at `grimoire/cartography/<slug>.md` where `<slug>` is a URL-friendly\n",
+        "new": "Create a cartography file at `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/<slug>.md` where `<slug>` is a URL-friendly\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/cartography/references/cartography-format.md": {
+    "source_sha256": "0a79902fcbc41dba9e54dd2d5308913ef35d8e5685915b4904e3a659363165ea",
+    "edits": [
+      {
+        "old": "This reference defines the format for cartography files stored in `grimoire/cartography/`.\n",
+        "new": "This reference defines the format for cartography files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.\n",
+        "count": 1
+      },
+      {
+        "old": "All cartography files live in `grimoire/cartography/` with a slugified filename derived from the\n",
+        "new": "All cartography files live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` with a slugified filename derived from the\n",
+        "count": 1
+      },
+      {
+        "old": "flow name: `grimoire/cartography/secret-retrieval.md`.\n",
+        "new": "flow name: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "role description instead. Detailed analysis belongs in `grimoire/tomes/`.\n",
+        "new": "role description instead. Detailed analysis belongs in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/checks/SKILL.md": {
+    "source_sha256": "f25a9de3a717729b9ac8196624550ffdccc36e05319efc3369db652f562ea6ed",
+    "edits": [
+      {
+        "old": "  - `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to list all checks\n",
+        "new": "  - `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to list all checks\n",
+        "count": 1
+      },
+      {
+        "old": "Create a file at `grimoire/spells/checks/<slug>.md` where `<slug>` is a lowercase, hyphenated\n",
+        "new": "Create a file at `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md` where `<slug>` is a lowercase, hyphenated\n",
+        "count": 1
+      },
+      {
+        "old": "If `grimoire/spells/checks/` does not exist, create it. This directory is part of the spellbook\n",
+        "new": "If `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` does not exist, create it. This directory is part of the spellbook\n",
+        "count": 1
+      },
+      {
+        "old": "bash skills/checks/scripts/validate-check.sh grimoire/spells/checks/<slug>.md\n",
+        "new": "bash skills/checks/scripts/validate-check.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md\n",
+        "count": 1
+      },
+      {
+        "old": "bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/\n",
+        "new": "bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/\n",
+        "count": 1
+      },
+      {
+        "old": "- **Checks live in `grimoire/spells/checks/`.** This is part of the spellbook directory\n",
+        "new": "- **Checks live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`.** This is part of the spellbook directory\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/checks/references/check-format.md": {
+    "source_sha256": "c42b20c1bede60777561f555c4a6ae3cc2ee2f553da954ca41dbb68d65a511e2",
+    "edits": [
+      {
+        "old": "This reference defines the format for check files stored in `grimoire/spells/checks/`.\n",
+        "new": "This reference defines the format for check files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`.\n",
+        "count": 1
+      },
+      {
+        "old": "All check files live in `grimoire/spells/checks/` with a slugified filename derived from the\n",
+        "new": "All check files live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` with a slugified filename derived from the\n",
+        "count": 1
+      },
+      {
+        "old": "check name: `grimoire/spells/checks/debug-assertions.md`.\n",
+        "new": "check name: `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/debug-assertions.md`.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/dig-mode/SKILL.md": {
+    "source_sha256": "7aa4ec480ec02a8b77c71eb5e095e03f25a6dfbb786a3b55cc7c93edd6c6a44e",
+    "edits": [
+      {
+        "old": "- A saved delve the user points to, `grimoire/delves/<session-id>/`: read `board.md` first, then\n",
+        "new": "- A saved delve the user points to, `grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/`: read `board.md` first, then\n",
+        "count": 1
+      },
+      {
+        "old": "  lead's current status is the folder its hypothesis file is in now (`grimoire/hypotheses/*/<name>.md`),\n",
+        "new": "  lead's current status is the folder its hypothesis file is in now (`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/*/<name>.md`),\n",
+        "count": 1
+      },
+      {
+        "old": "- `GRIMOIRE.md` if present\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if present\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/tomes/active/` for prior conclusions (never `tomes/archived/`: outdated, likely invalid)\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` for prior conclusions (never `tomes/archived/`: outdated, likely invalid)\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/cartography/` for flows\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` for flows\n",
+        "count": 1
+      },
+      {
+        "old": "| Whether something was already checked, or a hypothesis in progress | `grimoire/hypotheses/` (its `## Notes`; `outcome:` in `valid/` and `invalid/`) | \"From the hypothesis notes:\" |\n",
+        "new": "| Whether something was already checked, or a hypothesis in progress | `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (its `## Notes`; `outcome:` in `valid/` and `invalid/`) | \"From the hypothesis notes:\" |\n",
+        "count": 1
+      },
+      {
+        "old": "| What is already proven or submitted | `grimoire/findings/` (`WIP/`, `valid/`, `invalid/`, and the `original-findings/` mirror) | \"From the finding:\" |\n",
+        "new": "| What is already proven or submitted | `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (`WIP/`, `valid/`, `invalid/`, and the `original-findings/` mirror) | \"From the finding:\" |\n",
+        "count": 1
+      },
+      {
+        "old": "| What the client said | `grimoire/client-communication/<finding-ID>.md` | \"From the client, <date>:\" |\n",
+        "new": "| What the client said | `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/<finding-ID>.md` | \"From the client, <date>:\" |\n",
+        "count": 1
+      },
+      {
+        "old": "| A review's verdict | `grimoire/peer-review/`, `grimoire/mitigation-review/` | \"From the review:\" |\n",
+        "new": "| A review's verdict | `grimoire-codex/${GRIMOIRE_SESSION_ID}/peer-review/`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/` | \"From the review:\" |\n",
+        "count": 1
+      },
+      {
+        "old": "**A:** Yes. The tome at `grimoire/tomes/active/oracle.md` records a staleness check at\n",
+        "new": "**A:** Yes. The tome at `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/oracle.md` records a staleness check at\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/divine/SKILL.md": {
+    "source_sha256": "05332537ebbc84cde1452f73c32c046270dc846bbbf80221a3f11959541eeafd",
+    "edits": [
+      {
+        "old": "- A behavior described in `GRIMOIRE.md`, a tome, cartography, or finding\n",
+        "new": "- A behavior described in `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, a tome, cartography, or finding\n",
+        "count": 1
+      },
+      {
+        "old": "| Grimoire artifacts | `GRIMOIRE.md`, tomes, cartography, findings, sigil findings | Prior research, local conclusions, known gaps |\n",
+        "new": "| Grimoire artifacts | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, tomes, cartography, findings, sigil findings | Prior research, local conclusions, known gaps |\n",
+        "count": 1
+      },
+      {
+        "old": "For thin or unresolved questions, update `grimoire/tomes/notes/hypotheses.md`,\n",
+        "new": "For thin or unresolved questions, update `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`,\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/tomes/notes/unverified-claims.md`, or\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`, or\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/tomes/notes/contradictions.md` when those files exist or are useful.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md` when those files exist or are useful.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding/SKILL.md": {
+    "source_sha256": "11656e2568961863d83076647d01f8c16527a8a585015abc88e558fab03f68cf",
+    "edits": [
+      {
+        "old": "- **Manual audit findings:** `grimoire/findings/WIP/<slug>.md` while drafted; moved to `findings/valid/`\n",
+        "new": "- **Manual audit findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/<slug>.md` while drafted; moved to `findings/valid/`\n",
+        "count": 1
+      },
+      {
+        "old": "- **Automated / sigil findings:** `grimoire/sigil-findings/<slug>.md`\n",
+        "new": "- **Automated / sigil findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md`\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding/examples/dedup-scenario.md": {
+    "source_sha256": "a8f7c919fa9ce2303b51ad54bc904f28987356faf7776fb5b50374c9006033ec",
+    "edits": [
+      {
+        "old": "The `grimoire/findings/` directory contains four findings:\n",
+        "new": "The `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` directory contains four findings:\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding/examples/reentrancy-finding.md": {
+    "source_sha256": "29ac95dea860f98efffc43b105dbbc0479ffe5282040e07fbf9010187624b06c",
+    "edits": [
+      {
+        "old": "@grimoire/pocs/reentrancy-vault-poc.t.sol\n",
+        "new": "@grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/reentrancy-vault-poc.t.sol\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding/references/finding-format.md": {
+    "source_sha256": "131ef5984dc39a4b697c7faafbc6319d31802b9db35a37c4255bf65b3e7631cf",
+    "edits": [
+      {
+        "old": "This reference defines the format for finding files stored in `grimoire/findings/` and\n",
+        "new": "This reference defines the format for finding files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` and\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/sigil-findings/`.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.\n",
+        "count": 1
+      },
+      {
+        "old": "- **Manual audit findings:** `grimoire/findings/WIP/<slug>.md` while drafted, `grimoire/findings/valid/<slug>.md`\n",
+        "new": "- **Manual audit findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/<slug>.md` while drafted, `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/valid/<slug>.md`\n",
+        "count": 1
+      },
+      {
+        "old": "- **Automated / sigil findings:** `grimoire/sigil-findings/<slug>.md`\n",
+        "new": "- **Automated / sigil findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md`\n",
+        "count": 1
+      },
+      {
+        "old": "@grimoire/pocs/reentrancy-vault-poc.t.sol\n",
+        "new": "@grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/reentrancy-vault-poc.t.sol\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding/references/finding-structure.md": {
+    "source_sha256": "22310641b8ca328f6e8a8ca10bdd15e1140011acf8d1a550b44ba0d6d0ace03f",
+    "edits": [
+      {
+        "old": "grimoire/\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/\n",
+        "count": 1
+      },
+      {
+        "old": "GRIMOIRE.md                  # Project context map\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md                  # Project context map\n",
+        "count": 1
+      },
+      {
+        "old": "### `grimoire/findings/`\n",
+        "new": "### `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "### `grimoire/sigil-findings/`\n",
+        "new": "### `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "Findings are sorted by severity (Critical first). The script scans both `grimoire/findings/`\n",
+        "new": "Findings are sorted by severity (Critical first). The script scans both `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "and `grimoire/sigil-findings/`.\n",
+        "new": "and `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.\n",
+        "count": 1
+      },
+      {
+        "old": "### GRIMOIRE.md\n",
+        "new": "### grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "with the architecture, crown jewels, and attack surface documented in GRIMOIRE.md.\n",
+        "new": "with the architecture, crown jewels, and attack surface documented in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/finding-draft/SKILL.md": {
+    "source_sha256": "36630d41ac3f0ddc39c699214b19f5e2436d07a6e65f50155fc208c7ad5418c4",
+    "edits": [
+      {
+        "old": "- Check for `GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.\n",
+        "new": "- Check for `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.\n",
+        "count": 1
+      },
+      {
+        "old": "- Check whether `grimoire/findings/` exists. Create it if not.\n",
+        "new": "- Check whether `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` exists. Create it if not.\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/findings/` for manual audit research (default)\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for manual audit research (default)\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/sigil-findings/` for automated tooling or sigil agents\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for automated tooling or sigil agents\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/findings-sync/SKILL.md": {
+    "source_sha256": "c1a504a0c22737b79a1da97b22486679d13fa0de0bdba50253fb7f91a1f5d082",
+    "edits": [
+      {
+        "old": "| Findings repo (`owner/repo`) | GRIMOIRE.md header, or ask once and record it there |\n",
+        "new": "| Findings repo (`owner/repo`) | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header, or ask once and record it there |\n",
+        "count": 1
+      },
+      {
+        "old": "| Mirror directory | Default `grimoire/findings/original-repo-findings`; use the project's existing mirror if it differs |\n",
+        "new": "| Mirror directory | Default `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-repo-findings`; use the project's existing mirror if it differs |\n",
+        "count": 1
+      },
+      {
+        "old": "  `grep -rl \"#<N>\\b\" grimoire/` finds them. A large body change can change the verdict (`/peer-review`).\n",
+        "new": "  `grep -rl \"#<N>\\b\" grimoire-codex/${GRIMOIRE_SESSION_ID}/` finds them. A large body change can change the verdict (`/peer-review`).\n",
+        "count": 1
+      },
+      {
+        "old": "  `grimoire/findings/WIP/` with the same title (or a front-matter line naming the issue). If one\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/` with the same title (or a front-matter line naming the issue). If one\n",
+        "count": 1
+      },
+      {
+        "old": "original-repo-findings",
+        "new": "original-findings",
+        "count": 1
+      }
+    ]
+  },
+  "skills/gc-cartography/SKILL.md": {
+    "source_sha256": "d5d86b8acc4bc694f885596c27bdb4983e16190b3e5c8f2e22601e4b2fc35ff9",
+    "edits": [
+      {
+        "old": "  stale references, and reduce duplication in the grimoire/cartography/\n",
+        "new": "  stale references, and reduce duplication in the grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/\n",
+        "count": 1
+      },
+      {
+        "old": "bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/\n",
+        "new": "bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/\n",
+        "count": 2
+      },
+      {
+        "old": "Read every cartography file in `grimoire/cartography/`. For each file, extract:\n",
+        "new": "Read every cartography file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`. For each file, extract:\n",
+        "count": 1
+      },
+      {
+        "old": "Also check `GRIMOIRE.md` and files in `grimoire/tomes/` for stale cartography links.\n",
+        "new": "Also check `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and files in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` for stale cartography links.\n",
+        "count": 1
+      },
+      {
+        "old": "- **Check beyond cartography/.** Stale `[[cartography/...]]` links can appear in GRIMOIRE.md,\n",
+        "new": "- **Check beyond cartography/.** Stale `[[cartography/...]]` links can appear in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md,\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/gc-cartography/examples/gc-before-after.md": {
+    "source_sha256": "21f45c0d112a98ee216db70ec4e34680738986f804aad0ad24079303858ad1ab",
+    "edits": [
+      {
+        "old": "### Flow A: `grimoire/cartography/secret-retrieval.md`\n",
+        "new": "### Flow A: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`\n",
+        "count": 1
+      },
+      {
+        "old": "### Flow B: `grimoire/cartography/vault-read-path.md`\n",
+        "new": "### Flow B: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/vault-read-path.md`\n",
+        "count": 1
+      },
+      {
+        "old": "### `grimoire/cartography/secret-retrieval.md`\n",
+        "new": "### `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/cartography/vault-write-path.md`: `related: [vault-read-path]` updated to\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/vault-write-path.md`: `related: [vault-read-path]` updated to\n",
+        "count": 1
+      },
+      {
+        "old": "- `GRIMOIRE.md`: `[[cartography/vault-read-path]]` link updated to\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`: `[[cartography/vault-read-path]]` link updated to\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/grimoire-mode/SKILL.md": {
+    "source_sha256": "237f1b13cd00763dbd26f0eb35dbd8f5e0645eda0f0f2c8254f533307a7c41f4",
+    "edits": [
+      {
+        "old": "* Always make sure you have read GRIMOIRE.md \n",
+        "new": "* Always make sure you have read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md \n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/hunt-summary/SKILL.md": {
+    "source_sha256": "18f7dcfa62adc5269728ab47c5089713495dd938e48270dba623b53acee3f3f9",
+    "edits": [
+      {
+        "old": "  grimoire/hunt-summary-<datetime>.md in the audit workspace \u2014 capturing what\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md in the audit workspace \u2014 capturing what\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/hunt-summary-<datetime>.md` in the audit workspace. The summary is the handoff: a future\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md` in the audit workspace. The summary is the handoff: a future\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 5. Write grimoire/hunt-summary-<datetime>.md\n",
+        "new": "- [ ] 5. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] 6. Present the summary and offer to fold key items into GRIMOIRE.md\n",
+        "new": "- [ ] 6. Present the summary and offer to fold key items into grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "The summary belongs in the engagement's `grimoire/` workspace directory \u2014 the one created by\n",
+        "new": "The summary belongs in the engagement's `grimoire-codex/${GRIMOIRE_SESSION_ID}/` workspace directory \u2014 the one created by\n",
+        "count": 1
+      },
+      {
+        "old": "`summon`, sibling to `GRIMOIRE.md` and the `findings/`, `tomes/`, `spells/` subdirectories. It is\n",
+        "new": "`summon`, sibling to `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and the `findings/`, `tomes/`, `spells/` subdirectories. It is\n",
+        "count": 1
+      },
+      {
+        "old": "- If a `grimoire/` directory exists at or above the current working directory (typically next to\n",
+        "new": "- If a `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory exists at or above the current working directory (typically next to\n",
+        "count": 1
+      },
+      {
+        "old": "  `GRIMOIRE.md`), use it.\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`), use it.\n",
+        "count": 1
+      },
+      {
+        "old": "- If `GRIMOIRE.md` exists but no `grimoire/` directory does, write the summary next to\n",
+        "new": "- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` exists but no `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory does, write the summary next to\n",
+        "count": 1
+      },
+      {
+        "old": "  `GRIMOIRE.md` and note that this does not look like a fully initialized workspace (suggest\n",
+        "new": "  `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and note that this does not look like a fully initialized workspace (suggest\n",
+        "count": 1
+      },
+      {
+        "old": "The output path is `grimoire/hunt-summary-<datetime>.md` (e.g.\n",
+        "new": "The output path is `grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md` (e.g.\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/hunt-summary-2026-06-02-143052.md`). Never overwrite an existing summary \u2014 each run is a\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-2026-06-02-143052.md`). Never overwrite an existing summary \u2014 each run is a\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/findings/` and `grimoire/sigil-findings/` \u2014 finding documents written this session.\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` \u2014 finding documents written this session.\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/tomes/` \u2014 detailed notes or flow analyses added or updated.\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` \u2014 detailed notes or flow analyses added or updated.\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/spells/` \u2014 scripts, PoCs, or detection modules created.\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/` \u2014 scripts, PoCs, or detection modules created.\n",
+        "count": 1
+      },
+      {
+        "old": "- `GRIMOIRE.md` \u2014 note anything the session learned that contradicts or extends it (used in step 6).\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` \u2014 note anything the session learned that contradicts or extends it (used in step 6).\n",
+        "count": 1
+      },
+      {
+        "old": "Write the drafted summary to `grimoire/hunt-summary-<datetime>.md`. Do not overwrite an existing\n",
+        "new": "Write the drafted summary to `grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md`. Do not overwrite an existing\n",
+        "count": 1
+      },
+      {
+        "old": "### 6. Present and Offer to Update GRIMOIRE.md\n",
+        "new": "### 6. Present and Offer to Update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "`GRIMOIRE.md` is the engagement's living memory. If the session produced durable context \u2014 a new\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` is the engagement's living memory. If the session produced durable context \u2014 a new\n",
+        "count": 1
+      },
+      {
+        "old": "concise version into the relevant GRIMOIRE.md section (e.g. Attack Surface Notes, Crown Jewels).\n",
+        "new": "concise version into the relevant grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md section (e.g. Attack Surface Notes, Crown Jewels).\n",
+        "count": 1
+      },
+      {
+        "old": "Keep GRIMOIRE.md concise; the full detail lives in the hunt summary. Only update GRIMOIRE.md with\n",
+        "new": "Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise; the full detail lives in the hunt summary. Only update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md with\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/examples/mitigation-review-template.md": {
+    "source_sha256": "27cdab09aaa7b1da3d0964927b5f220414bcecfc4690274c159eaf8ed051a4a4",
+    "edits": [
+      {
+        "old": "## PoCs \u2014 `test/mitigation/<ID>MitigationReview.t.sol` (<N>/<N> PASS; <fork?>)\n",
+        "new": "## PoCs \u2014 `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol` (<N>/<N> PASS; <fork?>)\n",
+        "count": 1
+      },
+      {
+        "old": "Run: `forge test --match-path test/mitigation/<ID>MitigationReview.t.sol -vv`\n",
+        "new": "Run: `forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol -vv`\n",
+        "count": 1
+      },
+      {
+        "old": "forge test --match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol -vv",
+        "new": "python3 <installed-root>/scripts/review_artifacts.py test --name mitigation-<ID> --suite \"${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol\"",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/references/verdict-taxonomy.md": {
+    "source_sha256": "c409275b40decd6a447e28189ef2b39c697f0f8d9d254043027ad2f917f19b0d",
+    "edits": [
+      {
+        "old": "## Status line for GRIMOIRE.md\n",
+        "new": "## Status line for grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/review-cartography/SKILL.md": {
+    "source_sha256": "6ea5b09b0b2f3727ab1654cf5bf484f93c1efbb37faf8a4b6b32d4d057662e4f",
+    "edits": [
+      {
+        "old": "bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/\n",
+        "new": "bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/\n",
+        "count": 2
+      },
+      {
+        "old": "bash skills/review-cartography/scripts/find-overlaps.sh grimoire/cartography/\n",
+        "new": "bash skills/review-cartography/scripts/find-overlaps.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/\n",
+        "count": 1
+      },
+      {
+        "old": "bash skills/review-cartography/scripts/validate-cartography.sh grimoire/cartography/<flow-slug>.md\n",
+        "new": "bash skills/review-cartography/scripts/validate-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/<flow-slug>.md\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/scribe-distill/SKILL.md": {
+    "source_sha256": "5a483198b6418680a2000db529313ffd6d5062786330e428b55167d42d770676",
+    "edits": [
+      {
+        "old": "Read `GRIMOIRE.md` for codebase context \u2014 architecture, crown jewels, technology stack.\n",
+        "new": "Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for codebase context \u2014 architecture, crown jewels, technology stack.\n",
+        "count": 1
+      },
+      {
+        "old": "Run `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to list existing\n",
+        "new": "Run `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to list existing\n",
+        "count": 1
+      },
+      {
+        "old": "Create the file in `grimoire/spells/checks/` with a slugified filename. Consult\n",
+        "new": "Create the file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` with a slugified filename. Consult\n",
+        "count": 1
+      },
+      {
+        "old": "Create a markdown file in `grimoire/spells/knowledge/` (create directory with `mkdir -p` if\n",
+        "new": "Create a markdown file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/` (create directory with `mkdir -p` if\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/scribe-distill/references/sigil-types.md": {
+    "source_sha256": "d705dc18b175a2556d8fce697ec1dd5ad656ad0ff54114b779b0e41e88bebbcf",
+    "edits": [
+      {
+        "old": "- **Location:** `grimoire/spells/checks/<slug>.md`\n",
+        "new": "- **Location:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md`\n",
+        "count": 1
+      },
+      {
+        "old": "- **Location:** `grimoire/spells/knowledge/<slug>.md`\n",
+        "new": "- **Location:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/<slug>.md`\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/scribe-gc/SKILL.md": {
+    "source_sha256": "e21a2fbad904c407a82b87130583b9a50ad7ac56fc35f12effe6d954f2d904df",
+    "edits": [
+      {
+        "old": "- **Project-local** (`grimoire/spells/checks/`) \u2014 useful mid-engagement\n",
+        "new": "- **Project-local** (`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`) \u2014 useful mid-engagement\n",
+        "count": 1
+      },
+      {
+        "old": "  `~/.grimoire/sigils/archived/` (or `grimoire/spells/checks/archived/` for project-local).\n",
+        "new": "  `~/.grimoire/sigils/archived/` (or `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/archived/` for project-local).\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/scribe-utilities/SKILL.md": {
+    "source_sha256": "f07da9893f8b387dffa462ffd9e88864ac6779994a2f70275ab802474b4a6262",
+    "edits": [
+      {
+        "old": "- **Project-local** (`grimoire/spells/checks/` and `grimoire/spells/knowledge/`)\n",
+        "new": "- **Project-local** (`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/`)\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/summon/references/sigil-spawning.md": {
+    "source_sha256": "56defce52abf44143e035ee14be16a58285aa780e28410e38dd678d3aaa30283",
+    "edits": [
+      {
+        "old": "**Context:** Read GRIMOIRE.md at the project root for engagement context (target, architecture,\n",
+        "new": "**Context:** Read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md at the project root for engagement context (target, architecture,\n",
+        "count": 1
+      },
+      {
+        "old": "1. Read GRIMOIRE.md. Note the target's language, architecture, and crown jewels.\n",
+        "new": "1. Read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Note the target's language, architecture, and crown jewels.\n",
+        "count": 1
+      },
+      {
+        "old": "2. Check `grimoire/sigil-findings/` for prior findings on this pattern. Skip if already covered.\n",
+        "new": "2. Check `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for prior findings on this pattern. Skip if already covered.\n",
+        "count": 1
+      },
+      {
+        "old": "6. For confirmed findings, write to `grimoire/sigil-findings/<slug>.md` with:\n",
+        "new": "6. For confirmed findings, write to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md` with:\n",
+        "count": 1
+      },
+      {
+        "old": "- No file modifications outside `grimoire/sigil-findings/`\n",
+        "new": "- No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "Spawn sigils in batches of 5. Each sigil is a subagent that loads GRIMOIRE.md (~150 lines) plus\n",
+        "new": "Spawn sigils in batches of 5. Each sigil is a subagent that loads grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md (~150 lines) plus\n",
+        "count": 1
+      },
+      {
+        "old": "  use the same language names that appear in GRIMOIRE.md\n",
+        "new": "  use the same language names that appear in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "expected. Note in GRIMOIRE.md:\n",
+        "new": "expected. Note in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md:\n",
+        "count": 1
+      },
+      {
+        "old": "1. Sigils spawn as before and write findings to `grimoire/sigil-findings/`\n",
+        "new": "1. Sigils spawn as before and write findings to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "2. Invoke the familiar agent in batch triage mode (Mode 2) on `grimoire/sigil-findings/`\n",
+        "new": "2. Invoke the familiar agent in batch triage mode (Mode 2) on `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "4. Dismissed findings are moved to `grimoire/sigil-findings/dismissed/` for audit trail\n",
+        "new": "4. Dismissed findings are moved to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/dismissed/` for audit trail\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/SKILL.md": {
+    "source_sha256": "0345d04fd8e3c542402aea46e1c585b6ddc0aeca1ff2c63788d2545e486c08fd",
+    "edits": [
+      {
+        "old": "  notes in grimoire/tomes/. Tomes store verified conclusions, nuanced analysis,\n",
+        "new": "  notes in grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/. Tomes store verified conclusions, nuanced analysis,\n",
+        "count": 1
+      },
+      {
+        "old": "  unresolved questions, and reusable context that is too detailed for GRIMOIRE.md\n",
+        "new": "  unresolved questions, and reusable context that is too detailed for grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "Build and maintain a source-backed security research wiki inside `grimoire/tomes/`.\n",
+        "new": "Build and maintain a source-backed security research wiki inside `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      },
+      {
+        "old": "`GRIMOIRE.md` is the concise map loaded into future context. Tomes are the library:\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` is the concise map loaded into future context. Tomes are the library:\n",
+        "count": 1
+      },
+      {
+        "old": "- Keep `GRIMOIRE.md` concise and link outward to tomes.\n",
+        "new": "- Keep `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` concise and link outward to tomes.\n",
+        "count": 1
+      },
+      {
+        "old": "- Keep shared topics in sync. `grimoire/tomes/LINKS.md` names one owner section per topic shared\n",
+        "new": "- Keep shared topics in sync. `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` names one owner section per topic shared\n",
+        "count": 1
+      },
+      {
+        "old": "  GRIMOIRE.md\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md\n",
+        "count": 1
+      },
+      {
+        "old": "  grimoire/\n",
+        "new": "  grimoire-codex/${GRIMOIRE_SESSION_ID}/\n",
+        "count": 1
+      },
+      {
+        "old": "Tomes live in `grimoire/tomes/`. They may link to findings, cartography, PoCs, tests,\n",
+        "new": "Tomes live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`. They may link to findings, cartography, PoCs, tests,\n",
+        "count": 1
+      },
+      {
+        "old": "When a research task needs more structure, create these files under `grimoire/tomes/`:\n",
+        "new": "When a research task needs more structure, create these files under `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`:\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/tomes/\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/\n",
+        "count": 1
+      },
+      {
+        "old": "- `references/tome-format.md` \u2014 `grimoire/tomes/` structure, frontmatter, page types,\n",
+        "new": "- `references/tome-format.md` \u2014 `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` structure, frontmatter, page types,\n",
+        "count": 1
+      },
+      {
+        "old": "writing or changing claims, and `links.md` before editing a tome when `grimoire/tomes/LINKS.md`\n",
+        "new": "writing or changing claims, and `links.md` before editing a tome when `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/evidence-model.md": {
+    "source_sha256": "b3e61be554a053e402b6ff5bccfdcbe9994c11a62d6a99b80767239804c7767c",
+    "edits": [
+      {
+        "old": "Use this reference before writing or changing claims in `grimoire/tomes/`.\n",
+        "new": "Use this reference before writing or changing claims in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/tomes/notes/unverified-claims.md`.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/health-check.md": {
+    "source_sha256": "6c804db08a6d337ca2233ff2d7a335fe55da8f2bd8bc3dd5c2037792115d0afa",
+    "edits": [
+      {
+        "old": "2. Pages missing from `grimoire/tomes/index.md` when that index exists.\n",
+        "new": "2. Pages missing from `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md` when that index exists.\n",
+        "count": 1
+      },
+      {
+        "old": "10. Contradictions missing from `grimoire/tomes/notes/contradictions.md`.\n",
+        "new": "10. Contradictions missing from `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "15. Copies that contradict their owner in `grimoire/tomes/LINKS.md`, topics repeated across tomes\n",
+        "new": "15. Copies that contradict their owner in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`, topics repeated across tomes\n",
+        "count": 1
+      },
+      {
+        "old": "- [ ] New pages are discoverable from `GRIMOIRE.md`, an index, log, or related page.\n",
+        "new": "- [ ] New pages are discoverable from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, an index, log, or related page.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/links.md": {
+    "source_sha256": "9c18e1d5480cd5e7da02192fafa866bf6d580aa6ef9b6e4c1b11f2cd9dee1a1d",
+    "edits": [
+      {
+        "old": "# Tome Links (`grimoire/tomes/LINKS.md`)\n",
+        "new": "# Tome Links (`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`)\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/page-templates.md": {
+    "source_sha256": "e5f3485730750d0329291af8a2e6a594eefd2833283f10439729057a80a06a67",
+    "edits": [
+      {
+        "old": "Use `grimoire/tomes/` for finding notes only when they are research support. Use\n",
+        "new": "Use `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` for finding notes only when they are research support. Use\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/findings/` for report-ready vulnerabilities and `/finding-draft` for the\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for report-ready vulnerabilities and `/finding-draft` for the\n",
+        "count": 1
+      },
+      {
+        "old": "Keep early ideas in `grimoire/tomes/notes/hypotheses.md` or use `/divine`.\n",
+        "new": "Keep early ideas in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md` or use `/divine`.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/tome-format.md": {
+    "source_sha256": "03fa093400652dc52a946699e9584c5ba66056c1447ae2467c6f8215d3505a0a",
+    "edits": [
+      {
+        "old": "grimoire/tomes/\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/\n",
+        "count": 1
+      },
+      {
+        "old": "| `actor` | `grimoire/tomes/actors/` |\n",
+        "new": "| `actor` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/actors/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `component` | `grimoire/tomes/components/` |\n",
+        "new": "| `component` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/components/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `contract` | `grimoire/tomes/contracts/` |\n",
+        "new": "| `contract` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/contracts/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `flow` | `grimoire/tomes/flows/` |\n",
+        "new": "| `flow` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/flows/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `mechanism` | `grimoire/tomes/mechanisms/` |\n",
+        "new": "| `mechanism` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/mechanisms/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `trust-boundary` | `grimoire/tomes/trust-boundaries/` |\n",
+        "new": "| `trust-boundary` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/trust-boundaries/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `risk` | `grimoire/tomes/risks/` |\n",
+        "new": "| `risk` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/risks/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `open-question` | `grimoire/tomes/open-questions/` |\n",
+        "new": "| `open-question` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/open-questions/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `note` | `grimoire/tomes/notes/` |\n",
+        "new": "| `note` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/` |\n",
+        "count": 1
+      },
+      {
+        "old": "| `finding` | Prefer `grimoire/findings/`; use `risks/` or `open-questions/` for supporting research notes |\n",
+        "new": "| `finding` | Prefer `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`; use `risks/` or `open-questions/` for supporting research notes |\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/tomes/index.md\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/tomes/notes/unverified-claims.md\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/tomes/notes/contradictions.md\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md\n",
+        "count": 1
+      },
+      {
+        "old": "grimoire/tomes/notes/hypotheses.md\n",
+        "new": "grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md\n",
+        "count": 1
+      },
+      {
+        "old": "Add links from `GRIMOIRE.md` only when the tome contains important context future\n",
+        "new": "Add links from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` only when the tome contains important context future\n",
+        "count": 1
+      },
+      {
+        "old": "agents should discover early. Do not bloat `GRIMOIRE.md` with details that belong in\n",
+        "new": "agents should discover early. Do not bloat `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` with details that belong in\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/tome/references/workflow.md": {
+    "source_sha256": "d1246c358b1ddded3748216ed2f1e1d14a75c47ac7c855fed10b505e2bcd4c4e",
+    "edits": [
+      {
+        "old": "Read `GRIMOIRE.md` if it exists. Then inspect relevant files in:\n",
+        "new": "Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if it exists. Then inspect relevant files in:\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/tomes/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/findings/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/sigil-findings/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/cartography/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`\n",
+        "count": 1
+      },
+      {
+        "old": "- `grimoire/spells/`\n",
+        "new": "- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/`\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/tomes/notes/hypotheses.md`.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "`grimoire/tomes/notes/unverified-claims.md`.\n",
+        "new": "`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "Put plausible but unsupported ideas in `grimoire/tomes/notes/hypotheses.md`. Put source\n",
+        "new": "Put plausible but unsupported ideas in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`. Put source\n",
+        "count": 1
+      },
+      {
+        "old": "disagreements in `grimoire/tomes/notes/contradictions.md`.\n",
+        "new": "disagreements in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md`.\n",
+        "count": 1
+      },
+      {
+        "old": "**Shared topics.** If `grimoire/tomes/LINKS.md` exists, look up every section you are about to change\n",
+        "new": "**Shared topics.** If `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` exists, look up every section you are about to change\n",
+        "count": 1
+      },
+      {
+        "old": "Add links from `GRIMOIRE.md` only when the tome contains important context future\n",
+        "new": "Add links from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` only when the tome contains important context future\n",
+        "count": 1
+      },
+      {
+        "old": "agents should discover early. Do not bloat `GRIMOIRE.md` with details that belong in\n",
+        "new": "agents should discover early. Do not bloat `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` with details that belong in\n",
+        "count": 1
+      },
+      {
+        "old": "If `grimoire/tomes/index.md` exists, add every new page under the correct directory or\n",
+        "new": "If `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md` exists, add every new page under the correct directory or\n",
+        "count": 1
+      },
+      {
+        "old": "log, `GRIMOIRE.md`, or a related page.\n",
+        "new": "log, `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, or a related page.\n",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/scripts/extract-poc.sh": {
+    "source_sha256": "395f6176aea1a11228a77a28c737c7c9288296cf8b5212f4e3d3d0a03075660e",
+    "edits": [
+      {
+        "old": "require_inside \"the destination\" \"$dest\"",
+        "new": "codex_artifacts init >/dev/null\nrequire_codex_output \"$dest\"",
+        "count": 1
+      },
+      {
+        "old": "open(dest, \"w\").write(code)",
+        "new": "with open(dest, \"x\") as out:\n    out.write(code)",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/scripts/prefix-snapshot.sh": {
+    "source_sha256": "d80e3eb1711cbae502ac883992e2ae20eb48628186c61672f86e0344b226984f",
+    "edits": [
+      {
+        "old": "require_inside \"the output folder\" \"$out\"",
+        "new": "codex_artifacts init >/dev/null\nrequire_codex_output \"$out\"",
+        "count": 1
+      },
+      {
+        "old": "mkdir -p \"$out\"\n\ngit show \"$commit^:$src\" > \"$dest.tmp\"",
+        "new": "require_codex_output \"$dest\" \"$dest.tmp\"\nmkdir -p \"$out\"\n(set -o noclobber; git show \"$commit^:$src\" > \"$dest.tmp\")\ntrap 'rm -f -- \"$dest.tmp\"' EXIT",
+        "count": 1
+      },
+      {
+        "old": "open(dest, \"w\").write(code)",
+        "new": "with open(dest, \"x\") as output:\n    output.write(code)",
+        "count": 1
+      },
+      {
+        "old": "if ! forge build \"$dest\" >/dev/null 2>&1; then",
+        "new": "if ! codex_artifacts build --name \"snapshot-$id\" --file \"$dest\" >/dev/null 2>&1; then",
+        "count": 1
+      },
+      {
+        "old": "prefix-snapshot.sh src/Router.sol a1b2c3d test/mitigation H-1",
+        "new": "prefix-snapshot.sh src/Router.sol a1b2c3d \"$GRIMOIRE_CODEX_POC_REL/mitigation-review\" H-1",
+        "count": 1
+      }
+    ]
+  },
+  "skills/peer-review/scripts/load-finding.sh": {
+    "source_sha256": "165c046716784a3a22e2c0216f9db6a0d75a148d686d75e2043fd882f9005e70",
+    "edits": [
+      {
+        "old": "mirror=\"grimoire/findings/original-repo-findings\"",
+        "new": "mirror=\"\"",
+        "count": 1
+      },
+      {
+        "old": "findings=\"grimoire/findings\"",
+        "new": "findings=\"\"",
+        "count": 1
+      },
+      {
+        "old": "tests=\"test\"",
+        "new": "tests=\"\"",
+        "count": 1
+      },
+      {
+        "old": "require_inside \"--mirror\" \"$mirror\"",
+        "new": "codex_artifacts init >/dev/null\nmirror=\"${mirror:-$(codex_artifacts path mirror)}\"\nfindings=\"${findings:-$(codex_artifacts path reports)/findings}\"\ntests=\"${tests:-$(codex_artifacts path pocs)}\"\nrequire_inside \"--mirror\" \"$mirror\"",
+        "count": 1
+      },
+      {
+        "old": "\"$findings\" grimoire/tomes",
+        "new": "\"$findings\" \"$(codex_artifacts path reports)/tomes\"",
+        "count": 1
+      },
+      {
+        "old": "default: grimoire/findings/original-repo-findings",
+        "new": "default: this Codex run's findings/original-findings",
+        "count": 1
+      },
+      {
+        "old": "default: grimoire/findings",
+        "new": "default: this Codex run's findings",
+        "count": 1
+      },
+      {
+        "old": "where PoCs live (default: test)",
+        "new": "where PoCs live (default: this Codex run's pocs directory)",
+        "count": 1
+      }
+    ]
+  },
+  "skills/findings-sync/scripts/findings_sync.py": {
+    "source_sha256": "a6fa6f2ae4c3d7e802152fcadcce4bacc59fbbb00deedd776f5cc15994422679",
+    "edits": [
+      {
+        "old": "FIELDS = ",
+        "new": "from pathlib import Path\nsys.path.insert(0, str(Path(__file__).resolve().parents[3] / \"scripts\"))\nfrom review_artifacts import Artifacts\n\nFIELDS = ",
+        "count": 1
+      },
+      {
+        "old": "def write(path, text, dry):\n    print",
+        "new": "def write(path, text, dry):\n    Artifacts().output(path, reports_only=True)\n    print",
+        "count": 1
+      },
+      {
+        "old": "def copy(src, dst, dry):\n    print",
+        "new": "def copy(src, dst, dry):\n    Artifacts().output(dst, reports_only=True)\n    print",
+        "count": 1
+      },
+      {
+        "old": "shutil.copy2(src, dst)",
+        "new": "if os.path.lexists(dst):\n            if Path(src).read_bytes() != Path(dst).read_bytes():\n                raise ValueError(f\"refusing to overwrite preserved history: {dst}\")\n        else:\n            with open(dst, \"xb\") as out:\n                out.write(Path(src).read_bytes())",
+        "count": 1
+      },
+      {
+        "old": "ap.add_argument(\"--mirror\", default=\"grimoire/findings/original-repo-findings\")",
+        "new": "ap.add_argument(\"--mirror\", default=None)",
+        "count": 1
+      },
+      {
+        "old": "args = ap.parse_args()",
+        "new": "args = ap.parse_args()\n    artifacts = Artifacts()\n    artifacts.initialize()\n    args.mirror = args.mirror or artifacts.paths()[\"mirror\"]\n    artifacts.output(args.mirror, reports_only=True)",
+        "count": 1
+      },
+      {
+        "old": "current = have[n]\n",
+        "new": "current = have[n]\n        Artifacts().output(current, reports_only=True)\n",
+        "count": 1
+      },
+      {
+        "old": "from review_artifacts import Artifacts",
+        "new": "sys.dont_write_bytecode = True\nfrom review_artifacts import Artifacts",
+        "count": 1
+      },
+      {
+        "old": "if __name__ == \"__main__\":\n    main()",
+        "new": "if __name__ == \"__main__\":\n    try:\n        main()\n    except (ValueError, OSError) as exc:\n        print(f\"REFUSED: {exc}\", file=sys.stderr)\n        sys.exit(2)",
+        "count": 1
+      },
+      {
+        "old": "default: grimoire/findings/original-repo-findings",
+        "new": "default: this Codex run's findings/original-findings",
+        "count": 1
+      },
+      {
+        "old": "e.g. grimoire/findings/original-repo-findings",
+        "new": "returned by review_artifacts.py path mirror",
+        "count": 1
+      }
+    ]
+  },
+  "skills/mitigation-review/examples/MitigationReview.t.sol.template": {
+    "source_sha256": "1a47626d59cb200e0860f587f898e92be84685718eb409914f7f3a5b69a00469",
+    "edits": [
+      {
+        "old": "/// Fork: `MAINNET_RPC_URL=... forge test --match-path test/mitigation/<ID>MitigationReview.t.sol`",
+        "new": "/// Run through the installed review_artifacts.py private runner with this run's PoC-relative path.\n/// Supply MAINNET_RPC_URL for fork tests; never execute generated PoCs from the shared checkout.",
         "count": 1
       }
     ]

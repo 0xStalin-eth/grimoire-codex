@@ -29,12 +29,12 @@ steps. Mark each task in_progress before starting it and completed when done.
 
 ### 1. Orient To The Existing Grimoire
 
-Read `GRIMOIRE.md` if it exists. Then inspect relevant files in:
-- `grimoire/tomes/`
-- `grimoire/findings/`
-- `grimoire/sigil-findings/`
-- `grimoire/cartography/`
-- `grimoire/spells/`
+Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if it exists. Then inspect relevant files in:
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/`
 
 Search before creating a new page. For larger collections, search all markdown files
 for target names, subsystem names, symbols, prior claims, and related pages.
@@ -108,7 +108,7 @@ Use this workflow when the wiki is insufficient.
 Write down what the existing tomes cannot answer and what evidence would resolve it.
 
 If the question is not yet page-worthy, record it in
-`grimoire/tomes/notes/hypotheses.md`.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`.
 
 Completion criterion: the missing evidence is specific enough to guide source review.
 
@@ -140,15 +140,15 @@ Before writing conclusions, classify important claims using `evidence-model.md`.
 
 If a claim is plausible but unverified, label it as an open question or hypothesis
 instead of a conclusion. Add unresolved security-critical claims to
-`grimoire/tomes/notes/unverified-claims.md`.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`.
 
 Completion criterion: every material statement has provenance, scope, support, state,
 and suitable confidence.
 
 ### 4. Track Hypotheses, Contradictions, And Unverified Claims
 
-Put plausible but unsupported ideas in `grimoire/tomes/notes/hypotheses.md`. Put source
-disagreements in `grimoire/tomes/notes/contradictions.md`.
+Put plausible but unsupported ideas in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`. Put source
+disagreements in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md`.
 
 For each contradiction, record:
 - Conflicting statements
@@ -172,7 +172,7 @@ questions. If a page could fit multiple directories, choose the one a human woul
 likely browse first and add cross-links to the other relevant pages. Use `notes/` for
 durable context that does not cleanly fit a stricter category yet.
 
-**Shared topics.** If `grimoire/tomes/LINKS.md` exists, look up every section you are about to change
+**Shared topics.** If `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` exists, look up every section you are about to change
 (see `links.md`):
 - Before writing, note whether the section is the **owner** or a **copy** of its topic.
 - If the change alters a claim, update the owner first, then every copy listed, in the same pass, and
@@ -198,11 +198,11 @@ Use Obsidian-style links when referencing tomes:
 [[tomes/flows/auth-flow]]
 ```
 
-Add links from `GRIMOIRE.md` only when the tome contains important context future
-agents should discover early. Do not bloat `GRIMOIRE.md` with details that belong in
+Add links from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` only when the tome contains important context future
+agents should discover early. Do not bloat `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` with details that belong in
 the tome.
 
-If `grimoire/tomes/index.md` exists, add every new page under the correct directory or
+If `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md` exists, add every new page under the correct directory or
 type with one factual summary. If a log file exists, append one task entry listing
 every created, updated, archived, or deleted tome.
 
@@ -210,7 +210,7 @@ List every copy you synced in the answer and in the log entry, and name the owne
 did not fix goes under `Open drift` in `LINKS.md`.
 
 Completion criterion: every changed research artifact is discoverable from an index,
-log, `GRIMOIRE.md`, or a related page.
+log, `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, or a related page.
 
 ### 7. Answer With Scoped Confidence
 

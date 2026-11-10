@@ -7,7 +7,7 @@ Use this reference when creating, updating, or routing tome pages.
 Create tomes as markdown files under typed directories:
 
 ```text
-grimoire/tomes/
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/
     index.md
     actors/
         <slug>.md
@@ -39,25 +39,25 @@ the directory should agree.
 
 | Page type | Directory |
 |-----------|-----------|
-| `actor` | `grimoire/tomes/actors/` |
-| `component` | `grimoire/tomes/components/` |
-| `contract` | `grimoire/tomes/contracts/` |
-| `flow` | `grimoire/tomes/flows/` |
-| `mechanism` | `grimoire/tomes/mechanisms/` |
-| `trust-boundary` | `grimoire/tomes/trust-boundaries/` |
-| `risk` | `grimoire/tomes/risks/` |
-| `open-question` | `grimoire/tomes/open-questions/` |
-| `note` | `grimoire/tomes/notes/` |
+| `actor` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/actors/` |
+| `component` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/components/` |
+| `contract` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/contracts/` |
+| `flow` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/flows/` |
+| `mechanism` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/mechanisms/` |
+| `trust-boundary` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/trust-boundaries/` |
+| `risk` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/risks/` |
+| `open-question` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/open-questions/` |
+| `note` | `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/` |
 | `concept` | Choose the most relevant typed directory, usually `mechanisms/` or `components/` |
-| `finding` | Prefer `grimoire/findings/`; use `risks/` or `open-questions/` for supporting research notes |
+| `finding` | Prefer `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/`; use `risks/` or `open-questions/` for supporting research notes |
 
 Supporting index files may live alongside tomes:
 
 ```text
-grimoire/tomes/index.md
-grimoire/tomes/notes/unverified-claims.md
-grimoire/tomes/notes/contradictions.md
-grimoire/tomes/notes/hypotheses.md
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/index.md
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md
 ```
 
 Create only the directories and files that are useful for the task. If they already
@@ -127,6 +127,6 @@ Use Obsidian-style links when referencing tomes:
 [[tomes/flows/auth-flow]]
 ```
 
-Add links from `GRIMOIRE.md` only when the tome contains important context future
-agents should discover early. Do not bloat `GRIMOIRE.md` with details that belong in
+Add links from `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` only when the tome contains important context future
+agents should discover early. Do not bloat `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` with details that belong in
 the tome.

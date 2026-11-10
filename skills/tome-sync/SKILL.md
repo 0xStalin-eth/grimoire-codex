@@ -1,6 +1,6 @@
 ---
 name: tome-sync
-description: "This skill should be used when the user says \"tome sync\", \"/tome-sync\", \"sync the tomes\", \"fix drift\", \"check tome drift\", \"are the tomes up to date\", \"which tomes are stale\", \"update the copies\", \"link the tomes\", \"map shared topics\", or wants to find and fix tome sections that drifted from the section that owns their topic. It sweeps grimoire/tomes/active/ against grimoire/tomes/LINKS.md, maps topics shared across tomes that have no row yet, reports the drift, and fixes only what the user approves, owner \u2192 copies."
+description: "This skill should be used when the user says \"tome sync\", \"/tome-sync\", \"sync the tomes\", \"fix drift\", \"check tome drift\", \"are the tomes up to date\", \"which tomes are stale\", \"update the copies\", \"link the tomes\", \"map shared topics\", or wants to find and fix tome sections that drifted from the section that owns their topic. It sweeps grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/ against grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md, maps topics shared across tomes that have no row yet, reports the drift, and fixes only what the user approves, owner \u2192 copies."
 ---
 
 ## Codex adapter (read first)
@@ -19,7 +19,7 @@ that disagreed from the start).
 
 **Tomes are self-contained on purpose, so topics repeat.** A tome spun off a section of an older tome
 carries a short version of that section. When new understanding lands in one place, the others go
-stale silently. `grimoire/tomes/LINKS.md` names one **owner** per shared topic and lists its
+stale silently. `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` names one **owner** per shared topic and lists its
 **copies**. Read `../tome/references/links.md` before starting: it defines the file and the rules.
 
 **Owner → copies.** The owner holds the full, current version; copies are summaries for their own
@@ -55,11 +55,11 @@ before starting it and completed when done.
 
 ### 1. Load The Map
 
-- Read `GRIMOIRE.md` for context, then `grimoire/tomes/LINKS.md`.
+- Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for context, then `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`.
 - If `LINKS.md` doesn't exist, say so and build it in steps 2–3 from scratch, using the format in
   `../tome/references/links.md`.
-- List every file in `grimoire/tomes/active/` with its section headings (`grep -n '^#'`). Never read
-  `grimoire/tomes/archived/`.
+- List every file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` with its section headings (`grep -n '^#'`). Never read
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/archived/`.
 - Note which tomes were changed since the last sweep: the `tomes/SESSIONS.md` rows after the last
   `LINKS.md` row show what to check first.
 
@@ -110,7 +110,7 @@ Completion criterion: every topic found in more than one tome has a row or a rea
 - **Stale IDs.** An ID quoted for something it no longer names (a question renumbered, an idea split
   in two, a "candidate" ID later used for another question).
 - **Unfiled actions.** A tome says "ask the client …" or "candidate question" with no matching entry in
-  `grimoire/client-communication/`. Report it; filing a client question is the user's decision.
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/`. Report it; filing a client question is the user's decision.
 - **Source pointers.** Copies without a `Source:` line to their owner.
 
 Completion criterion: every collision, stale ID, unfiled action and missing pointer is listed.
@@ -136,7 +136,7 @@ For each approved item:
 - Name the owner, then update the owner first if the drift is in it, then each copy.
 - Keep each copy written for its own reader: same claims as the owner, its own length and context.
   Follow the tome skill's writing rules (full meanings, no one-letter placeholders, and any
-  engagement-specific style rules in memory or `GRIMOIRE.md`, such as glossing every symbol).
+  engagement-specific style rules in memory or `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, such as glossing every symbol).
 - End each touched copy with `Source: [[tomes/active/<owner-tome>]] §<section>` if it has none.
 - For an approved transfer, follow the transfer steps in `../tome/references/links.md`: move the
   owner, note `owner moved from … on <date>` in the row, turn the old owner into a copy with a
@@ -149,7 +149,7 @@ Completion criterion: each approved item is fixed in the owner and every copy li
 
 - Mark fixed rows `in sync` with today's date in `Synced`. Strike fixed drift entries (`~~D<n>~~`) with
   what was done and the date; note what is still open on a partial fix.
-- Append one row per changed tome to `grimoire/tomes/SESSIONS.md`, and one for `LINKS.md`, with a shell
+- Append one row per changed tome to `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/SESSIONS.md`, and one for `LINKS.md`, with a shell
   append (`>>`) and the session ID from `$GRIMOIRE_SESSION_ID`.
 - List every file changed in the final answer, with the owner named for each topic synced.
 

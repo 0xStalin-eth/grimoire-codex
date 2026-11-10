@@ -45,7 +45,7 @@ Ask the user (or infer from context) which mode they need:
 - **Create** (steps 2-4) — write a new check from a finding, domain knowledge, or research
 - **Apply** (steps 5-7) — run existing checks against a codebase
 - **Manage** — index the collection, validate files, reorganize. Use the scripts directly:
-  - `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to list all checks
+  - `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to list all checks
   - `bash skills/checks/scripts/validate-check.sh <file>` to validate a specific check
 
 If unclear, ask the user. Then skip to the relevant step.
@@ -77,7 +77,7 @@ Check in with the user before continuing.
 
 ### 3. Write the Check File
 
-Create a file at `grimoire/spells/checks/<slug>.md` where `<slug>` is a lowercase, hyphenated
+Create a file at `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md` where `<slug>` is a lowercase, hyphenated
 version of the check name.
 
 Follow the format in `references/check-format.md`. The file has:
@@ -99,7 +99,7 @@ Consult `examples/` for worked examples at different complexity levels:
 - `examples/erc4626-vault.md` — checklist-style check (multiple items for one standard)
 - `examples/unchecked-return-values.md` — cross-language check
 
-If `grimoire/spells/checks/` does not exist, create it. This directory is part of the spellbook
+If `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` does not exist, create it. This directory is part of the spellbook
 structure created by [[summon]].
 
 ### 4. Validate the Check
@@ -107,7 +107,7 @@ structure created by [[summon]].
 Run the validation script:
 
 ```bash
-bash skills/checks/scripts/validate-check.sh grimoire/spells/checks/<slug>.md
+bash skills/checks/scripts/validate-check.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md
 ```
 
 This verifies:
@@ -125,7 +125,7 @@ Check in with the user before continuing.
 Run the indexing script to see available checks:
 
 ```bash
-bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/
+bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/
 ```
 
 This outputs a tab-separated list: name, description, languages, severity, confidence, filepath.
@@ -193,6 +193,6 @@ Based on results, suggest:
 - **Checks are pointers, not analyses.** They describe where to look and how to assess, not
   what the vulnerability is in depth. Use the librarian agent for background.
 - **When in doubt, split.** Two simple checks always beat one complex check.
-- **Checks live in `grimoire/spells/checks/`.** This is part of the spellbook directory
+- **Checks live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`.** This is part of the spellbook directory
   created by [[summon]].
 - **Validate before committing.** Run the validation script on every new check.

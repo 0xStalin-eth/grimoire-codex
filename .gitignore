@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .sync.lock/
+.review-test-tmp/
 benchmark-runs/
 .env
 .env.*

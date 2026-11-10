@@ -6,19 +6,19 @@
 # drafts / submissions / comments that cite it, and PoC files whose name contains Issue<N>.
 #
 # Usage: load-finding.sh <N> [--mirror <dir>] [--repo <owner/repo>] [--findings <dir>] [--tests <dir>]
-#   --mirror    local mirror of the findings repo (default: grimoire/findings/original-repo-findings)
+#   --mirror    local mirror of the findings repo (default: this Codex run's findings/original-findings)
 #   --repo      owner/repo of the findings repo (used when the mirror has no file for <N>)
-#   --findings  root of the user's local findings work (default: grimoire/findings)
-#   --tests     where PoCs live (default: test)
+#   --findings  root of the user's local findings work (default: this Codex run's findings)
+#   --tests     where PoCs live (default: this Codex run's pocs directory)
 # Run from the repository root. Requires gh only when falling back to the remote repo.
 set -euo pipefail
 
 n="${1:?usage: load-finding.sh <N> [--mirror <dir>] [--repo <owner/repo>] [--findings <dir>] [--tests <dir>]}"
 shift
-mirror="grimoire/findings/original-repo-findings"
+mirror=""
 repo=""
-findings="grimoire/findings"
-tests="test"
+findings=""
+tests=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --mirror)   mirror="$2"; shift 2 ;;
@@ -29,6 +29,10 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_workspace-guard.sh"
+codex_artifacts init >/dev/null
+mirror="${mirror:-$(codex_artifacts path mirror)}"
+findings="${findings:-$(codex_artifacts path reports)/findings}"
+tests="${tests:-$(codex_artifacts path pocs)}"
 require_inside "--mirror" "$mirror"
 require_inside "--findings" "$findings"
 require_inside "--tests" "$tests"
@@ -56,7 +60,7 @@ grep -l -E "#$n([^0-9]|$)" "$mirror"/*.md 2>/dev/null | grep -v -E "/issue$n-|DU
 
 echo
 echo "=== Local work citing #$n (drafts, submissions, comments, tomes)"
-grep -rl -E "#$n([^0-9]|$)|issue$n[^0-9]|issues/$n([^0-9]|$)" "$findings" grimoire/tomes 2>/dev/null \
+grep -rl -E "#$n([^0-9]|$)|issue$n[^0-9]|issues/$n([^0-9]|$)" "$findings" "$(codex_artifacts path reports)/tomes" 2>/dev/null \
   | grep -v "^$mirror/" || echo "(none)"
 
 echo

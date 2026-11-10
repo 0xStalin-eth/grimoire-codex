@@ -1,11 +1,11 @@
 # Cartography File Format
 
-This reference defines the format for cartography files stored in `grimoire/cartography/`.
+This reference defines the format for cartography files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.
 
 ## File Location
 
-All cartography files live in `grimoire/cartography/` with a slugified filename derived from the
-flow name: `grimoire/cartography/secret-retrieval.md`.
+All cartography files live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` with a slugified filename derived from the
+flow name: `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/secret-retrieval.md`.
 
 ## Frontmatter
 
@@ -150,4 +150,4 @@ the code does*. An agent reading a cartography file should know exactly which fi
 in what order — but should read those files itself to understand the actual logic.
 
 If you find yourself writing detailed code explanations, stop. Add the file path and a one-line
-role description instead. Detailed analysis belongs in `grimoire/tomes/`.
+role description instead. Detailed analysis belongs in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.

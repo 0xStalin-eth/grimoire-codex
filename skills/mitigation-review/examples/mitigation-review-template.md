@@ -21,7 +21,7 @@ sentences: what is closed, what (if anything) is left, and whether it matches th
 - **<Regressions>:** <new reverts, params, casts, privileged powers — or "none found">.
 - **<Bypasses>:** <other routes to the same end state, and why they're closed or not>.
 
-## PoCs — `test/mitigation/<ID>MitigationReview.t.sol` (<N>/<N> PASS; <fork?>)
+## PoCs — `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol` (<N>/<N> PASS; <fork?>)
 
 | PoC | Result |
 |---|---|
@@ -30,7 +30,7 @@ sentences: what is closed, what (if anything) is left, and whether it matches th
 | `test_<ID>_residual_<scenario>` | <Residual behaviour, if any> |
 | Client `<test name>` | PASS |
 
-Run: `forge test --match-path test/mitigation/<ID>MitigationReview.t.sol -vv`
+Run: `python3 <installed-root>/scripts/review_artifacts.py test --name mitigation-<ID> --suite "${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol"`
 
 ## Thread context
 

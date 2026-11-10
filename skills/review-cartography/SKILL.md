@@ -41,7 +41,7 @@ in_progress before starting it and completed when done.
 Run the indexing script to list available flows:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 If the user specified a flow, match it against the index. If not, present the list and ask
@@ -101,7 +101,7 @@ Compare the current flow against all other flows in the index:
 Run the overlap detection script to check for significant duplication:
 
 ```bash
-bash skills/review-cartography/scripts/find-overlaps.sh grimoire/cartography/
+bash skills/review-cartography/scripts/find-overlaps.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 If significant overlap is detected (>40% shared components between two flows), note this to
@@ -135,13 +135,13 @@ Write all changes to the cartography file:
 Validate the updated file:
 
 ```bash
-bash skills/review-cartography/scripts/validate-cartography.sh grimoire/cartography/<flow-slug>.md
+bash skills/review-cartography/scripts/validate-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/<flow-slug>.md
 ```
 
 Re-run the indexing script:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 Present to the user:

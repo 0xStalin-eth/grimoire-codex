@@ -38,7 +38,7 @@ in_progress before starting it and completed when done.
 Ask the user which scope to review:
 
 - **Personal grimoire** (`~/.grimoire/sigils/`) — default for manual GC
-- **Project-local** (`grimoire/spells/checks/`) — useful mid-engagement
+- **Project-local** (`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`) — useful mid-engagement
 - **Both** — default when invoked from summon at start-of-audit
 
 If `~/.grimoire/sigils/` is empty, note that the personal grimoire has no sigils yet (populated
@@ -83,7 +83,7 @@ Present proposals to the user. Do not proceed without confirmation.
 For each approved resolution:
 
 - **Merge:** Create a new combined sigil file. Archive the originals in
-  `~/.grimoire/sigils/archived/` (or `grimoire/spells/checks/archived/` for project-local).
+  `~/.grimoire/sigils/archived/` (or `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/archived/` for project-local).
   Create archive directories with `mkdir -p` if needed.
 - **Deduplicate:** Archive the weaker sigil. Leave the surviving sigil unchanged.
 - **Keep both:** No file changes. Add a note to both sigils' `related-checks` field

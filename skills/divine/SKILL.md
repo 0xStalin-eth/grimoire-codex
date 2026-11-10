@@ -77,7 +77,7 @@ The target is usually:
 - A code path, function, class, contract, module, or config value
 - A pattern, threshold, fallback, guard, check, or special case
 - A design decision, trust boundary, invariant, or privilege assignment
-- A behavior described in `GRIMOIRE.md`, a tome, cartography, or finding
+- A behavior described in `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, a tome, cartography, or finding
 
 The question is usually:
 - Why does this exist?
@@ -131,7 +131,7 @@ Evidence categories:
 
 | Category | Examples | What it reveals |
 |----------|----------|-----------------|
-| Grimoire artifacts | `GRIMOIRE.md`, tomes, cartography, findings, sigil findings | Prior research, local conclusions, known gaps |
+| Grimoire artifacts | `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`, tomes, cartography, findings, sigil findings | Prior research, local conclusions, known gaps |
 | Source control | Git history, PRs, reviews, code comments, tests | Implementation-time rationale |
 | Issues and tickets | GitHub Issues, Linear, Jira, Plane, Shortcut | Product, customer, audit, or business pressure |
 | Long-form docs | Design docs, specs, ADRs, Notion, Confluence, docs | Planned architecture and rejected alternatives |
@@ -239,9 +239,9 @@ Record:
 - Security implications
 - Follow-up checks
 
-For thin or unresolved questions, update `grimoire/tomes/notes/hypotheses.md`,
-`grimoire/tomes/notes/unverified-claims.md`, or
-`grimoire/tomes/notes/contradictions.md` when those files exist or are useful.
+For thin or unresolved questions, update `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md`,
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`, or
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/contradictions.md` when those files exist or are useful.
 
 Preserve useful negative results so future agents do not repeat the same search.
 

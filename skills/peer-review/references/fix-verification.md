@@ -3,7 +3,7 @@
 ## The loop
 
 1. **Copy** the files you'll change into this session's work folder (`isolated-workspace.sh work <id>`):
-   `.isolated/<session-id>/work/<id>/a/` (original) and `.../b/` (patched). Check the repo copy equals `a/` before you start.
+   `.isolated-codex/<session-id>/work/<id>/a/` (original) and `.../b/` (patched). Check the repo copy equals `a/` before you start.
 2. **Patch** `b/` with exact string replacements (assert each pattern matches exactly once).
 3. **Run** `scripts/verify-fix.sh` with the PoC and the regression suites. It always runs in an
    isolated copy inside the workspace, so the workspace's own files and other sessions' runs are never

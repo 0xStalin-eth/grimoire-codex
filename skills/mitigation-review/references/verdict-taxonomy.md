@@ -22,7 +22,7 @@ Rate residuals independently of the original finding, using the realism question
 - **Footnote (not reported)**: theoretical, needs several uncontrollable events, or impact is strictly
   smaller than the original. Keep it in the review file only.
 
-## Status line for GRIMOIRE.md
+## Status line for grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 
 `**<Verdict>** (<≤12-word reason>) — [[mitigation-review/WIP/<ID>-mitigation-review]]`
 

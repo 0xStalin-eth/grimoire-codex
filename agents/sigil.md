@@ -11,14 +11,54 @@ maintenance commands use `$grimoire-<command>`. These are workflow references, n
   Resolve them to absolute paths before invoking scripts. `references/`, `scripts/`, `examples/`
   and `../other-skill/` refer to the current skill's directory. Keep each script's documented
   working directory (usually the engagement or target repo root), so output stays with the audit.
-- At entry, read the engagement's `GRIMOIRE.md` if it exists. For workspace initialization run
-  `python3 <installed-root>/scripts/bootstrap.py` explicitly; Codex does not execute the archived
-  Claude lifecycle hooks. Bootstrap is idempotent and only initializes the personal store.
+- Audit work has one immutable boundary:
+  `GRIMOIRE_AUDIT_ROOT`, the absolute directory where this Codex session started. Explicitly pass it
+  to review/status helpers even if shell environment inheritance is unavailable. Never replace it
+  with a broader Git root after changing directories. All audit-created files, isolated copies,
+  scratch scripts and tool caches must stay below that launch directory. Keep tool temporary/cache
+  directories local using the installed tool's documented options; if that is unavailable, report
+  the blocked step instead of requesting broader write access. A Git root above/outside the launch
+  directory is refused by the review helpers.
+- From the scoped target's Git root, initialize this run's outputs with
+  `python3 <installed-root>/scripts/review_artifacts.py init`. For initial scope acquisition,
+  obtain the target checkout inside the launch directory before initializing research artifacts.
+  Use the returned `context` file instead of the shared root `GRIMOIRE.md`, `reports` for all
+  research notes/reviews/drafts/mirrors/logs, and `pocs` for PoCs and pre-fix snapshots. These live
+  in `<target-git-root>/grimoire-codex/<run-id>/`, inside the launch boundary, with an ownership
+  marker. Store the returned `poc-relative` as `GRIMOIRE_CODEX_POC_REL` when a workflow command
+  uses that placeholder. Resolve all placeholders to this run's concrete paths.
+- Write/update files through `review_artifacts.py write <path>` (stdin or `--source <input>`);
+  `--replace` is only for an intentional update to your own run's file. Use its guarded `move`
+  command for filing a review. Both commands refuse Claude's folders, other run IDs and symlinks.
+  Never update shared root `GRIMOIRE.md`, `grimoire/`, client input reports or shared `test/` files.
+  Explicitly supplied existing Claude reports/PoCs can be read as inputs; never overwrite/move
+  their originals. No migration or adoption of legacy output directories is automatic.
+- Keep PoCs outside the project's shared test-discovery directories, under this run's `pocs/`.
+  For Foundry, use `review_artifacts.py test --name <copy> --suite <poc-relative>/<glob>` (and
+  `--ref <commit>` for pre-fix testing). It copies your PoCs into your owned isolated checkout,
+  selects that private test directory with `FOUNDRY_TEST`, and keeps compiler output/cache/tmp
+  inside your run's work folder. `verify-fix.sh` selects the private PoC directory for PoC suites
+  and retains the project's normal test directory for regression suites. Run no generated PoCs
+  from the shared checkout. Other test runners need equivalent isolated test discovery; stop and
+  report a gap if unavailable. Passing syntax/structural checks is not successful reproduction.
+  The guarded Foundry runners disable automatic compiler installation and shared RPC caching;
+  build info, snapshots and fuzz/invariant persistence are run-local too. Supply an available
+  compiler (or prepare one inside the audit root); never install it into a global store mid-audit.
+- Personal-store bootstrap is a separate, explicit one-time setup before the audit session.
+  Do not run bootstrap or write `~/.grimoire/` during an audit. Optional library/cache/promotion
+  workflows that require global writes are unavailable under this rule until adapted to local
+  storage. Codex does not execute the archived Claude lifecycle hooks.
 - Before session-aware work, set `GRIMOIRE_SESSION_ID` in every shell invocation. Use a verified
   Codex thread ID when available; otherwise create a UUID once and keep it as an explicit run ID.
   Record the distinction in the engagement log. A run ID is not a resumable chat ID. Reuse it only
   for the same logical session; a new independent agent needs a new ID. Resume a chat only with a
   verified runtime chat ID. Never infer a chat ID from an isolated-copy folder or guess an ID.
+- Peer/mitigation working copies and scratch folders use
+  `<target-git-root>/.isolated-codex/<run-id>/`, inside `GRIMOIRE_AUDIT_ROOT`. The helper validates
+  the owner runtime, run ID, Git workspace and launch directory before reuse or cleanup. Never
+  migrate, copy, sync, clean or adopt Claude's `.isolated/` tree or legacy unmarked copies. Both
+  isolation trees are excluded from Codex source snapshots. Different Codex sessions/subagents
+  need different run IDs; reuse one only when resuming the same logical run.
 - For a named role, load `<installed-root>/agents/<role>.md`, or use `$grimoire-<role>`.
   When the workflow delegates, spawn a Codex subagent with that procedure, scope, evidence inputs,
   output path and permissions. Use bounded batches within the runtime's available concurrency.
@@ -62,9 +102,9 @@ low rather than inflating severity. A dismissed false positive is better than a 
 
 The user names a vulnerability pattern or code area to investigate.
 
-1. **Consult GRIMOIRE.md.** If `GRIMOIRE.md` exists in the project root, read it for
+1. **Consult grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.** If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` exists in the project root, read it for
    architecture context, crown jewels, and any pre-existing findings on this vector. Check
-   `grimoire/sigil-findings/` for prior sigil work to avoid duplicating effort.
+   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for prior sigil work to avoid duplicating effort.
 
 2. **Clarify the hypothesis.** What specific vulnerability are you hunting? Frame it as a
    testable statement: "the withdrawal flow in Vault.sol may be vulnerable to reentrancy
@@ -72,9 +112,9 @@ The user names a vulnerability pattern or code area to investigate.
    ask one clarifying question.
 
 3. **Identify applicable checks.** Run
-   `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to find relevant
+   `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to find relevant
    checks. If matching checks exist, read them — they define the patterns to search for and
-   how to assess matches. If no checks exist or `grimoire/spells/checks/` is absent, formulate
+   how to assess matches. If no checks exist or `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` is absent, formulate
    a search strategy directly from the hypothesis.
 
 4. **Hunt.** Search the codebase for the pattern using Grep, Read, and Glob. For each match:
@@ -87,7 +127,7 @@ The user names a vulnerability pattern or code area to investigate.
    context.
 
 5. **Write findings.** For each confirmed finding, create a finding file in
-   `grimoire/sigil-findings/`. Create the directory with `mkdir -p` if it does not exist.
+   `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`. Create the directory with `mkdir -p` if it does not exist.
    Follow the finding format:
 
    ```yaml
@@ -132,7 +172,7 @@ codebase.
    new context. Skip the original finding's location — compare against the source finding's
    `context` field to avoid duplicates.
 
-6. **Write findings** for confirmed variants to `grimoire/sigil-findings/`, linking back to
+6. **Write findings** for confirmed variants to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`, linking back to
    the original finding in the References section.
 
 7. **Suggest check creation** if the pattern is generalizable enough for future reuse via the
@@ -146,7 +186,7 @@ implemented.
 
 If the user asks for a super sigil, explain the dependency and offer to run available checks
 in single-sigil mode instead. You can approximate a super sigil by running all applicable
-checks from `grimoire/spells/checks/` sequentially.
+checks from `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` sequentially.
 
 ## Strategy
 
@@ -159,7 +199,7 @@ checks from `grimoire/spells/checks/` sequentially.
 
 ### Check Integration
 
-- When relevant checks exist in `grimoire/spells/checks/`, use them as the hunting guide.
+- When relevant checks exist in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`, use them as the hunting guide.
 - Follow the check's pattern and assessment sections.
 - Restrict to the tools declared in the check's `tools` field.
 - Adjust severity from the check's `severity-default` based on actual context.
@@ -195,7 +235,7 @@ For each finding discovered:
 ### Recommendation
 <Fix direction>
 
-**Written to:** grimoire/sigil-findings/<slug>.md
+**Written to:** grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md
 ```
 
 Summary at end of hunt:
@@ -212,7 +252,7 @@ Summary at end of hunt:
 
 ## Constraints
 
-- **No file modifications outside `grimoire/sigil-findings/`.** Sigils produce findings;
+- **No file modifications outside `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.** Sigils produce findings;
   they do not fix code.
 - **Evidence required.** Every finding must reference specific file paths and line numbers.
   No "this codebase probably has X" without pointing to where.

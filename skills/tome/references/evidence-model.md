@@ -1,6 +1,6 @@
 # Evidence Model
 
-Use this reference before writing or changing claims in `grimoire/tomes/`.
+Use this reference before writing or changing claims in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.
 
 ## Source Precedence
 
@@ -66,4 +66,4 @@ The withdrawal path updates balances before the external call. ^[`src/Vault.sol:
 
 If a claim is plausible but unverified, label it as an open question or hypothesis
 instead of a conclusion. Add unresolved security-critical claims to
-`grimoire/tomes/notes/unverified-claims.md`.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/unverified-claims.md`.

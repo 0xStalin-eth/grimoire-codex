@@ -1,4 +1,4 @@
-# Tome Links (`grimoire/tomes/LINKS.md`)
+# Tome Links (`grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`)
 
 Tomes are written to be read on their own, so a topic often appears in several of them: a new tome is
 spun off a section of an older one, or a short summary of a mechanism is repeated where a reader needs

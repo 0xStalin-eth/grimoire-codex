@@ -1,6 +1,6 @@
 ---
 name: tome
-description: "This skill should be used when the user says \"tome\", \"/tome\", \"write a tome\", \"update a tome\", \"document this learning\", \"save this research note\", \"compact this context\", \"build a security wiki\", \"source-backed note\", \"track claims\", \"track contradictions\", or wants to create or maintain durable security research notes in grimoire/tomes/. Tomes store verified conclusions, nuanced analysis, unresolved questions, and reusable context that is too detailed for GRIMOIRE.md but not necessarily a finding."
+description: "This skill should be used when the user says \"tome\", \"/tome\", \"write a tome\", \"update a tome\", \"document this learning\", \"save this research note\", \"compact this context\", \"build a security wiki\", \"source-backed note\", \"track claims\", \"track contradictions\", or wants to create or maintain durable security research notes in grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/. Tomes store verified conclusions, nuanced analysis, unresolved questions, and reusable context that is too detailed for grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md but not necessarily a finding."
 ---
 
 ## Codex adapter (read first)
@@ -10,12 +10,12 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 
 # Tome
 
-Build and maintain a source-backed security research wiki inside `grimoire/tomes/`.
+Build and maintain a source-backed security research wiki inside `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.
 The durable artifact is the repository, not the chat response.
 
 ## Philosophy
 
-`GRIMOIRE.md` is the concise map loaded into future context. Tomes are the library:
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` is the concise map loaded into future context. Tomes are the library:
 focused pages that preserve evidence, claims, uncertainty, contradictions, and
 reasoning that would otherwise be lost during compaction.
 
@@ -30,10 +30,10 @@ write the evidence gap clearly.
 
 ## Key Principles
 
-- Keep `GRIMOIRE.md` concise and link outward to tomes.
+- Keep `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` concise and link outward to tomes.
 - Tomes contain supported conclusions and reasoning; cartography contains navigation.
 - Prefer updating existing tomes over creating near-duplicates.
-- Keep shared topics in sync. `grimoire/tomes/LINKS.md` names one owner section per topic shared
+- Keep shared topics in sync. `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md` names one owner section per topic shared
   across tomes, plus its copies. Before editing a section, look it up there. If the edit changes a
   claim, update the owner and every copy in the same pass (owner → copies). A tome spun off or built
   from others starts as a copy of every topic it pulls in; when it goes deeper on its own subject,
@@ -55,8 +55,8 @@ Use the existing project layout:
 
 ```text
 project/
-  GRIMOIRE.md
-  grimoire/
+  grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
+  grimoire-codex/${GRIMOIRE_SESSION_ID}/
     tomes/
     findings/
     sigil-findings/
@@ -65,14 +65,14 @@ project/
     tmp/
 ```
 
-Tomes live in `grimoire/tomes/`. They may link to findings, cartography, PoCs, tests,
+Tomes live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`. They may link to findings, cartography, PoCs, tests,
 and source files. Do not create a separate `security-wiki/` repository unless the user
 explicitly asks for one.
 
-When a research task needs more structure, create these files under `grimoire/tomes/`:
+When a research task needs more structure, create these files under `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`:
 
 ```text
-grimoire/tomes/
+grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/
   index.md
   actors/
   components/
@@ -124,7 +124,7 @@ Read `references/workflow.md` for the full procedure and completion criteria.
 
 - `references/evidence-model.md` — source precedence, support/state/confidence, claim
   blocks, and provenance.
-- `references/tome-format.md` — `grimoire/tomes/` structure, frontmatter, page types,
+- `references/tome-format.md` — `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` structure, frontmatter, page types,
   and routing.
 - `references/page-templates.md` — templates for general, mechanism, flow, component,
   risk, and finding-candidate pages.
@@ -135,5 +135,5 @@ Read `references/workflow.md` for the full procedure and completion criteria.
   open drift.
 
 Read only the references needed for the task, but always read `evidence-model.md` before
-writing or changing claims, and `links.md` before editing a tome when `grimoire/tomes/LINKS.md`
+writing or changing claims, and `links.md` before editing a tome when `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/LINKS.md`
 exists.

@@ -26,7 +26,8 @@ while [[ $# -gt 0 ]]; do
 done
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_workspace-guard.sh"
 require_inside "the finding file" "$finding"
-require_inside "the destination" "$dest"
+codex_artifacts init >/dev/null
+require_codex_output "$dest"
 [[ -z "$src_dir" ]] || require_inside "--src-dir" "$src_dir"
 
 python3 - "$finding" "$dest" "$src_dir" "$block" <<'PY'
@@ -62,6 +63,7 @@ code = re.sub(r"""(["'])(\.{1,2}/[^"']+)\1""", reroot, code)
 os.makedirs(dest_dir, exist_ok=True)
 if os.path.exists(dest):
     sys.exit(f"{dest} already exists; refusing to overwrite")
-open(dest, "w").write(code)
+with open(dest, "x") as out:
+    out.write(code)
 print(f"wrote {dest} (block {block}/{len(blocks)}, imports re-rooted from {src_dir} to {dest_dir})")
 PY

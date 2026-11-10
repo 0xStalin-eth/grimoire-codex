@@ -89,6 +89,10 @@ Only the downstream owner needs to:
 2. Allow GitHub Actions to create pull requests in that repository (organization policy may also
    govern this). The normal CI has `contents: read`. The sync job requests only `contents: write`
    and `pull-requests: write`; checkout does not persist credentials.
+   GitHub labels the repository toggle **Allow GitHub Actions to create and approve pull requests**.
+   Keep default workflow permissions read-only; the synchronization workflow never approves or
+   merges a PR. The supplied repository currently has this toggle disabled. Changing it requires
+   the owner's explicit approval.
 3. Decide how to trigger checks on bot-created PRs. By default, publication uses the repository's
    `GITHUB_TOKEN`, which needs no secret and has no upstream write permission. GitHub suppresses push-triggered workflows from this token; current GitHub documentation says
    opened/synchronize/reopened PR checks enter an approval-required state. Approve those workflows

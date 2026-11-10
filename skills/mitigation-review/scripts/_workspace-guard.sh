@@ -4,7 +4,34 @@
 # Sibling workspaces of the same repo (other checkouts that share its git directory) count as outside, and so does
 # any symlink that leads out of the workspace. Every path is resolved with symlinks followed before it is checked.
 
-ws_root() { git rev-parse --show-toplevel; }
+# Git inspection must not refresh metadata outside a linked audit checkout.
+export GIT_OPTIONAL_LOCKS=0
+
+ws_root() {
+  local repo_root
+  repo_root="$(git rev-parse --show-toplevel)" || return 2
+  python3 -I - "$repo_root" <<'ROOT_PY'
+import os, sys
+root = os.path.realpath(sys.argv[1])
+launch = os.environ.get("GRIMOIRE_AUDIT_ROOT", "")
+if not launch or not os.path.isabs(launch) or not os.path.isdir(launch):
+    sys.exit("REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute Codex launch directory")
+launch = os.path.realpath(launch)
+if root != launch and not root.startswith(launch + os.sep):
+    sys.exit(f"REFUSED: git root {root} is above or outside Codex launch directory {launch}")
+import re, subprocess
+remotes = subprocess.run(["git", "-C", root, "remote", "-v"], capture_output=True, text=True, check=True).stdout
+if re.search(r"github\.com[:/]0xStalin-eth/grimoire(?:\.git)?(?:\s|$)", remotes, re.I):
+    sys.exit("REFUSED: canonical Claude Grimoire is strictly read-only")
+print(root)
+ROOT_PY
+}
+# Refuse a broader root at source time, before the caller creates scratch/output files.
+ws_root >/dev/null || return 2
+
+_codex_artifact_tool="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)/scripts/review_artifacts.py"
+codex_artifacts() { python3 "$_codex_artifact_tool" "$@"; }
+require_codex_output() { codex_artifacts guard-output "$@"; }
 
 # require_inside <what> <path>... : exit 2 unless every path resolves inside the workspace
 require_inside() {

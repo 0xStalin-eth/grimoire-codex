@@ -7,7 +7,8 @@ import {TargetPreFixID} from "./TargetPreFixID.sol";
 
 /// @title <ID>MitigationReview
 /// @notice <ID> (issue #<N>, PR #<PR>): <one-line bug>.
-/// Fork: `MAINNET_RPC_URL=... forge test --match-path test/mitigation/<ID>MitigationReview.t.sol`
+/// Run through the installed review_artifacts.py private runner with this run's PoC-relative path.
+/// Supply MAINNET_RPC_URL for fork tests; never execute generated PoCs from the shared checkout.
 contract IDMitigationReview is ExistingFixtureTest {
     bytes4 internal constant EXPECTED_ERROR = bytes4(keccak256("SomeError()"));
 

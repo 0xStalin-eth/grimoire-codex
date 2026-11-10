@@ -1,6 +1,6 @@
 ---
 name: summon
-description: "This skill should be used when the user says \"summon\", \"summon grimoire\", \"/summon\", \"initialize grimoire\", \"start an audit\", \"begin security review\", \"set up audit workspace\", \"kick off security research\", \"scope a codebase\", \"map a codebase for security\", \"prepare for an audit\", or wants to initialize Grimoire on a new codebase. Also use it when invoked with a bug-bounty program URL or slug (e.g. \"/summon immunefi.com/bug-bounty/program\", \"summon from a bug bounty program\", \"set up from an Immunefi/Cantina program\", \"fetch the scope and clone the repos\") \u2014 in that case it first fetches the program scope and clones the in-scope repositories before initializing. This is the first skill run on a new engagement. It builds initial context, creates the audit workspace structure, and produces GRIMOIRE.md \u2014 the living contextual map that primes all future agent interactions for security research."
+description: "This skill should be used when the user says \"summon\", \"summon grimoire\", \"/summon\", \"initialize grimoire\", \"start an audit\", \"begin security review\", \"set up audit workspace\", \"kick off security research\", \"scope a codebase\", \"map a codebase for security\", \"prepare for an audit\", or wants to initialize Grimoire on a new codebase. Also use it when invoked with a bug-bounty program URL or slug (e.g. \"/summon immunefi.com/bug-bounty/program\", \"summon from a bug bounty program\", \"set up from an Immunefi/Cantina program\", \"fetch the scope and clone the repos\") \u2014 in that case it first fetches the program scope and clones the in-scope repositories before initializing. This is the first skill run on a new engagement. It builds initial context, creates the audit workspace structure, and produces grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md \u2014 the living contextual map that primes all future agent interactions for security research."
 ---
 
 ## Codex adapter (read first)
@@ -11,14 +11,14 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 # Summon
 
 Initialize Grimoire on a new codebase. Build context, create the audit workspace, and produce
-`GRIMOIRE.md` — the living contextual map for this security engagement.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` — the living contextual map for this security engagement.
 
 ## Philosophy
 
 **Build context first.** Top researchers always establish contextual understanding before hunting
 for bugs. Summon explores the target, builds a map, and gives you and future agents the context
-needed to do meaningful work. Keep GRIMOIRE.md concise — it is loaded into every agent context.
-Detailed notes belong in `grimoire/tomes/`.
+needed to do meaningful work. Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise — it is loaded into every agent context.
+Detailed notes belong in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.
 
 ## Workflow
 
@@ -28,14 +28,14 @@ in_progress before starting it and completed when done.
 ```
 - [ ] 0. Acquire target from bug bounty program — fetch scope, resolve & clone in-scope repos  (ONLY if invoked with a program URL/slug)
 - [ ] 1. Verify workspace layout — confirm directory structure, identify in-scope repo(s)
-- [ ] 2. Create audit directory structure — set up grimoire/, findings/, hypotheses/, spells/, tomes/, report-deliverables/
+- [ ] 2. Create audit directory structure — set up grimoire-codex/${GRIMOIRE_SESSION_ID}/, findings/, hypotheses/, spells/, tomes/, report-deliverables/
 - [ ] 3. Build initial context — language, tooling, frameworks, integrations, problem & approach
 - [ ] 4. Map architecture and flows — identify structure, primary flows, key components
 - [ ] 5. Identify crown jewels — determine high-impact targets and threat model
 - [ ] 5b. Capture scope constraints — capability vs trust assumptions, out-of-scope, invariants
-- [ ] 6. Write GRIMOIRE.md — assemble the contextual map
+- [ ] 6. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md — assemble the contextual map
 - [ ] 6b. Write kickoff questions — what to ask the client on the kickoff call
-- [ ] 7. Review GRIMOIRE.md — kick off subagent to verify accuracy and trim bloat
+- [ ] 7. Review grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md — kick off subagent to verify accuracy and trim bloat
 - [ ] 8. Surface automation opportunities — check for spellbook modules to run
 - [ ] 9. Spawn sigil swarm — run checks-based sigils against the codebase
 ```
@@ -112,7 +112,7 @@ creates its own files and directories alongside (not inside) the scoped code.
 - Is there a git repo at the current level that would conflict? (Grimoire artifacts should not
   pollute the scoped repo's git history)
 
-If multiple repositories are in scope, identify each one. GRIMOIRE.md should cover all in-scope
+If multiple repositories are in scope, identify each one. grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md should cover all in-scope
 repos in a single document, with architecture and flows sections clearly delineating per-repo
 structure where they differ.
 
@@ -129,7 +129,7 @@ Create the following directories if they don't already exist:
 ```
 project/
     in_scope_repo/              # already present
-    grimoire/
+    grimoire-codex/${GRIMOIRE_SESSION_ID}/
         findings/               # findings during this audit
             SESSIONS.md         # session log: history (see below)
             invalid/            # discarded, closed or invalidated
@@ -170,7 +170,7 @@ project/
             protocol-summary.md
             executive-summary.md
         tmp/                    # temporary files and scripts
-    GRIMOIRE.md                 # main contextual map (created in step 6)
+    grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md                 # main contextual map (created in step 6)
 ```
 
 Create `protocol-summary.md` and `executive-summary.md` as empty files; they are filled in later
@@ -193,7 +193,7 @@ The session ID is always read from `$GRIMOIRE_SESSION_ID`, never guessed. There 
   updates; never edit the table by hand:
 
   ```bash
-  <summon>/scripts/session-status.sh grimoire/<folder>/SESSIONS.md <file-name> <status> "<note>"
+  <summon>/scripts/session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/<folder>/SESSIONS.md <file-name> <status> "<note>"
   ```
 
   It creates the file with this header if missing:
@@ -257,7 +257,7 @@ turn, without waiting to be asked:
 1. Move the file `findings/WIP/<name>.md` → `findings/valid/<name>.md`. Never overwrite: check the
    name is free first.
 2. Update every link to its old path: the hypothesis's `outcome: promoted: <path>`, and any tome,
-   `tomes/LINKS.md` row or client question that names it (`grep -rl "findings/WIP/<name>.md" grimoire/`).
+   `tomes/LINKS.md` row or client question that names it (`grep -rl "findings/WIP/<name>.md" grimoire-codex/${GRIMOIRE_SESSION_ID}/`).
    The finding's own `hypothesis:` link does not change; the hypothesis stays in `hypotheses/valid/`.
 3. Add a dated line to the hypothesis's `## Notes` ("finding submitted"), update its row in
    `hypotheses/SESSIONS.md` (`session-status.sh … valid "…; finding submitted, now findings/valid/<name>.md"`),
@@ -280,8 +280,8 @@ asked and never rewritten; a follow-up is a new question. Create the file with t
 **Outcome:** <what the answer changed: verdict, severity, scope, next step>
 ```
 
-Documents in `grimoire/tomes/` are cross-linked from GRIMOIRE.md using Obsidian-style wiki links:
-`[[tomes/auth-flow]]` links to `grimoire/tomes/auth-flow.md`.
+Documents in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` are cross-linked from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md using Obsidian-style wiki links:
+`[[tomes/auth-flow]]` links to `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/auth-flow.md`.
 
 Optionally create if the user indicates they have relevant materials:
 ```
@@ -341,7 +341,7 @@ the map.
 - Where does data enter and leave the system?
 
 Keep this high-level. The goal is a map for navigation, not a line-by-line audit. Detailed flow
-analysis belongs in `grimoire/tomes/` and will happen during the actual research.
+analysis belongs in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` and will happen during the actual research.
 
 ### 5. Identify Crown Jewels
 
@@ -368,7 +368,7 @@ Consult `references/domain-crown-jewels.md` for a comprehensive breakdown of ass
 vectors, and exploitation patterns by domain.
 
 This is an initial assessment. The user will refine crown jewels as the engagement progresses.
-GRIMOIRE.md is living memory.
+grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is living memory.
 
 ### 5b. Capture Scope Constraints
 
@@ -403,9 +403,9 @@ If no scope materials exist, say so explicitly in the Scope section rather than 
 it empty — downstream triage needs to know the constraints are unknown, not assume none
 exist.
 
-### 6. Write GRIMOIRE.md
+### 6. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 
-Assemble findings from steps 3-5 into `GRIMOIRE.md` at the project root. This file serves as:
+Assemble findings from steps 3-5 into `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` at the project root. This file serves as:
 - Initial context for the researcher
 - Context primer for all future agent interactions
 - A living document that evolves during the engagement
@@ -454,7 +454,7 @@ unknown" so downstream triage is not silently uncalibrated.]
 ## Primary Flows
 
 [List the main use cases / activities. For each: 1-2 line description of the flow path through
-the system. More detail belongs in grimoire/tomes/.]
+the system. More detail belongs in grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/.]
 
 ## Crown Jewels
 
@@ -471,15 +471,15 @@ deeper investigation. Keep this brief — it will grow during the engagement.]
 ```
 
 **Important constraints:**
-- Keep GRIMOIRE.md concise. It will be loaded into every agent context.
-- Use `[[document-name]]` cross-linking to reference detailed notes in `grimoire/tomes/`.
+- Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise. It will be loaded into every agent context.
+- Use `[[document-name]]` cross-linking to reference detailed notes in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.
 - Do not include line-by-line code analysis. That belongs in tomes.
 - Consult `examples/grimoire-md-example.md` for a concrete reference of what a completed
-  GRIMOIRE.md looks like.
+  grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md looks like.
 
 ### 6b. Write Kickoff Questions
 
-Write the questions collected in steps 3–5b to `grimoire/client-communication/kickoff-questions.md`.
+Write the questions collected in steps 3–5b to `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/kickoff-questions.md`.
 This file is about the protocol as a whole; questions about a single finding go in that finding's
 `<finding-ID>.md`. If the file already exists, add new questions after the last ID and do not
 rewrite earlier ones. Append a `created` row to `client-communication/SESSIONS.md`.
@@ -533,23 +533,23 @@ rewrite earlier ones. Append a `created` row to `client-communication/SESSIONS.m
 
 IDs (`K1`, `K2`, …) are unique across sections. Leave a section out if it has no questions.
 
-**After the call:** fill each **Answer**, then fold what changes the map into GRIMOIRE.md (scope
+**After the call:** fill each **Answer**, then fold what changes the map into grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md (scope
 constraints, invariants, crown jewels — cite `kickoff call <date>` as the source) and update any
 linked hypothesis. A follow-up is a new question with a new ID.
 
 When summoned from a bounty program there is usually no kickoff call. Write the file anyway, with
 `Call: not scheduled`; it is the list for the program's support channel.
 
-### 7. Review GRIMOIRE.md
+### 7. Review grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 
-After writing GRIMOIRE.md, kick off a subagent to review it. The subagent should read both
-GRIMOIRE.md and the in-scope codebase independently to verify accuracy and flag bloat. Do not
+After writing grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md, kick off a subagent to review it. The subagent should read both
+grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and the in-scope codebase independently to verify accuracy and flag bloat. Do not
 skip this step — the main agent built context progressively and may have carried forward
 assumptions or included too much detail.
 
 **Subagent instructions:**
 
-Give the subagent the following mandate. It should read GRIMOIRE.md and then independently spot-check
+Give the subagent the following mandate. It should read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and then independently spot-check
 claims against the actual codebase:
 
 1. **Accuracy check** — Verify factual claims against the codebase:
@@ -559,10 +559,10 @@ claims against the actual codebase:
    - Are crown jewel locations accurate?
    - Flag anything stated with confidence that the code contradicts.
 
-2. **Bloat check** — GRIMOIRE.md is loaded into every agent context. Every unnecessary line
+2. **Bloat check** — grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is loaded into every agent context. Every unnecessary line
    degrades future agent performance. Flag:
    - Sections that repeat the same information in different words
-   - Overly detailed flow descriptions that belong in `grimoire/tomes/`
+   - Overly detailed flow descriptions that belong in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`
    - Vague filler sentences that don't add navigational or security value
    - Content exceeding ~150 lines total (a strong signal of bloat)
 
@@ -571,14 +571,14 @@ claims against the actual codebase:
    - Significant components missing from the architecture
    - Crown jewels that seem absent given the project domain
 
-4. **Kickoff questions check** — Read `grimoire/client-communication/kickoff-questions.md`:
+4. **Kickoff questions check** — Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/kickoff-questions.md`:
    - Drop questions the code or docs already answer (give the answer and its location).
    - Verify each cited `path:line` and doc passage.
    - Merge duplicates and flag questions phrased as accusations rather than about intent.
    - Flag gaps between docs and code it noticed that have no question.
 
 The subagent should return a short list of specific corrections, cuts, and additions. Apply them
-to GRIMOIRE.md and the kickoff questions before presenting the final version to the user. Show the user what the subagent
+to grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md and the kickoff questions before presenting the final version to the user. Show the user what the subagent
 found and what was changed.
 
 ### 8. Surface Automation Opportunities
@@ -597,14 +597,14 @@ If automation modules exist:
 - Run selected modules and provide an initial triage of results
 
 If no spellbook exists yet:
-- Note this in GRIMOIRE.md under Automation
+- Note this in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation
 - Note that automation modules can be built from findings as the engagement progresses
 
 If the researcher has a personal grimoire (`~/.grimoire/sigils/`), list what's available and
 suggest running the Scribe GC skill (`/scribe-gc` with scope "both") to check for duplicates
 between personal and project-local sigils before applying them.
 
-Note in GRIMOIRE.md under Automation that new detection modules can be distilled from findings
+Note in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation that new detection modules can be distilled from findings
 as the engagement progresses using the Scribe agent (`/scribe-distill`).
 
 ### 9. Spawn Sigil Swarm
@@ -618,18 +618,18 @@ Consult `references/sigil-spawning.md` for the subagent prompt template and deta
 **Index available checks.**
 
 Run the `index-checks.sh` script from the checks skill's `scripts/` directory, passing
-`grimoire/spells/checks/` as the target. If the directory does not exist or contains no
-checks, note "No checks available — sigil swarm skipped" in GRIMOIRE.md under Automation
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` as the target. If the directory does not exist or contains no
+checks, note "No checks available — sigil swarm skipped" in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md under Automation
 and skip this step. A fresh engagement with no prior checks is normal.
 
 **Filter by language.**
 
 Match each check's `languages` field against the languages identified in step 3 (the Target
-section of GRIMOIRE.md). Only include checks whose language matches the target codebase.
+section of grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md). Only include checks whose language matches the target codebase.
 Include checks with an empty or wildcard languages field regardless of target.
 
 Run the `select-checks.sh` script from this skill's `scripts/` directory, passing
-`grimoire/spells/checks/` and a comma-separated list of target languages from GRIMOIRE.md.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` and a comma-separated list of target languages from grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.
 The script outputs only the checks that apply.
 
 **Confirm with the user.**
@@ -650,11 +650,11 @@ by tag or selecting a subset.
 For each approved check, spawn a subagent sigil. Process in batches of 5 to manage context
 budget. For each check, give the subagent these instructions:
 
-1. Read GRIMOIRE.md for engagement context
+1. Read grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md for engagement context
 2. Read the check file at `<filepath>` for the vulnerability pattern
 3. Hunt following the protocol in `references/sigil-spawning.md` — formulate a hypothesis from
    the check, search the codebase, evaluate evidence, produce a finding or dismiss
-4. Write any findings to `grimoire/sigil-findings/<check-slug>.md` where `<check-slug>` is the
+4. Write any findings to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<check-slug>.md` where `<check-slug>` is the
    check's filename without extension. If a check produces multiple findings, append a numeric
    suffix (e.g., `reentrancy-1.md`, `reentrancy-2.md`)
 5. Return a hunt summary: check name, verdict (finding or dismissed), confidence, and file path
@@ -678,16 +678,16 @@ Checks run: [N]  |  Findings: [N]  |  Dismissed: [N]
 Group findings by severity (Critical/High first).
 
 **Familiar Triage.** Invoke the familiar agent in batch triage mode (Mode 2) on
-`grimoire/sigil-findings/`. The familiar will independently verify each finding, dismiss
-false positives (moving them to `grimoire/sigil-findings/dismissed/`), and adjust severity
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`. The familiar will independently verify each finding, dismiss
+false positives (moving them to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/dismissed/`), and adjust severity
 where warranted. Present the familiar's triage summary to the user instead of raw sigil
 results.
 
-**Update GRIMOIRE.md.**
+**Update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md.**
 
 Append to the Automation section:
 - Number of checks run and findings produced
-- Link to `grimoire/sigil-findings/` for details
+- Link to `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for details
 - Note which checks were skipped (if any) and why
 
 ---
@@ -699,7 +699,7 @@ Append to the Automation section:
 - **Cross-reference documentation and code.** Documentation describes intent; code describes
   reality. Discrepancies between the two are themselves interesting from a security perspective.
 - **Ask, don't assume.** If something is ambiguous (scope, layout, priorities), ask the user.
-- **Living document.** Remind the user that GRIMOIRE.md should be edited as they learn more.
+- **Living document.** Remind the user that grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md should be edited as they learn more.
   It's a starting point, not a final artifact.
-- **Conciseness over completeness.** GRIMOIRE.md is a map, not an encyclopedia. Err on the side
-  of too brief. Detailed notes go in `grimoire/tomes/`.
+- **Conciseness over completeness.** grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md is a map, not an encyclopedia. Err on the side
+  of too brief. Detailed notes go in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/`.

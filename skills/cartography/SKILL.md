@@ -1,6 +1,6 @@
 ---
 name: cartography
-description: "This skill should be used when the user says \"build context on a flow\", \"trace a flow\", \"map how X works\", \"cartography\", \"/cartography\", \"document a flow\", \"create a flow map\", \"trace how authentication works\", \"map the data flow\", or wants to explore and document how a specific code flow works so that context can be quickly rebuilt on future visits. This is the primary skill for creating cartography files in grimoire/cartography/."
+description: "This skill should be used when the user says \"build context on a flow\", \"trace a flow\", \"map how X works\", \"cartography\", \"/cartography\", \"document a flow\", \"create a flow map\", \"trace how authentication works\", \"map the data flow\", or wants to explore and document how a specific code flow works so that context can be quickly rebuilt on future visits. This is the primary skill for creating cartography files in grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/."
 ---
 
 ## Codex adapter (read first)
@@ -27,7 +27,7 @@ When this skill is activated, create a todo list from the following steps. Mark 
 in_progress before starting it and completed when done.
 
 ```
-- [ ] 1. Verify infrastructure — confirm grimoire/cartography/ exists
+- [ ] 1. Verify infrastructure — confirm grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/ exists
 - [ ] 2. Check index for existing flows — run index script, present matches
 - [ ] 3. Explore the flow — discover entry points, components, sequence, security notes
 - [ ] 4. Document the flow — create cartography file following format spec
@@ -39,20 +39,20 @@ in_progress before starting it and completed when done.
 
 ### 1. Verify Infrastructure
 
-Check that the `grimoire/` directory and `grimoire/cartography/` subdirectory exist.
+Check that the `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory and `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` subdirectory exist.
 
-- If `grimoire/cartography/` exists, proceed.
-- If `grimoire/` exists but `cartography/` does not, create `grimoire/cartography/`.
-- If `grimoire/` does not exist, warn the user that Grimoire has not been summoned on this
+- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` exists, proceed.
+- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/` exists but `cartography/` does not, create `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.
+- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/` does not exist, warn the user that Grimoire has not been summoned on this
   codebase. Suggest running [[summon]] first to set up the workspace. If the user wants to
-  proceed anyway, create both `grimoire/` and `grimoire/cartography/`.
+  proceed anyway, create both `grimoire-codex/${GRIMOIRE_SESSION_ID}/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`.
 
 ### 2. Check Index for Existing Flows
 
 Run the indexing script to see what flows already exist:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 If the index returns results:
@@ -119,7 +119,7 @@ Consult `references/cartography-format.md` for the exact format specification an
 
 ### 4. Document the Flow
 
-Create a cartography file at `grimoire/cartography/<slug>.md` where `<slug>` is a URL-friendly
+Create a cartography file at `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/<slug>.md` where `<slug>` is a URL-friendly
 version of the flow name (lowercase, hyphens, no spaces).
 
 The file must follow the format defined in `references/cartography-format.md`:
@@ -150,7 +150,7 @@ Set `created` and `updated` to today's date.
 Re-run the indexing script:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 Verify the new flow appears in the output. If it doesn't, check that the frontmatter has

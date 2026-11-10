@@ -21,7 +21,7 @@ patch, not the original code, and a restore can wipe out their patch or put back
    - every path they read or write is resolved with symlinks followed and refused unless it lands inside
      the workspace;
    - the isolated copy refuses dependency folders or symlinks that lead outside, and writes only inside
-     `<workspace>/.isolated/<session-id>/`.
+     `<workspace>/.isolated-codex/<session-id>/`.
 
    If an input lives in another checkout (a report, a finding mirror), copy it into this workspace first.
    git itself reads the shared object store, and only for this workspace's commits.
@@ -30,7 +30,7 @@ patch, not the original code, and a restore can wipe out their patch or put back
    you are alone.
 2. **Patch and verify in your own isolated copy.** `verify-fix.sh` always does this. For manual patch
    probes, create one with `scripts/isolated-workspace.sh create i<N>` and work in the folder that
-   `isolated-workspace.sh path i<N>` prints (`.isolated/<session-id>/i<N>/`). It holds every tracked and
+   `isolated-workspace.sh path i<N>` prints (`.isolated-codex/<session-id>/i<N>/`). It holds every tracked and
    untracked file of the workspace, so your PoCs are present. Keep it until the user closes the lead
    (rule 9).
    - **Prove the copy is identical before using it.** `create` and `sync` compare the copy and the
@@ -54,7 +54,7 @@ patch, not the original code, and a restore can wipe out their patch or put back
    message, check its claims (`git status`, compare with HEAD), re-run anything that overlapped, and reply
    saying what you re-ran and whether results changed.
 7. **One work folder per finding, inside your session folder.** Use `isolated-workspace.sh work i<N>`,
-   which creates and prints `.isolated/<session-id>/work/i<N>/`:
+   which creates and prints `.isolated-codex/<session-id>/work/i<N>/`:
    - `a/` for the originals and `b/` for the patched copies;
    - the diff;
    - a backup of any PoC you rewrite.
@@ -64,7 +64,7 @@ patch, not the original code, and a restore can wipe out their patch or put back
 8. **Never use `git stash` in a shared repo.** The stash stack is shared across checkouts. To set work
    aside, copy the files into your work folder.
 9. **One session, one folder; never touch another session's.** Copies and work folders live under
-   `.isolated/$GRIMOIRE_SESSION_ID/`, and the scripts refuse to run without that id. the operator explicitly reuses the same run ID
+   `.isolated-codex/$GRIMOIRE_SESSION_ID/`, and the scripts refuse to run without that id. the operator explicitly reuses the same run ID
    on a verified resumption, so the session finds its copies; a new independent Codex run gets a new ID and an empty
    folder. Never read results from, run in, or remove another session's folder, even one that looks
    abandoned: list them with `isolated-workspace.sh list` and leave the clean-up to the user.
@@ -73,12 +73,12 @@ patch, not the original code, and a restore can wipe out their patch or put back
 
 ## Isolated copy notes
 
-- **Location:** `<workspace>/.isolated/<session-id>/<name>/`, with an `.owner` file naming the session.
+- **Location:** `<workspace>/.isolated-codex/<session-id>/<name>/`, with an `.owner` file naming the session.
   Names resolve only inside the current session's folder (no `/` or `..`), and `remove` also checks
-  `.owner` and that the target is a copy the script made. The script writes `.isolated/.gitignore` with
+  `.owner` and that the target is a copy the script made. The script writes `.isolated-codex/.gitignore` with
   `*`, so the folder never shows in `git status`, is never copied into another session's copy, and is
   outside the folders forge and Hardhat compile from the workspace root. `work` is a reserved name for
-  the work folders. Copies made before per-session folders (`.isolated/<name>/`) show in `list` as
+  the work folders. Copies made before per-session folders (`.isolated-codex/<name>/`) show in `list` as
   legacy and are never touched by the script.
 - **Dependencies:** `lib/` and `node_modules/` are symlinks to the workspace's own folders. Copying them
   is slow, and they are compared by checking where the links point. `remove` deletes the links, never

@@ -44,8 +44,8 @@ will produce.
 ### 1. Gather Context
 
 Verify the workspace:
-- Check for `GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.
-- Check whether `grimoire/findings/` exists. Create it if not.
+- Check for `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` in the project root. If absent, suggest running [[summon]] first.
+- Check whether `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` exists. Create it if not.
 
 Gather vulnerability context:
 - If triage context exists from the familiar agent, use it. Otherwise invoke the familiar
@@ -142,8 +142,8 @@ Present the drafted content to the user for review before writing the file.
 ### 5. Write Finding File
 
 Determine the target directory:
-- `grimoire/findings/` for manual audit research (default)
-- `grimoire/sigil-findings/` for automated tooling or sigil agents
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for manual audit research (default)
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` for automated tooling or sigil agents
 
 Generate the filename per the filing conventions in the finding skill.
 

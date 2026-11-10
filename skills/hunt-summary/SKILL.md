@@ -1,6 +1,6 @@
 ---
 name: hunt-summary
-description: "This skill should be used when the user says \"hunt-summary\", \"/hunt-summary\", \"summarize the hunt\", \"summarize this session\", \"session summary\", \"hunt summary\", \"checkpoint the hunt\", \"wrap up this session\", \"snapshot where we are\", \"what did we find so far\", \"save progress before I stop\", or wants a durable record of a security research session. It analyzes the conversation transcript up to this point and writes a comprehensive hunt summary to grimoire/hunt-summary-datetime.md in the audit workspace \u2014 capturing what was discovered, dead ends, new leads, conclusive finds, and next actions so a future Grimoire run can pick up exactly where this one left off."
+description: "This skill should be used when the user says \"hunt-summary\", \"/hunt-summary\", \"summarize the hunt\", \"summarize this session\", \"session summary\", \"hunt summary\", \"checkpoint the hunt\", \"wrap up this session\", \"snapshot where we are\", \"what did we find so far\", \"save progress before I stop\", or wants a durable record of a security research session. It analyzes the conversation transcript up to this point and writes a comprehensive hunt summary to grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-datetime.md in the audit workspace \u2014 capturing what was discovered, dead ends, new leads, conclusive finds, and next actions so a future Grimoire run can pick up exactly where this one left off."
 ---
 
 ## Codex adapter (read first)
@@ -11,7 +11,7 @@ Read [CODEX.md](CODEX.md) before the workflow. Preserve every stage and confirma
 # Hunt Summary
 
 Analyze the current session's transcript and write a durable, self-contained checkpoint to
-`grimoire/hunt-summary-<datetime>.md` in the audit workspace. The summary is the handoff: a future
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md` in the audit workspace. The summary is the handoff: a future
 hunt — run by you or another researcher — should be able to read it cold and continue without
 re-deriving everything this session learned.
 
@@ -44,23 +44,23 @@ in_progress before starting it and completed when done.
 - [ ] 2. Mine the transcript — extract discoveries, finds, leads, dead ends, open questions, next actions
 - [ ] 3. Reconcile against on-disk artifacts (findings/, sigil-findings/, tomes/, spells/, cartography)
 - [ ] 4. Draft the hunt summary from the template
-- [ ] 5. Write grimoire/hunt-summary-<datetime>.md
-- [ ] 6. Present the summary and offer to fold key items into GRIMOIRE.md
+- [ ] 5. Write grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md
+- [ ] 6. Present the summary and offer to fold key items into grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 ```
 
 ---
 
 ### 1. Locate the Audit Workspace and Resolve the Output Path
 
-The summary belongs in the engagement's `grimoire/` workspace directory — the one created by
-`summon`, sibling to `GRIMOIRE.md` and the `findings/`, `tomes/`, `spells/` subdirectories. It is
+The summary belongs in the engagement's `grimoire-codex/${GRIMOIRE_SESSION_ID}/` workspace directory — the one created by
+`summon`, sibling to `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and the `findings/`, `tomes/`, `spells/` subdirectories. It is
 **not** related to the Grimoire plugin's own source tree.
 
 Determine the workspace:
-- If a `grimoire/` directory exists at or above the current working directory (typically next to
-  `GRIMOIRE.md`), use it.
-- If `GRIMOIRE.md` exists but no `grimoire/` directory does, write the summary next to
-  `GRIMOIRE.md` and note that this does not look like a fully initialized workspace (suggest
+- If a `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory exists at or above the current working directory (typically next to
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md`), use it.
+- If `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` exists but no `grimoire-codex/${GRIMOIRE_SESSION_ID}/` directory does, write the summary next to
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and note that this does not look like a fully initialized workspace (suggest
   `/summon`).
 - If neither exists, this session is not running inside a Grimoire workspace. Tell the user, and
   ask whether to (a) write the summary to the current directory anyway, or (b) stop. Do not
@@ -72,8 +72,8 @@ Resolve the timestamp with bash so the filename is sortable and collision-free:
 date +%Y-%m-%d-%H%M%S
 ```
 
-The output path is `grimoire/hunt-summary-<datetime>.md` (e.g.
-`grimoire/hunt-summary-2026-06-02-143052.md`). Never overwrite an existing summary — each run is a
+The output path is `grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md` (e.g.
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-2026-06-02-143052.md`). Never overwrite an existing summary — each run is a
 new checkpoint, preserving the trail.
 
 ### 2. Mine the Transcript
@@ -103,11 +103,11 @@ If the transcript is genuinely sparse in a category, write "None this session." 
 The transcript is the primary source, but the workspace may contain artifacts the conversation
 produced or touched. Cross-check so the summary's references are accurate and nothing is dropped:
 
-- `grimoire/findings/` and `grimoire/sigil-findings/` — finding documents written this session.
-- `grimoire/tomes/` — detailed notes or flow analyses added or updated.
-- `grimoire/spells/` — scripts, PoCs, or detection modules created.
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/` — finding documents written this session.
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` — detailed notes or flow analyses added or updated.
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/` — scripts, PoCs, or detection modules created.
 - Cartography files (if the cartography skills were used) — flows mapped this session.
-- `GRIMOIRE.md` — note anything the session learned that contradicts or extends it (used in step 6).
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` — note anything the session learned that contradicts or extends it (used in step 6).
 
 List the artifacts touched with their paths. Where a conclusive find has a finding document, link
 to it with an Obsidian-style wiki link (e.g. `[[findings/reentrancy-withdraw]]`) to match the
@@ -168,18 +168,18 @@ be actionable: "Investigate X in `path` because Y." Reference the leads above wh
 
 ### 5. Write the File
 
-Write the drafted summary to `grimoire/hunt-summary-<datetime>.md`. Do not overwrite an existing
+Write the drafted summary to `grimoire-codex/${GRIMOIRE_SESSION_ID}/hunt-summary-<datetime>.md`. Do not overwrite an existing
 file. Confirm the path back to the user.
 
-### 6. Present and Offer to Update GRIMOIRE.md
+### 6. Present and Offer to Update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md
 
 Show the user a brief recap: the output path and a one-line count per section (e.g. "2 conclusive
 finds, 4 leads, 3 dead ends, 5 next actions").
 
-`GRIMOIRE.md` is the engagement's living memory. If the session produced durable context — a new
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` is the engagement's living memory. If the session produced durable context — a new
 crown jewel, a corrected flow, a trust-boundary insight, or a conclusive find — offer to fold a
-concise version into the relevant GRIMOIRE.md section (e.g. Attack Surface Notes, Crown Jewels).
-Keep GRIMOIRE.md concise; the full detail lives in the hunt summary. Only update GRIMOIRE.md with
+concise version into the relevant grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md section (e.g. Attack Surface Notes, Crown Jewels).
+Keep grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md concise; the full detail lives in the hunt summary. Only update grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md with
 the user's confirmation, and never duplicate the entire summary into it.
 
 ---

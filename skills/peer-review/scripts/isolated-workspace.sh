@@ -3,11 +3,11 @@
 #
 # Everything stays INSIDE the git workspace this runs from. Nothing is read from or written to any other workspace,
 # sibling checkouts of the same repo included: dependency links and symlinks that lead outside are refused, and no
-# write may leave the copy. The copy lives in <workspace>/.isolated/<name>/, which a `.gitignore` of `*` keeps out of
+# write may leave the copy. The copy lives in <workspace>/.isolated-codex/<name>/, which a `.gitignore` of `*` keeps out of
 # `git status` and out of other sessions' copies. Nothing is written above the workspace root (no system temp dir,
 # no `git worktree` metadata in the shared git dir); git is only read.
 #
-# Every copy belongs to ONE session. Copies and work folders live under <workspace>/.isolated/<session-id>/, where the
+# Every copy belongs to ONE session. Copies and work folders live under <workspace>/.isolated-codex/<session-id>/, where the
 # session id is $GRIMOIRE_SESSION_ID (explicitly reused by the operator on resume; a new independent Codex run gets a new ID). Names resolve
 # only inside the current session's folder, so a session cannot name, sync or remove another session's copy, and the
 # script refuses to run at all without a session id. `remove` additionally checks the folder's .owner file. Copies are
@@ -36,6 +36,8 @@
 #   --link           folder to symlink to the workspace's own (default: lib and node_modules, when present)
 #   --except         path to leave out of the comparison (e.g. a file you patched on purpose)
 set -euo pipefail
+# Git inspection must not refresh metadata outside a linked audit checkout.
+export GIT_OPTIONAL_LOCKS=0
 root="$(git rev-parse --show-toplevel)"
 exec python3 -I - "$root" "$@" <<'PY'
 import hashlib, os, shutil, subprocess, sys, json
@@ -45,7 +47,7 @@ root, args = os.path.realpath(sys.argv[1]), sys.argv[2:]
 USAGE = "usage: isolated-workspace.sh create|sync|verify|path|remove|work <name> [options] | session | list"
 if not args:
     sys.exit(USAGE)
-base = os.path.join(root, ".isolated")
+base = os.path.join(root, ".isolated-codex")
 STATE = ".isolated-state.json"
 OWNER = ".owner"
 
@@ -54,6 +56,77 @@ if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9-]{7,63}", sid):
     sys.exit("REFUSED: no session id ($GRIMOIRE_SESSION_ID is unset or malformed). Isolated copies are per session;"
              " run this from the Codex session that owns the copy.")
 sbase = os.path.join(base, sid)
+
+# The launch directory is explicit; changing a helper's cwd must never broaden it.
+audit_arg = os.environ.get("GRIMOIRE_AUDIT_ROOT", "")
+if not audit_arg or not os.path.isabs(audit_arg) or not os.path.isdir(audit_arg):
+    sys.exit("REFUSED: GRIMOIRE_AUDIT_ROOT must be the absolute directory where the Codex session started")
+audit_root = os.path.realpath(audit_arg)
+if root != audit_root and not root.startswith(audit_root + os.sep):
+    sys.exit(f"REFUSED: git root {root} is above or outside the Codex launch directory {audit_root}")
+
+remotes = subprocess.run(["git", "-C", root, "remote", "-v"], capture_output=True, text=True, check=True).stdout
+if re.search(r"github\.com[:/]0xStalin-eth/grimoire(?:\.git)?(?:\s|$)", remotes, re.I):
+    sys.exit("REFUSED: canonical Claude Grimoire is strictly read-only")
+
+def check_namespace():
+    if os.path.islink(base) or os.path.islink(sbase):
+        sys.exit("REFUSED: Codex isolation base or session directory is a symlink")
+    if not os.path.realpath(sbase).startswith(root + os.sep):
+        sys.exit("REFUSED: Codex session directory leaves the audit workspace")
+
+def check_owner(create=False):
+    """Never adopt another runtime's/session's directory, including moved legacy copies."""
+    check_namespace()
+    owner_file = os.path.join(sbase, OWNER)
+    if os.path.islink(owner_file):
+        sys.exit("REFUSED: Codex ownership marker is a symlink")
+    if not os.path.exists(owner_file):
+        if not create:
+            sys.exit(f"REFUSED: {sbase} has no {OWNER}; no owned Codex session here")
+        os.makedirs(sbase, exist_ok=True)
+        try:
+            with open(owner_file, "x") as f:
+                json.dump({"runtime": "codex", "session": sid, "workspace": root,
+                           "audit_root": audit_root, "created": time.strftime("%Y-%m-%dT%H:%M:%S%z")}, f)
+        except FileExistsError:
+            pass
+    try:
+        with open(owner_file) as f:
+            owner = json.load(f)
+    except Exception:
+        sys.exit(f"REFUSED: {owner_file} is unreadable")
+    expected = {"runtime": "codex", "session": sid, "workspace": root, "audit_root": audit_root}
+    if not isinstance(owner, dict) or any(owner.get(k) != v for k, v in expected.items()):
+        sys.exit(f"REFUSED: {sbase} is not owned by this Codex run in this launch directory")
+
+def ensure_base():
+    check_namespace()
+    if os.path.lexists(sbase):
+        check_owner()  # Do not adopt an existing unmarked/foreign session folder.
+    os.makedirs(base, exist_ok=True)
+    gi = os.path.join(base, ".gitignore")
+    if os.path.islink(gi):
+        sys.exit("REFUSED: Codex isolation .gitignore is a symlink")
+    try:
+        with open(gi, "x") as f:
+            f.write("*\n")
+    except FileExistsError:
+        pass
+    check_owner(create=True)
+
+def require_session_path(path):
+    check_owner()
+    if not os.path.realpath(path).startswith(sbase + os.sep):
+        sys.exit(f"REFUSED: {path} leaves this Codex run's directory")
+    parent = path
+    while parent != sbase:
+        if os.path.islink(parent):
+            sys.exit(f"REFUSED: Codex working path is a symlink: {parent}")
+        parent = os.path.dirname(parent)
+
+check_namespace()
+
 
 def human(n):
     for u in ("B", "K", "M", "G"):
@@ -97,6 +170,7 @@ if args[0] == "list":
     sys.exit(0)
 
 if args[0] == "session":
+    ensure_base()  # Validate ownership before verify-fix can create or clean scratch files.
     print(sbase)
     sys.exit(0)
 
@@ -107,34 +181,13 @@ if not name or "/" in name or name.startswith(".") or name == "work" or ".." in 
     sys.exit(f"invalid name {name!r}: use a plain folder name, e.g. i68 ('work' is reserved for patched copies)")
 iso = os.path.join(sbase, name)
 
-def check_owner(create=False):
-    """The session folder must be ours: its .owner names this session id."""
-    if os.path.islink(base) or os.path.islink(sbase):
-        sys.exit(f"REFUSED: {base} or {sbase} is a symlink")
-    owner_file = os.path.join(sbase, OWNER)
-    if not os.path.exists(owner_file):
-        if not create:
-            sys.exit(f"REFUSED: {sbase} has no {OWNER} file; nothing here belongs to session {sid}")
-        os.makedirs(sbase, exist_ok=True)
-        with open(owner_file, "w") as f:
-            json.dump({"session": sid, "created": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "workspace": root}, f)
-        return
-    try: o = json.load(open(owner_file))
-    except Exception: sys.exit(f"REFUSED: {owner_file} is unreadable")
-    if o.get("session") != sid:
-        sys.exit(f"REFUSED: {sbase} is owned by session {o.get('session')!r}, not {sid}")
-
 def inside(path):
     p = os.path.realpath(path)
     return p == root or p.startswith(root + os.sep)
 if os.path.islink(iso):
-    if cmd == "remove":
-        os.remove(iso)                    # drop the link itself, never what it points to
-        print(f"removed the link {iso} (its target was not touched)")
-        sys.exit(0)
-    sys.exit(f"REFUSED: {iso} is a symlink to {os.path.realpath(iso)}; remove it first")
+    sys.exit(f"REFUSED: {iso} is a symlink; resolve it manually without touching its target")
 if not inside(iso) or os.path.realpath(iso) == root:
-    sys.exit(f"REFUSED: {iso} resolves to {os.path.realpath(iso)}, outside the workspace (is .isolated a symlink?)")
+    sys.exit(f"REFUSED: {iso} resolves to {os.path.realpath(iso)}, outside the workspace (is .isolated-codex a symlink?)")
 if os.path.dirname(os.path.realpath(iso)) != os.path.realpath(sbase) and os.path.exists(sbase):
     sys.exit(f"REFUSED: {iso} does not resolve to a folder directly inside this session's {sbase}")
 
@@ -173,9 +226,39 @@ def load_state():
     with open(os.path.join(iso, STATE)) as f:
         return json.load(f)
 
+ARTIFACTS = "grimoire-codex"
+POCS = ARTIFACTS + "/" + sid + "/pocs"
+
+def poc_files():
+    folder = os.path.join(root, POCS)
+    if not os.path.exists(folder):
+        return []
+    marker = os.path.join(root, ARTIFACTS, sid, OWNER)
+    if any(os.path.islink(p) for p in (os.path.join(root, ARTIFACTS), os.path.join(root, ARTIFACTS, sid), marker, folder)):
+        sys.exit("REFUSED: Codex PoC ownership/path is a symlink")
+    with open(marker) as f:
+        owner = json.load(f)
+    expected = {"runtime": "codex", "session": sid, "workspace": root,
+                "audit_root": audit_root, "kind": "reports-and-pocs"}
+    if not isinstance(owner, dict) or any(owner.get(k) != v for k, v in expected.items()):
+        sys.exit("REFUSED: PoCs are not owned by this Codex run")
+    result = []
+    for directory, dirs, files in os.walk(folder):
+        for entry in dirs + files:
+            path = os.path.join(directory, entry)
+            if os.path.islink(path):
+                sys.exit("REFUSED: symlink in Codex PoC tree: " + path)
+        result += [os.path.relpath(os.path.join(directory, f), root) for f in files]
+    return result
+
+def untracked_files(links):
+    out = git("ls-files", "-z", "--others", "--exclude-standard")
+    return sorted({p.decode() for p in out.split(b"\0") if p and not under(p.decode(), links +
+                  [".isolated", ".isolated-codex", ARTIFACTS])} | set(poc_files()))
+
 def workspace_files(links):
     out = git("ls-files", "-z", "--cached", "--others", "--exclude-standard")
-    return sorted({p.decode() for p in out.split(b"\0") if p and not under(p.decode(), links + [".isolated"])})
+    return sorted({p.decode() for p in out.split(b"\0") if p and not under(p.decode(), links + [".isolated", ".isolated-codex", ARTIFACTS])} | set(poc_files()))
 
 def copy_files(files):
     for p in files:
@@ -194,7 +277,7 @@ def copy_files(files):
 
 def modified():
     return [l for l in git("status", "--porcelain", "--untracked-files=no").decode().splitlines()
-            if not under(l[3:].strip(), [".isolated"])]
+            if not under(l[3:].strip(), [".isolated", ".isolated-codex"])]
 
 def iso_files(links, excepts):
     found = []
@@ -204,12 +287,12 @@ def iso_files(links, excepts):
         dirs[:] = [x for x in dirs if not os.path.islink(os.path.join(d, x))]
         found += [rel_d + f for f in files]
         found += [rel_d + x for x in os.listdir(d) if os.path.islink(os.path.join(d, x)) and os.path.isdir(os.path.join(d, x))]
-    found = [p for p in found if p != STATE and not under(p, links)]
+    found = [p for p in found if p != STATE and not under(p, links) and (not under(p, [ARTIFACTS]) or under(p, [POCS]))]
     if found:   # drop what the workspace's ignore rules ignore (build output, caches)
         ign = subprocess.run(["git", "-C", root, "check-ignore", "--no-index", "-z", "--stdin"],
                              input="\0".join(found).encode() + b"\0", capture_output=True).stdout
         ignored = {p.decode() for p in ign.split(b"\0") if p}
-        found = [p for p in found if p not in ignored]
+        found = [p for p in found if p not in ignored or under(p, [POCS])]
     return set(found)
 
 def digest(path):
@@ -260,14 +343,6 @@ def refuse_if_modified(with_modified):
               "If they are another session's temporary patch, wait until the workspace is back at HEAD.", file=sys.stderr)
         sys.exit(1)
 
-def ensure_base():
-    os.makedirs(base, exist_ok=True)
-    gi = os.path.join(base, ".gitignore")
-    if not os.path.exists(gi):
-        with open(gi, "w") as f:
-            f.write("*\n")
-    check_owner(create=True)
-
 def make_links(links):
     for l in links:
         dst = os.path.join(iso, l)
@@ -291,8 +366,7 @@ if cmd == "create":
         os.makedirs(iso)
         tar = subprocess.run(["git", "-C", root, "archive", "--format=tar", ref], capture_output=True, check=True).stdout
         subprocess.run(["tar", "-x", "-C", iso], input=tar, check=True)
-        others = git("ls-files", "-z", "--others", "--exclude-standard")
-        copy_files([p.decode() for p in others.split(b"\0") if p and not under(p.decode(), links + [".isolated"])])
+        copy_files(untracked_files(links))
     else:
         refuse_if_modified(opts["with_modified"])
         check_boundaries(links, workspace_files(links))
@@ -314,8 +388,10 @@ elif cmd == "sync":
     links = st["links"]
     head = git("rev-parse", "HEAD").decode().strip()
     if st["ref"] != head:
-        others = git("ls-files", "-z", "--others", "--exclude-standard")
-        copy_files([p.decode() for p in others.split(b"\0") if p and not under(p.decode(), links + [".isolated"])])
+        for stale in iso_files(links, []) - set(poc_files()):
+            if under(stale, [POCS]):
+                os.remove(os.path.join(iso, stale))
+        copy_files(untracked_files(links))
         print(f"synced untracked files; NOT compared (copy built from {st['ref'][:7]}, workspace HEAD is {head[:7]})")
         sys.exit(0)
     refuse_if_modified(st["with_modified"])
@@ -347,6 +423,7 @@ elif cmd == "remove":
 elif cmd == "work":
     ensure_base()
     w = os.path.join(sbase, "work", name)
+    require_session_path(w)
     os.makedirs(w, exist_ok=True)
     print(w)
 

@@ -19,11 +19,16 @@ Commands:
     update <N> [<N> ...]       preserve the current copy, then replace it with the newest version
     update --all               the same for every mirrored issue that changed upstream
 
-Options:  --repo <owner/repo>  (required)   --mirror <dir>  (default: grimoire/findings/original-repo-findings)
+Options:  --repo <owner/repo>  (required)   --mirror <dir>  (default: this Codex run's findings/original-findings)
           --dry-run            print what would happen without writing anything
 Requires: gh (authenticated).
 """
 import argparse, difflib, glob, json, os, re, shutil, subprocess, sys
+
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+sys.dont_write_bytecode = True
+from review_artifacts import Artifacts
 
 FIELDS = "number,title,body,author,labels,state,createdAt,updatedAt,closedAt,comments,url"
 SLUG_MAX = 80
@@ -108,6 +113,7 @@ def target_path(mirror, name, state):
 
 
 def write(path, text, dry):
+    Artifacts().output(path, reports_only=True)
     print(f"  write {path}")
     if not dry:
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -116,10 +122,16 @@ def write(path, text, dry):
 
 
 def copy(src, dst, dry):
+    Artifacts().output(dst, reports_only=True)
     print(f"  preserve {src} -> {dst}")
     if not dry:
         os.makedirs(os.path.dirname(dst), exist_ok=True)
-        shutil.copy2(src, dst)
+        if os.path.lexists(dst):
+            if Path(src).read_bytes() != Path(dst).read_bytes():
+                raise ValueError(f"refusing to overwrite preserved history: {dst}")
+        else:
+            with open(dst, "xb") as out:
+                out.write(Path(src).read_bytes())
 
 
 def cmd_status(args):
@@ -166,6 +178,7 @@ def cmd_update(args):
             print(f"#{n}: not mirrored yet; skipped (use pull)")
             continue
         current = have[n]
+        Artifacts().output(current, reports_only=True)
         issue = fetch(args.repo, n)
         local_updated, local_comments = front(current)
         if local_updated == issue["updatedAt"] and local_comments == len(issue.get("comments") or []):
@@ -199,7 +212,7 @@ def cmd_update(args):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--repo", required=True)
-    ap.add_argument("--mirror", default="grimoire/findings/original-repo-findings")
+    ap.add_argument("--mirror", default=None)
     ap.add_argument("--dry-run", action="store_true")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("status")
@@ -210,11 +223,15 @@ def main():
     u.add_argument("numbers", nargs="*", type=int)
     u.add_argument("--all", action="store_true")
     args = ap.parse_args()
+    artifacts = Artifacts()
+    artifacts.initialize()
+    args.mirror = args.mirror or artifacts.paths()["mirror"]
+    artifacts.output(args.mirror, reports_only=True)
     # Only the mirror is ever written. Refuse a mirror that holds the user's own findings work.
     own = [d for d in ("Submitted", "comments", "drafts") if os.path.isdir(os.path.join(args.mirror, d))]
     if own or os.path.basename(os.path.normpath(args.mirror)) == "findings":
         ap.error(f"--mirror {args.mirror} looks like the project's own findings folder ({', '.join(own) or 'findings/'}); "
-                 "point it at the dedicated mirror folder, e.g. grimoire/findings/original-repo-findings")
+                 "point it at the dedicated mirror folder, returned by review_artifacts.py path mirror")
     if args.cmd == "pull" and not (args.numbers or args.new):
         ap.error("pull needs issue numbers or --new")
     if args.cmd == "update" and not (args.numbers or args.all):
@@ -223,4 +240,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (ValueError, OSError) as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        sys.exit(2)

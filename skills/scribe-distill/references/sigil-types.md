@@ -11,7 +11,7 @@ A markdown file in the checks skill format. Contains grep-able search patterns a
 assessment criteria for an applying agent to follow.
 
 - **Format:** YAML frontmatter + Patterns section + Assessment section
-- **Location:** `grimoire/spells/checks/<slug>.md`
+- **Location:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md`
 - **Applied by:** Spawning a subagent per check via the checks skill (Mode 2)
 - **Best for:** Patterns identifiable by grep that need context assessment, patterns where
   the applying agent can follow explicit criteria to determine true vs false positives
@@ -24,7 +24,7 @@ automated. Not a detection module — a reminder to investigate.
 
 - **Format:** YAML frontmatter (name, description, vulnerability-class, languages) + body
   describing what to look for, why it matters, known-bad patterns, assessment guidance
-- **Location:** `grimoire/spells/knowledge/<slug>.md`
+- **Location:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/<slug>.md`
 - **Surfaced by:** Scribe utilities (Mode 3) and during summon as manual review suggestions
 - **Best for:** Business-logic-dependent patterns, design-level flaws, patterns requiring
   full-codebase reasoning

@@ -54,24 +54,24 @@ load**: one answer should be fully absorbed before the next question.
 
 Read before answering, in this order:
 - A delve board in the current conversation, if `/delve` ran before this
-- A saved delve the user points to, `grimoire/delves/<session-id>/`: read `board.md` first, then
+- A saved delve the user points to, `grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/`: read `board.md` first, then
   `leads/<lead>.md` as questions need. Mark answers from it "From the delve of <date>:"; the code
   may have moved since the commits in its header. Read only the delve folders the user names. A
-  lead's current status is the folder its hypothesis file is in now (`grimoire/hypotheses/*/<name>.md`),
+  lead's current status is the folder its hypothesis file is in now (`grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/*/<name>.md`),
   not what the board said.
-- `GRIMOIRE.md` if present
-- `grimoire/tomes/active/` for prior conclusions (never `tomes/archived/`: outdated, likely invalid)
-- `grimoire/cartography/` for flows
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if present
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` for prior conclusions (never `tomes/archived/`: outdated, likely invalid)
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/` for flows
 - The code itself
 
 When a question touches past work, also read the record of it, and only then:
 
 | Question is about | Read | Mark the answer |
 |---|---|---|
-| Whether something was already checked, or a hypothesis in progress | `grimoire/hypotheses/` (its `## Notes`; `outcome:` in `valid/` and `invalid/`) | "From the hypothesis notes:" |
-| What is already proven or submitted | `grimoire/findings/` (`WIP/`, `valid/`, `invalid/`, and the `original-findings/` mirror) | "From the finding:" |
-| What the client said | `grimoire/client-communication/<finding-ID>.md` | "From the client, <date>:" |
-| A review's verdict | `grimoire/peer-review/`, `grimoire/mitigation-review/` | "From the review:" |
+| Whether something was already checked, or a hypothesis in progress | `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` (its `## Notes`; `outcome:` in `valid/` and `invalid/`) | "From the hypothesis notes:" |
+| What is already proven or submitted | `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` (`WIP/`, `valid/`, `invalid/`, and the `original-findings/` mirror) | "From the finding:" |
+| What the client said | `grimoire-codex/${GRIMOIRE_SESSION_ID}/client-communication/<finding-ID>.md` | "From the client, <date>:" |
+| A review's verdict | `grimoire-codex/${GRIMOIRE_SESSION_ID}/peer-review/`, `grimoire-codex/${GRIMOIRE_SESSION_ID}/mitigation-review/` | "From the review:" |
 
 Where a record and the code disagree, give both in one line each; the code may have changed since.
 
@@ -97,7 +97,7 @@ The owner sets the rate, with a cap of 10%. `src/Vault.sol:142`
 
 **Q:** Did we already check the oracle for staleness?
 
-**A:** Yes. The tome at `grimoire/tomes/active/oracle.md` records a staleness check at
+**A:** Yes. The tome at `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/oracle.md` records a staleness check at
 `src/Oracle.sol:88`. The check uses a 1 hour window. Unverified: whether 1 hour is
 safe for this asset.
 

@@ -31,11 +31,11 @@ and give a verdict the user can act on.
 - **Never leave the codebase changed.** Every patch is temporary. Restore it and prove it (`git status`
   on the touched paths) before reporting.
 - **Patch only in an isolated copy, always, and stay inside the workspace.** Even when you are the only
-  session, patch, probe and verify fixes in an isolated copy under `<workspace>/.isolated/<session-id>/`.
+  session, patch, probe and verify fixes in an isolated copy under `<workspace>/.isolated-codex/<session-id>/`.
   Never swap source files in the workspace itself, never write or run anything above its root, and never
   revert changes you didn't make (`references/parallel-sessions.md`).
 - **Your copies are yours, and they stay.** Each session works only in its own folder,
-  `.isolated/$GRIMOIRE_SESSION_ID/`; the scripts resolve names there and cannot reach another
+  `.isolated-codex/$GRIMOIRE_SESSION_ID/`; the scripts resolve names there and cannot reach another
   session's copies. Keep every copy and work folder until the user explicitly closes the lead it serves
   (validated and accepted, or invalidated and discarded). Follow-up questions reuse it; removing it early
   forces a full rebuild.
@@ -47,15 +47,15 @@ and give a verdict the user can act on.
 | Input | Where it comes from |
 |---|---|
 | Finding | Issue number in the findings repo, or a local mirror file (`<mirror>/issue<N>-*.md`) |
-| Findings repo | GRIMOIRE.md header, or ask once |
-| Local mirror of findings | e.g. `grimoire/findings/original-repo-findings/` (with its `DUPLICATES.md` if present) |
-| Baseline and audited commits | GRIMOIRE.md Scope ("delta" range), used to decide pre-existing vs new code |
-| In-scope paths, trust assumptions | GRIMOIRE.md Scope / Trust assumptions |
-| PoC directory | The project's existing PoC folder (e.g. `test/PoC/<Org>/`); never create a new one silently |
-| Work folder | `isolated-workspace.sh work i<N>` → `<workspace>/.isolated/<session-id>/work/i<N>/` for patched copies and backups |
+| Findings repo | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header, or ask once |
+| Local mirror of findings | e.g. `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-findings/` (with its `DUPLICATES.md` if present) |
+| Baseline and audited commits | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope ("delta" range), used to decide pre-existing vs new code |
+| In-scope paths, trust assumptions | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md Scope / Trust assumptions |
+| PoC directory | This run's `pocs/peer-review/` directory returned by `review_artifacts.py init`; leave shared test folders untouched |
+| Work folder | `isolated-workspace.sh work i<N>` → `<workspace>/.isolated-codex/<session-id>/work/i<N>/` for patched copies and backups |
 
-If GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in
-GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.
+If grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md doesn't exist, run `/summon` first. If an input is missing, ask once and record it in
+grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md. Scripts live in this skill's `scripts/` directory; run them from the target repo root.
 
 ---
 
@@ -99,7 +99,8 @@ If the finding is very short, has no PoC, or uses jargon, restate it in two sent
 
 ```bash
 bash <skill>/scripts/extract-poc.sh <finding.md> <poc-dir>/Issue<N><ShortName>.t.sol
-forge test --match-path <poc-dir>/Issue<N><ShortName>.t.sol -vv
+python3 <installed-root>/scripts/review_artifacts.py test --name i<N> \
+  --suite "${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue<N><ShortName>.t.sol"
 ```
 
 `extract-poc.sh` re-roots relative imports from the PoC's original location (read from its run command,
@@ -185,11 +186,11 @@ concrete fix is needed, **ask before writing it**, and verify it:
 ```bash
 bash <skill>/scripts/verify-fix.sh \
   --name i<N> \
-  --patch <repo/path/File.sol>=.isolated/<session-id>/work/i<N>/b/File.sol \
-  --suite '<poc-dir>/Issue<N>*.t.sol' --suite '<regression glob>'
+  --patch <repo/path/File.sol>=.isolated-codex/<session-id>/work/i<N>/b/File.sol \
+  --suite "${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue<N>*.t.sol" --suite '<regression glob>'
 ```
 
-The script works in this session's isolated copy at `<workspace>/.isolated/<session-id>/<name>/` (every tracked and untracked
+The script works in this session's isolated copy at `<workspace>/.isolated-codex/<session-id>/<name>/` (every tracked and untracked
 file of the workspace), so the workspace's own files are never touched and nothing is written above its
 root. Before the baseline run it proves the copy byte-for-byte identical to the workspace and stops if it
 isn't (`--with-modified` includes your own uncommitted edits once you have confirmed they are yours). At
@@ -230,20 +231,20 @@ Only on request. Formats are in `references/deliverables.md`:
 
 ## Conventions
 
-- **PoCs** go in the project's existing PoC folder, standalone (no imports from other PoC files).
+- **PoCs** go in this run's private `pocs/peer-review/` directory, standalone (no imports from other PoC files). Run them only in the owned isolated checkout with the guarded runner; never promote them into shared test folders.
   Prefer one full-stack PoC per finding, and delete superseded scratch PoCs once the user agrees.
   Probe tests (exploring an idea, a new impact or a fix's side effects) live in their own
   `*Probe.t.sol` files and never enter a write-up's PoC unless the user asks to add a claim the
   probe validated. Probe files may stay, but no write-up may reference or embed tests for ideas that
   were ruled out or left out; do not delete probe files unless asked.
-  Ask before creating a new folder; a mistyped path usually means the existing one.
+  Use the initialized run-owned PoC directory; ask before choosing a different execution layout.
 - **Plain language in write-ups:** never use one-letter shorthand for a quantity, a time or any other
   value, even after defining it once; write the variable name (`exchangeRate`, not `r`;
   `effectiveAt`, not `T`) or a plain phrase at every occurrence, formulas and call examples included
   (`setUIMultiplier(1e18, effectiveAt)`, not `setUIMultiplier(1e18, T)`). This covers comments, tomes
   and notes, not just findings. Give numbers from the PoC, prefer a small table to a paragraph
   of figures, and avoid jargon the user hasn't used.
-- **Patched copies** live in this session's work folder (`.isolated/<session-id>/work/i<N>/a` original,
+- **Patched copies** live in this session's work folder (`.isolated-codex/<session-id>/work/i<N>/a` original,
   `.../b` patched). Source files are only patched inside an isolated copy (`verify-fix.sh`, or
   `scripts/isolated-workspace.sh` for manual probes), never in the workspace itself. Probes that compile
   only against a patch stay in the work folder, because in the PoC folder they break every other

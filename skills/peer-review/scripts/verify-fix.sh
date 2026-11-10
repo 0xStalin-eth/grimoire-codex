@@ -2,11 +2,11 @@
 # verify-fix.sh — test a candidate fix without touching the workspace's own files.
 #
 # Everything runs INSIDE the git workspace this is started from: the comparison uses this session's private copy in
-# <workspace>/.isolated/<session-id>/<name>/ (scripts/isolated-workspace.sh) and keeps its scratch files in
-# <workspace>/.isolated/<session-id>/.verify-<name>/. The copy is KEPT after the run (it is reused by the next run with
+# <workspace>/.isolated-codex/<session-id>/<name>/ (scripts/isolated-workspace.sh) and keeps its scratch files in
+# <workspace>/.isolated-codex/<session-id>/.verify-<name>/. The copy is KEPT after the run (it is reused by the next run with
 # the same --name); remove it with `isolated-workspace.sh remove <name>` only once the user has closed the lead.
 # Nothing is read or written outside the workspace: patched files must be inside
-# it too (e.g. .isolated/work/i<N>/b/), and sibling workspaces of the same repo are refused.
+# it too (e.g. .isolated-codex/work/i<N>/b/), and sibling workspaces of the same repo are refused.
 #
 # Before the baseline run the copy is proven byte-for-byte identical to the workspace; if it is not (uncommitted edits
 # to tracked files), the script stops and lists them. The suites run on the original code, the patched files are
@@ -16,7 +16,7 @@
 # Usage: verify-fix.sh --patch <repo/File.sol>=<patched/File.sol> [--patch ...] --suite '<glob>' [--suite ...]
 #                      --name <name> [--with-modified]
 #   --patch     a repo file and the patched copy to swap in for the "after" run (repeatable)
-#   --suite     a forge --match-path glob (repeatable), e.g. 'test/pocs/Issue12*.t.sol' 'test/unit/**'
+#   --suite     a forge --match-path glob (repeatable), e.g. "${GRIMOIRE_CODEX_POC_REL}/peer-review/Issue12*.t.sol" 'test/unit/**'
 #   --name      name of this session's isolated copy (required, e.g. i12); an existing one is synced and reused
 #   --keep      accepted for compatibility; copies are always kept
 #   --with-modified  include the workspace's uncommitted edits to tracked files in the baseline (only after
@@ -45,6 +45,14 @@ case "$name" in ""|.*|*/*) echo "invalid --name: $name" >&2; exit 2 ;; esac
 
 root="$(git rev-parse --show-toplevel)"
 cd "$root"
+codex_artifacts init >/dev/null
+poc_relative="$(codex_artifacts path poc-relative)"
+for suite in "${suites[@]}"; do
+  if [[ "$suite" == grimoire-codex/* && "$suite" != "$poc_relative/"* ]]; then
+    echo "refusing another run's PoC suite" >&2; exit 2
+  fi
+done
+evidence_dir="$(codex_artifacts path reports)/runs/verify-fix-$name/$(python3 -c 'import uuid; print(uuid.uuid4().hex)')"
 session_dir="$(bash "$iso_sh" session)" || exit 2
 work="$session_dir/.verify-$name"
 
@@ -55,8 +63,10 @@ for p in "${patches[@]}"; do
   require_inside "a --patch target" "$root/$target"
   require_inside "a --patched file" "$patched"
 done
+require_codex_output "$work"
 rm -rf "$work"; mkdir -p "$work"
 require_inside "the scratch folder" "$work"
+mkdir -p "$work/tmp" "$work/build/out" "$work/build/cache"
 
 for p in "${patches[@]}"; do
   target="${p%%=*}"; patched="${p#*=}"
@@ -85,6 +95,10 @@ restore() {
 }
 cleanup() {
   restore
+  for evidence in "$work"/before* "$work"/after*; do
+    [[ -f "$evidence" ]] || continue
+    codex_artifacts write "$evidence_dir/$(basename "$evidence")" --source "$evidence" || return 2
+  done
   rm -rf "$work"
 }
 trap cleanup EXIT INT TERM
@@ -94,7 +108,23 @@ results() {
   for s in "${suites[@]}"; do
     i=$((i + 1))
     # shellcheck disable=SC2086
-    (cd "$run_dir" && forge test --match-path "$s" --json ${FORGE_ARGS:-} 2>/dev/null) > "$out.$i.json" || true
+    (cd "$run_dir"
+      if [[ "$s" == "$poc_relative/"* ]]; then
+        export FOUNDRY_TEST="$poc_relative"
+      elif [[ "$s" == grimoire-codex/* ]]; then
+        echo "refusing another Codex run's PoC suite" >&2; exit 2
+      else
+        unset FOUNDRY_TEST  # Regression suites use the project configuration, not private PoC discovery.
+      fi
+      export TMPDIR="$work/tmp"
+      for folder in build-info snapshots fuzz invariant fuzz-corpus invariant-corpus; do
+        require_codex_output "$work/$folder"
+      done
+      export FOUNDRY_BUILD_INFO_PATH="$work/build-info" FOUNDRY_SNAPSHOTS="$work/snapshots"
+      export FOUNDRY_FUZZ_FAILURE_PERSIST_DIR="$work/fuzz" FOUNDRY_INVARIANT_FAILURE_PERSIST_DIR="$work/invariant"
+      export FOUNDRY_FUZZ_CORPUS_DIR="$work/fuzz-corpus" FOUNDRY_INVARIANT_CORPUS_DIR="$work/invariant-corpus"
+      forge test --root "$run_dir" --out "$work/build/out" --cache-path "$work/build/cache" \
+        --match-path "$s" --json ${FORGE_ARGS:-} --offline --no-storage-caching 2>"$out.$i.stderr") > "$out.$i.json" || true
   done
   python3 -I - "$out".*.json <<'PY' | sort -u > "$out"
 import json, sys
@@ -109,6 +139,10 @@ for f in sys.argv[1:]:
             reason = (r.get("reason") or "").replace("\n", " ")[:120]
             print(f"{suite} {test} {r['status']} {reason}".rstrip())
 PY
+  if [[ ! -s "$out" ]] || grep -q 'COMPILE-OR-RUN-ERROR' "$out"; then
+    echo "no usable test evidence; fix verification failed" >&2
+    return 2
+  fi
 }
 
 echo ">>> running suites on the original code (in $run_dir)"

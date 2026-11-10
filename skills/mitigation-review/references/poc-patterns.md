@@ -12,7 +12,7 @@ review reads naturally.
 Also run the client's own regression test for the fix (find it with `fix-diff.sh` — test files in the
 fix commits). Report it as PASS/FAIL alongside yours.
 
-Location: `test/mitigation/<ID>MitigationReview.t.sol`. Contract `<ID>MitigationReview` (strip the
+Location: `${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol`. Contract `<ID>MitigationReview` (strip the
 dash: `L5MitigationReview`). One NatSpec `@notice` with the finding ID, issue number, PR, and the
 one-line bug. Reuse the repo's existing test bases (`BaseTest`, unit/integration fixtures) — inherit,
 don't rebuild setup.
@@ -25,7 +25,7 @@ Pick the cheapest that works:
    `vm.expectRevert(Err.selector)` on the report's exact inputs, plus boundary ±1.
 2. **Swap in the old code at the same address** (logic fixes in a contract):
    ```bash
-   prefix-snapshot.sh <src-file> <fix-commit> test/mitigation <ID>
+   prefix-snapshot.sh <src-file> <fix-commit> ${GRIMOIRE_CODEX_POC_REL}/mitigation-review <ID>
    ```
    It writes `<Name>PreFix<Id>.sol` (finding ID without punctuation, e.g. `H-1` -> `H1`), so snapshots
    of the same contract for different findings, or from parallel sessions, never overwrite each other.
@@ -43,7 +43,7 @@ Pick the cheapest that works:
 3. **Layout/ABI changes** (storage re-pack, type widening): can't swap. Reproduce in an isolated copy
    of the pre-fix code inside the workspace, and run the test there:
    `bash $P/isolated-workspace.sh create prefix-<ID> --ref <fix-commit>^` (`$P` is the peer-review
-   skill's `scripts/` folder). The copy lives in `.isolated/<session-id>/` and is kept until the review closes.
+   skill's `scripts/` folder). The copy lives in `.isolated-codex/<session-id>/` and is kept until the review closes.
    Or rely on the client's pre-fix PoC from the original report. Never `git checkout` in the review
    workspace, and never create anything above its root.
 
@@ -59,7 +59,7 @@ Pick the cheapest that works:
 - **Fork tests**: need an RPC env var (e.g. `MAINNET_RPC_URL`). Never echo or write the URL. If unset,
   ask the user to run `! export MAINNET_RPC_URL=...` or pass it inline for one command; if they paste a
   keyed URL in chat, suggest rotating it.
-- **Slow `via_ir` builds**: don't edit `src/`. Use `--match-path test/mitigation/<file>` to keep runs
+- **Slow `via_ir` builds**: don't edit `src/`. Use `--match-path ${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<file>` to keep runs
   scoped. Build once, then iterate on tests only.
 - **Submodule clone noise** (`forge` trying to `git clone` libs that already exist) is harmless.
 
@@ -71,6 +71,6 @@ now …". Log key values with `emit log_named_uint` and put them in the review's
 ## Run command (put it in the review)
 
 ```
-forge test --match-path test/mitigation/<ID>MitigationReview.t.sol -vv
-MAINNET_RPC_URL=... forge test --match-path test/mitigation/<ID>MitigationReview.t.sol   # fork
+python3 <installed-root>/scripts/review_artifacts.py test --name mitigation-<ID> --suite "${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol"
+MAINNET_RPC_URL=... python3 <installed-root>/scripts/review_artifacts.py test --name fork-<ID> --suite "${GRIMOIRE_CODEX_POC_REL}/mitigation-review/<ID>MitigationReview.t.sol"   # fork
 ```

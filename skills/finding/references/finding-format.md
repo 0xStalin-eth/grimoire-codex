@@ -1,13 +1,13 @@
 # Finding File Format
 
-This reference defines the format for finding files stored in `grimoire/findings/` and
-`grimoire/sigil-findings/`.
+This reference defines the format for finding files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` and
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`.
 
 ## File Location
 
-- **Manual audit findings:** `grimoire/findings/WIP/<slug>.md` while drafted, `grimoire/findings/valid/<slug>.md`
+- **Manual audit findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/<slug>.md` while drafted, `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/valid/<slug>.md`
   once submitted
-- **Automated / sigil findings:** `grimoire/sigil-findings/<slug>.md`
+- **Automated / sigil findings:** `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/<slug>.md`
 
 Filenames are kebab-case, derived from the finding title, with `.md` extension. Maximum 60
 characters. Must be unique within the target directory. If a collision occurs, append a
@@ -123,7 +123,7 @@ Reference format: `@path/to/poc-file` where the path is relative to the project 
 ```markdown
 ## Proof of Concept
 
-@grimoire/pocs/reentrancy-vault-poc.t.sol
+@grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/reentrancy-vault-poc.t.sol
 ```
 
 If no PoC exists yet, note this explicitly and suggest creating one with [[write-poc]].

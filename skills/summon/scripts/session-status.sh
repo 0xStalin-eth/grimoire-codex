@@ -25,6 +25,10 @@ header='| File | Status | Session ID | Updated | Notes |'
 divider='|---|---|---|---|---|'
 row="| $name | $status | $sid | $(date '+%Y-%m-%d %H:%M') | $note |"
 
+artifact_tool="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)/scripts/review_artifacts.py"
+python3 "$artifact_tool" init >/dev/null
+python3 "$artifact_tool" guard-output --reports-only "$log"
+
 lock="$log.lock"
 acquired=0
 for _ in $(seq 1 100); do

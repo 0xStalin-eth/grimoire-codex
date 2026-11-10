@@ -1,6 +1,6 @@
 ---
 name: gc-cartography
-description: "This skill should be used when the user says \"clean up flows\", \"merge flows\", \"gc cartography\", \"garbage collect flows\", \"deduplicate flows\", \"consolidate cartography\", \"too many flow files\", \"overlapping flows\", \"duplicate cartography\", \"reduce flow count\", or wants to identify and merge overlapping cartography files, remove stale references, and reduce duplication in the grimoire/cartography/ directory."
+description: "This skill should be used when the user says \"clean up flows\", \"merge flows\", \"gc cartography\", \"garbage collect flows\", \"deduplicate flows\", \"consolidate cartography\", \"too many flow files\", \"overlapping flows\", \"duplicate cartography\", \"reduce flow count\", or wants to identify and merge overlapping cartography files, remove stale references, and reduce duplication in the grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/ directory."
 ---
 
 ## Codex adapter (read first)
@@ -41,10 +41,10 @@ in_progress before starting it and completed when done.
 Run the indexing script:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
-Read every cartography file in `grimoire/cartography/`. For each file, extract:
+Read every cartography file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`. For each file, extract:
 - The `name` and `description` from frontmatter
 - The list of file paths referenced in Entry Points, Key Components, and Flow Sequence
 - The `related` and `tags` fields from frontmatter
@@ -121,14 +121,14 @@ After merges, scan all remaining cartography files for stale references:
 - Check `related` fields in frontmatter for deleted slugs and update them
 - Ensure all `related` references are reciprocal
 
-Also check `GRIMOIRE.md` and files in `grimoire/tomes/` for stale cartography links.
+Also check `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` and files in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` for stale cartography links.
 
 ### 6. Update Index
 
 Re-run the indexing script:
 
 ```bash
-bash skills/cartography/scripts/index-cartography.sh grimoire/cartography/
+bash skills/cartography/scripts/index-cartography.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/
 ```
 
 Present to the user:
@@ -150,7 +150,7 @@ Suggest [[review-cartography]] to verify the merged flows are accurate and compl
 - **Use conditional sections for divergent paths.** When two flows share entry points and
   components but diverge in their sequences, use conditional sections rather than trying to
   force them into one linear sequence.
-- **Check beyond cartography/.** Stale `[[cartography/...]]` links can appear in GRIMOIRE.md,
+- **Check beyond cartography/.** Stale `[[cartography/...]]` links can appear in grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md,
   tomes, and other documents. Clean them all up.
 - **Overlap is not always bad.** Two flows might legitimately share 50% of their components
   and still be better as separate files. Respect the user's judgment on what to merge.

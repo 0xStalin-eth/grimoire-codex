@@ -49,8 +49,8 @@ Each file is YAML front matter (`title`, `source`, `author`, `labels`, `state`, 
 
 | Input | Where it comes from |
 |---|---|
-| Findings repo (`owner/repo`) | GRIMOIRE.md header, or ask once and record it there |
-| Mirror directory | Default `grimoire/findings/original-repo-findings`; use the project's existing mirror if it differs |
+| Findings repo (`owner/repo`) | grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md header, or ask once and record it there |
+| Mirror directory | Default `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/original-findings`; use the project's existing mirror if it differs |
 
 Requires `gh`, authenticated with access to the findings repo (`gh auth status`). The script is
 `scripts/findings_sync.py`; run it from the repo root.
@@ -120,12 +120,12 @@ Running either twice is harmless.
 Summarize: issues pulled, issues updated (with their change sizes), issues that moved to `CLOSED/`, and
 titles that changed upstream (the file kept its name). Then suggest:
 - **Re-review** updated issues that already have a peer-review verdict, session marker or tome entry:
-  `grep -rl "#<N>\b" grimoire/` finds them. A large body change can change the verdict (`/peer-review`).
+  `grep -rl "#<N>\b" grimoire-codex/${GRIMOIRE_SESSION_ID}/` finds them. A large body change can change the verdict (`/peer-review`).
 - **Diff against the original** when the user wants to see how a finding evolved:
   `diff <mirror>/originals/issue<N>-*.md <mirror>/issue<N>-*.md`.
 - **Update the duplicates index** (if the project keeps one) for newly pulled issues.
 - **Move submitted drafts.** For each newly pulled issue, look for a local draft in
-  `grimoire/findings/WIP/` with the same title (or a front-matter line naming the issue). If one
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/WIP/` with the same title (or a front-matter line naming the issue). If one
   matches, the draft was submitted: ask the user to confirm, then apply the "Finding submitted" rule in
   `/summon` Step 2 (move it to `findings/valid/`, update links and logs, record the issue number).
 

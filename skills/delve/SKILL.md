@@ -41,7 +41,7 @@ own research plan.
 - It does not route leads to other skills.
 - It does not plan or steer research.
 
-Delve does record every lead it surfaces as a hypothesis in `grimoire/hypotheses/WIP/` (step 5).
+Delve does record every lead it surfaces as a hypothesis in `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/` (step 5).
 That is bookkeeping, not investigation: it keeps delves and hypotheses in sync so a lead is never
 lost and never surfaced twice.
 
@@ -90,15 +90,15 @@ in_progress before starting it and completed when done.
 
 ### 1. Gather Research Artifacts
 
-Read `GRIMOIRE.md` if it exists. Then inspect relevant research output:
+Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` if it exists. Then inspect relevant research output:
 - Current conversation or agent transcript, if available
-- `grimoire/tomes/active/` (never `tomes/archived/`: outdated, likely invalid conclusions)
-- `grimoire/findings/` — `WIP/`, `valid/`, and `invalid/` (rejected findings are dead ends)
-- `grimoire/hypotheses/` — `WIP/` are open leads, `invalid/` are dead ends, `valid/` were promoted
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/active/` (never `tomes/archived/`: outdated, likely invalid conclusions)
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` — `WIP/`, `valid/`, and `invalid/` (rejected findings are dead ends)
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/` — `WIP/` are open leads, `invalid/` are dead ends, `valid/` were promoted
   (each file's `source:` names the delve lead it came from, if any)
-- `grimoire/sigil-findings/`
-- `grimoire/cartography/`
-- `grimoire/spells/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/sigil-findings/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/cartography/`
+- `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/`
 - Test output, PoCs, notes, or temporary research artifacts
 
 If the user points to a specific agent run, transcript, file, branch, or topic, focus
@@ -159,13 +159,13 @@ operator may disagree, and that is the point.
 
 ### 5. Save The Delve
 
-Write the delve to this session's own folder, `grimoire/delves/<session-id>/`, where `<session-id>`
+Write the delve to this session's own folder, `grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/`, where `<session-id>`
 is `$GRIMOIRE_SESSION_ID`. If it is unset, ask the user for a folder name; never guess one. Each
 session writes only to its own folder, so delves run in parallel never collide. Never write to, or
 edit, another session's folder.
 
 ```text
-grimoire/delves/<session-id>/
+grimoire-codex/${GRIMOIRE_SESSION_ID}/delves/<session-id>/
     board.md            the Output Format below, under a header (see next)
     leads/<lead>.md     one per lead on the board: everything captured in step 2
 ```
@@ -185,15 +185,15 @@ relevant lines into the lead file; "the agent said" alone is lost when the sessi
 Running delve again in the same session updates the files in this folder to the new board.
 
 **Sync with hypotheses.** For each lead on the board:
-- **No hypothesis yet:** create `grimoire/hypotheses/WIP/<lead>.md` in the hypothesis format from
+- **No hypothesis yet:** create `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/WIP/<lead>.md` in the hypothesis format from
   `/summon` Step 2, with `source: delves/<session-id>/leads/<lead>.md`, and add its row to
-  `grimoire/hypotheses/SESSIONS.md` with the summon skill's script
-  (`session-status.sh grimoire/hypotheses/SESSIONS.md <lead>.md WIP "from delve <session-id>"`). If the
+  `grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md` with the summon skill's script
+  (`session-status.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/SESSIONS.md <lead>.md WIP "from delve <session-id>"`). If the
   name is taken by a different hypothesis, add a short suffix.
 - **Already a hypothesis in `WIP/`:** don't create another. Add this lead file to its `source:` list.
 
 Every lead file names its hypothesis file on its first line (`Hypothesis: <name>.md`). The lead's
-status is wherever that file is now (`ls grimoire/hypotheses/*/<name>.md`); never copy the status into
+status is wherever that file is now (`ls grimoire-codex/${GRIMOIRE_SESSION_ID}/hypotheses/*/<name>.md`); never copy the status into
 the delve, so the two cannot drift. Delve only creates hypotheses and adds sources; it never moves,
 edits, or closes one.
 

@@ -57,7 +57,7 @@ function withdraw() external {
 
 ## Proof of Concept
 
-@grimoire/pocs/reentrancy-vault-poc.t.sol
+@grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/reentrancy-vault-poc.t.sol
 
 ## Recommendation
 

@@ -160,8 +160,8 @@ Use these templates with the frontmatter described in `tome-format.md`.
 
 ## Finding Candidate
 
-Use `grimoire/tomes/` for finding notes only when they are research support. Use
-`grimoire/findings/` for report-ready vulnerabilities and `/finding-draft` for the
+Use `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/` for finding notes only when they are research support. Use
+`grimoire-codex/${GRIMOIRE_SESSION_ID}/findings/` for report-ready vulnerabilities and `/finding-draft` for the
 finding format.
 
 ```markdown
@@ -199,4 +199,4 @@ candidate | reproduced | confirmed | rejected | fixed | accepted-risk
 ```
 
 Do not call a hypothesis a vulnerability before the evidence supports that conclusion.
-Keep early ideas in `grimoire/tomes/notes/hypotheses.md` or use `/divine`.
+Keep early ideas in `grimoire-codex/${GRIMOIRE_SESSION_ID}/tomes/notes/hypotheses.md` or use `/divine`.

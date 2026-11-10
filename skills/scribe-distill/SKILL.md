@@ -52,13 +52,13 @@ Read the finding file. Extract:
 - Root cause (from Description and Details sections)
 - Impact (from Description)
 
-Read `GRIMOIRE.md` for codebase context — architecture, crown jewels, technology stack.
+Read `grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md` for codebase context — architecture, crown jewels, technology stack.
 
 Check in with the user before continuing.
 
 ### 2. Check for Existing Coverage
 
-Run `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` to list existing
+Run `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` to list existing
 checks. Read any that might cover the same vulnerability class.
 
 If a check already covers this exact pattern:
@@ -125,7 +125,7 @@ Follow the check format from `skills/checks/references/check-format.md`:
 - Body: Patterns section (grep-able search patterns), Assessment section (how to evaluate
   matches, severity adjustment, benign cases)
 
-Create the file in `grimoire/spells/checks/` with a slugified filename. Consult
+Create the file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` with a slugified filename. Consult
 `skills/checks/examples/` for worked examples at different complexity levels.
 
 **Gnome delegation:** Spawn a Gnome agent to build the check. Provide it with the
@@ -134,7 +134,7 @@ criteria. The Gnome handles file creation, format compliance, and validation.
 
 **For knowledge artifacts (not automatable):**
 
-Create a markdown file in `grimoire/spells/knowledge/` (create directory with `mkdir -p` if
+Create a markdown file in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/knowledge/` (create directory with `mkdir -p` if
 needed) with:
 - YAML frontmatter: name, description, vulnerability-class, languages
 - Body: what to look for (natural language), why it matters, known-bad patterns, assessment

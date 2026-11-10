@@ -17,11 +17,18 @@ class HelperTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(prefix='grimoire-helper-')
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name).resolve()
-        self.env = dict(os.environ, GRIMOIRE_SESSION_ID='test-session-1234')
+        self.env = dict(os.environ, GRIMOIRE_SESSION_ID='test-session-1234', GRIMOIRE_AUDIT_ROOT=str(self.root))
 
     def shell(self, script, *args, **kwargs):
         return subprocess.run(['bash', str(ROOT / 'skills' / script), *map(str, args)], cwd=self.root,
                               env=kwargs.get('env', self.env), text=True, capture_output=True)
+
+    def report_log(self):
+        subprocess.run(['git','init','-q',str(self.root)],check=True)
+        tool=ROOT/'scripts/review_artifacts.py'
+        result=subprocess.run([sys.executable,str(tool),'init'],cwd=self.root,env=self.env,
+                              capture_output=True,text=True,check=True)
+        return Path(json.loads(result.stdout)['reports'])/'SESSIONS.md'
 
     def test_bootstrap_is_idempotent_and_preserves_registry(self):
         store = self.root / 'personal'
@@ -32,7 +39,7 @@ class HelperTests(unittest.TestCase):
         self.assertEqual('libraries: {example: {type: local}}\n', registry.read_text())
 
     def test_session_logging_concurrent_updates(self):
-        log = self.root / 'SESSIONS.md'
+        log = self.report_log()
         def update(n):
             return self.shell('summon/scripts/session-status.sh', log, f'hyp-{n}.md', 'WIP', 'fixture')
         with ThreadPoolExecutor(max_workers=8) as pool:
@@ -43,14 +50,15 @@ class HelperTests(unittest.TestCase):
         self.assertFalse(log.with_suffix('.md.lock').exists())
 
     def test_session_logging_missing_or_malformed_id_refuses(self):
+        log=self.report_log()
         for sid in ['', '../escape', 'bad\nrow']:
-            result = self.shell('summon/scripts/session-status.sh', self.root / 'SESSIONS.md', 'a.md', 'WIP', env=dict(self.env, GRIMOIRE_SESSION_ID=sid))
+            result = self.shell('summon/scripts/session-status.sh', log, 'a.md', 'WIP', env=dict(self.env, GRIMOIRE_SESSION_ID=sid))
             self.assertNotEqual(0, result.returncode)
-        self.assertFalse((self.root / 'SESSIONS.md').exists())
+        self.assertFalse(log.exists())
 
     def test_existing_log_lock_is_not_stolen(self):
-        log = self.root / 'SESSIONS.md'
-        lock = self.root / 'SESSIONS.md.lock'
+        log = self.report_log()
+        lock = Path(str(log)+'.lock')
         lock.mkdir(); log.write_text('unchanged\n')
         result = self.shell('summon/scripts/session-status.sh', log, 'a.md', 'WIP')
         self.assertNotEqual(0, result.returncode)
@@ -68,7 +76,7 @@ class HelperTests(unittest.TestCase):
         verified = self.shell(script, 'verify', 'proof')
         self.assertEqual(0, verified.returncode, verified.stderr)
         path = self.shell(script, 'path', 'proof').stdout.strip()
-        self.assertTrue(Path(path).is_relative_to(self.root / '.isolated/test-session-1234'))
+        self.assertTrue(Path(path).is_relative_to(self.root / '.isolated-codex/test-session-1234'))
         (Path(path) / 'target.sol').write_text('contract Changed {}\n')
         self.assertNotEqual(0, self.shell(script, 'verify', 'proof').returncode)
         other = dict(self.env, GRIMOIRE_SESSION_ID='other-session-1234')

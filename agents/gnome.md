@@ -11,14 +11,54 @@ maintenance commands use `$grimoire-<command>`. These are workflow references, n
   Resolve them to absolute paths before invoking scripts. `references/`, `scripts/`, `examples/`
   and `../other-skill/` refer to the current skill's directory. Keep each script's documented
   working directory (usually the engagement or target repo root), so output stays with the audit.
-- At entry, read the engagement's `GRIMOIRE.md` if it exists. For workspace initialization run
-  `python3 <installed-root>/scripts/bootstrap.py` explicitly; Codex does not execute the archived
-  Claude lifecycle hooks. Bootstrap is idempotent and only initializes the personal store.
+- Audit work has one immutable boundary:
+  `GRIMOIRE_AUDIT_ROOT`, the absolute directory where this Codex session started. Explicitly pass it
+  to review/status helpers even if shell environment inheritance is unavailable. Never replace it
+  with a broader Git root after changing directories. All audit-created files, isolated copies,
+  scratch scripts and tool caches must stay below that launch directory. Keep tool temporary/cache
+  directories local using the installed tool's documented options; if that is unavailable, report
+  the blocked step instead of requesting broader write access. A Git root above/outside the launch
+  directory is refused by the review helpers.
+- From the scoped target's Git root, initialize this run's outputs with
+  `python3 <installed-root>/scripts/review_artifacts.py init`. For initial scope acquisition,
+  obtain the target checkout inside the launch directory before initializing research artifacts.
+  Use the returned `context` file instead of the shared root `GRIMOIRE.md`, `reports` for all
+  research notes/reviews/drafts/mirrors/logs, and `pocs` for PoCs and pre-fix snapshots. These live
+  in `<target-git-root>/grimoire-codex/<run-id>/`, inside the launch boundary, with an ownership
+  marker. Store the returned `poc-relative` as `GRIMOIRE_CODEX_POC_REL` when a workflow command
+  uses that placeholder. Resolve all placeholders to this run's concrete paths.
+- Write/update files through `review_artifacts.py write <path>` (stdin or `--source <input>`);
+  `--replace` is only for an intentional update to your own run's file. Use its guarded `move`
+  command for filing a review. Both commands refuse Claude's folders, other run IDs and symlinks.
+  Never update shared root `GRIMOIRE.md`, `grimoire/`, client input reports or shared `test/` files.
+  Explicitly supplied existing Claude reports/PoCs can be read as inputs; never overwrite/move
+  their originals. No migration or adoption of legacy output directories is automatic.
+- Keep PoCs outside the project's shared test-discovery directories, under this run's `pocs/`.
+  For Foundry, use `review_artifacts.py test --name <copy> --suite <poc-relative>/<glob>` (and
+  `--ref <commit>` for pre-fix testing). It copies your PoCs into your owned isolated checkout,
+  selects that private test directory with `FOUNDRY_TEST`, and keeps compiler output/cache/tmp
+  inside your run's work folder. `verify-fix.sh` selects the private PoC directory for PoC suites
+  and retains the project's normal test directory for regression suites. Run no generated PoCs
+  from the shared checkout. Other test runners need equivalent isolated test discovery; stop and
+  report a gap if unavailable. Passing syntax/structural checks is not successful reproduction.
+  The guarded Foundry runners disable automatic compiler installation and shared RPC caching;
+  build info, snapshots and fuzz/invariant persistence are run-local too. Supply an available
+  compiler (or prepare one inside the audit root); never install it into a global store mid-audit.
+- Personal-store bootstrap is a separate, explicit one-time setup before the audit session.
+  Do not run bootstrap or write `~/.grimoire/` during an audit. Optional library/cache/promotion
+  workflows that require global writes are unavailable under this rule until adapted to local
+  storage. Codex does not execute the archived Claude lifecycle hooks.
 - Before session-aware work, set `GRIMOIRE_SESSION_ID` in every shell invocation. Use a verified
   Codex thread ID when available; otherwise create a UUID once and keep it as an explicit run ID.
   Record the distinction in the engagement log. A run ID is not a resumable chat ID. Reuse it only
   for the same logical session; a new independent agent needs a new ID. Resume a chat only with a
   verified runtime chat ID. Never infer a chat ID from an isolated-copy folder or guess an ID.
+- Peer/mitigation working copies and scratch folders use
+  `<target-git-root>/.isolated-codex/<run-id>/`, inside `GRIMOIRE_AUDIT_ROOT`. The helper validates
+  the owner runtime, run ID, Git workspace and launch directory before reuse or cleanup. Never
+  migrate, copy, sync, clean or adopt Claude's `.isolated/` tree or legacy unmarked copies. Both
+  isolation trees are excluded from Codex source snapshots. Different Codex sessions/subagents
+  need different run IDs; reuse one only when resuming the same logical run.
 - For a named role, load `<installed-root>/agents/<role>.md`, or use `$grimoire-<role>`.
   When the workflow delegates, spawn a Codex subagent with that procedure, scope, evidence inputs,
   output path and permissions. Use bounded batches within the runtime's available concurrency.
@@ -77,19 +117,19 @@ Creates an agentic detection module (check file) following the checks skill form
    structure and tone.
 
 3. **Check for existing coverage.** Run
-   `bash skills/checks/scripts/index-checks.sh grimoire/spells/checks/` (if the directory
+   `bash skills/checks/scripts/index-checks.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` (if the directory
    exists). If an existing check already covers this pattern, report the overlap and stop
    unless the directive explicitly requests a variant or more specific version.
 
-4. **Build the check file.** Create `grimoire/spells/checks/<slug>.md` following check format.
+4. **Build the check file.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md` following check format.
    Frontmatter: name, description, languages, severity-default, confidence, tools, tags,
    related-checks. Body: patterns section (grep-able where possible) + assessment section.
-   Create the directory with `mkdir -p grimoire/spells/checks/` if it does not exist.
+   Create the directory with `mkdir -p grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` if it does not exist.
 
    Keep the body under 30 lines. If the pattern is complex enough to exceed this, split into
    multiple checks and link them via `related-checks`.
 
-5. **Validate.** Run `bash skills/checks/scripts/validate-check.sh grimoire/spells/checks/<slug>.md`.
+5. **Validate.** Run `bash skills/checks/scripts/validate-check.sh grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/<slug>.md`.
    Fix any validation errors.
 
 6. **Report status.** Produce the output format below.
@@ -101,17 +141,17 @@ Creates a semgrep rule for static pattern detection.
 1. **Parse the directive.** Extract: code pattern to detect, target language(s), expected
    behavior, false-positive guidance from the parent.
 
-2. **Check for existing rules.** Glob `grimoire/spells/semgrep/` for existing rules targeting
+2. **Check for existing rules.** Glob `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/` for existing rules targeting
    the same vulnerability class. If a rule exists for the same class, extend it with a new
    pattern entry rather than creating a duplicate.
 
-3. **Build the rule.** Create `grimoire/spells/semgrep/<slug>.yaml` (create directory with
+3. **Build the rule.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/<slug>.yaml` (create directory with
    `mkdir -p` if needed). Follow semgrep rule syntax: `rules:` list with `id`, `pattern`
    (or `patterns`/`pattern-either`), `message`, `languages`, `severity`, `metadata`. Use
    `pattern-not` for known benign cases to reduce false positives.
 
 4. **Test the rule.** If a target path was provided and semgrep is installed, run
-   `semgrep --config grimoire/spells/semgrep/<slug>.yaml <target-path>`. If semgrep is not
+   `semgrep --config grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/semgrep/<slug>.yaml <target-path>`. If semgrep is not
    installed, note this in the status report but still deliver the rule file.
 
 5. **Report status.**
@@ -123,16 +163,16 @@ Creates a Python-based Slither detector module for Solidity analysis.
 1. **Parse the directive.** Extract: vulnerability pattern, detection logic, affected
    Solidity patterns, severity.
 
-2. **Check for existing detectors.** Glob `grimoire/spells/slither/` for overlapping
+2. **Check for existing detectors.** Glob `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/` for overlapping
    detectors.
 
-3. **Build the detector.** Create `grimoire/spells/slither/<slug>.py` (create directory with
+3. **Build the detector.** Create `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/<slug>.py` (create directory with
    `mkdir -p` if needed). Subclass `AbstractDetector`, implement `_detect()`, set `ARGUMENT`,
    `HELP`, `IMPACT`, `CONFIDENCE`. Include a docstring explaining what it detects and known
    false positive patterns.
 
 4. **Syntax check.** Run
-   `python3 -c "import ast; ast.parse(open('grimoire/spells/slither/<slug>.py').read())"` to
+   `python3 -c "import ast; ast.parse(open('grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/slither/<slug>.py').read())"` to
    verify valid Python. If Slither is available, attempt a dry run.
 
 5. **Report status.**
@@ -148,7 +188,7 @@ Creates a proof-of-concept script demonstrating a vulnerability.
    Understand preconditions, required inputs, and expected observable impact.
 
 3. **Build the PoC.** Create the script at the path specified by the parent, or default to
-   `grimoire/pocs/<slug>.<ext>` (create directory with `mkdir -p` if needed). Follow
+   `grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/<slug>.<ext>` (create directory with `mkdir -p` if needed). Follow
    grimoire's PoC conventions:
    - **Benign payloads only** — `alert(1)`, `sleep()`, `id`, never destructive commands
    - **Parameterized targets** — localhost, `$TARGET`, environment variables, never
@@ -199,7 +239,7 @@ This keeps the spellbook tidy.
 ### Context Isolation
 
 You operate with minimal context. You receive only what the parent provides. Do not attempt
-to understand the full engagement context or load GRIMOIRE.md unless the directive instructs
+to understand the full engagement context or load grimoire-codex/${GRIMOIRE_SESSION_ID}/GRIMOIRE.md unless the directive instructs
 it — that is the parent's responsibility. Focus on the immediate build task.
 
 ## Output Format
@@ -228,7 +268,7 @@ Use this format for all modes:
 
 ## Constraints
 
-- **File creation limited to `grimoire/spells/` and `grimoire/pocs/`** (or parent-specified
+- **File creation limited to `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/` and `grimoire-codex/${GRIMOIRE_SESSION_ID}/pocs/`** (or parent-specified
   paths). Do not modify source code, findings, or any file outside artifact directories.
 - **Plan adherence.** Do not expand scope beyond the directive. If told "build a check,"
   build a check — do not also build a semgrep rule unless instructed.

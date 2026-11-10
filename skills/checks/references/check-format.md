@@ -1,11 +1,11 @@
 # Check File Format
 
-This reference defines the format for check files stored in `grimoire/spells/checks/`.
+This reference defines the format for check files stored in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/`.
 
 ## File Location
 
-All check files live in `grimoire/spells/checks/` with a slugified filename derived from the
-check name: `grimoire/spells/checks/debug-assertions.md`.
+All check files live in `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/` with a slugified filename derived from the
+check name: `grimoire-codex/${GRIMOIRE_SESSION_ID}/spells/checks/debug-assertions.md`.
 
 ## Frontmatter
 
